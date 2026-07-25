@@ -1363,3 +1363,34 @@ body{background:#03080d;color:#eefaff}.splash{background:#03080d}.splashBrandNew
 
 /* v5.6.7 Events polish */
 .rhEventMakeCars .rhPickerRow{display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;column-gap:14px;padding-left:14px;padding-right:14px}.rhEventMakeCars .rhPickerRow input{margin:0;justify-self:center}.rhEventMakeCars .rhPickerRow>span{min-width:0;line-height:1.3}.rhReturnEvents{margin:18px 0 34px}
+
+/* RaceHub v5.6.8 — Dashboard Hero + Global Header Controls */
+/* Shared circular header controls: true geometric + optical centring on phone. */
+.rhBack,.rhHelp,.rhHomeTop button,.rhHomeHelp{
+  display:grid;
+  place-items:center;
+  padding:0!important;
+  line-height:1!important;
+  text-align:center;
+  box-sizing:border-box;
+  vertical-align:middle;
+}
+.rhBack{font-size:0!important}
+.rhBack::before{content:'‹';font-size:31px;font-weight:700;line-height:1;transform:translateY(-1px)}
+.rhHelp{font-size:0!important}
+.rhHelp::before{content:'?';font-size:19px;font-weight:900;line-height:1;transform:translateY(-1px)}
+.rhHomeHelp{font-size:0!important}
+.rhHomeHelp::before{content:'?';font-size:25px;font-weight:900;line-height:1;transform:translateY(-1px)}
+.rhHomeTop>button{font-size:0!important}
+.rhHomeTop>button::before{content:'⚙';font-size:25px;line-height:1;transform:translateY(-1px)}
+
+/* Dashboard hero: keep the approved car visible and give the RaceHub mark more presence. */
+.rhHomeHero>img{
+  left:72%;
+  top:27%;
+  width:min(52vw,280px);
+  transform:translateX(-50%);
+}
+@media(max-width:520px){
+  .rhHomeHero>img{left:72%;top:29%;width:min(54vw,230px)}
+}
