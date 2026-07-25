@@ -322,3 +322,15 @@ A presentation-only refinement pass covering spacing, typography, progress indic
 - Incremented visible build/version and service-worker cache for reliable phone/PWA verification.
 - No locked Studio design or functional rule changed.
 
+
+
+## v5.6.2 — Phone Test Batch 1 Corrections
+- Centred splash logo and reduced Dashboard logo dominance on phone.
+- Favourite Manufacturer section always visible in Festival, with Settings action when unset.
+- Championship Setup car selection is searchable, countable and scroll-contained for large Garages.
+- Garage manufacturer chips constrained to a proper horizontal scroller.
+- Removed duplicate empty-state Create Event action.
+- Hall of Fame now has its own non-interactive presentation and correct heading.
+- Removed Settings button from Stats.
+- About version now uses the current build version.
+- No substitute Garage/Stats artwork introduced; supplied approved assets remain authoritative.
