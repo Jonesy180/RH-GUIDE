@@ -1346,3 +1346,10 @@ body{background:#03080d;color:#eefaff}.splash{background:#03080d}.splashBrandNew
 .rhFormModal label{display:block;text-align:left;color:#a9c4cd;font-size:12px;font-weight:700;letter-spacing:.06em;margin:12px 0 5px}
 .rhFormModal input{width:100%;box-sizing:border-box}.rhModalActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}.rhModalActions .btn{width:100%}.rhDeleteCar{width:100%;margin-top:12px}.rhConfirmModal.danger{border-color:rgba(255,92,92,.45)}
 @media(max-width:520px){.rhGarageTools{grid-template-columns:1fr!important}.rhGarageTools input{grid-column:1!important}.rhGarageTools .chip{width:100%}.rhGarageScene{min-height:220px}}
+
+/* v5.6.4 — native Events create/result entry */
+.rhFormModal label{display:block;margin:16px 0 8px;color:#dbe9ee;font-weight:800}
+.rhFormModal select{width:100%;box-sizing:border-box;background:#0b1c25;color:#f5fbff;border:1px solid #55e9ff22;border-radius:14px;padding:15px;font:inherit}
+.rhTimeEntry{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center}
+.rhTimeEntry input{min-width:0;text-align:center;background:#0b1c25;color:#fff;border:1px solid #55e9ff22;border-radius:14px;padding:15px 8px;font:inherit;font-weight:800}
+.rhTimeEntry span{font-size:24px;font-weight:900;color:#9fb7c0}
