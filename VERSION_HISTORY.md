@@ -334,3 +334,13 @@ A presentation-only refinement pass covering spacing, typography, progress indic
 - Removed Settings button from Stats.
 - About version now uses the current build version.
 - No substitute Garage/Stats artwork introduced; supplied approved assets remain authoritative.
+
+
+## v5.6.3 — Garage Phone Audit Checkpoint
+- Replaces the 675-car flat Garage with strict alphabetical manufacturer accordions.
+- Manufacturers are collapsed by default and show car counts.
+- Search filters make/model/year without changing Garage data.
+- Add/Edit Car is now RaceHub-native UI; browser prompts removed from Garage.
+- Delete Car uses RaceHub-native destructive confirmation.
+- Restores the recovered locked Garage environment artwork.
+- Preserves the existing Space-owned Garage data model.

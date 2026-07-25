@@ -1330,3 +1330,19 @@ body{background:#03080d;color:#eefaff}.splash{background:#03080d}.splashBrandNew
   .rhGarageTools{grid-template-columns:1fr 1fr}.rhGarageTools input{grid-column:1/-1}.rhGarageTools .chip{width:100%}
   .rhHallGrid{grid-template-columns:1fr 1fr}
 }
+
+/* v5.6.3 — Garage checkpoint */
+.rhGarageScene{background-image:url('assets/final/garage-background.png');background-position:center 48%}
+.rhGarageTools{grid-template-columns:1fr auto!important;align-items:center}
+.rhGarageTools input{grid-column:auto!important}
+.rhMakeAccordion{display:grid;gap:8px;margin-top:14px}
+.rhMakeGroup{border:1px solid rgba(129,220,239,.13);border-radius:12px;overflow:hidden;background:rgba(5,18,27,.72);box-shadow:0 10px 26px rgba(0,0,0,.14)}
+.rhMakeGroup.open{border-color:rgba(51,214,238,.34);box-shadow:0 0 0 1px rgba(51,214,238,.06),0 12px 28px rgba(0,0,0,.2)}
+.rhMakeHead{width:100%;border:0;background:transparent;color:#eefcff;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:14px 13px}
+.rhMakeHead span>*{display:block}.rhMakeHead b{font-size:16px;letter-spacing:.035em}.rhMakeHead small{color:#8faab4;margin-top:3px}.rhMakeHead em{font-size:25px;color:var(--rh-cyan);font-style:normal;line-height:1}
+.rhMakeCars{padding:0 12px 5px;border-top:1px solid rgba(255,255,255,.06);background:rgba(2,11,17,.38)}
+.rhMakeCars .rhCar{padding:12px 2px}.rhMakeCars .rhCar strong{font-size:15px}.rhMakeCars .rhCar small{margin-top:3px}
+.rhEditIcon{width:38px;height:38px;border-radius:10px;border:1px solid rgba(89,215,238,.26);background:#10232d;color:#dffbff;font-size:18px;flex:0 0 auto}
+.rhFormModal label{display:block;text-align:left;color:#a9c4cd;font-size:12px;font-weight:700;letter-spacing:.06em;margin:12px 0 5px}
+.rhFormModal input{width:100%;box-sizing:border-box}.rhModalActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}.rhModalActions .btn{width:100%}.rhDeleteCar{width:100%;margin-top:12px}.rhConfirmModal.danger{border-color:rgba(255,92,92,.45)}
+@media(max-width:520px){.rhGarageTools{grid-template-columns:1fr!important}.rhGarageTools input{grid-column:1!important}.rhGarageTools .chip{width:100%}.rhGarageScene{min-height:220px}}
