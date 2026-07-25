@@ -306,3 +306,19 @@ A presentation-only refinement pass covering spacing, typography, progress indic
 - Hid the legacy global RaceHub header and bottom navigation on the redesigned Events screen.
 - Events now uses the same Home control placement and inner-page navigation treatment as Festival.
 - No Events layout or workflow redesign; this is a consistency correction only.
+
+## v5.6.0 — Studio Final Build
+- Complete locked RaceHub Studio redesign implementation layer.
+- Multi-Space architecture with one global Driver Profile and Space-specific Garage, Championships, Records, Hall of Fame, Stats and Favourite Manufacturer.
+- Frozen Championship runs with user-defined Rounds, entry exclusion, cumulative timing and final leaderboard.
+- Festival / Events / Garage / Records / Hall of Fame / Stats / Settings rebuilt to locked Studio direction.
+- Contextual ? help overlays, locked empty-state copy, RaceHub-managed Backup/Restore and current-Space racing reset.
+- Final ASSET-004–007 trophy authority, locked Hubs, final logo and supplied approved backgrounds installed.
+- Manufacturer logo assets removed from production package; manufacturer identity is text-only.
+- Existing Garage migrates from the v5.5.4 storage key; legacy racing data is retained in migration metadata but new frozen-run racing starts clean.
+## v5.6.1 — Studio Final Build / Logo Mapping Correction
+- Corrected Dashboard and splash logo mapping after v5.6.0 local test exposed that the logo production-reference board had been mapped as the live logo.
+- Restored the approved standalone RaceHub logo asset from the proven baseline.
+- Incremented visible build/version and service-worker cache for reliable phone/PWA verification.
+- No locked Studio design or functional rule changed.
+
