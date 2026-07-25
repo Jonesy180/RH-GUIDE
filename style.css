@@ -1378,11 +1378,11 @@ body{background:#03080d;color:#eefaff}.splash{background:#03080d}.splashBrandNew
 .rhBack{font-size:0!important}
 .rhBack::before{content:'‹';font-size:31px;font-weight:700;line-height:1;transform:translateY(2px)}
 .rhHelp{font-size:0!important}
-.rhHelp::before{content:'?';font-size:19px;font-weight:900;line-height:1;transform:translateY(2px)}
+.rhHelp::before{content:'?';font-size:19px;font-weight:900;line-height:1;transform:translateY(6px)}
 .rhHomeHelp{font-size:0!important}
-.rhHomeHelp::before{content:'?';font-size:25px;font-weight:900;line-height:1;transform:translateY(2px)}
+.rhHomeHelp::before{content:'?';font-size:25px;font-weight:900;line-height:1;transform:translateY(6px)}
 .rhHomeTop>button{font-size:0!important}
-.rhHomeTop>button::before{content:'⚙';font-size:25px;line-height:1;transform:translateY(2px)}
+.rhHomeTop>button::before{content:'⚙';font-size:25px;line-height:1;transform:translateY(6px)}
 
 /* Dashboard hero: keep the approved car visible and give the RaceHub mark more presence. */
 .rhHomeHero>img{
@@ -1398,3 +1398,7 @@ body{background:#03080d;color:#eefaff}.splash{background:#03080d}.splashBrandNew
 /* RaceHub v5.6.9 — Header Control Optical Alignment
    Phone correction: glyphs sit slightly lower within the existing circles.
    Circle position, size and horizontal alignment are unchanged. */
+
+/* RaceHub v5.6.10 — Cog & Help Final Alignment
+   Phone correction: help and settings glyphs moved 4px lower from v5.6.9.
+   Back arrow remains locked at v5.6.9 alignment. */
