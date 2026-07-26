@@ -1431,3 +1431,17 @@ body{background:#03080d;color:#eefaff}.splash{background:#03080d}.splashBrandNew
  .rhRecordIdentity b{font-size:15px}
  .rhRecordRow>strong{font-size:15px}
 }
+
+/* RaceHub v5.6.12 — locked Stats cockpit treatment */
+.rhStatsScene{position:relative;min-height:760px;background:#02070b url('assets/final/stats-background.png') center top/cover no-repeat;overflow:hidden}
+.rhStatsScene:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,5,9,.16) 0%,rgba(0,5,9,.06) 28%,rgba(0,5,9,.14) 72%,rgba(0,5,9,.72) 100%);pointer-events:none}
+.rhStatsScene .rhPageHead{position:relative;z-index:4;background:linear-gradient(180deg,rgba(0,5,9,.78),rgba(0,5,9,.12))}
+.rhStatsCockpit{position:relative;z-index:3;min-height:620px;max-width:720px;margin:0 auto;padding:250px 18px 26px;display:grid;grid-template-columns:1fr 1.35fr 1fr;grid-template-rows:auto auto;gap:12px;align-items:end}
+.rhStatsGauge{min-width:0;aspect-ratio:1/1;border:1px solid rgba(85,233,255,.48);border-radius:50%;background:radial-gradient(circle,rgba(3,18,27,.94) 0 48%,rgba(3,16,24,.84) 64%,rgba(55,221,244,.12) 65%,rgba(3,13,20,.94) 70%);box-shadow:inset 0 0 24px rgba(41,221,247,.18),0 0 20px rgba(12,170,198,.15);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px;text-shadow:0 2px 10px #000}
+.rhStatsGauge span{font-size:10px;letter-spacing:.12em;color:#5fe9ff;font-weight:900}.rhStatsGauge small{font-size:10px;color:#eefcff;font-weight:800;letter-spacing:.08em}.rhStatsGauge b{font-size:34px;line-height:1;margin-top:7px;color:#fff}
+.rhStatsGaugeMain{transform:scale(1.12);border-color:rgba(85,233,255,.68);box-shadow:inset 0 0 30px rgba(41,221,247,.25),0 0 26px rgba(12,170,198,.22)}
+.rhStatsGaugeMain span{font-size:12px}.rhStatsGaugeMain small{font-size:13px}.rhStatsGaugeMain b{font-size:54px;color:#fff}
+.rhStatsOdometer{grid-column:1/-1;justify-self:center;width:min(90%,520px);border:1px solid rgba(85,233,255,.45);border-radius:15px;background:linear-gradient(180deg,rgba(1,11,17,.94),rgba(3,20,29,.9));box-shadow:inset 0 0 22px rgba(41,221,247,.12),0 10px 28px #0007;text-align:center;padding:13px 16px}
+.rhStatsOdometer span{display:block;font-size:11px;letter-spacing:.16em;color:#5fe9ff;font-weight:900}.rhStatsOdometer b{display:block;margin:4px 0 3px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:clamp(28px,7vw,44px);letter-spacing:.08em;color:#eaffff;text-shadow:0 0 16px rgba(85,233,255,.38)}.rhStatsOdometer small{font-size:9px;letter-spacing:.12em;color:#9cb5be}
+.rhStatsInfoWrap{margin-top:-36px}.rhStatsInfo{border:1px solid rgba(85,233,255,.32);border-radius:13px;background:rgba(3,16,24,.86);backdrop-filter:blur(10px);padding:12px 14px;text-align:center;color:#b7d1da;font-size:12px}
+@media(max-width:520px){.rhStatsScene{min-height:700px;background-position:50% top}.rhStatsCockpit{min-height:565px;padding:230px 10px 22px;gap:8px}.rhStatsGauge{padding:7px}.rhStatsGauge span{font-size:7.5px;letter-spacing:.07em}.rhStatsGauge small{font-size:8px}.rhStatsGauge b{font-size:27px}.rhStatsGaugeMain b{font-size:43px}.rhStatsGaugeMain span{font-size:9px}.rhStatsGaugeMain small{font-size:10px}.rhStatsOdometer{width:94%;padding:11px 10px}.rhStatsInfoWrap{margin-top:-30px}}
