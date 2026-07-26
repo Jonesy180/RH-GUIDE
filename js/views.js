@@ -519,42 +519,27 @@ function openSettingsFromHome(){
 }
 
 function renderHome(){
- const champ=activeChampionship();
- const cars=championshipCars(champ);
- const complete=cars.filter(c=>carIsComplete(c.id)).length;
- const pct=cars.length?Math.round((complete/cars.length)*100):0;
- const showChamp=dashboardHasProgress(champ) && complete<cars.length;
- const resultCount=(state.results||[]).length;
- const championshipCard=showChamp?`
-  <button class="homeChampCard" onclick="show('festival')" aria-label="Continue ${esc(activeChampionshipName())}">
-   <div class="homeChampIcon">🏆</div>
-   <div class="homeChampCopy">
-    <span>CHAMPIONSHIP IN PROGRESS</span>
-    <strong>${esc(activeChampionshipName())}</strong>
-    <small>${complete} of ${cars.length} cars completed</small>
-    <b>TAP TO CONTINUE ›</b>
-   </div>
-   <div class="homeChampPct" style="--pct:${pct*3.6}deg"><em>${pct}%</em></div>
-  </button>`:'';
+ const space=(typeof rhSpace==='function' && rhSpace()) ? rhSpace() : null;
+ const spaceName=(space && space.name) ? space.name : 'My RaceHub';
+ const tile=(cls,onclick,icon,title,sub)=>`
+  <button class="rhDashTile ${cls}" onclick="${onclick}">
+   <span class="rhDashIcon" aria-hidden="true">${icon}</span>
+   <span class="rhDashCopy"><strong>${title}</strong><small>${sub}</small></span>
+   <b aria-hidden="true">›</b>
+  </button>`;
  $('home').innerHTML=`
-  <div class="homePage">
-   <section class="homeScene">
-    <div class="homeTopbar">
-     <div class="homeWelcome"><small>WELCOME TO</small><strong>RACEHUB HQ</strong></div>
-     <button class="homeSettings" onclick="openSettingsFromHome()" aria-label="Settings">⚙</button>
-    </div>
-    <img class="homeLogo" src="assets/brand-new/racehub-logo.png" alt="RaceHub — Drive, Record, Improve">
+  <div class="rhDash rhDashV3">
+   <section class="rhDashHero">
+    <div class="rhDashWelcome"><small>WELCOME TO</small><strong>${esc(spaceName)}</strong></div>
+    <img class="rhDashLogo" src="assets/final/racehub-logo.png" alt="RaceHub — Drive, Record, Improve">
    </section>
-   <section class="homeInterface">
-    ${championshipCard}
-    <div class="homeGrid">
-     <button class="homeTile" onclick="show('festival')"><span class="homeTileIcon">🏁</span><span><strong>FESTIVAL</strong><small>RaceHub-created Championships</small></span><b>›</b></button>
-     <button class="homeTile" onclick="show('events')"><span class="homeTileIcon">▣</span><span><strong>EVENTS</strong><small>Your created racing</small></span><b>›</b></button>
-     <button class="homeTile" onclick="show('garage')"><span class="homeTileIcon">⌂</span><span><strong>GARAGE</strong><small>Your cars and collection</small></span><b>›</b></button>
-     <button class="homeTile" onclick="show('hall')"><span class="homeTileIcon">🏆</span><span><strong>RECORDS</strong><small>Results, Records & Hall of Fame</small></span><b>›</b></button>
-     <button class="homeTile" onclick="show('more')"><span class="homeTileIcon">◴</span><span><strong>STATS</strong><small>Your RaceHub at a glance</small></span><b>›</b></button>
-     <div class="homeStat"><span>RACEHUB DRIVEN</span><strong>${resultCount}</strong><small>RESULTS RECORDED</small><i>▂▄▆█</i></div>
-    </div>
-   </section>
+   <section class="rhDashNav"><div class="rhDashGrid">
+    ${tile('festival','show(\'festival\')','🏁','FESTIVAL','RaceHub Championships')}
+    ${tile('events','show(\'events\')','<svg viewBox="0 0 64 64"><rect x="13" y="15" width="38" height="38" rx="5"/><path d="M22 10v10M42 10v10M21 29h8v8h-8zM35 29h8v8h-8zM21 41h8v8h-8zM35 41h8v8h-8z"/></svg>','EVENTS','Your Racing')}
+    ${tile('garage','show(\'garage\')','<svg viewBox="0 0 64 64"><path d="M10 29 32 13l22 16v24H10z"/><path d="M18 51V32h28v19"/><path d="M23 43c0-5 4-9 9-9s9 4 9 9v5H23z"/></svg>','GARAGE','Your Cars')}
+    ${tile('records','show(\'hall\')','🏆','RECORDS','Results & Hall of Fame')}
+    ${tile('stats','show(\'more\')','<svg viewBox="0 0 64 64"><path d="M13 49h38"/><rect x="17" y="34" width="8" height="15" rx="1"/><rect x="28" y="25" width="8" height="24" rx="1"/><rect x="39" y="15" width="8" height="34" rx="1"/></svg>','STATS','Your Racing Overview')}
+    ${tile('settings','openSettingsFromHome()','<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="11"/><path d="M32 8v7M32 49v7M8 32h7M49 32h7M15 15l5 5M44 44l5 5M49 15l-5 5M20 44l-5 5"/></svg>','SETTINGS','Preferences & Data')}
+   </div></section>
   </div>`;
 }

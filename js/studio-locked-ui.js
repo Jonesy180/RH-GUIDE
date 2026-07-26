@@ -1,5 +1,5 @@
 
-/* RaceHub v5.7.7 — Locked Screen Rebuild Candidate
+/* RaceHub v5.7.9 — Locked Screen Rebuild Candidate
    Authoritative Studio UI controller over protected working RaceHub logic. */
 (()=>{
 const q=id=>document.getElementById(id);
@@ -132,7 +132,7 @@ window.rhRestoreFinal=function(id){const s=rhSpace(),b=(s.backups||[]).find(x=>x
 window.rhAbout=function(){
  const s=rhSpace();show('more');q('more').innerHTML=`<div class="rhScene rhAboutScene">${rhHeader('ABOUT RACEHUB','DRIVE • RECORD • IMPROVE','settings','more')}</div><div class="rhContent rhConformance">
  <section class="rhAboutIntro"><h1>ABOUT RACEHUB</h1><h3>DRIVE • RECORD • IMPROVE</h3><p>RaceHub is your personal racing record book — built to organise your Garage, create Championships, record results and preserve your racing history your way.</p><p>Whether you race for fun, for competition, or just for the love of driving, RaceHub keeps your racing history safe.</p></section>
- <section class="rhSection"><h2>RACEHUB INFORMATION</h2><div class="rhInfoRow"><span>App Version</span><b>v5.7.7</b></div><div class="rhInfoRow"><span>Data / Backup Version</span><b>v1.0.0</b></div><div class="rhInfoRow"><span>Current RaceHub Space</span><b>${safe(s.name)}</b></div><div class="rhInfoRow"><span>Driver Profile (Global)</span><b>${safe(state.driverName||'Driver')}</b></div></section>
+ <section class="rhSection"><h2>RACEHUB INFORMATION</h2><div class="rhInfoRow"><span>App Version</span><b>v5.7.9</b></div><div class="rhInfoRow"><span>Data / Backup Version</span><b>v1.0.0</b></div><div class="rhInfoRow"><span>Current RaceHub Space</span><b>${safe(s.name)}</b></div><div class="rhInfoRow"><span>Driver Profile (Global)</span><b>${safe(state.driverName||'Driver')}</b></div></section>
  <section class="rhSection"><h2>CREATED BY</h2><p>Andy Jones & ChatGPT</p><p class="small">Designed together from the ground up to make racing data personal, useful and enjoyable.</p></section>
  <section class="rhSection"><h2>LEGAL</h2><p>© 2026 RaceHub. All rights reserved.</p><p class="small">RaceHub is an independent product and is not affiliated with or endorsed by any vehicle manufacturer.</p></section></div>`;
 };
@@ -167,11 +167,11 @@ window.rhRenderSettings=function(){const s=rhSpace(),makes=rhMakeList();q('more'
 <section class="rhSection rhSettingPanel"><h2>RACEHUB SPACES</h2><button class="rhSettingRow" onclick="rhManageSpaces()"><b>Manage RaceHub Spaces</b><span>Current Space: ${safe(s.name)} ›</span></button></section>
 <section class="rhSection rhSettingPanel"><h2>DATA</h2><button class="rhSettingRow" onclick="rhDataBackups()"><b>Backup / Restore</b><span>Manage saved backups ›</span></button></section>
 <section class="rhDangerFinal"><h2>⚠ DANGER ZONE</h2><p>These actions affect the current RaceHub Space only.</p><div class="rhDangerAction"><div><b>RESET RACING DATA</b><span>Clear Championships, runs, results, Records, Hall of Fame and Stats.</span><em>Garage will be retained.</em></div><button class="btn dangerBtn" onclick="rhResetConfirm()">RESET RACING DATA</button></div><div class="rhDangerAction"><div><b>FULL RESET RACEHUB</b><span>Clear everything in this Space including Garage and Favourite Manufacturer.</span><em>The Space, its name and global Driver Profile are retained.</em></div><button class="btn dangerBtn" onclick="rhFullResetConfirm()">FULL RESET</button></div></section>
-<section class="rhSection rhSettingPanel"><button class="rhSettingRow" onclick="rhAbout()"><b>ABOUT RACEHUB</b><span>RaceHub v5.7.7 • ›</span></button></section></div>`};
+<section class="rhSection rhSettingPanel"><button class="rhSettingRow" onclick="rhAbout()"><b>ABOUT RACEHUB</b><span>RaceHub v5.7.9 • ›</span></button></section></div>`};
 
 
 
-/* ---- v5.7.7 rebuilt audited components previously spread across older controllers ---- */
+/* ---- v5.7.9 rebuilt audited components previously spread across older controllers ---- */
 window.rhMilestone=function(title,name,copy,callback){
  q('rhMilestone')?.remove();document.body.insertAdjacentHTML('beforeend',`<div id="rhMilestone" class="rhMilestone"><div class="rhMilestoneGlass"><img src="assets/final/hubs.png" alt="Hubs"><div><small>${safe(title)}</small><h2>${safe(name)}</h2><p>${safe(copy)}</p></div></div></div>`);
  setTimeout(()=>{q('rhMilestone')?.remove();if(typeof callback==='function')callback()},2200);
