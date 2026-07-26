@@ -1,6 +1,6 @@
 // RaceHub v5.6.6 — Events guided run checkpoint
 const RH_FINAL_STORE='RaceHub_Studio_Final_v5_6';
-const RH_BUILD_VERSION='5.7.5';
+const RH_BUILD_VERSION='5.7.6';
 let rhMoreMode='stats', rhRecordsMode='records', rhFestivalMode='browse', rhSetup=null, rhHelpKey=null, rhGarageOpenMake=null;
 const RH_HELP={
  home:['RaceHub HQ','This is your RaceHub home. Festival creates Championships from cars in this RaceHub; Events holds racing you create; Garage, Records and Stats all belong to the selected RaceHub Space.'],
@@ -45,7 +45,29 @@ function rhMakeList(){return [...new Set(rhSpace().cars.map(c=>c.make).filter(Bo
 function rhEraList(){return [...new Set(rhSpace().cars.map(c=>Math.floor(Number(c.year)/10)*10).filter(y=>y>=1900&&y<=2030))].sort((a,b)=>a-b)}
 function rhEligible(type,value){const cars=rhSpace().cars;if(type==='festival')return cars;if(type==='make'||type==='favourite')return cars.filter(c=>c.make===value);if(type==='era')return cars.filter(c=>Math.floor(Number(c.year)/10)*10===Number(value));return cars}
 function rhTrophy(type){return `assets/final/trophy-${type}.png`}
-function rhRenderHome(){const s=rhSpace(),run=rhActiveRun(),p=run?rhRunProgress(run):null;$('home').innerHTML=`<div class="rhHome"><div class="rhHomeHero"><div class="rhHomeTop"><div><small>WELCOME TO</small><b>${esc(s.name)}</b></div><button onclick="rhMoreMode='settings';show('more')">⚙</button></div><img src="assets/final/racehub-logo.png" alt="RaceHub"><button class="rhHomeHelp" onclick="rhOpenHelp('home')">?</button></div><div class="rhHomeBody">${run?`<button class="rhContinue" onclick="rhOpenRun('${run.id}')"><span>CHAMPIONSHIP IN PROGRESS</span><b>${esc(run.name)}</b><small>${p.done} of ${p.total} results recorded</small><em>${p.pct}%</em></button>`:''}<div class="rhTiles"><button onclick="show('festival')"><i>🏁</i><b>FESTIVAL</b><small>RaceHub Championships</small></button><button onclick="show('events')"><i>▣</i><b>EVENTS</b><small>Your Racing</small></button><button onclick="show('garage')"><i>⌂</i><b>GARAGE</b><small>Your Cars</small></button><button onclick="rhRecordsMode='records';show('hall')"><i>🏆</i><b>RECORDS</b><small>Records & Hall of Fame</small></button><button onclick="rhMoreMode='stats';show('more')"><i>◴</i><b>STATS</b><small>Your RaceHub</small></button></div></div></div>`}
+function rhRenderHome(){
+ const s=rhSpace();
+ $('home').innerHTML=`<div class="rhHome rhHomeLocked rhHomeV576">
+   <section class="rhHomeHero rhHomeHeroLocked">
+     <div class="rhHomeTop rhHomeTopLocked">
+       <div class="rhHomeWelcome"><small>WELCOME TO</small><b>${esc(s.name)}</b></div>
+       <div class="rhHomeActions">
+         <button class="rhHomeSettings" aria-label="Settings" onclick="rhMoreMode='settings';show('more')">⚙</button>
+       </div>
+     </div>
+     <img class="rhHomeLogo" src="assets/final/racehub-logo.png" alt="RaceHub — Drive, Record, Improve">
+   </section>
+   <main class="rhHomeBody rhHomeBodyLocked">
+     <div class="rhTiles rhTilesLocked">
+       <button class="rhHomeTile rhFestivalTile" onclick="show('festival')"><i>🏁</i><span><b>FESTIVAL</b><small>RaceHub Championships</small></span><em>›</em></button>
+       <button class="rhHomeTile rhEventsTile" onclick="show('events')"><i>▣</i><span><b>EVENTS</b><small>Your Racing</small></span><em>›</em></button>
+       <button class="rhHomeTile rhGarageTile" onclick="show('garage')"><i>⌂</i><span><b>GARAGE</b><small>Your Cars</small></span><em>›</em></button>
+       <button class="rhHomeTile rhRecordsTile" onclick="rhRecordsMode='records';show('hall')"><i>🏆</i><span><b>RECORDS</b><small>Results &amp; Hall of Fame</small></span><em>›</em></button>
+       <button class="rhHomeTile rhStatsTile" onclick="rhMoreMode='stats';show('more')"><i>▂▄▆</i><span><b>STATS</b><small>Your Racing Overview</small></span><em>›</em></button>
+     </div>
+   </main>
+ </div>`
+}
 function rhChampCard(type,value,name,count){const trophy=type==='make'?rhTrophy('manufacturer'):type==='era'?rhTrophy('era'):type==='favourite'?rhTrophy('favourite'):rhTrophy('festival');return `<button class="rhChampCard" onclick="rhBeginSetup('${type}','${esc(String(value)).replace(/'/g,'&#39;')}','${esc(name).replace(/'/g,'&#39;')}')"><img src="${trophy}"><span><b>${esc(name)}</b><small>${count} eligible car${count===1?'':'s'}</small></span><em>›</em></button>`}
 function rhRenderFestival(){const s=rhSpace(),active=rhActiveRun(),makes=rhMakeList(),eras=rhEraList(),fav=s.favouriteManufacturer;$('festival').innerHTML=`<div class="rhScene rhFestivalScene">${rhHeader('FESTIVAL','RaceHub Championships','festival')}</div><div class="rhContent">${active?`<button class="rhRunBanner" onclick="rhOpenRun('${active.id}')"><span>CONTINUE RACING</span><b>${esc(active.name)}</b><small>${rhRunProgress(active).done} / ${rhRunProgress(active).total} results</small></button>`:''}<section class="rhSection"><h2>RaceHub Championships</h2>${rhChampCard('festival','all','Festival Championship',s.cars.length)}</section><section class="rhSection rhPurple"><h2>Favourite Manufacturer</h2>${fav?rhChampCard('favourite',fav,`${fav} Championship`,rhEligible('favourite',fav).length):`<div class="rhFavouriteUnset"><p>Choose a Favourite Manufacturer in Settings to unlock its Championship.</p><button class="btn secondary" onclick="rhMoreMode='settings';show('more')">SET FAVOURITE MANUFACTURER</button></div>`}</section><details class="rhSection"><summary>Era Championships <span>${eras.length}</span></summary>${eras.map(e=>rhChampCard('era',e,`${e}s Championship`,rhEligible('era',e).length)).join('')||'<p class="small">Add cars with years to unlock Era Championships.</p>'}</details><details class="rhSection"><summary>Manufacturer Championships <span>${makes.length}</span></summary><input class="rhSearch" placeholder="Search manufacturers" oninput="document.querySelectorAll('.rhMakeChamp').forEach(x=>x.hidden=!x.dataset.name.includes(this.value.toLowerCase()))">${makes.map(m=>`<div class="rhMakeChamp" data-name="${esc(m.toLowerCase())}">${rhChampCard('make',m,`${m} Championship`,rhEligible('make',m).length)}</div>`).join('')}</details></div>`}
 function rhBeginSetup(type,value,name){const cars=rhEligible(type,value);rhSetup={type,value,name,entries:cars.map(c=>c.id),rounds:[{id:rhId('round'),name:'Round 1'}]};rhRenderSetup()}
