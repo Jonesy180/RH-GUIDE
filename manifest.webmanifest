@@ -4,10 +4,10 @@
   "description": "Track, record and improve every RaceHub championship.",
   "start_url": "./index.html",
   "scope": "./",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "portrait",
-  "background_color": "#071018",
-  "theme_color": "#071018",
+  "background_color": "#02070c",
+  "theme_color": "#02070c",
   "icons": [
     {
       "src": "icons/icon-192.png",
