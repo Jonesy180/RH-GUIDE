@@ -1835,7 +1835,7 @@ body{background:radial-gradient(circle at 50% -15%,rgba(30,124,151,.12),transpar
   .rhTilesLocked .rhStatsTile{min-height:98px!important}
 }
 
-/* RaceHub v5.7.6 — RH-UI-017 Dashboard LOCKED production build */
+/* RaceHub v5.7.7 — RH-UI-017 Dashboard phone-verified visual correction */
 .rhHomeV576{min-height:100svh;overflow-x:hidden;background:#020508;color:#fff}
 .rhHomeV576 .rhHomeHeroLocked{
   height:47svh;min-height:350px;max-height:510px;
@@ -1879,4 +1879,69 @@ body{background:radial-gradient(circle at 50% -15%,rgba(30,124,151,.12),transpar
  .rhHomeV576 .rhHomeTile span b{font-size:17px!important}
  .rhHomeV576 .rhHomeTile span small{font-size:11px!important}
  .rhHomeV576 .rhStatsTile{min-height:102px!important;padding:14px 16px!important}
+}
+
+
+/* RaceHub v5.7.7 — RH-UI-017 Dashboard v2 phone-test corrections */
+.rhHomeV576 .rhHomeTopLocked .rhHomeSettings{
+ display:grid!important;place-items:center!important;padding:0!important;line-height:1!important;
+ font-family:Arial,sans-serif!important;font-size:0!important;
+}
+.rhHomeV576 .rhHomeTopLocked .rhHomeSettings::before{
+ content:'⚙';display:block!important;position:static!important;margin:0!important;
+ width:auto!important;height:auto!important;line-height:1!important;font-size:27px!important;
+ transform:translateY(-1px)!important;color:#fff!important;
+}
+
+/* Tile identities: Festival cyan, Events purple, Garage green, Records gold, Stats cyan. */
+.rhHomeV576 .rhFestivalTile{--rh-tile:#38e8ff}
+.rhHomeV576 .rhEventsTile{--rh-tile:#bd6cff}
+.rhHomeV576 .rhGarageTile{--rh-tile:#5fe58b}
+.rhHomeV576 .rhRecordsTile{--rh-tile:#f2bd3b}
+.rhHomeV576 .rhStatsTile{--rh-tile:#38e8ff}
+.rhHomeV576 .rhTilesLocked .rhHomeTile{
+ border-color:color-mix(in srgb,var(--rh-tile,#38e8ff) 72%,transparent)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.14),
+            inset 0 -2px 0 color-mix(in srgb,var(--rh-tile,#38e8ff) 56%,transparent),
+            0 12px 28px rgba(0,0,0,.34),
+            0 0 22px color-mix(in srgb,var(--rh-tile,#38e8ff) 13%,transparent)!important;
+}
+.rhHomeV576 .rhTilesLocked .rhHomeTile i{color:var(--rh-tile,#38e8ff)!important}
+
+/* Purpose-built CSS icons instead of the crude square/home glyphs. */
+.rhHomeV576 .rhEventIcon,.rhHomeV576 .rhGarageIcon,.rhHomeV576 .rhStatsIcon{
+ width:58px!important;height:58px!important;min-height:58px!important;display:block!important;
+ background-color:var(--rh-tile)!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;
+ filter:drop-shadow(0 0 9px color-mix(in srgb,var(--rh-tile) 30%,transparent))!important;
+ color:transparent!important;text-shadow:none!important;
+}
+.rhHomeV576 .rhEventIcon{
+ -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='12' y='14' width='40' height='42' rx='5' fill='none' stroke='black' stroke-width='5'/%3E%3Cpath d='M24 14v-5h16v5M21 28h7v7h-7zm15 0h7v7h-7zM21 41h7v7h-7zm15 0h7v7h-7z' fill='black'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='12' y='14' width='40' height='42' rx='5' fill='none' stroke='black' stroke-width='5'/%3E%3Cpath d='M24 14v-5h16v5M21 28h7v7h-7zm15 0h7v7h-7zM21 41h7v7h-7zm15 0h7v7h-7z' fill='black'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.rhHomeV576 .rhGarageIcon{
+ -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M7 27 32 10l25 17v29H7z' fill='none' stroke='black' stroke-width='5' stroke-linejoin='round'/%3E%3Cpath d='M17 33h30v23H17z' fill='none' stroke='black' stroke-width='5'/%3E%3Cpath d='m22 47 4-7h12l4 7v5H22z' fill='black'/%3E%3Ccircle cx='27' cy='52' r='3' fill='black'/%3E%3Ccircle cx='39' cy='52' r='3' fill='black'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M7 27 32 10l25 17v29H7z' fill='none' stroke='black' stroke-width='5' stroke-linejoin='round'/%3E%3Cpath d='M17 33h30v23H17z' fill='none' stroke='black' stroke-width='5'/%3E%3Cpath d='m22 47 4-7h12l4 7v5H22z' fill='black'/%3E%3Ccircle cx='27' cy='52' r='3' fill='black'/%3E%3Ccircle cx='39' cy='52' r='3' fill='black'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.rhHomeV576 .rhStatsIcon{
+ width:54px!important;height:48px!important;min-height:48px!important;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 54'%3E%3Cpath d='M7 48V31h11v17zm19 0V21h11v27zm19 0V8h11v40zM4 50h56v4H4z' fill='black'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 54'%3E%3Cpath d='M7 48V31h11v17zm19 0V21h11v27zm19 0V8h11v40zM4 50h56v4H4z' fill='black'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* Compact Stats — no giant sixth card. */
+.rhHomeV576 .rhStatsTile{
+ min-height:92px!important;max-height:108px!important;
+ grid-template-columns:62px minmax(0,1fr) 24px!important;
+ padding:12px 18px!important;gap:10px!important;
+}
+.rhHomeV576 .rhStatsTile span b{font-size:18px!important}
+.rhHomeV576 .rhStatsTile span small{font-size:11px!important}
+.rhHomeV576 .rhStatsTile em{font-size:27px!important}
+
+@media(max-width:380px){
+ .rhHomeV576 .rhHomeTopLocked .rhHomeSettings::before{font-size:25px!important}
+ .rhHomeV576 .rhEventIcon,.rhHomeV576 .rhGarageIcon{width:50px!important;height:50px!important;min-height:50px!important}
+ .rhHomeV576 .rhStatsTile{min-height:86px!important;max-height:98px!important;padding:10px 14px!important;grid-template-columns:54px minmax(0,1fr) 20px!important}
+ .rhHomeV576 .rhStatsIcon{width:46px!important;height:42px!important;min-height:42px!important}
 }

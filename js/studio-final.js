@@ -1,6 +1,6 @@
 // RaceHub v5.6.6 — Events guided run checkpoint
 const RH_FINAL_STORE='RaceHub_Studio_Final_v5_6';
-const RH_BUILD_VERSION='5.7.6';
+const RH_BUILD_VERSION='5.7.7';
 let rhMoreMode='stats', rhRecordsMode='records', rhFestivalMode='browse', rhSetup=null, rhHelpKey=null, rhGarageOpenMake=null;
 const RH_HELP={
  home:['RaceHub HQ','This is your RaceHub home. Festival creates Championships from cars in this RaceHub; Events holds racing you create; Garage, Records and Stats all belong to the selected RaceHub Space.'],
@@ -60,10 +60,10 @@ function rhRenderHome(){
    <main class="rhHomeBody rhHomeBodyLocked">
      <div class="rhTiles rhTilesLocked">
        <button class="rhHomeTile rhFestivalTile" onclick="show('festival')"><i>🏁</i><span><b>FESTIVAL</b><small>RaceHub Championships</small></span><em>›</em></button>
-       <button class="rhHomeTile rhEventsTile" onclick="show('events')"><i>▣</i><span><b>EVENTS</b><small>Your Racing</small></span><em>›</em></button>
-       <button class="rhHomeTile rhGarageTile" onclick="show('garage')"><i>⌂</i><span><b>GARAGE</b><small>Your Cars</small></span><em>›</em></button>
+       <button class="rhHomeTile rhEventsTile" onclick="show('events')"><i class="rhEventIcon" aria-hidden="true"></i><span><b>EVENTS</b><small>Your Racing</small></span><em>›</em></button>
+       <button class="rhHomeTile rhGarageTile" onclick="show('garage')"><i class="rhGarageIcon" aria-hidden="true"></i><span><b>GARAGE</b><small>Your Cars</small></span><em>›</em></button>
        <button class="rhHomeTile rhRecordsTile" onclick="rhRecordsMode='records';show('hall')"><i>🏆</i><span><b>RECORDS</b><small>Results &amp; Hall of Fame</small></span><em>›</em></button>
-       <button class="rhHomeTile rhStatsTile" onclick="rhMoreMode='stats';show('more')"><i>▂▄▆</i><span><b>STATS</b><small>Your Racing Overview</small></span><em>›</em></button>
+       <button class="rhHomeTile rhStatsTile" onclick="rhMoreMode='stats';show('more')"><i class="rhStatsIcon" aria-hidden="true"></i><span><b>STATS</b><small>Your Racing Overview</small></span><em>›</em></button>
      </div>
    </main>
  </div>`
