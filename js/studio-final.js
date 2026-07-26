@@ -1,6 +1,6 @@
 // RaceHub v5.6.6 — Events guided run checkpoint
 const RH_FINAL_STORE='RaceHub_Studio_Final_v5_6';
-const RH_BUILD_VERSION='5.7.7';
+const RH_BUILD_VERSION='5.7.10';
 let rhMoreMode='stats', rhRecordsMode='records', rhFestivalMode='browse', rhSetup=null, rhHelpKey=null, rhGarageOpenMake=null;
 const RH_HELP={
  home:['RaceHub HQ','This is your RaceHub home. Festival creates Championships from cars in this RaceHub; Events holds racing you create; Garage, Records and Stats all belong to the selected RaceHub Space.'],
@@ -47,26 +47,28 @@ function rhEligible(type,value){const cars=rhSpace().cars;if(type==='festival')r
 function rhTrophy(type){return `assets/final/trophy-${type}.png`}
 function rhRenderHome(){
  const s=rhSpace();
- $('home').innerHTML=`<div class="rhHome rhHomeLocked rhHomeV576">
-   <section class="rhHomeHero rhHomeHeroLocked">
-     <div class="rhHomeTop rhHomeTopLocked">
-       <div class="rhHomeWelcome"><small>WELCOME TO</small><b>${esc(s.name)}</b></div>
-       <div class="rhHomeActions">
-         <button class="rhHomeSettings" aria-label="Settings" onclick="rhMoreMode='settings';show('more')">⚙</button>
-       </div>
-     </div>
-     <img class="rhHomeLogo" src="assets/final/racehub-logo.png" alt="RaceHub — Drive, Record, Improve">
+ const tile=(cls,onclick,icon,title,sub)=>`
+   <button class="rhHomeTile rhDashV3Tile ${cls}" onclick="${onclick}">
+     <i aria-hidden="true">${icon}</i>
+     <span><b>${title}</b><small>${sub}</small></span>
+     <em aria-hidden="true">›</em>
+   </button>`;
+ $('home').innerHTML=`<div class="rhHome rhHomeLocked rhHomeV5710">
+   <section class="rhHomeHero rhHomeHeroV5710">
+     <div class="rhHomeWelcome rhHomeWelcomeV5710"><small>WELCOME TO</small><b>${esc(s.name)}</b></div>
+     <img class="rhHomeLogo rhHomeLogoV5710" src="assets/final/racehub-logo.png" alt="RaceHub — Drive, Record, Improve">
    </section>
-   <main class="rhHomeBody rhHomeBodyLocked">
-     <div class="rhTiles rhTilesLocked">
-       <button class="rhHomeTile rhFestivalTile" onclick="show('festival')"><i>🏁</i><span><b>FESTIVAL</b><small>RaceHub Championships</small></span><em>›</em></button>
-       <button class="rhHomeTile rhEventsTile" onclick="show('events')"><i class="rhEventIcon" aria-hidden="true"></i><span><b>EVENTS</b><small>Your Racing</small></span><em>›</em></button>
-       <button class="rhHomeTile rhGarageTile" onclick="show('garage')"><i class="rhGarageIcon" aria-hidden="true"></i><span><b>GARAGE</b><small>Your Cars</small></span><em>›</em></button>
-       <button class="rhHomeTile rhRecordsTile" onclick="rhRecordsMode='records';show('hall')"><i>🏆</i><span><b>RECORDS</b><small>Results &amp; Hall of Fame</small></span><em>›</em></button>
-       <button class="rhHomeTile rhStatsTile" onclick="rhMoreMode='stats';show('more')"><i class="rhStatsIcon" aria-hidden="true"></i><span><b>STATS</b><small>Your Racing Overview</small></span><em>›</em></button>
+   <main class="rhHomeBody rhHomeBodyV5710">
+     <div class="rhTiles rhTilesV5710">
+       ${tile('festival',"show('festival')",'🏁','FESTIVAL','RaceHub Championships')}
+       ${tile('events',"show('events')",'<svg viewBox="0 0 64 64"><rect x="13" y="15" width="38" height="38" rx="5"/><path d="M22 10v10M42 10v10M21 29h8v8h-8zM35 29h8v8h-8zM21 41h8v8h-8zM35 41h8v8h-8z"/></svg>','EVENTS','Your Racing')}
+       ${tile('garage',"show('garage')",'<svg viewBox="0 0 64 64"><path d="M10 29 32 13l22 16v24H10z"/><path d="M18 51V32h28v19"/><path d="M23 43c0-5 4-9 9-9s9 4 9 9v5H23z"/></svg>','GARAGE','Your Cars')}
+       ${tile('records',"rhRecordsMode='records';show('hall')",'🏆','RECORDS','Results & Hall of Fame')}
+       ${tile('stats',"rhMoreMode='stats';show('more')",'<svg viewBox="0 0 64 64"><path d="M13 49h38"/><rect x="17" y="34" width="8" height="15" rx="1"/><rect x="28" y="25" width="8" height="24" rx="1"/><rect x="39" y="15" width="8" height="34" rx="1"/></svg>','STATS','Your Racing Overview')}
+       ${tile('settings',"rhMoreMode='settings';show('more')",'<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="11"/><path d="M32 8v7M32 49v7M8 32h7M49 32h7M15 15l5 5M44 44l5 5M49 15l-5 5M20 44l-5 5"/></svg>','SETTINGS','Preferences & Data')}
      </div>
    </main>
- </div>`
+ </div>`;
 }
 function rhChampCard(type,value,name,count){const trophy=type==='make'?rhTrophy('manufacturer'):type==='era'?rhTrophy('era'):type==='favourite'?rhTrophy('favourite'):rhTrophy('festival');return `<button class="rhChampCard" onclick="rhBeginSetup('${type}','${esc(String(value)).replace(/'/g,'&#39;')}','${esc(name).replace(/'/g,'&#39;')}')"><img src="${trophy}"><span><b>${esc(name)}</b><small>${count} eligible car${count===1?'':'s'}</small></span><em>›</em></button>`}
 function rhRenderFestival(){const s=rhSpace(),active=rhActiveRun(),makes=rhMakeList(),eras=rhEraList(),fav=s.favouriteManufacturer;$('festival').innerHTML=`<div class="rhScene rhFestivalScene">${rhHeader('FESTIVAL','RaceHub Championships','festival')}</div><div class="rhContent">${active?`<button class="rhRunBanner" onclick="rhOpenRun('${active.id}')"><span>CONTINUE RACING</span><b>${esc(active.name)}</b><small>${rhRunProgress(active).done} / ${rhRunProgress(active).total} results</small></button>`:''}<section class="rhSection"><h2>RaceHub Championships</h2>${rhChampCard('festival','all','Festival Championship',s.cars.length)}</section><section class="rhSection rhPurple"><h2>Favourite Manufacturer</h2>${fav?rhChampCard('favourite',fav,`${fav} Championship`,rhEligible('favourite',fav).length):`<div class="rhFavouriteUnset"><p>Choose a Favourite Manufacturer in Settings to unlock its Championship.</p><button class="btn secondary" onclick="rhMoreMode='settings';show('more')">SET FAVOURITE MANUFACTURER</button></div>`}</section><details class="rhSection"><summary>Era Championships <span>${eras.length}</span></summary>${eras.map(e=>rhChampCard('era',e,`${e}s Championship`,rhEligible('era',e).length)).join('')||'<p class="small">Add cars with years to unlock Era Championships.</p>'}</details><details class="rhSection"><summary>Manufacturer Championships <span>${makes.length}</span></summary><input class="rhSearch" placeholder="Search manufacturers" oninput="document.querySelectorAll('.rhMakeChamp').forEach(x=>x.hidden=!x.dataset.name.includes(this.value.toLowerCase()))">${makes.map(m=>`<div class="rhMakeChamp" data-name="${esc(m.toLowerCase())}">${rhChampCard('make',m,`${m} Championship`,rhEligible('make',m).length)}</div>`).join('')}</details></div>`}
