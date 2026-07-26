@@ -1402,3 +1402,32 @@ body{background:#03080d;color:#eefaff}.splash{background:#03080d}.splashBrandNew
 /* RaceHub v5.6.10 — Cog & Help Final Alignment
    Phone correction: help and settings glyphs moved 4px lower from v5.6.9.
    Back arrow remains locked at v5.6.9 alignment. */
+
+/* RaceHub v5.6.11 — Records + Hall of Fame Navigation/Presentation */
+.rhHallBanner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:14px;padding:16px 18px}
+.rhHallBannerIcon{font-size:27px;line-height:1}
+.rhHallBannerCopy{min-width:0;display:block}
+.rhHallBannerCopy b,.rhHallBannerCopy small{display:block}
+.rhHallBannerCopy b{font-size:18px;line-height:1.08}
+.rhHallBannerCopy small{margin-top:4px;color:#91aab3;line-height:1.25}
+.rhHallBanner em{font-style:normal;color:var(--rh-cyan);font-size:22px}
+.rhRecordRun{padding:0;border:1px solid rgba(151,220,231,.12);border-radius:13px;background:rgba(4,14,21,.58);margin:10px 0;overflow:hidden}
+.rhRecordRun>summary{padding:13px 14px;list-style-position:inside}
+.rhRecordRun>summary span{float:none;display:inline-block;vertical-align:middle;margin-left:4px}
+.rhRecordRun>summary b,.rhRecordRun>summary small{display:block}
+.rhRecordRows{border-top:1px solid rgba(255,255,255,.06)}
+.rhRecordRow{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;padding:13px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
+.rhRecordRow:last-child{border-bottom:0}
+.rhRecordIdentity{min-width:0}
+.rhRecordIdentity b,.rhRecordIdentity small{display:block}
+.rhRecordIdentity b{font-size:16px;color:#f2f7fa}
+.rhRecordIdentity small{margin-top:4px;color:#91aab3;line-height:1.3}
+.rhRecordRow>strong{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:16px;color:#f5fbfd}
+@media(max-width:420px){
+ .rhHallBanner{column-gap:11px;padding:14px}
+ .rhHallBannerCopy b{font-size:16px}
+ .rhHallBannerCopy small{font-size:12px}
+ .rhRecordRow{gap:10px;padding:12px}
+ .rhRecordIdentity b{font-size:15px}
+ .rhRecordRow>strong{font-size:15px}
+}
