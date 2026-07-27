@@ -667,4 +667,4 @@ function restore(){try{const raw=JSON.parse($('restoreBox').value);if(!raw.cars|
 function clearResults(){if(!confirm('Clear all results? Cars will stay.'))return;state.results=[];state.lastRun=null;save();toast('Results cleared');show('festival')}
 
 state=load();show('festival');
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker-v5727.js',{updateViaCache:'none'}).catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker-v5728.js',{updateViaCache:'none'}).catch(()=>{}));}

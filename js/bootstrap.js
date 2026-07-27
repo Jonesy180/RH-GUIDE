@@ -1,4 +1,4 @@
 // RaceHub v5.1.2 — Bootstrap
 
 state=load();show('home');
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker-v5727.js',{updateViaCache:'none'}).catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker-v5728.js',{updateViaCache:'none'}).catch(()=>{}));}
