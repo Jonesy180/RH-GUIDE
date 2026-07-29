@@ -76,3 +76,8 @@
 - Refines section spacing, championship rows and responsive card layout.
 - Preserves all existing records, calculations and Hall of Fame behaviour.
 - Updates the displayed app version and PWA cache to v5.4.1.
+
+## v5.7.66
+- Repair Android/browser Back by wiring the intended RaceHub navigation handler into the live build.
+- Move Manufacturer Rename to the Manufacturer header pencil icon; remove the under-list rename row.
+- Preserve passed v5.7.65 PWA install and icon artwork unchanged.

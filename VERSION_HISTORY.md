@@ -344,3 +344,5 @@ A presentation-only refinement pass covering spacing, typography, progress indic
 - Delete Car uses RaceHub-native destructive confirmation.
 - Restores the recovered locked Garage environment artwork.
 - Preserves the existing Space-owned Garage data model.
+
+- v5.7.66 — Android Back + Manufacturer pencil repair; v5.7.65 icon/install work preserved.
