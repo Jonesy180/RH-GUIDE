@@ -1,0 +1,10 @@
+RaceHub Beta v5.7.67 — SONHUB FIRST-USER + RESULT CLARITY
+
+Beta-only phone-test build from the isolated v5.7.66 SonHub baseline.
+
+1. Fresh-user onboarding trigger added for genuinely empty SonHub storage.
+2. First Favourite Manufacturer uses SET FAVOURITE when no favourite exists.
+3. Result submission copy/button is context-aware: continue, complete car, complete Championship/Event.
+4. Result Accepted clearly states next Round / car complete / Championship or Event complete.
+5. Visible splash version corrected to v5.7.67 and active asset URLs cache-busted.
+6. Main RaceHub and its 675-car data are not part of this Beta package.
