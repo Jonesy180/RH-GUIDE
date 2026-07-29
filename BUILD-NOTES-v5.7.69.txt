@@ -1,0 +1,6 @@
+RaceHub Beta v5.7.69
+
+- Fresh-state startup now enters onboarding before Dashboard render.
+- Repairs SET/CHANGE FAVOURITE confirmation callback for manufacturer names.
+- Preserves v5.7.67 result submission clarity and v5.7.68 full manufacturer list.
+- Beta/SonHub storage isolation preserved.
