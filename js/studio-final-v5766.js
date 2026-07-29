@@ -1,5 +1,5 @@
 // RaceHub v5.6.6 — Events guided run checkpoint
-const RH_FINAL_STORE='RaceHub_SonHub_Beta_v2';
+const RH_FINAL_STORE='RaceHub_SonHub_Beta_v3';
 const RH_BUILD_VERSION='5.7.66';
 let rhMoreMode='stats', rhRecordsMode='records', rhFestivalMode='browse', rhSetup=null, rhHelpKey=null, rhGarageOpenMake=null;
 const RH_HELP={
