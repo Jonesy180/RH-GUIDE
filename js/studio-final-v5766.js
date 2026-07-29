@@ -24,7 +24,7 @@ function rhMigrateLegacy(raw){
 function rhLoad(){
  try{const x=JSON.parse(localStorage.getItem(RH_FINAL_STORE)||'null');if(x?.schema===2&&Array.isArray(x.spaces)&&x.spaces.length)return x;}catch(e){}
  try{const old=JSON.parse(localStorage.getItem(STORE)||'null');if(old?.cars){const x=rhMigrateLegacy(old);localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;}}catch(e){}
- const x=rhMigrateLegacy({cars:Array.isArray(SEED?.cars)?SEED.cars:[],settings:{sound:true,confetti:true,vibrate:true}});localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;
+ const x=rhMigrateLegacy({cars:[],settings:{sound:true,confetti:true,vibrate:true}});localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;
 }
 function rhSave(){localStorage.setItem(RH_FINAL_STORE,JSON.stringify(state))}
 function rhSpace(){return state.spaces.find(s=>s.id===state.activeSpaceId)||state.spaces[0]}
