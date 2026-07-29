@@ -1,0 +1,6 @@
+RaceHub Beta v5.7.70
+
+- FULL RESET RACEHUB now marks onboarding incomplete and immediately launches onboarding Step 1 after the reset.
+- RESET RACING DATA behaviour is unchanged and remains an existing-user flow back to Settings/Dashboard.
+- Preserves the v5.7.69 Favourite Manufacturer confirmation repair and v5.7.67 result-submission clarity work.
+- Beta/SonHub storage isolation is unchanged.
