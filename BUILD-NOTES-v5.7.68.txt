@@ -1,0 +1,10 @@
+RaceHub Beta v5.7.68 — FIRST-USER ONBOARDING + FAVOURITE LIST REPAIR
+
+Beta-only phone-test build from v5.7.67.
+
+1. Startup now loads the current isolated RaceHub schema with rhLoad(), so genuinely new Beta storage respects onboarded:false and launches onboarding.
+2. Onboarding Favourite Manufacturer list uses the full canonical manufacturer list from seed reference data, independent of Garage contents.
+3. Settings Favourite Manufacturer list also uses the full canonical manufacturer list, so an empty Garage can still set a Favourite.
+4. v5.7.67 result submission clarity changes are preserved unchanged.
+5. Visible version and Beta cache identity bumped to v5.7.68.
+6. Main RaceHub and its 675-car data are untouched.

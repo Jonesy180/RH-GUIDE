@@ -1,6 +1,6 @@
 // RaceHub v5.6.6 — Events guided run checkpoint
 const RH_FINAL_STORE='RaceHub_SonHub_Beta_v3';
-const RH_BUILD_VERSION='5.7.67';
+const RH_BUILD_VERSION='5.7.68';
 let rhMoreMode='stats', rhRecordsMode='records', rhFestivalMode='browse', rhSetup=null, rhHelpKey=null, rhGarageOpenMake=null;
 const RH_HELP={
  home:['RaceHub HQ','This is your RaceHub home. Festival creates Championships from cars in this RaceHub; Events holds racing you create; Garage, Records and Stats all belong to the selected RaceHub Space.'],
@@ -59,6 +59,7 @@ function rhRunProgress(r){const total=(r.entries?.length||0)*(r.rounds?.length||
 function rhRunCarProgress(r){const entries=Array.isArray(r?.entries)?r.entries:[],rounds=Array.isArray(r?.rounds)?r.rounds:[],results=Array.isArray(r?.results)?r.results:[];const complete=entries.filter(cid=>results.filter(x=>x.carId===cid).length>=rounds.length&&rounds.length).length;return {complete,total:entries.length,pct:entries.length?Math.round(complete/entries.length*100):0}}
 const RH_CHAMP_MIN_ELIGIBLE=2;
 function rhMakeList(){return [...new Set(rhSpace().cars.map(c=>c.make).filter(Boolean))].filter(m=>rhEligible('make',m).length>=RH_CHAMP_MIN_ELIGIBLE).sort((a,b)=>a.localeCompare(b))}
+function rhAllManufacturerList(){return [...new Set((Array.isArray(SEED?.cars)?SEED.cars:[]).map(c=>String(c.make||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b))}
 function rhEraList(){return [...new Set(rhSpace().cars.map(c=>Math.floor(Number(c.year)/10)*10).filter(y=>y>=1900&&y<=2030))].filter(e=>rhEligible('era',e).length>=RH_CHAMP_MIN_ELIGIBLE).sort((a,b)=>a-b)}
 function rhEligible(type,value){const cars=rhSpace().cars;if(type==='festival')return cars;if(type==='make'||type==='favourite')return cars.filter(c=>c.make===value);if(type==='era')return cars.filter(c=>Math.floor(Number(c.year)/10)*10===Number(value));return cars}
 function rhTrophy(type){return `assets/final/trophy-${type}.png`}
