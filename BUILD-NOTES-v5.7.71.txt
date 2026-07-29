@@ -1,0 +1,7 @@
+RaceHub Beta v5.7.71
+
+- Repair onboarding Step 2 dead-end.
+- Manufacturer tap now selects the manufacturer without advancing.
+- Adds SET FAVOURITE & CONTINUE, enabled only after a manufacturer is selected.
+- Confirmation saves favourite and advances to Step 3.
+- Preserves v5.7.70 full-reset onboarding behaviour and all other functionality.
