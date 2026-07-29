@@ -27,8 +27,15 @@ window.rhSelectResultPosition=function(gridId,n){
  grid.querySelectorAll('button').forEach(b=>{const on=Number(b.dataset.pos)===Number(n);b.classList.toggle('selected',on);b.setAttribute('aria-pressed',on?'true':'false')});
  const status=q(gridId+'Status');if(status)status.textContent='POSITION '+n+' SELECTED';
 };
+window.rhSubmissionState=function(entries,rounds,results,carId,roundId,finalWord='CHAMPIONSHIP'){
+ const ci=entries.indexOf(carId),ri=rounds.findIndex(r=>r.id===roundId),lastRound=ri===rounds.length-1,lastCar=ci===entries.length-1;
+ if(lastRound&&lastCar)return {copy:`Submitting saves this result and completes the ${finalWord==='EVENT'?'Event':'Championship'}.`,label:`SAVE RESULT & COMPLETE ${finalWord}`};
+ if(lastRound)return {copy:'Submitting saves this result and completes this car.',label:'SAVE RESULT & COMPLETE CAR'};
+ return {copy:'Submitting saves this result and moves to the next Round.',label:'SAVE RESULT & CONTINUE'};
+};
 window.rhEnterResult=function(runId,carId,roundId){
  const r=rhCurrentRuns().find(x=>x.id===runId),c=carById(carId),rd=r?.rounds.find(x=>x.id===roundId); if(!r||!c||!rd)return;
+ const submit=rhSubmissionState(r.entries||[],r.rounds||[],r.results||[],carId,roundId,'CHAMPIONSHIP');
  resultScreen(q('festival'),'ENTER RESULT',rd.name,`<section class="rhResultEntry rhGlassHero rhResultEntryFinal">
   <div class="rhEyebrow">${safe(r.name)}</div><h2>${safe(rd.name)}</h2>
   <div class="rhResultCar"><small>CURRENT CAR</small><b>${safe(carName(c))}</b></div>
@@ -37,7 +44,7 @@ window.rhEnterResult=function(runId,carId,roundId){
   <small class="rhTimeHintFinal">MIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SEC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS</small>
   <div class="rhPositionTitleFinal"><label>FINISHING POSITION</label><span id="rhPositionGridStatus">SELECT ONE</span></div>
   <div class="rhPositionGrid rhPositionGridFinal" id="rhPositionGrid">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button type="button" data-pos="${n}" aria-pressed="false" onclick="rhSelectResultPosition('rhPositionGrid',${n})">${n}</button>`).join('')}</div>
-  <button class="btn rhPrimaryWide rhSaveResultFinalBtn" onclick="rhSaveResultFinal('${runId}','${carId}','${roundId}')">SAVE RESULT<small>RECORD THIS RACE</small></button>
+  <p class="rhSubmitWarningV1">${safe(submit.copy)}</p><button class="btn rhPrimaryWide rhSaveResultFinalBtn" onclick="rhSaveResultFinal('${runId}','${carId}','${roundId}')">${safe(submit.label)}<small>RECORD THIS RACE</small></button>
  </section>`);
  setTimeout(()=>q('rhMin')?.focus(),50);
 };
@@ -56,7 +63,8 @@ window.rhAverageCompareHtml=function(hist){if(!hist)return'';return `<div class=
 window.rhResultAccepted=function(owner,res,kind='festival'){
  const host=q(kind==='events'?'event':'festival');if(!host)return;
  const cls=kind==='events'?'rhAcceptedEvents':'rhAcceptedChamp';
- host.innerHTML=`<div class="rhAccepted ${cls} rhAcceptedFinal"><div class="rhAcceptedShadeFinal"></div><div class="rhAcceptedGlass rhAcceptedGlassFinal"><div class="rhAcceptedTick">✓</div><h1>RESULT ACCEPTED</h1><p>Your result has been recorded.</p><small>${safe(res.roundName)}</small></div></div>`;
+ const next=kind==='events'?rhEventNextPair(owner):rhNextSlot(owner),carDone=kind==='events'?rhEventCarIsComplete(owner,res.carId):rhRunCarIsComplete(owner,res.carId);let transition=owner.status==='complete'?(kind==='events'?'EVENT COMPLETE':'CHAMPIONSHIP COMPLETE'):(carDone&&next&&((next.car?.id||next.carId)!==res.carId)?'CAR COMPLETE':`NEXT — ${safe(next?.round?.name||'CONTINUE')}`);
+ host.innerHTML=`<div class="rhAccepted ${cls} rhAcceptedFinal"><div class="rhAcceptedShadeFinal"></div><div class="rhAcceptedGlass rhAcceptedGlassFinal"><div class="rhAcceptedTick">✓</div><h1>RESULT SAVED</h1><p>${transition}</p><small>${safe(res.roundName)} complete</small></div></div>`;
  setTimeout(()=>kind==='events'?rhEventResultSummary(owner,res):rhResultSummary(owner,res),900);
 };
 window.rhRunCarIsComplete=function(r,carId){return !!r?.rounds?.length&&r.rounds.every(rd=>(r.results||[]).some(x=>x.carId===carId&&x.roundId===rd.id))};
@@ -101,6 +109,7 @@ window.rhChampionshipCompleteTransition=function(runId){
 window.rhEventResult=function(id){
  const e=rhSpace().customEvents.find(x=>x.id===id);if(!e||e.status!=='active')return;const next=rhEventNextPair(e);
  if(!next){e.status='complete';e.completedAt=new Date().toISOString();rhSave();return rhOpenEvent(id)}
+ const eventCars=rhEventCars(e),eventRounds=rhEventRounds(e),submit=rhSubmissionState(eventCars.map(c=>c.id),eventRounds,e.results||[],next.car.id,next.round.id,'EVENT');
  q('rhEventResultEditor')?.remove();show('event');
  resultScreen(q('event'),'ENTER RESULT',next.round.name,`<section class="rhResultEntry rhGlassHero rhResultEntryFinal">
   <div class="rhEyebrow">${safe(e.name)}</div><h2>${safe(next.round.name)}</h2>
@@ -110,7 +119,7 @@ window.rhEventResult=function(id){
   <small class="rhTimeHintFinal">MIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SEC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS</small>
   <div class="rhPositionTitleFinal"><label>FINISHING POSITION</label><span id="rhEventPosStatus">SELECT ONE</span></div>
   <div class="rhPositionGrid rhPositionGridFinal" id="rhEventPos">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button type="button" data-pos="${n}" aria-pressed="false" onclick="rhSelectResultPosition('rhEventPos',${n})">${n}</button>`).join('')}</div>
-  <button class="btn rhPrimaryWide rhSaveResultFinalBtn" onclick="rhSaveEventResultFinal('${id}','${next.car.id}','${next.round.id}')">SAVE RESULT<small>RECORD THIS RACE</small></button>
+  <p class="rhSubmitWarningV1">${safe(submit.copy)}</p><button class="btn rhPrimaryWide rhSaveResultFinalBtn" onclick="rhSaveEventResultFinal('${id}','${next.car.id}','${next.round.id}')">${safe(submit.label)}<small>RECORD THIS RACE</small></button>
  </section>`);
  setTimeout(()=>q('rhEventMin')?.focus(),50);
 };
@@ -192,7 +201,7 @@ window.rhRestoreFinal=function(id){const s=rhSpace(),b=(s.backups||[]).find(x=>x
 window.rhAbout=function(){
  const s=rhSpace();show('more');q('more').innerHTML=`<div class="rhScene rhAboutScene"><div class="rhPageHead"><button class="rhBack" onclick="rhRenderSettings()">‹</button><div><h1>ABOUT RACEHUB</h1><p>DRIVE • RECORD • IMPROVE</p></div></div></div><div class="rhContent rhConformance">
  <section class="rhAboutIntro"><h1>ABOUT RACEHUB</h1><h3>DRIVE • RECORD • IMPROVE</h3><p>RaceHub is your personal racing record book — built to organise your Garage, create Championships, record results and preserve your racing history your way.</p><p>Whether you race for fun, for competition, or just for the love of driving, RaceHub keeps your racing history safe.</p></section>
- <section class="rhSection"><h2>RACEHUB INFORMATION</h2><div class="rhInfoRow"><span>App Version</span><b>v5.7.61</b></div><div class="rhInfoRow"><span>Data / Backup Version</span><b>v1.0.0</b></div><div class="rhInfoRow"><span>Current RaceHub Space</span><b>${safe(s.name)}</b></div><div class="rhInfoRow"><span>Driver Profile (Global)</span><b>${safe(state.driverName||'Driver')}</b></div></section>
+ <section class="rhSection"><h2>RACEHUB INFORMATION</h2><div class="rhInfoRow"><span>App Version</span><b>v5.7.67</b></div><div class="rhInfoRow"><span>Data / Backup Version</span><b>v1.0.0</b></div><div class="rhInfoRow"><span>Current RaceHub Space</span><b>${safe(s.name)}</b></div><div class="rhInfoRow"><span>Driver Profile (Global)</span><b>${safe(state.driverName||'Driver')}</b></div></section>
  <section class="rhSection"><h2>CREATED BY</h2><p>Andy Jones & ChatGPT</p><p class="small">Designed together from the ground up to make racing data personal, useful and enjoyable.</p></section>
  <section class="rhSection"><h2>LEGAL</h2><p>© 2026 RaceHub. All rights reserved.</p><p class="small">RaceHub is an independent product and is not affiliated with or endorsed by any vehicle manufacturer.</p></section></div>`;
 };
@@ -222,7 +231,7 @@ window.rhRenameSpaceSave=function(id){const x=state.spaces.find(s=>s.id===id),na
 window.rhDeleteSpaceConfirm=function(id){const x=state.spaces.find(s=>s.id===id);if(!x||state.spaces.length<=1)return toast('At least one RaceHub Space must remain');rhConfirm({title:'DELETE THIS RACEHUB SPACE?',copy:'This permanently deletes this Space and all of its racing data.',detail:x.name,safeguard:'Your global Driver Profile and other RaceHub Spaces will not be affected.',confirmLabel:'DELETE SPACE',danger:true,onConfirm:`rhDeleteSpaceFinal('${id}')`})};
 window.rhDeleteSpaceFinal=function(id){if(state.spaces.length<=1)return;state.spaces=state.spaces.filter(x=>x.id!==id);if(state.activeSpaceId===id)state.activeSpaceId=state.spaces[0].id;rhSync();rhSave();rhManageSpaces()};
 
-window.rhChangeFavourite=function(value){const s=rhSpace(),old=s.favouriteManufacturer;if(value===old)return;rhConfirm({title:'CHANGE FAVOURITE MANUFACTURER?',copy:'Changing your Favourite Manufacturer will delete the current Favourite Manufacturer Championship and its progress.',detail:`${old||'Not set'} → ${value||'Not set'}`,safeguard:'Your other Championships and Garage will not be affected.',confirmLabel:'CHANGE FAVOURITE',severity:'purple',onConfirm:`rhChangeFavouriteFinal(${JSON.stringify(value)})`});rhRenderSettings()};
+window.rhChangeFavourite=function(value){const s=rhSpace(),old=s.favouriteManufacturer;if(value===old)return;if(!old&&value){rhConfirm({title:'SET FAVOURITE MANUFACTURER?',copy:'Set your Favourite Manufacturer for this RaceHub Space.',detail:`Not set → ${value}`,safeguard:'Your Garage and other Championships will not be affected.',confirmLabel:'SET FAVOURITE',severity:'purple',onConfirm:`rhChangeFavouriteFinal(${JSON.stringify(value)})`});}else{rhConfirm({title:'CHANGE FAVOURITE MANUFACTURER?',copy:'Changing your Favourite Manufacturer will delete the current Favourite Manufacturer Championship and its progress.',detail:`${old||'Not set'} → ${value||'Not set'}`,safeguard:'Your other Championships and Garage will not be affected.',confirmLabel:'CHANGE FAVOURITE',severity:'purple',onConfirm:`rhChangeFavouriteFinal(${JSON.stringify(value)})`});}rhRenderSettings()};
 window.rhChangeFavouriteFinal=function(value){const s=rhSpace();s.runs=(s.runs||[]).filter(r=>r.type!=='favourite');s.favouriteManufacturer=value;rhSave();rhRenderSettings()};
 
 window.rhResetConfirm=function(){rhConfirm({title:'RESET RACING DATA?',copy:'Clear Championships, active/completed runs, results, Records, Hall of Fame and Stats for the current Space.',safeguard:'Your Garage, Space name, global Driver Profile and other Spaces will be retained.',confirmLabel:'RESET RACING DATA',danger:true,onConfirm:'rhResetRacingFinal()'})};
@@ -273,4 +282,19 @@ window.rhRenderRecords=function(){
  ${events.length?`<section class="rhSection"><h2>Event Records</h2>${events.slice().reverse().map(e=>`<details class="rhRecordRun"><summary><span><b>${safe(e.name)}</b><small>${e.status==='complete'?'COMPLETED':rhEventIsStarted(e)?'ACTIVE':'NOT STARTED'}</small></span></summary><div class="rhRecordRows">${rhEventRounds(e).map(rd=>rhEventRecordRoundRow(e,rd)).join('')}</div></details>`).join('')}</section>`:''}`}</div>`;
 };
 
+
+window.rhOnboardingStep=function(step=1){
+ q('rhOnboarding')?.remove();const s=rhSpace();
+ const makes=[...new Set((Array.isArray(SEED?.cars)?SEED.cars:[]).map(c=>c.make).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+ let body='';
+ if(step===1)body=`<small>STEP 1 OF 3</small><h1>WELCOME TO RACEHUB</h1><p>Create your global Driver Profile and name this RaceHub Space.</p><label>DRIVER NAME</label><input id="rhOnDriver" value="${safe(state.driverName||'')}"><label>RACEHUB NAME</label><input id="rhOnSpace" value="${safe(s.name||'My RaceHub')}"><p class="small">Play more than one racing game? You can create more RaceHub Spaces later in Settings.</p><button class="btn rhPrimaryWide" onclick="rhOnboardingSave1()">CONTINUE</button>`;
+ else if(step===2)body=`<small>STEP 2 OF 3</small><h1>FAVOURITE MANUFACTURER</h1><p>Choose a Favourite Manufacturer for this RaceHub Space.</p><input id="rhOnMakeSearch" placeholder="Search manufacturers" oninput="rhOnboardingFilterMakes(this.value)"><div id="rhOnMakeList" class="rhOnMakeList">${makes.map(m=>`<button data-make="${safe(m).toLowerCase()}" onclick="rhOnboardingChooseMake(${JSON.stringify(m)})">${safe(m)}</button>`).join('')}</div><button class="btn secondary" onclick="rhOnboardingStep(1)">BACK</button>`;
+ else body=`<small>STEP 3 OF 3</small><h1>HOW RACEHUB WORKS</h1><p>Build your Garage, create or generate Championships and Events, record every result, and keep your Records, Hall of Fame and Stats together.</p><p>Play more than one racing game? Create a separate RaceHub for each one. Each RaceHub keeps its own Garage, Championships, Records, Hall of Fame and Stats separate.</p><button class="btn rhPrimaryWide" onclick="rhOnboardingFinish()">START RACEHUB</button>`;
+ document.body.insertAdjacentHTML('beforeend',`<div id="rhOnboarding" class="rhOnboardingV1"><div class="rhOnboardingGlassV1">${body}</div></div>`);
+};
+window.rhOnboardingSave1=function(){const d=q('rhOnDriver')?.value.trim(),n=q('rhOnSpace')?.value.trim();if(!d)return toast('Enter your Driver Name');state.driverName=d;rhSpace().name=n||'My RaceHub';rhSave();rhOnboardingStep(2)};
+window.rhOnboardingFilterMakes=function(v){const x=String(v||'').toLowerCase();q('rhOnMakeList')?.querySelectorAll('button').forEach(b=>b.hidden=!b.dataset.make.includes(x))};
+window.rhOnboardingChooseMake=function(m){rhSpace().favouriteManufacturer=m;rhSave();rhOnboardingStep(3)};
+window.rhOnboardingFinish=function(){state.onboarded=true;rhSave();q('rhOnboarding')?.remove();show('home')};
+window.rhStartOnboardingIfNeeded=function(){if(state&&!state.onboarded)rhOnboardingStep(1)};
 })();

@@ -1,6 +1,6 @@
 // RaceHub v5.6.6 — Events guided run checkpoint
 const RH_FINAL_STORE='RaceHub_SonHub_Beta_v3';
-const RH_BUILD_VERSION='5.7.66';
+const RH_BUILD_VERSION='5.7.67';
 let rhMoreMode='stats', rhRecordsMode='records', rhFestivalMode='browse', rhSetup=null, rhHelpKey=null, rhGarageOpenMake=null;
 const RH_HELP={
  home:['RaceHub HQ','This is your RaceHub home. Festival creates Championships from cars in this RaceHub; Events holds racing you create; Garage, Records and Stats all belong to the selected RaceHub Space.'],
@@ -24,7 +24,7 @@ function rhMigrateLegacy(raw){
 function rhLoad(){
  try{const x=JSON.parse(localStorage.getItem(RH_FINAL_STORE)||'null');if(x?.schema===2&&Array.isArray(x.spaces)&&x.spaces.length)return x;}catch(e){}
  try{const old=JSON.parse(localStorage.getItem(STORE)||'null');if(old?.cars){const x=rhMigrateLegacy(old);localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;}}catch(e){}
- const x=rhMigrateLegacy({cars:[],settings:{sound:true,confetti:true,vibrate:true}});localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;
+ const space=rhSpaceTemplate('My RaceHub',[]);const x={schema:2,version:RH_BUILD_VERSION,driverName:'',spaces:[space],activeSpaceId:space.id,settings:{sound:true,confetti:true,vibrate:true},onboarded:false};localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;
 }
 function rhSave(){localStorage.setItem(RH_FINAL_STORE,JSON.stringify(state))}
 function rhSpace(){return state.spaces.find(s=>s.id===state.activeSpaceId)||state.spaces[0]}
