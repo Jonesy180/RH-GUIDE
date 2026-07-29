@@ -1,0 +1,4 @@
+RaceHub Beta v5.7.73
+- Restores explicit SET/CHANGE FAVOURITE action in Settings.
+- Settings dropdown now stages selection; action button opens existing confirmation flow.
+- Preserves v5.7.72 onboarding and favourite selection fixes.
