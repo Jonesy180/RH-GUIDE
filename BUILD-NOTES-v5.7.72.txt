@@ -1,0 +1,5 @@
+RaceHub Beta v5.7.72
+
+- Repairs onboarding Step 2 manufacturer selection click handler.
+- Typing an exact valid manufacturer now also enables SET FAVOURITE & CONTINUE.
+- Preserves Full Reset -> onboarding and v5.7.69 Favourite confirmation repair.
