@@ -1,5 +1,5 @@
 // RaceHub v5.3.1 — Navigation Identity
-const STORE='RaceHub_SonHub_Legacy_v2';
+const STORE='RaceHub_v4_1_director_edition';
 let state=null;
 let currentScreen='home';
 let currentEventId='drag';

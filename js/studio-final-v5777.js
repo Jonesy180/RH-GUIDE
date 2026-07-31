@@ -1,6 +1,6 @@
 // RaceHub v5.6.6 — Events guided run checkpoint
 const RH_FINAL_STORE='RaceHub_Studio_Final_v5_6';
-const RH_BUILD_VERSION='5.7.76';
+const RH_BUILD_VERSION='5.7.77';
 let rhMoreMode='stats', rhRecordsMode='records', rhFestivalMode='browse', rhSetup=null, rhHelpKey=null, rhGarageOpenMake=null;
 const RH_HELP={
  home:['RaceHub HQ','This is your RaceHub home. Festival creates Championships from cars in this RaceHub; Events holds racing you create; Garage, Records and Stats all belong to the selected RaceHub Space.'],
@@ -103,10 +103,10 @@ function rhRenderFestival(){
      </div>
    </section>
    <main class="rhFestivalBodyV1">
-     ${active?`<button class="rhFestivalContinueV1" onclick="rhContinueActiveRun()">
-       <i aria-hidden="true">🏁</i>
-       <span><b>CONTINUE RACING</b><small>${esc(active.name)}</small></span>
-       <strong>${activeCars.complete} / ${activeCars.total} CARS COMPLETE</strong><em aria-hidden="true">›</em>
+     ${active?`<button class="rhFestivalContinueV1 rhFestivalContinueLockedV577" onclick="rhContinueActiveRun()">
+       <img src="${rhTrophy(active.type||active.championshipType||'festival')}" alt="">
+       <span><small>CONTINUE RACING</small><b>${esc(active.name)}</b><em>${activeCars.complete} of ${activeCars.total} cars complete</em></span>
+       <strong aria-hidden="true">›</strong>
      </button>`:''}
 
      <section class="rhFestivalSectionV1">
