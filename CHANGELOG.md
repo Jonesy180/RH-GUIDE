@@ -1,3 +1,8 @@
+## v5.8.31 — Result Summary simplification
+- Removed the redundant green Result Accepted tile from Result Summary.
+- Current Classification now follows the championship/event summary directly.
+- No race logic, artwork, records, Hubs, or Final Standings changes.
+
 # RaceHub v5.4.11 — Garage Manufacturer Filter Fix
 
 - Restores full manufacturer filter labels on phone-sized Garage screens.

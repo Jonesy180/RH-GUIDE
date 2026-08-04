@@ -1,7 +1,8 @@
 {
-  "name": "RaceHub",
-  "short_name": "RaceHub",
-  "description": "Track, record and improve every RaceHub championship.",
+  "id": "./rh-guide",
+  "name": "rh-guide",
+  "short_name": "rh-guide",
+  "description": "An independent RaceHub testing and guide installation.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "fullscreen",
