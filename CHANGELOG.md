@@ -86,3 +86,5 @@
 - Repair Android/browser Back by wiring the intended RaceHub navigation handler into the live build.
 - Move Manufacturer Rename to the Manufacturer header pencil icon; remove the under-list rename row.
 - Preserve passed v5.7.65 PWA install and icon artwork unchanged.
+
+- v5.8.38: Restored touch scrolling on onboarding Favourite Manufacturer list.
