@@ -7,7 +7,7 @@ const ASSETS=[
   './js/studio-release-rhguide-v5838.js?v=rhguide5838','./js/studio-enter-result-v5803.js?v=5803','./js/studio-result-summary-v5837.js?v=5837',
   './js/studio-race-flow-v5809.js?v=5829','./js/bootstrap-rhguide-v5838.js?v=rhguide5838','./js/studio-race-end-v5837.js?v=5837',
   './js/studio-final-standings-v5828.js?v=5829','./js/studio-records-v5830.js?v=5831','./js/studio-car-complete-v5832.js?v=5832',
-  './js/studio-champ-overview-v5835.js?v=5835','./assets/final/championship-in-progress-aerial-v5834.png?v=5834',
+  './js/studio-champ-overview-v5835.js?v=5835','./js/studio-beta-feedback-v5838.js?v=5838','./assets/final/championship-in-progress-aerial-v5834.png?v=5834',
   './assets/final/final-standings-face-on-ui-ready-v5828.png?v=5828','./assets/final/racehub-logo.png',
   './assets/final/hubs-pit-chief-v5829.png?v=5829','./assets/final/enter-result-side-finish-v5803.png','./assets/final/result-summary-podium-v5804.png',
   './assets/final/trophy-festival.png','./assets/final/trophy-manufacturer.png','./assets/final/trophy-era.png','./assets/final/trophy-favourite.png',

@@ -4153,3 +4153,16 @@ body.rhFS28Active #final-standings{display:block!important;position:fixed!import
   scrollbar-gutter:stable!important;
 }
 .rhOnMakeList button{touch-action:manipulation!important;flex:0 0 auto!important}
+
+/* v5.8.38 synchronized beta feedback fixes */
+.rhRecordsHeadV1>button,.rhPageHead>.rhBack,.rhPostRaceBack,.rhResultBack,.rhBack{
+  display:grid!important;place-items:center!important;padding:0!important;line-height:1!important;text-align:center!important;
+}
+.rhRecordsHeadV1>button{font-size:0!important}
+.rhRecordsHeadV1>button:after{content:'‹';font-size:34px;line-height:.8;transform:translateY(-1px)}
+.rhAddFestivalCarsV5838{width:100%;margin:14px 0 2px;padding:15px 14px;border:1px solid rgba(78,226,255,.55);border-radius:15px;background:rgba(7,34,45,.9);color:#70eaff;font-weight:900;letter-spacing:.055em;box-shadow:inset 0 1px rgba(255,255,255,.08)}
+.rhUpdateOverlayV5838{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;padding:20px;background:rgba(0,5,9,.78);backdrop-filter:blur(10px)}
+.rhUpdateModalV5838{width:min(440px,100%);padding:24px;border:1px solid rgba(79,226,255,.48);border-radius:22px;background:rgba(5,19,28,.97);box-shadow:0 24px 70px rgba(0,0,0,.7);color:#fff}
+.rhUpdateModalV5838>small{color:#64e8ff;font-weight:900;letter-spacing:.13em}.rhUpdateModalV5838 h2{margin:8px 0 10px}.rhUpdateModalV5838 p{color:#bac7ce;line-height:1.45}
+.rhUpdateVersionsV5838{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}.rhUpdateVersionsV5838 span{padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#8fa5af;font-size:11px;font-weight:800}.rhUpdateVersionsV5838 b{display:block;margin-top:5px;color:#fff;font-size:17px}
+.rhUpdateActionsV5838{display:grid;grid-template-columns:1fr 1.3fr;gap:10px}.rhUpdateActionsV5838 button{padding:14px;border-radius:13px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:#fff;font-weight:900}.rhUpdateActionsV5838 .rhUpdateNowV5838{border-color:#55e6ff;background:#40d9f0;color:#001018}
