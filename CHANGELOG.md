@@ -1,3 +1,8 @@
+# v5.9.3
+- Corrected every remaining back-arrow variant at the final active UI layer.
+- Replaced the stale About RaceHub tile version with the live rh-guide build version.
+- No storage, backup, manifest identity or data-scope changes.
+
 ## v5.8.31 — Result Summary simplification
 - Removed the redundant green Result Accepted tile from Result Summary.
 - Current Classification now follows the championship/event summary directly.
