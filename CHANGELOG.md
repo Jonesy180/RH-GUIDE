@@ -1,3 +1,8 @@
+# v5.9.4 — Universal BACK + No Memory Lists
+- Replaced every top-left navigation arrow with the shared RH-UI-026 frosted-glass BACK pill.
+- Disabled browser/input remembered-value suggestion lists across forms while preserving RaceHub-controlled selection interfaces.
+- Preserved app identity, storage, cache namespace and update channel separation.
+
 # v5.9.3
 - Corrected every remaining back-arrow variant at the final active UI layer.
 - Replaced the stale About RaceHub tile version with the live rh-guide build version.
