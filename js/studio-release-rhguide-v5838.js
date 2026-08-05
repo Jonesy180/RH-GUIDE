@@ -1,7 +1,7 @@
-/* rh-guide v5.8.38 — update/version authority only. */
+/* rh-guide v5.9.1 — update/version authority only. */
 (()=>{
  'use strict';
- const CURRENT_VERSION=document.querySelector('meta[name="racehub-version"]')?.content||'5.8.38';
+ const CURRENT_VERSION=document.querySelector('meta[name="racehub-version"]')?.content||'5.9.1';
  function updateStatus(text,state=''){const el=document.getElementById('rhUpdateStatus');if(el){el.textContent=text;el.dataset.state=state}}
  window.rhCheckForUpdate=async function(){
    const button=document.getElementById('rhCheckUpdateButton');

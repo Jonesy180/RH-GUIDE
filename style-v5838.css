@@ -4140,7 +4140,7 @@ body.rhFS28Active #final-standings{display:block!important;position:fixed!import
   .rhPodiumAverageV5837 span{font-size:9px}
 }
 
-/* rh-guide v5.8.38 — onboarding Favourite Manufacturer touch scrolling fix. */
+/* rh-guide v5.9.1 — onboarding Favourite Manufacturer touch scrolling fix. */
 .rhOnMakeList{
   height:min(42vh,360px)!important;
   min-height:160px!important;
@@ -4154,7 +4154,7 @@ body.rhFS28Active #final-standings{display:block!important;position:fixed!import
 }
 .rhOnMakeList button{touch-action:manipulation!important;flex:0 0 auto!important}
 
-/* v5.8.38 synchronized beta feedback fixes */
+/* v5.9.1 synchronized beta feedback fixes */
 .rhRecordsHeadV1>button,.rhPageHead>.rhBack,.rhPostRaceBack,.rhResultBack,.rhBack{
   display:grid!important;place-items:center!important;padding:0!important;line-height:1!important;text-align:center!important;
 }

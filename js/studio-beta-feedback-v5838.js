@@ -1,7 +1,7 @@
-/* RaceHub / rh-guide v5.8.38 — synchronized beta feedback fixes. */
+/* RaceHub / rh-guide v5.9.1 — synchronized beta feedback fixes. */
 (()=>{
   'use strict';
-  const CURRENT_VERSION=document.querySelector('meta[name="racehub-version"]')?.content||'5.8.38';
+  const CURRENT_VERSION=document.querySelector('meta[name="racehub-version"]')?.content||'5.9.1';
   const safe=v=>typeof esc==='function'?esc(String(v??'')):String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   /* Hall of Fame back arrow: always return to the Records view and keep the Hall screen visible. */

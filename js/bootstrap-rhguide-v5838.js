@@ -1,4 +1,4 @@
-// RaceHub v5.8.38 — startup + authoritative service worker
+// RaceHub v5.9.1 — startup + authoritative service worker
 state=rhLoad();
 rhSync();
 if(state&&!state.onboarded){window.rhStartOnboardingIfNeeded?.();}else{show('home');}

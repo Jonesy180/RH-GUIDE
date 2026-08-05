@@ -1,4 +1,4 @@
-const CACHE_NAME='rh-guide-v5.8.38';
+const CACHE_NAME='rh-guide-v5.9.1';
 const ASSETS=[
   './','./index.html','./style-v5838.css?v=5838','./manifest.webmanifest?v=rhguide5838','./favicon.png',
   './js/seed-data.js?v=5799','./js/core.js?v=5799','./js/race-director.js?v=5799','./js/views.js?v=5799',
