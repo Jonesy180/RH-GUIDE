@@ -1,3 +1,10 @@
+# rh-guide v5.9.19
+
+- Fixed Garage → Festival deletion synchronisation not taking effect on installed rh-guide.
+- The v5.9.18 deletion logic was present but the changed studio-final script retained its old v5808 cache key; v5.9.19 gives that script a fresh cache-busting version and a new rh-guide service-worker cache.
+- Universal BACK sizing from v5.9.18 is unchanged.
+- rh-guide storage, manifest, repository and app identity remain separate from RaceHub.
+
 # rh-guide v5.9.18
 
 - Paired with phone-confirmed RaceHub v5.9.18 universal BACK sizing (74 × 36).
