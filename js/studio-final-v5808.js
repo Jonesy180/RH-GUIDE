@@ -474,7 +474,7 @@ function rhSaveCarFinal(id=''){
  rhGarageOpenMake=make;rhSync();rhSave();$('rhCarEditor')?.remove();rhRenderGarage();toast(id?'Car updated':'Car added');rhCheckChampionshipDiscoveries(before)
 }
 function rhConfirmDeleteCar(id){const c=rhSpace().cars.find(x=>x.id===id);if(!c)return;rhConfirm({title:'Delete Car?',copy:`${carName(c)} will be removed from this Garage. This cannot be undone.`,confirmLabel:'DELETE CAR',danger:true,onConfirm:`rhDeleteCarFinal('${id}')`})}
-function rhDeleteCarFinal(id){const s=rhSpace();s.cars=s.cars.filter(x=>x.id!==id);rhSync();rhSave();$('rhCarEditor')?.remove();rhRenderGarage();toast('Car deleted')}
+function rhDeleteCarFinal(id){const s=rhSpace();s.cars=s.cars.filter(x=>x.id!==id);(s.runs||[]).forEach(r=>{if((r.type==='festival'||r.championshipType==='festival')&&(r.status==='active'||r.status==='prepared')){r.entries=(r.entries||[]).filter(carId=>carId!==id);r.results=(r.results||[]).filter(result=>result.carId!==id);r.updatedAt=new Date().toISOString()}});rhSync();rhSave();$('rhCarEditor')?.remove();rhRenderGarage();toast('Car deleted')}
 function rhAddCarFinal(){rhOpenCarEditor()}
 function rhRecordsHeader(hall){
  if(!hall)return `<section class="rhRecordsHeroV1"><div class="rhRecordsHeadV1"><button onclick="show('home')" aria-label="Back">‹</button><div><h1>RECORDS</h1><p>Your Racing History</p></div></div></section>`;

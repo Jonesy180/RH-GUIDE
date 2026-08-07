@@ -1,3 +1,10 @@
+# rh-guide v5.9.18
+
+- Paired with phone-confirmed RaceHub v5.9.18 universal BACK sizing (74 × 36).
+- Includes the confirmed v5.9.16 Festival/Garage delete synchronisation.
+- Preserves rh-guide storage, manifest, cache namespace and update identity.
+- No unrelated functional or visual changes.
+
 # v5.9.4 — Universal BACK + No Memory Lists
 - Replaced every top-left navigation arrow with the shared RH-UI-026 frosted-glass BACK pill.
 - Disabled browser/input remembered-value suggestion lists across forms while preserving RaceHub-controlled selection interfaces.
