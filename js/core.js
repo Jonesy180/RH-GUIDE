@@ -95,6 +95,7 @@ function normaliseCar(car){
  c.make=String(c.make||'').trim();
  c.model=String(c.model||'').trim();
  c.year=String(c.year||'').trim();
+ c.classType=String(c.classType||'').trim();
  if((!c.make||!c.model) && c.name){
    const text=String(c.name).trim();
    const yearMatch=text.match(/\s(\d{4})$/);

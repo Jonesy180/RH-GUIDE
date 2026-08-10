@@ -1,3 +1,52 @@
+## v6.0.26 — Stage 9D final League result alignment
+- Alignment-only correction from protected v6.0.24.
+- Position and Race Time boxes are level; segmented time digits are vertically centred.
+- No functional changes.
+
+## v6.0.23 — Stage 9D League standings + permanent Event history
+- Adds live League standings calculated only from confirmed Event results.
+- Points mode totals the frozen user-defined points table; DNF/DNS remain 0 points. Equal points remain tied.
+- Total Time mode ranks classified finishes first, then lowest cumulative time; DNF/DNS add no time.
+- Confirmed Events reopen as permanent locked history with direct Standings access.
+- Completed Leagues show Final Standings once every official Event is confirmed.
+- Applies the approved small upward alignment correction to the Stage 9C mini digital race-time display only.
+- Preserves existing RaceHub result/championship systems and protected Stage 8 functionality.
+
+## v6.0.22 — Stage 9C League mini digital timing correction
+- Replaces the generic League race-time text field with the compact segmented RaceHub digital timing entry used by Advanced Timing.
+- FINISH rows use segmented MM:SS.mmm entry with numeric auto-advance and corrected separator alignment.
+- Total Time still requires a valid time; Points mode keeps race time optional. DNF/DNS behaviour and Review/Confirm locking are unchanged.
+- Built from v6.0.21 Stage 9C; protected baseline remains v6.0.20 until phone pass.
+
+## v6.0.21 — Stage 9C League Results + Review/Confirmation
+- League Event result entry for every active driver.
+- FINISH / DNF / DNS statuses. DNF/DNS contribute zero points/time.
+- Total Time requires valid race time; Points mode allows optional time.
+- Separate Review Classification step; results editable before confirmation.
+- Confirmed Event results become locked permanent League history.
+- Built from passed v6.0.20.
+
+## v6.0.20 — Stage 9B League Events + Drivers (setup-state correction)
+- Rebuilt from passed v6.0.18.
+- Fixes League setup draft state: Points selector works and League name persists across rerenders.
+- Adds League Event editing and active/inactive driver management.
+- No League result entry/standings yet.
+
+## v6.0.17 — Stage 8C Race Notes + Enter Result hero spacing
+- Added optional result-specific Race Notes inside Advanced Timing.
+- Notes persist on the individual saved result and appear on Result Summary when present.
+- Shifted Enter Result title/subtitle slightly right for clearer BACK-button separation.
+- Advanced Timing v6.0.16 implementation remains unchanged.
+
+## v6.0.16 — Stage 8B lap separator alignment
+Alignment-only release. Compact lap-timer colon separators are vertically centred to match the locked approved Advanced Timing artwork. No functional Advanced Timing changes.
+
+## v6.0.15 — Stage 8B Advanced Timing corrected implementation
+Built from protected v6.0.13. Adds locked compact digital lap entry, mandatory complete-lap validation, live green fastest-lap marking, automatic lap-total race time, and additive lap-detail persistence while preserving the existing result flow.
+
+## v6.0.13 — Stage 8A Advanced Timing presentation foundation
+Stage 8A presentation-only checkpoint from protected v6.0.12. Adds the default-OFF Advanced Timing preference and Enter Result discoverability/collapsed shell without lap persistence or calculations.
+
 ## v5.4.11 — Garage Manufacturer Filter Fix
 
 A focused mobile layout fix that restores readable, horizontally scrollable manufacturer filter chips in the Garage. It prevents chip shrinking and clipping without changing Garage behaviour or stored data.
@@ -346,3 +395,10 @@ A presentation-only refinement pass covering spacing, typography, progress indic
 - Preserves the existing Space-owned Garage data model.
 
 - v5.7.66 — Android Back + Manufacturer pencil repair; v5.7.65 icon/install work preserved.
+
+
+## v6.0.24 — Stage 9D League delete + phone polish
+- Adds a destructive-confirmation Delete League action that removes the selected League and its stored Event history from the current RaceHub Space only.
+- Nudges the compact League digital race-time display upward for balanced vertical spacing.
+- Reduces the League Position entry box while preserving a comfortable phone touch target.
+- No standings, result-calculation, Advanced Timing or existing RaceHub flow changes.

@@ -1,7 +1,7 @@
-/* RaceHub v5.9.4 — synchronized beta feedback fixes. */
+/* RaceHub / rh-guide v6.0.40 — synchronized feedback fixes. */
 (()=>{
   'use strict';
-  const CURRENT_VERSION=document.querySelector('meta[name="racehub-version"]')?.content||'5.9.3';
+  const CURRENT_VERSION=document.querySelector('meta[name="racehub-version"]')?.content||'6.0.40';
   const safe=v=>typeof esc==='function'?esc(String(v??'')):String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   /* Hall of Fame back arrow: always return to the Records view and keep the Hall screen visible. */
@@ -92,7 +92,7 @@
   };
   function showUpdateNotice(latest){
     if(document.getElementById('rhUpdateAvailableV593'))return;
-    document.body.insertAdjacentHTML('beforeend',`<div id="rhUpdateAvailableV593" class="rhUpdateOverlayV593"><section class="rhUpdateModalV593" role="dialog" aria-modal="true" aria-labelledby="rhUpdateTitleV593"><small>NEW VERSION AVAILABLE</small><h2 id="rhUpdateTitleV593">UPDATE TO v${safe(latest)}</h2><p>A newer RaceHub build is ready with the latest fixes and improvements.</p><div class="rhUpdateVersionsV593"><span>INSTALLED <b>v${safe(CURRENT_VERSION)}</b></span><span>LATEST <b>v${safe(latest)}</b></span></div><div class="rhUpdateActionsV593"><button onclick="rhCloseUpdateNoticeV593()">LATER</button><button class="rhUpdateNowV593" onclick="rhApplyUpdateV593()">UPDATE NOW</button></div></section></div>`);
+    document.body.insertAdjacentHTML('beforeend',`<div id="rhUpdateAvailableV593" class="rhUpdateOverlayV593"><section class="rhUpdateModalV593" role="dialog" aria-modal="true" aria-labelledby="rhUpdateTitleV593"><small>NEW VERSION AVAILABLE</small><h2 id="rhUpdateTitleV593">UPDATE TO v${safe(latest)}</h2><p>A newer rh-guide build is ready with the latest fixes and improvements.</p><div class="rhUpdateVersionsV593"><span>INSTALLED <b>v${safe(CURRENT_VERSION)}</b></span><span>LATEST <b>v${safe(latest)}</b></span></div><div class="rhUpdateActionsV593"><button onclick="rhCloseUpdateNoticeV593()">LATER</button><button class="rhUpdateNowV593" onclick="rhApplyUpdateV593()">UPDATE NOW</button></div></section></div>`);
   }
   async function checkAutomaticUpdate(){
     if(sessionStorage.getItem(`rh-update-later-${CURRENT_VERSION}`))return;
@@ -108,10 +108,10 @@
   setTimeout(()=>{repairHallBack();repairHallTile();},0);
 })();
 
-/* v5.9.4 — authoritative version, universal BACK control and form-memory suppression. */
+/* rh-guide v6.0.40 — authoritative version; universal BACK and form-memory controls retained. */
 (()=>{
   'use strict';
-  const VERSION=document.querySelector('meta[name="racehub-version"]')?.content||'5.9.4';
+  const VERSION=document.querySelector('meta[name="racehub-version"]')?.content||'6.0.40';
   let fieldSerial=0;
 
   function repairAboutVersion(){
@@ -156,7 +156,7 @@
       field.setAttribute('autocorrect','off');
       field.setAttribute('autocapitalize','off');
       field.setAttribute('spellcheck','false');
-      if(!field.name)field.name=`rh-field-v594-${++fieldSerial}`;
+      if(!field.name)field.name=`rh-field-v595-${++fieldSerial}`;
     });
   }
 

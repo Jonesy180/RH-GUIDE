@@ -4140,7 +4140,8 @@ body.rhFS28Active #final-standings{display:block!important;position:fixed!import
   .rhPodiumAverageV5837 span{font-size:9px}
 }
 
-/* rh-guide v5.9.3 — onboarding Favourite Manufacturer touch scrolling fix. */
+
+/* RaceHub v5.9.3 — onboarding Favourite Manufacturer touch scrolling fix. */
 .rhOnMakeList{
   height:min(42vh,360px)!important;
   min-height:160px!important;
@@ -4168,7 +4169,7 @@ body.rhFS28Active #final-standings{display:block!important;position:fixed!import
 .rhUpdateActionsV593{display:grid;grid-template-columns:1fr 1.3fr;gap:10px}.rhUpdateActionsV593 button{padding:14px;border-radius:13px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:#fff;font-weight:900}.rhUpdateActionsV593 .rhUpdateNowV593{border-color:#55e6ff;background:#40d9f0;color:#001018}
 
 
-/* rh-guide v5.9.3 — final authoritative navigation repair. */
+/* RaceHub v5.9.3 — final authoritative navigation repair. */
 .rhRecordsHeadV1>button,
 .rhPageHead>.rhBack,
 .rhPostRaceBack,
@@ -4198,7 +4199,7 @@ button.rhBack{
 }
 .rhHallBannerV1,.rhHallBanner{pointer-events:auto!important;cursor:pointer!important;position:relative!important;z-index:2!important}
 
-/* rh-guide v5.9.3 — final optical back-arrow authority. */
+/* RaceHub v5.9.3 — final optical back-arrow authority. */
 .rhBackCenteredV593{
   display:flex!important;
   align-items:center!important;
@@ -4256,50 +4257,174 @@ button.rhBack{
 .rhRecordsHeadV1>button.rhUniversalBackV594{font-size:12px!important;overflow:visible!important}
 
 
-/* RaceHub v5.9.5 — corrected universal BACK header layout authority. */
+/* RaceHub v5.9.18 — universal BACK size authority.
+   Festival / Events compact BACK is the locked size: 74px × 36px everywhere. */
 .rhPageHead{
-  grid-template-columns:92px minmax(0,1fr) 50px!important;
+  grid-template-columns:74px minmax(0,1fr) 50px!important;
   column-gap:16px!important;
 }
-.rhPageHead:not(:has(.rhHelp)){grid-template-columns:92px minmax(0,1fr)!important}
+.rhPageHead:not(:has(.rhHelp)){grid-template-columns:74px minmax(0,1fr)!important}
 .rhPageHead>.rhUniversalBackV594,
 .rhGarageHeadV1>.rhUniversalBackV594,
 .rhRecordsHeadV1>.rhUniversalBackV594,
 .rhStandings34Header>.rhUniversalBackV594,
 .rhPostRaceBack.rhUniversalBackV594,
 .rhResultBack.rhUniversalBackV594,
-button.rhBack.rhUniversalBackV594{
+button.rhBack.rhUniversalBackV594,
+.rhFestivalBackV1.rhUniversalBackV594,
+.rhEventsBackV1.rhUniversalBackV594{
   box-sizing:border-box!important;
-  flex:0 0 92px!important;
-  width:92px!important;
-  min-width:92px!important;
-  max-width:92px!important;
-  height:44px!important;
-  min-height:44px!important;
-  max-height:44px!important;
-  padding:0 14px!important;
+  flex:0 0 74px!important;
+  width:74px!important;
+  min-width:74px!important;
+  max-width:74px!important;
+  height:36px!important;
+  min-height:36px!important;
+  max-height:36px!important;
+  padding:0 16px!important;
   border-radius:999px!important;
-  font-size:13px!important;
+  font-size:12px!important;
   line-height:1!important;
-  letter-spacing:1.5px!important;
+  letter-spacing:1.3px!important;
 }
 .rhGarageHeadV1,.rhRecordsHeadV1{gap:16px!important;right:18px!important}
 .rhGarageHeadV1>div,.rhRecordsHeadV1>div,.rhPageHead>div{min-width:0!important}
-.rhGarageHeadV1>.rhUniversalBackV594,
-.rhRecordsHeadV1>.rhUniversalBackV594{font-size:13px!important;line-height:1!important}
 .rhRecordsHeadV1>.rhUniversalBackV594::before,
 .rhRecordsHeadV1>.rhUniversalBackV594::after,
 .rhGarageHeadV1>.rhUniversalBackV594::before,
 .rhGarageHeadV1>.rhUniversalBackV594::after{content:none!important;display:none!important}
 .rhGarageHeadV1 h1,.rhRecordsHeadV1 h1{overflow-wrap:normal!important;word-break:normal!important}
 @media(max-width:390px){
-  .rhPageHead{grid-template-columns:84px minmax(0,1fr) 46px!important;column-gap:12px!important;padding-left:14px!important;padding-right:14px!important}
-  .rhPageHead:not(:has(.rhHelp)){grid-template-columns:84px minmax(0,1fr)!important}
-  .rhPageHead>.rhUniversalBackV594,
-  .rhGarageHeadV1>.rhUniversalBackV594,
-  .rhRecordsHeadV1>.rhUniversalBackV594,
-  button.rhBack.rhUniversalBackV594{flex-basis:84px!important;width:84px!important;min-width:84px!important;max-width:84px!important}
+  .rhPageHead{grid-template-columns:74px minmax(0,1fr) 46px!important;column-gap:12px!important;padding-left:14px!important;padding-right:14px!important}
+  .rhPageHead:not(:has(.rhHelp)){grid-template-columns:74px minmax(0,1fr)!important}
   .rhGarageHeadV1,.rhRecordsHeadV1{left:14px!important;right:14px!important;gap:12px!important}
   .rhGarageHeadV1 h1{font-size:27px!important}
   .rhRecordsHeadV1 h1{font-size:clamp(23px,7vw,28px)!important}
 }
+
+/* RaceHub v6.0.2 — Stage 1 live Garage details */
+.rhGarageV6Guide{margin:9px 0;padding:10px 12px;border:1px solid rgba(39,221,250,.34);border-radius:11px;background:rgba(3,23,31,.78);display:grid;gap:3px}
+.rhGarageV6Guide b{font-size:10px;letter-spacing:.08em;color:#27ddfa}.rhGarageV6Guide span{font-size:9px;line-height:1.35;color:#aeb8bc}
+.rhGarageNeedsBtn{width:100%;height:38px;margin:0 0 10px;border:1px solid rgba(163,181,188,.32);border-radius:10px;background:rgba(5,13,18,.88);color:#aeb8bc;font-size:10px;font-weight:800;letter-spacing:.07em}.rhGarageNeedsBtn span{margin-left:5px;color:#fff}.rhGarageNeedsBtn.on{border-color:#27ddfa;color:#27ddfa}
+.rhGarageCarV1.rhGarageCarV6{grid-template-columns:18px minmax(0,1fr) auto}.rhGarageCarV6>span{display:grid;gap:3px}.rhGarageCarV6>span>small{display:flex;gap:10px}.rhGarageCarV6>span>small>span{min-width:56px}.rhGarageUnknown{color:#747e84;font-style:italic;font-weight:700}.rhGarageCarV6>button.rhAddDetails{width:auto!important;min-width:82px!important;padding:0 7px!important;font-size:8px!important;letter-spacing:.04em;color:#aeb8bc!important;border:1px solid rgba(163,181,188,.24)!important;border-radius:8px!important}
+
+/* RaceHub v6.0.3 — Stage 2 smart remembered Class/Type suggestions */
+.rhSmartSuggestWrap{position:relative}
+.rhSmartSuggestWrap>.rhSearch{width:100%}
+.rhSmartSuggestions{position:absolute;z-index:25;left:0;right:0;top:calc(100% + 5px);max-height:230px;overflow-y:auto;padding:7px;border:1px solid rgba(39,221,250,.28);border-radius:12px;background:rgba(2,12,18,.98);box-shadow:0 14px 32px rgba(0,0,0,.55)}
+.rhSmartSuggestions[hidden]{display:none!important}
+.rhSmartSuggestHead{padding:5px 8px 7px;font-size:9px;font-weight:800;letter-spacing:.08em;color:#6d7b82}
+.rhSmartSuggestions button{width:100%;min-height:38px;padding:8px 10px;border:0;border-radius:8px;background:transparent;color:#f4f7f8;display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;font:inherit}
+.rhSmartSuggestions button+button{border-top:1px solid rgba(255,255,255,.055)}
+.rhSmartSuggestions button:active,.rhSmartSuggestions button:focus-visible{background:rgba(39,221,250,.10);outline:1px solid rgba(39,221,250,.28)}
+.rhSmartSuggestions button span{font-size:13px;font-weight:700}.rhSmartSuggestions button small{font-size:9px;color:#78868c;white-space:nowrap}
+
+/* RaceHub v6.0.4 — Stage 3A Class/Type Festival expansion */
+.rhFestivalClassTypeV6 summary span{color:#27ddfa}
+
+/* RaceHub v6.0.5 — compact single-line remembered Class/Type suggestion */
+.rhSmartSuggestions{max-height:none!important;padding:4px!important}
+.rhSmartSuggestionSingle{min-height:34px!important;height:34px!important;padding:6px 10px!important;border:0!important;background:rgba(2,12,18,.98)!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important}
+.rhSmartSuggestionSingle span{font-size:12px!important;font-weight:700!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rhSmartSuggestionSingle small{font-size:9px!important;color:#78868c!important;white-space:nowrap}
+.rhSmartSuggestHead{display:none!important}
+
+/* RaceHub v6.0.6 — phone-safe remembered Class/Type suggestion position */
+.rhSmartSuggestions.rhSmartSuggestionsAbove{
+ top:auto!important;
+ bottom:calc(100% + 5px)!important;
+}
+
+/* RaceHub v6.0.7 — Stage 3B Vintage / Classic Festival expansion */
+.rhFestivalHeritageV6 summary span{color:#27ddfa}
+
+/* RaceHub v6.0.8 — Stage 4 trophy identities */
+.rhTrophyStageV6{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:72px}
+.rhTrophyStageV6>img{display:block}
+.rhDynamicTrophyPlaque{margin-top:-3px;max-width:96px;padding:3px 8px;border:1px solid rgba(39,221,250,.32);border-radius:6px;background:linear-gradient(180deg,rgba(28,34,38,.96),rgba(7,11,14,.98));box-shadow:inset 0 1px rgba(255,255,255,.06),0 0 8px rgba(39,221,250,.08);color:#dce6e9;font-size:7px;font-weight:900;letter-spacing:.065em;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* RaceHub v6.0.9 — Stage 5 new Championship type integration */
+.rhHofTrophyV6{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.rhHofTrophyV6>img{display:block}
+.rhHofDynamicPlaque{margin-top:-3px}
+
+/* RaceHub v6.0.10 — Stage 6 permanent classification history */
+.rhRaceRecordHistoryLinkV6010{cursor:pointer}
+.rhRaceRecordHistoryLinkV6010:focus-visible{outline:2px solid currentColor;outline-offset:-2px}
+.rhRaceRecordOpenFinalV6010{margin-left:10px;font-size:11px;font-weight:900;letter-spacing:.08em;white-space:nowrap;opacity:.82}
+
+/* RaceHub v6.0.12 — Stage 7 Car Notes live overlay */
+.rhCarNotesButtonV6012{width:100%;margin-top:10px}
+.rhCarNotesModalV6012{max-height:88vh;overflow:auto}
+.rhCarNotesTextV6012{box-sizing:border-box;width:100%;min-height:300px;resize:vertical;padding:13px 14px;border:1px solid rgba(39,221,250,.18);border-radius:12px;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.035) 0,rgba(255,255,255,.035) 1px,transparent 1px,transparent 29px),rgba(2,10,15,.78);color:inherit;font:inherit;line-height:29px;outline:none}
+.rhCarNotesTextV6012:focus{border-color:rgba(39,221,250,.55);box-shadow:0 0 0 2px rgba(39,221,250,.08)}
+
+/* RaceHub v6.0.13 — Stage 8A Advanced Timing presentation foundation */
+.rhAdvancedTimingSettingsV6013 .rhAdvancedTimingToggleV6013>span{display:flex;min-width:0;flex-direction:column;gap:3px}
+.rhAdvancedTimingSettingsV6013 .rhAdvancedTimingToggleV6013>span>b{font-size:14px;letter-spacing:.01em}
+.rhAdvancedTimingSettingsV6013 .rhAdvancedTimingToggleV6013>span>small{max-width:235px;color:#8fa2aa;font-size:11px;font-weight:600;line-height:1.35}
+.rhAdvancedTimingV6013,.rhAdvancedTimingDiscoverV6013{box-sizing:border-box;width:100%;margin-bottom:12px;border:1px solid rgba(43,224,250,.34);border-radius:13px;background:linear-gradient(145deg,rgba(5,24,31,.92),rgba(2,10,15,.96));box-shadow:inset 0 0 24px rgba(43,224,250,.035),0 8px 20px rgba(0,0,0,.18);overflow:hidden}
+.rhAdvancedTimingHeadV6013{display:flex;width:100%;min-height:58px;align-items:center;gap:11px;padding:10px 12px;border:0;background:transparent;color:#fff;text-align:left;cursor:pointer}
+.rhAdvancedTimingIconV6013{display:grid;flex:0 0 34px;width:34px;height:34px;place-items:center;border:1px solid rgba(43,224,250,.38);border-radius:50%;background:rgba(43,224,250,.07);color:#2be0fa;font-size:19px;line-height:1}
+.rhAdvancedTimingHeadV6013>span:nth-child(2){display:flex;min-width:0;flex:1;flex-direction:column;gap:1px}
+.rhAdvancedTimingHeadV6013 small,.rhAdvancedTimingShellV6013 small{color:#2be0fa;font-size:8px;font-weight:900;letter-spacing:.14em}
+.rhAdvancedTimingHeadV6013 b{font-size:13px;font-weight:900;letter-spacing:.055em}
+.rhAdvancedTimingHeadV6013 em{color:#7f969e;font-size:8px;font-style:normal;font-weight:900;letter-spacing:.1em}
+.rhAdvancedTimingV6013.open .rhAdvancedTimingHeadV6013 em{color:#2be0fa}
+.rhAdvancedTimingBodyV6013{padding:0 12px 12px}
+.rhAdvancedTimingShellV6013{padding:12px;border-top:1px solid rgba(255,255,255,.07);border-radius:0 0 9px 9px;background:rgba(0,0,0,.16)}
+.rhAdvancedTimingShellV6013 b{display:block;margin:4px 0 5px;color:#fff;font-size:13px}
+.rhAdvancedTimingShellV6013 p{margin:0;color:#91a4ab;font-size:11px;line-height:1.45}
+.rhAdvancedTimingDiscoverV6013{display:flex;align-items:center;gap:10px;margin-top:0;padding:9px 11px;border-color:rgba(43,224,250,.21);background:rgba(2,13,18,.72)}
+.rhAdvancedTimingDiscoverV6013 .rhAdvancedTimingIconV6013{flex-basis:30px;width:30px;height:30px;font-size:16px}
+.rhAdvancedTimingDiscoverV6013>span:last-child{display:flex;min-width:0;flex-direction:column;gap:2px}
+.rhAdvancedTimingDiscoverV6013 b{color:#dffaff;font-size:10px;font-weight:900;letter-spacing:.085em}
+.rhAdvancedTimingDiscoverV6013 small{color:#879ba3;font-size:9px;font-weight:650;line-height:1.32}
+@media(max-width:430px){.rhAdvancedTimingV6013,.rhAdvancedTimingDiscoverV6013{margin-bottom:10px}.rhAdvancedTimingHeadV6013{min-height:54px;padding:9px 10px}.rhAdvancedTimingSettingsV6013 .rhAdvancedTimingToggleV6013>span>small{max-width:205px}}
+
+/* RaceHub v6.0.15 — locked Advanced Timing lap entry correction */
+.rhATEntryV6015{margin-top:14px;padding-top:13px;border-top:1px solid rgba(43,224,250,.13)}
+.rhATCountRowV6015{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px}
+.rhATCountRowV6015>label{color:#86ddea;font-size:8px;font-weight:900;letter-spacing:.14em}
+.rhATCountControlV6015{display:flex;align-items:center;overflow:hidden;border:1px solid rgba(43,224,250,.34);border-radius:9px;background:rgba(0,0,0,.28)}
+.rhATCountControlV6015 button{width:38px;height:34px;border:0;background:rgba(43,224,250,.045);color:#dffaff;font-size:19px;font-weight:900;cursor:pointer}
+.rhATCountControlV6015 button+input,.rhATCountControlV6015 input+button{border-left:1px solid rgba(255,255,255,.07)}
+.rhATLapCountV6015{box-sizing:border-box;width:44px;height:34px;border:0;outline:0;background:transparent;color:#fff;font:900 14px/1 system-ui,sans-serif;text-align:center;-moz-appearance:textfield}
+.rhATLapCountV6015::-webkit-outer-spin-button,.rhATLapCountV6015::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.rhATLapsV6015{display:flex;max-height:242px;flex-direction:column;gap:7px;overflow-y:auto;padding-right:3px;scrollbar-width:thin;scrollbar-color:rgba(43,224,250,.46) rgba(255,255,255,.035)}
+.rhATLapRowV6015{display:grid;grid-template-columns:54px minmax(0,1fr) 45px;align-items:center;gap:8px;min-height:50px;padding:8px 9px;border:1px solid rgba(255,255,255,.07);border-radius:9px;background:rgba(0,0,0,.22);transition:border-color .15s,background .15s,box-shadow .15s}
+.rhATLapLabelV6015{color:#aebcc1;font-size:9px;font-weight:900;letter-spacing:.08em;white-space:nowrap}
+.rhATLapConsoleV6015{display:flex;min-width:0;height:34px;align-items:center;justify-content:center;gap:3px;padding:0 8px;border:1px solid rgba(43,224,250,.34);border-radius:8px;background:linear-gradient(180deg,rgba(3,16,21,.95),rgba(1,8,12,.98));box-shadow:inset 0 0 0 3px rgba(255,255,255,.025),inset 0 0 16px rgba(43,224,250,.035)}
+.rhATLapConsoleV6015>i{position:relative;top:2px;color:#57cbd8;font-size:13px;font-style:normal;font-weight:900;line-height:1}
+.rhATLapPartV6015{position:relative;display:block;min-width:0;height:25px;font-size:20px;line-height:1}
+.rhATLapPartV6015:not(.ms){width:31px}.rhATLapPartV6015.ms{width:47px}
+.rhATSegDisplayV6015{display:inline-flex;height:25px;align-items:center;gap:1px;color:#18e4f7;font-size:20px;line-height:1}
+.rhATSegDisplayV6015 .rhSegDigit{width:.45em;height:.82em;flex-basis:.45em}
+.rhATLapPartV6015 input{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;outline:0;background:transparent;color:transparent;caret-color:transparent;opacity:.02;font-size:16px;text-align:center}
+.rhATLapPartV6015:focus-within .rhSegDigit span.on{background:#7cf3ff;box-shadow:0 0 .16em #22eaff,0 0 .36em rgba(34,234,255,.7)}
+.rhATFastestMarkV6015{visibility:hidden;justify-self:end;color:#7cff35;font-size:8px;font-weight:950;letter-spacing:.05em;white-space:nowrap;text-shadow:0 0 9px rgba(124,255,53,.65)}
+.rhATLapRowV6015.fastest{border-color:rgba(124,255,53,.46);background:rgba(47,94,20,.11);box-shadow:inset 0 0 18px rgba(124,255,53,.035)}
+.rhATLapRowV6015.fastest .rhATLapLabelV6015,.rhATLapRowV6015.fastest .rhATFastestMarkV6015{color:#7cff35}.rhATLapRowV6015.fastest .rhATFastestMarkV6015{visibility:visible}
+.rhATLapRowV6015.fastest .rhATLapConsoleV6015{border-color:rgba(124,255,53,.7);box-shadow:inset 0 0 0 3px rgba(124,255,53,.025),0 0 12px rgba(124,255,53,.12)}
+.rhATLapRowV6015.fastest .rhSegDigit span.on{background:#7cff35;box-shadow:0 0 .14em rgba(124,255,53,.95),0 0 .32em rgba(124,255,53,.48)}
+.rhATLapRowV6015.invalid{border-color:rgba(255,183,68,.65);box-shadow:0 0 0 2px rgba(255,183,68,.08)}
+.rhATSummaryV6015{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(43,224,250,.12)}
+.rhATStatusV6015{display:flex;min-width:0;flex-direction:column;gap:2px}.rhATStatusV6015 b{margin:0;color:#2be0fa;font-size:8px;letter-spacing:.08em}.rhATStatusV6015 span{color:#7d9299;font-size:7px;font-weight:700;line-height:1.3}
+.rhATTotalV6015{display:flex;flex-direction:column;align-items:flex-end;gap:2px}.rhATTotalV6015 small{color:#6f858d!important;font-size:6px!important;letter-spacing:.09em!important}.rhATTotalV6015 strong{color:#61e7f8;font:900 13px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;text-shadow:0 0 9px rgba(43,224,250,.3);white-space:nowrap}
+.rh5801Stopwatch.rhATAutoTotalV6015>p{color:#7f969e}.rh5801Stopwatch.rhATAutoTotalV6015 .rhStopwatchField{cursor:default}
+@media(max-width:430px){.rhATLapRowV6015{grid-template-columns:45px minmax(0,1fr) 39px;gap:5px;padding:7px 6px}.rhATLapLabelV6015{font-size:8px}.rhATLapConsoleV6015{height:32px;padding:0 5px;gap:2px}.rhATLapPartV6015{height:23px;font-size:18px}.rhATSegDisplayV6015{height:23px;font-size:18px}.rhATLapPartV6015:not(.ms){width:29px}.rhATLapPartV6015.ms{width:43px}.rhATFastestMarkV6015{font-size:7px}.rhATSummaryV6015{gap:7px}.rhATTotalV6015 strong{font-size:12px}}
+
+/* RaceHub v6.0.17 — Stage 8C Race Notes + Enter Result hero spacing polish */
+.rh5801Head{left:112px!important}
+.rhRaceNotesV6017{margin-top:14px;padding-top:13px;border-top:1px solid rgba(43,224,250,.13)}
+.rhRaceNotesV6017 label{display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
+.rhRaceNotesV6017 label small{color:#2be0fa!important;font-size:8px!important;font-weight:900!important;letter-spacing:.14em!important}
+.rhRaceNotesV6017 label b{margin:0;color:#fff;font-size:13px}
+.rhRaceNotesV6017 textarea{box-sizing:border-box;width:100%;min-height:92px;resize:vertical;padding:11px 12px;border:1px solid rgba(43,224,250,.3);border-radius:9px;outline:none;background:rgba(0,0,0,.28);color:#eefcff;font:600 12px/1.5 system-ui,sans-serif;box-shadow:inset 0 0 18px rgba(43,224,250,.025)}
+.rhRaceNotesV6017 textarea::placeholder{color:#687c84}
+.rhRaceNotesV6017 textarea:focus{border-color:rgba(43,224,250,.62);box-shadow:0 0 0 2px rgba(43,224,250,.07),inset 0 0 18px rgba(43,224,250,.035)}
+.rhRaceNotesV6017>span{display:block;margin-top:6px;color:#71868e;font-size:8px;font-weight:700}
+.rhResultRaceNotesV6017{padding:12px 14px;border:1px solid rgba(43,224,250,.23);border-radius:12px;background:rgba(2,13,18,.76)}
+.rhResultRaceNotesV6017 small{color:#2be0fa;font-size:8px;font-weight:900;letter-spacing:.13em}
+.rhResultRaceNotesV6017 p{margin:7px 0 0;color:#d9e8ec;font-size:11px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:430px){.rh5801Head{left:108px!important}.rhRaceNotesV6017 textarea{min-height:84px}}

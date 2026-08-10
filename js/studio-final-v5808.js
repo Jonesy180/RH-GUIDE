@@ -61,8 +61,30 @@ const RH_CHAMP_MIN_ELIGIBLE=2;
 function rhMakeList(){return [...new Set(rhSpace().cars.map(c=>c.make).filter(Boolean))].filter(m=>rhEligible('make',m).length>=RH_CHAMP_MIN_ELIGIBLE).sort((a,b)=>a.localeCompare(b))}
 function rhAllManufacturerList(){return [...new Set((Array.isArray(SEED?.cars)?SEED.cars:[]).map(c=>String(c.make||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b))}
 function rhEraList(){return [...new Set(rhSpace().cars.map(c=>Math.floor(Number(c.year)/10)*10).filter(y=>y>=1900&&y<=2030))].filter(e=>rhEligible('era',e).length>=RH_CHAMP_MIN_ELIGIBLE).sort((a,b)=>a-b)}
-function rhEligible(type,value){const cars=rhSpace().cars;if(type==='festival')return cars;if(type==='make'||type==='favourite')return cars.filter(c=>c.make===value);if(type==='era')return cars.filter(c=>Math.floor(Number(c.year)/10)*10===Number(value));return cars}
-function rhTrophy(type){const t=String(type||'festival').toLowerCase();const key=(t==='make'||t==='manufacturer')?'manufacturer':t;return `assets/final/trophy-${key}.png`}
+function rhClassTypeList(){return [...new Map(rhSpace().cars.map(c=>String(c.classType||'').trim()).filter(Boolean).map(v=>[v.toLocaleLowerCase(),v])).values()].filter(v=>rhEligible('classType',v).length>=RH_CHAMP_MIN_ELIGIBLE).sort((a,b)=>a.localeCompare(b))}
+function rhVintageCount(){return rhEligible('vintage','vintage').length}
+function rhClassicCount(){return rhEligible('classic','classic').length}
+function rhEligible(type,value){
+ const cars=rhSpace().cars;
+ if(type==='festival')return cars;
+ if(type==='make'||type==='favourite')return cars.filter(c=>c.make===value);
+ if(type==='era')return cars.filter(c=>Math.floor(Number(c.year)/10)*10===Number(value));
+ if(type==='classType'){const key=String(value||'').trim().toLocaleLowerCase();if(!key)return [];return cars.filter(c=>String(c.classType||'').trim().toLocaleLowerCase()===key)}
+ if(type==='vintage')return cars.filter(c=>{const y=Number(c.year);return Number.isFinite(y)&&y>0&&y<=1949});
+ if(type==='classic')return cars.filter(c=>{const y=Number(c.year);return Number.isFinite(y)&&y>=1950&&y<=1990});
+ return cars
+}
+function rhTrophyTypeKey(type){
+ const t=String(type||'festival').toLowerCase();
+ if(t==='make'||t==='manufacturer')return 'manufacturer';
+ if(t==='era')return 'era';
+ if(t==='classtype'||t==='class-type')return 'class-type';
+ if(t==='vintage')return 'vintage';
+ if(t==='classic')return 'classic';
+ if(t==='favourite')return 'favourite';
+ return 'festival';
+}
+function rhTrophy(type){return `assets/final/trophy-${rhTrophyTypeKey(type)}.png`}
 function rhRenderHome(){
  const s=rhSpace();
  const row=(cls,onclick,icon,title,sub)=>`
@@ -89,10 +111,17 @@ function rhRenderHome(){
  </div>`;
 }
 function rhMatchingRun(type,value,status){return rhCurrentRuns().find(r=>r.status===status&&(r.type||r.championshipType)===type&&String(r.value??'')===String(value??''))||null}
-function rhChampCard(type,value,name,count){const trophy=type==='make'?rhTrophy('manufacturer'):type==='era'?rhTrophy('era'):type==='favourite'?rhTrophy('favourite'):rhTrophy('festival'),active=rhMatchingRun(type,value,'active'),prepared=rhMatchingRun(type,value,'prepared');let action=`rhBeginSetup('${type}','${esc(String(value)).replace(/'/g,'&#39;')}','${esc(name).replace(/'/g,'&#39;')}')`,meta=`${count} eligible car${count===1?'':'s'}`;if(active){const cp=rhRunCarProgress(active);action=`rhOpenRun('${active.id}')`;meta=`IN PROGRESS • ${cp.complete} / ${cp.total} cars complete`}else if(prepared){action=`rhOpenPreparedRun('${prepared.id}')`;meta=`SAVED • ${(prepared.entries||[]).length} cars • ${(prepared.rounds||[]).length} rounds`}return `<button class="rhChampCard ${active?'rhChampActiveV1':prepared?'rhChampPreparedV1':''}" onclick="${action}"><img src="${trophy}"><span><b>${esc(name)}</b><small>${meta}</small></span><em>›</em></button>`}
+function rhChampCard(type,value,name,count){
+ const trophy=rhTrophy(type),active=rhMatchingRun(type,value,'active'),prepared=rhMatchingRun(type,value,'prepared');
+ let action=`rhBeginSetup('${type}','${esc(String(value)).replace(/'/g,'&#39;')}','${esc(name).replace(/'/g,'&#39;')}')`,meta=`${count} eligible car${count===1?'':'s'}`;
+ if(active){const cp=rhRunCarProgress(active);action=`rhOpenRun('${active.id}')`;meta=`IN PROGRESS • ${cp.complete} / ${cp.total} cars complete`}
+ else if(prepared){action=`rhOpenPreparedRun('${prepared.id}')`;meta=`SAVED • ${(prepared.entries||[]).length} cars • ${(prepared.rounds||[]).length} rounds`}
+ const plaque=type==='classType'?`<div class="rhDynamicTrophyPlaque">${esc(String(value||'').toUpperCase())}</div>`:'';
+ return `<button class="rhChampCard ${active?'rhChampActiveV1':prepared?'rhChampPreparedV1':''}" onclick="${action}"><div class="rhTrophyStageV6"><img src="${trophy}">${plaque}</div><span><b>${esc(name)}</b><small>${meta}</small></span><em>›</em></button>`
+}
 function rhContinueActiveRun(){const active=rhActiveRun();if(!active){toast('No active Championship');rhRenderFestival();return}try{rhOpenRun(active.id)}catch(err){console.error('RaceHub continue racing failed',err);toast('Could not open Championship')}}
 function rhRenderFestival(){
- const s=rhSpace(),active=rhActiveRun(),makes=rhMakeList(),eras=rhEraList(),fav=s.favouriteManufacturer;
+ const s=rhSpace(),active=rhActiveRun(),makes=rhMakeList(),eras=rhEraList(),classTypes=rhClassTypeList(),vintageCount=rhVintageCount(),classicCount=rhClassicCount(),fav=s.favouriteManufacturer;
  const progress=active?rhRunProgress(active):null;
  const activeCars=active?rhRunCarProgress(active):null;
  $('festival').innerHTML=`<div class="rhFestivalV1">
@@ -123,11 +152,30 @@ function rhRenderFestival(){
          </div>`}
      </section>
 
+     <details class="rhFestivalSectionV1 rhFestivalDetailsV1 rhFestivalHeritageV6">
+       <summary>VINTAGE & CLASSIC CHAMPIONSHIPS <span>${(vintageCount>=RH_CHAMP_MIN_ELIGIBLE?1:0)+(classicCount>=RH_CHAMP_MIN_ELIGIBLE?1:0)}</span></summary>
+       <div class="rhFestivalExpandedV1">
+         <div class="rhFestivalDetailIntroV1"><i aria-hidden="true">◆</i><span>Year-based Championships generated automatically from the Year details in your Garage.</span><b>VINTAGE ≤1949 • CLASSIC 1950–1990</b></div>
+         ${vintageCount>=RH_CHAMP_MIN_ELIGIBLE?rhChampCard('vintage','vintage','Vintage Championship',vintageCount):''}
+         ${classicCount>=RH_CHAMP_MIN_ELIGIBLE?rhChampCard('classic','classic','Classic Championship',classicCount):''}
+         ${vintageCount<RH_CHAMP_MIN_ELIGIBLE&&classicCount<RH_CHAMP_MIN_ELIGIBLE?'<p class="small">At least 2 eligible cars are required to unlock Vintage or Classic Championships.</p>':''}
+       </div>
+     </details>
+
      <details class="rhFestivalSectionV1 rhFestivalDetailsV1">
        <summary>ERA CHAMPIONSHIPS <span>${eras.length}</span></summary>
        <div class="rhFestivalDetailIntroV1"><i aria-hidden="true">◴</i><span>View and start Championships by Era.</span><b>${eras.length} ERA${eras.length===1?'':'S'} AVAILABLE</b></div>
        <div class="rhFestivalExpandedV1">
          ${eras.map(e=>rhChampCard('era',e,`${e}s Championship`,rhEligible('era',e).length)).join('')||'<p class="small">Add cars with years to unlock Era Championships.</p>'}
+       </div>
+     </details>
+
+     <details class="rhFestivalSectionV1 rhFestivalDetailsV1 rhFestivalClassTypeV6">
+       <summary>CLASS / TYPE CHAMPIONSHIPS <span>${classTypes.length}</span></summary>
+       <div class="rhFestivalExpandedV1">
+         <input class="rhSearch rhFestivalSearchV1" autocomplete="off" placeholder="Search Class / Type..." oninput="document.querySelectorAll('.rhClassTypeChamp').forEach(x=>x.hidden=!x.dataset.name.includes(this.value.toLowerCase()))">
+         <div class="rhFestivalDetailIntroV1"><i aria-hidden="true">◆</i><span>View and start Championships by the Class/Type details in your Garage.</span><b>${classTypes.length} CLASS / TYPE${classTypes.length===1?'':'S'} AVAILABLE</b></div>
+         ${classTypes.map(v=>`<div class="rhClassTypeChamp" data-name="${esc(v.toLowerCase())}">${rhChampCard('classType',v,`${v} Championship`,rhEligible('classType',v).length)}</div>`).join('')||'<p class="small">Add matching Class/Type details to at least 2 cars to unlock Class/Type Championships.</p>'}
        </div>
      </details>
 
@@ -142,14 +190,14 @@ function rhRenderFestival(){
 
      <div class="rhFestivalInfoV1">
        <i aria-hidden="true">i</i>
-       <p>Championships are generated from the cars in your Garage.<br>Only Eras and Manufacturers with at least 2 eligible cars are shown.<br>Use Expand to view and start available Championships.</p>
+       <p>Championships are generated from the cars in your Garage.<br>Vintage, Classic, Eras, Class/Types and Manufacturers require at least 2 eligible cars. UNKNOWN/missing details are ignored.<br>Use Expand to view and start available Championships.</p>
      </div>
    </main>
  </div>`;
 }
-function rhSetupTrophyType(type){return type==='make'?'manufacturer':type==='era'?'era':type==='favourite'?'favourite':'festival'}
-function rhSetupTypeLabel(type){return type==='make'?'MANUFACTURER CHAMPIONSHIP':type==='era'?'ERA CHAMPIONSHIP':type==='favourite'?'FAVOURITE MANUFACTURER CHAMPIONSHIP':'FESTIVAL CHAMPIONSHIP'}
-function rhBeginSetup(type,value,name){const saved=rhMatchingRun(type,value,'prepared');if(saved){rhOpenPreparedRun(saved.id);return}const cars=rhEligible(type,value);if(['make','era','favourite'].includes(type)&&cars.length<RH_CHAMP_MIN_ELIGIBLE){toast(`At least ${RH_CHAMP_MIN_ELIGIBLE} eligible cars are required`);rhRenderFestival();return}rhSetup={type,value,name,entries:cars.map(c=>c.id),rounds:[],savedRunId:null};rhRenderSetup()}
+function rhSetupTrophyType(type){return rhTrophyTypeKey(type)}
+function rhSetupTypeLabel(type){return type==='make'?'MANUFACTURER CHAMPIONSHIP':type==='era'?'ERA CHAMPIONSHIP':type==='classType'?'CLASS / TYPE CHAMPIONSHIP':type==='vintage'?'VINTAGE CHAMPIONSHIP':type==='classic'?'CLASSIC CHAMPIONSHIP':type==='favourite'?'FAVOURITE MANUFACTURER CHAMPIONSHIP':'FESTIVAL CHAMPIONSHIP'}
+function rhBeginSetup(type,value,name){const saved=rhMatchingRun(type,value,'prepared');if(saved){rhOpenPreparedRun(saved.id);return}const cars=rhEligible(type,value);if(['make','era','classType','vintage','classic','favourite'].includes(type)&&cars.length<RH_CHAMP_MIN_ELIGIBLE){toast(`At least ${RH_CHAMP_MIN_ELIGIBLE} eligible cars are required`);rhRenderFestival();return}rhSetup={type,value,name,entries:cars.map(c=>c.id),rounds:[],savedRunId:null};rhRenderSetup()}
 function rhOpenPreparedRun(id){const r=rhCurrentRuns().find(x=>x.id===id&&x.status==='prepared');if(!r){toast('Saved Championship not found');rhRenderFestival();return}rhSetup={type:r.type||r.championshipType||'festival',value:r.value,name:r.name,entries:[...(r.entries||[])],rounds:rhClone(r.rounds||[]),savedRunId:r.id};show('festival');rhRenderSetup()}
 function rhSavedRoundNames(){const s=rhSpace(),names=[];const add=n=>{n=String(n||'').trim();if(n&&!/^Round \d+$/i.test(n)&&!names.some(x=>x.toLowerCase()===n.toLowerCase()))names.push(n)};(s.runs||[]).forEach(r=>(r.rounds||[]).forEach(x=>add(x.name)));(s.customEvents||[]).forEach(e=>(e.rounds||[]).forEach(x=>add(x.name)));return names.sort((a,b)=>a.localeCompare(b))}
 function rhRoundNameList(){return ''}
@@ -171,7 +219,7 @@ function rhChooseSavedRoundName(kind,ownerId,roundId,name){
   r.name=name;rhSave();rhCloseRoundNamePicker();rhOpenEvent(ownerId)
  }
 }
-function rhRenderSetup(){const x=rhSetup;if(!x)return;const cars=rhEligible(x.type,x.value),included=x.entries.length,rounds=x.rounds.length,trophy=rhSetupTrophyType(x.type);$('festival').innerHTML=`<div class="rhSetupV1">
+function rhRenderSetup(){const x=rhSetup;if(!x)return;const cars=rhEligible(x.type,x.value),included=x.entries.length,rounds=x.rounds.length,trophy=rhSetupTrophyType(x.type);$('festival').innerHTML=`<div class="rhSetupV1 ${x.type==='favourite'?'rhFavouriteSetupV6031':''}">
  <header class="rhSetupHeroV1">
   <button class="rhSetupBackV1" onclick="rhCancelSetup()" aria-label="Back">‹</button>
   <div class="rhSetupTitleV1"><small>FESTIVAL</small><h1>CHAMPIONSHIP SETUP</h1><p>Build your Championship run, then freeze it when you start.</p></div>
@@ -227,8 +275,8 @@ function rhRenameRound(id,v){const r=rhSetup.rounds.find(r=>r.id===id);if(r)r.na
 function rhRemoveRound(id){rhSetup.rounds=rhSetup.rounds.filter(r=>r.id!==id);rhRenderSetup()}
 function rhMoveRound(i,d){const j=i+d;if(j<0||j>=rhSetup.rounds.length)return;[rhSetup.rounds[i],rhSetup.rounds[j]]=[rhSetup.rounds[j],rhSetup.rounds[i]];rhRenderSetup()}
 function rhCancelSetup(){rhSetup=null;rhRenderFestival()}
-function rhSavePrepared(){const x=rhSetup;if(!x)return;const s=rhSpace();let run=x.savedRunId?s.runs.find(r=>r.id===x.savedRunId&&r.status==='prepared'):null;if(run){run.name=x.name;run.type=x.type;run.value=x.value;run.trophy=x.type==='make'?'manufacturer':x.type==='era'?'era':x.type==='favourite'?'favourite':'festival';run.entries=[...x.entries];run.rounds=rhClone(x.rounds);run.updatedAt=new Date().toISOString()}else{run={id:rhId('run'),name:x.name,type:x.type,value:x.value,trophy:x.type==='make'?'manufacturer':x.type==='era'?'era':x.type==='favourite'?'favourite':'festival',createdAt:new Date().toISOString(),updatedAt:new Date().toISOString(),status:'prepared',entries:[...x.entries],rounds:rhClone(x.rounds),results:[]};s.runs.push(run)}rhSave();rhSetup=null;toast('Championship saved');rhRenderFestival()}
-function rhConfirmStart(){const x=rhSetup;if(!x||!x.entries.length||!x.rounds.length)return;const s=rhSpace();let run=x.savedRunId?s.runs.find(r=>r.id===x.savedRunId&&r.status==='prepared'):null;if(run){run.name=x.name;run.type=x.type;run.value=x.value;run.trophy=x.type==='make'?'manufacturer':x.type==='era'?'era':x.type==='favourite'?'favourite':'festival';run.entries=[...x.entries];run.rounds=rhClone(x.rounds);run.results=[];run.status='active';run.startedAt=new Date().toISOString();run.updatedAt=new Date().toISOString()}else{run={id:rhId('run'),name:x.name,type:x.type,value:x.value,trophy:x.type==='make'?'manufacturer':x.type==='era'?'era':x.type==='favourite'?'favourite':'festival',createdAt:new Date().toISOString(),startedAt:new Date().toISOString(),status:'active',entries:[...x.entries],rounds:rhClone(x.rounds),results:[]};s.runs.push(run)}rhSave();rhSetup=null;rhOpenRun(run.id)}
+function rhSavePrepared(){const x=rhSetup;if(!x)return;const s=rhSpace();let run=x.savedRunId?s.runs.find(r=>r.id===x.savedRunId&&r.status==='prepared'):null;if(run){run.name=x.name;run.type=x.type;run.value=x.value;run.trophy=rhTrophyTypeKey(x.type);run.entries=[...x.entries];run.rounds=rhClone(x.rounds);run.updatedAt=new Date().toISOString()}else{run={id:rhId('run'),name:x.name,type:x.type,value:x.value,trophy:rhTrophyTypeKey(x.type),createdAt:new Date().toISOString(),updatedAt:new Date().toISOString(),status:'prepared',entries:[...x.entries],rounds:rhClone(x.rounds),results:[]};s.runs.push(run)}rhSave();rhSetup=null;toast('Championship saved');rhRenderFestival()}
+function rhConfirmStart(){const x=rhSetup;if(!x||!x.entries.length||!x.rounds.length)return;const s=rhSpace();let run=x.savedRunId?s.runs.find(r=>r.id===x.savedRunId&&r.status==='prepared'):null;if(run){run.name=x.name;run.type=x.type;run.value=x.value;run.trophy=rhTrophyTypeKey(x.type);run.entries=[...x.entries];run.rounds=rhClone(x.rounds);run.results=[];run.status='active';run.startedAt=new Date().toISOString();run.updatedAt=new Date().toISOString()}else{run={id:rhId('run'),name:x.name,type:x.type,value:x.value,trophy:rhTrophyTypeKey(x.type),createdAt:new Date().toISOString(),startedAt:new Date().toISOString(),status:'active',entries:[...x.entries],rounds:rhClone(x.rounds),results:[]};s.runs.push(run)}rhSave();rhSetup=null;rhOpenRun(run.id)}
 function rhNextSlot(r){const entries=Array.isArray(r?.entries)?r.entries:[],rounds=Array.isArray(r?.rounds)?r.rounds:[],results=Array.isArray(r?.results)?r.results:[];for(const carId of entries){for(const round of rounds){if(!results.some(x=>x.carId===carId&&x.roundId===round.id))return {carId,round}}}return null}
 function rhQueueRemaining(r){const entries=Array.isArray(r?.entries)?r.entries:[],rounds=Array.isArray(r?.rounds)?r.rounds:[],results=Array.isArray(r?.results)?r.results:[];return entries.filter(cid=>rounds.some(rd=>!results.some(x=>x.carId===cid&&x.roundId===rd.id)))}
 function rhQueueCompleted(r){const remaining=new Set(rhQueueRemaining(r));return (Array.isArray(r?.entries)?r.entries:[]).filter(cid=>!remaining.has(cid))}
@@ -369,6 +417,14 @@ function rhTimeAutoAdvance(el,nextId,maxLen){el.value=String(el.value||'').repla
 function rhEventResult(id){const e=rhSpace().customEvents.find(x=>x.id===id);if(!e||e.status!=='active')return;const next=rhEventNextPair(e);if(!next){e.status='complete';e.completedAt=new Date().toISOString();rhSave();return rhOpenEvent(id)}document.getElementById('rhEventResultEditor')?.remove();document.body.insertAdjacentHTML('beforeend',`<div id="rhEventResultEditor" class="rhOverlay"><div class="rhModal rhFormModal"><button class="rhModalX" onclick="$('rhEventResultEditor').remove()">×</button><h2>Enter Result</h2><div class="rhResultContext"><small>${esc(e.name)}</small><b>${esc(carName(next.car))}</b><span>${esc(next.round.name)}</span></div><label>Race Time</label><div class="rhTimeEntry"><input id="rhEventMin" inputmode="numeric" maxlength="2" placeholder="00" oninput="rhTimeAutoAdvance(this,'rhEventSec',2)"><span>:</span><input id="rhEventSec" inputmode="numeric" maxlength="2" placeholder="00" oninput="rhTimeAutoAdvance(this,'rhEventMs',2)"><span>.</span><input id="rhEventMs" inputmode="numeric" maxlength="3" placeholder="000" oninput="rhTimeAutoAdvance(this,'rhEventSave',3)"></div><div class="rhModalActions"><button class="btn secondary" onclick="$('rhEventResultEditor').remove()">CANCEL</button><button id="rhEventSave" class="btn" onclick="rhSaveEventResult('${id}','${next.car.id}','${next.round.id}')">SAVE RESULT</button></div></div></div>`);setTimeout(()=>$('rhEventMin')?.focus(),50)}
 function rhEventCarTransition(id,next){const e=rhSpace().customEvents.find(x=>x.id===id);if(!e)return;document.getElementById('rhEventCarTransition')?.remove();document.body.insertAdjacentHTML('beforeend',`<div id="rhEventCarTransition" class="rhOverlay"><div class="rhModal rhEventTransitionModal"><div class="rhEventStatus">NEXT RACER</div><h2>${esc(carName(next.car))}</h2><p>${esc(next.round.name)} is next.</p><button class="btn" onclick="$('rhEventCarTransition').remove();rhEventResult('${id}')">START NEXT RACER</button></div></div>`)}
 function rhSaveEventResult(id,carId,roundId){const e=rhSpace().customEvents.find(x=>x.id===id);if(!e||e.status!=='active')return;const car=rhEventCars(e).find(c=>c.id===carId),round=rhEventRounds(e).find(r=>r.id===roundId);const m=Number($('rhEventMin')?.value||0),s=Number($('rhEventSec')?.value||0),ms=Number(($('rhEventMs')?.value||'0').padEnd(3,'0'));if(!car||!round||rhEventResultExists(e,carId,roundId)||!Number.isFinite(m)||!Number.isFinite(s)||!Number.isFinite(ms)||m<0||s<0||s>59||ms<0||ms>999)return toast('Enter a valid race time');const v=m*60+s+(ms/1000);if(v<=0)return toast('Enter a valid race time');e.results.push({id:rhId('result'),carId,roundId:round.id,roundName:round.name,time:v,date:new Date().toISOString()});$('rhEventResultEditor')?.remove();const next=rhEventNextPair(e);if(!next){e.status='complete';e.completedAt=new Date().toISOString();rhSave();toast('Event complete');return rhOpenEvent(id)}rhSave();if(next.car.id===carId){toast('Result saved');return rhEventResult(id)}rhOpenEvent(id);rhEventCarTransition(id,next)}
+function rhGarageNeedsDetails(c){return !String(c?.year||'').trim()||!String(c?.classType||'').trim()}
+function rhGarageUnknown(v){const x=String(v||'').trim();return x?esc(x):'<em class="rhGarageUnknown">UNKNOWN</em>'}
+function rhGarageToggleNeedsDetails(){
+ window.rhGarageNeedsDetailsOnly=!window.rhGarageNeedsDetailsOnly;
+ garageSearch='';
+ rhRenderGarage();
+}
+
 function rhGarageFilterLive(value){
  garageSearch=value||'';
  const q=garageSearch.trim().toLowerCase();
@@ -396,21 +452,23 @@ function rhGarageFilterLive(value){
 }
 function rhRenderGarage(){
  const s=rhSpace(); garageSearch=garageSearch||'';
- const grouped={};
- s.cars.forEach(c=>(grouped[c.make]||(grouped[c.make]=[])).push(c));
+ const needsOnly=Boolean(window.rhGarageNeedsDetailsOnly);
+ const source=needsOnly?s.cars.filter(rhGarageNeedsDetails):s.cars;
+ const grouped={};source.forEach(c=>(grouped[c.make]||(grouped[c.make]=[])).push(c));
  const makes=Object.keys(grouped).sort((a,b)=>a.localeCompare(b));
+ const needsCount=s.cars.filter(rhGarageNeedsDetails).length;
  $('garage').innerHTML=`<div class="rhGarageV1">
-  <section class="rhGarageHeroV1">
-   <div class="rhGarageHeadV1"><button onclick="show('home')" aria-label="Back">‹</button><div><h1>GARAGE</h1><p>Your Collection</p></div></div>
-  </section>
+  <section class="rhGarageHeroV1"><div class="rhGarageHeadV1"><button onclick="show('home')" aria-label="Back">‹</button><div><h1>GARAGE</h1><p>Your Collection</p></div></div></section>
   <main class="rhGarageBodyV1">
    <section class="rhGarageSummaryV1"><i>⌂</i><span><b>YOUR GARAGE</b><small>All the cars in your collection.<br>Add new cars, edit details and manage your collection.</small></span><strong>${s.cars.length}<small>CARS</small></strong></section>
-   <div class="rhGarageToolsV1"><label><i>⌕</i><input id="garageSearch" placeholder="Search your cars..." value="${esc(garageSearch)}" oninput="rhGarageFilterLive(this.value)"></label><button onclick="rhOpenCarEditor()">⊕ <span>ADD NEW CAR</span></button></div>
-   ${makes.length?`<div class="rhGarageMakesV1">${makes.map(make=>{const cars=grouped[make].slice().sort((a,b)=>carName(a).localeCompare(carName(b)));const open=rhGarageOpenMake===make;return `<section class="rhGarageMakeV1 ${open?'open':''}" data-make="${esc(make)}"><div class="rhGarageMakeHeadWrapV1"><button class="rhGarageMakeHeadV1" onclick="rhToggleGarageMake('${esc(make).replace(/'/g,'&#39;')}')"><b>${esc(make)}</b><span>${cars.length} Car${cars.length===1?'':'s'}</span><em>${open?'⌃':'⌄'}</em></button><button class="rhGarageMakeEditV1" aria-label="Rename ${esc(make)} manufacturer" title="Rename manufacturer" onclick="event.stopPropagation();rhRenameManufacturerFromGarage(decodeURIComponent('${encodeURIComponent(make)}'))">✎</button></div><div class="rhGarageCarsV1" ${open?'':'hidden'}>${cars.map(c=>`<div class="rhGarageCarV1" data-search="${esc(`${c.make} ${c.model} ${c.year||''}`)}"><i>•</i><span><b>${esc(c.model)}</b><small>${esc(c.year||'')}</small></span><button aria-label="Edit ${esc(carName(c))}" onclick="event.stopPropagation();rhOpenCarEditor('${c.id}')">✎</button></div>`).join('')}</div></section>`}).join('')}</div>`:rhEmpty('YOUR GARAGE IS EMPTY','Add cars to start building Championships and recording your racing.','Add Your First Car','rhOpenCarEditor()')}
-   <div class="rhGarageInfoV1"><i>i</i><p><b>GARAGE</b>This is your collection of all cars.<br>Add new cars, edit details and manage your collection.<br>Use the options above to add cars to your collection.</p></div>
+   <div class="rhGarageV6Guide"><b>MORE DETAILS = MORE CHAMPIONSHIPS</b><span>Adding Year and Class/Type gives RaceHub more ways to group your cars. Missing details remain UNKNOWN.</span></div>
+   <div class="rhGarageToolsV1"><label><i>⌕</i><input id="garageSearch" autocomplete="off" placeholder="Search your cars..." value="${esc(garageSearch)}" oninput="rhGarageFilterLive(this.value)"></label><button onclick="rhOpenCarEditor()">⊕ <span>ADD NEW CAR</span></button></div>
+   <button class="rhGarageNeedsBtn ${needsOnly?'on':''}" onclick="rhGarageToggleNeedsDetails()">CARS NEED DETAILS <span>${needsCount}</span></button>
+   ${makes.length?`<div class="rhGarageMakesV1">${makes.map(make=>{const cars=grouped[make].slice().sort((a,b)=>carName(a).localeCompare(carName(b)));const open=needsOnly||rhGarageOpenMake===make;return `<section class="rhGarageMakeV1 ${open?'open':''}" data-make="${esc(make)}"><div class="rhGarageMakeHeadWrapV1"><button class="rhGarageMakeHeadV1" onclick="rhToggleGarageMake('${esc(make).replace(/'/g,'&#39;')}')"><b>${esc(make)}</b><span>${cars.length} Car${cars.length===1?'':'s'}</span><em>${open?'⌃':'⌄'}</em></button><button class="rhGarageMakeEditV1" aria-label="Rename ${esc(make)} manufacturer" title="Rename manufacturer" onclick="event.stopPropagation();rhRenameManufacturerFromGarage(decodeURIComponent('${encodeURIComponent(make)}'))">✎</button></div><div class="rhGarageCarsV1" ${open?'':'hidden'}>${cars.map(c=>`<div class="rhGarageCarV1 rhGarageCarV6 ${rhGarageNeedsDetails(c)?'needs-details':''}" data-search="${esc(`${c.make} ${c.model} ${c.year||''} ${c.classType||''}`)}"><i>•</i><span><b>${esc(c.model)}</b><small><span>${rhGarageUnknown(c.year)}</span><span>${rhGarageUnknown(c.classType)}</span></small></span><button class="${rhGarageNeedsDetails(c)?'rhAddDetails':''}" aria-label="${rhGarageNeedsDetails(c)?'Add details to':'Edit'} ${esc(carName(c))}" onclick="event.stopPropagation();rhOpenCarEditor('${c.id}')">${rhGarageNeedsDetails(c)?'ADD DETAILS':'✎'}</button></div>`).join('')}</div></section>`}).join('')}</div>`:rhEmpty(needsOnly?'NO CARS NEED DETAILS':'YOUR GARAGE IS EMPTY',needsOnly?'Every car has Year and Class/Type details.':'Add cars to start building Championships and recording your racing.',needsOnly?'Show All Cars':'Add Your First Car',needsOnly?'rhGarageToggleNeedsDetails()':'rhOpenCarEditor()')}
+   <div class="rhGarageInfoV1"><i>i</i><p><b>GARAGE</b>UNKNOWN means that detail has not been entered yet.<br>It is display-only and is never used as a real category.</p></div>
   </main>
  </div>`;
- if(garageSearch) rhGarageFilterLive(garageSearch);
+ if(garageSearch)rhGarageFilterLive(garageSearch);
 }
 function rhToggleGarageMake(make){
  rhGarageOpenMake=rhGarageOpenMake===make?null:make;
@@ -424,18 +482,116 @@ function rhToggleGarageMake(make){
  if(em) em.textContent=open?'⌃':'⌄';
 }
 
-function rhOpenCarEditor(id=''){
- const c=id?rhSpace().cars.find(x=>x.id===id):null;
- document.body.insertAdjacentHTML('beforeend',`<div id="rhCarEditor" class="rhOverlay"><div class="rhModal rhFormModal"><button class="rhModalX" onclick="$('rhCarEditor').remove()">×</button><h2>${c?'Edit Car':'Add Car'}</h2><p>${c?'Correct this Garage entry.':'Add a car to the current RaceHub Space.'}</p><label>Manufacturer</label><input id="rhCarMake" class="rhSearch" value="${esc(c?.make||'')}" placeholder="Manufacturer"><label>Vehicle Name</label><input id="rhCarModel" class="rhSearch" value="${esc(c?.model||'')}" placeholder="Vehicle name"><label>Year</label><input id="rhCarYear" class="rhSearch" inputmode="numeric" value="${esc(c?.year||'')}" placeholder="Year"><p class="small">Era is derived automatically from Year.</p><div class="rhModalActions"><button class="btn secondary" onclick="$('rhCarEditor').remove()">CANCEL</button><button class="btn" onclick="rhSaveCarFinal('${id}')">${c?'SAVE CHANGES':'ADD TO GARAGE'}</button></div>${c?`<button class="btn dangerBtn rhDeleteCar" onclick="rhConfirmDeleteCar('${id}')">DELETE CAR</button>`:''}</div></div>`)
+
+function rhGarageClassTypeMemory(){
+ const s=rhSpace();
+ if(!s.garageEntryMemory||typeof s.garageEntryMemory!=='object')s.garageEntryMemory={};
+ if(!Array.isArray(s.garageEntryMemory.classTypes))s.garageEntryMemory.classTypes=[];
+ const seen=new Map();
+ const add=(value)=>{
+  const clean=String(value||'').trim();
+  if(!clean)return;
+  const key=clean.toLocaleLowerCase();
+  if(!seen.has(key))seen.set(key,clean);
+ };
+ s.garageEntryMemory.classTypes.forEach(add);
+ s.cars.forEach(c=>add(c.classType));
+ s.garageEntryMemory.classTypes=Array.from(seen.values()).sort((a,b)=>a.localeCompare(b));
+ return s.garageEntryMemory.classTypes;
+}
+function rhRememberClassType(value){
+ const clean=String(value||'').trim();
+ if(!clean)return;
+ const values=rhGarageClassTypeMemory();
+ if(!values.some(v=>v.toLocaleLowerCase()===clean.toLocaleLowerCase())){
+  values.push(clean);
+  values.sort((a,b)=>a.localeCompare(b));
+ }
+}
+function rhGarageClassTypeUsage(value){
+ const key=String(value||'').trim().toLocaleLowerCase();
+ return rhSpace().cars.filter(c=>String(c.classType||'').trim().toLocaleLowerCase()===key).length;
+}
+function rhGarageClassTypeSuggestions(query=''){
+ const q=String(query||'').trim().toLocaleLowerCase();
+ return rhGarageClassTypeMemory().map(value=>({
+  value,
+  count:rhGarageClassTypeUsage(value),
+  prefix:q&&value.toLocaleLowerCase().startsWith(q),
+  contains:!q||value.toLocaleLowerCase().includes(q)
+ })).filter(x=>x.contains).sort((a,b)=>{
+  if(Boolean(a.prefix)!==Boolean(b.prefix))return a.prefix?-1:1;
+  if(a.count!==b.count)return b.count-a.count;
+  return a.value.localeCompare(b.value);
+ });
+}
+function rhGarageBestClassTypeSuggestion(query=''){
+ const q=String(query||'').trim();
+ const inputKey=q.toLocaleLowerCase();
+ const items=rhGarageClassTypeSuggestions(q).filter(x=>x.value.toLocaleLowerCase()!==inputKey);
+ return items[0]||null;
+}
+function rhGarageRenderClassTypeSuggestions(){
+ const input=$('rhCarClassType'),box=$('rhClassTypeSuggestions');
+ if(!input||!box)return;
+ const item=rhGarageBestClassTypeSuggestion(input.value);
+ if(!item){box.hidden=true;box.innerHTML='';return}
+ box.innerHTML=`<button type="button" class="rhSmartSuggestionSingle" onpointerdown="event.preventDefault();rhGarageChooseClassType(decodeURIComponent('${encodeURIComponent(item.value)}'))"><span>${esc(item.value)}</span>${item.count?`<small>${item.count} car${item.count===1?'':'s'}</small>`:''}</button>`;
+ box.hidden=false;
+}
+function rhGarageChooseClassType(value){
+ const input=$('rhCarClassType'),box=$('rhClassTypeSuggestions');
+ if(!input)return;
+ input.value=value;
+ if(box)box.hidden=true;
+ input.focus();
+}
+function rhGarageBindClassTypeSuggestions(){
+ const input=$('rhCarClassType'),box=$('rhClassTypeSuggestions');
+ if(!input||!box)return;
+ input.addEventListener('focus',rhGarageRenderClassTypeSuggestions);
+ input.addEventListener('input',rhGarageRenderClassTypeSuggestions);
+ input.addEventListener('keydown',event=>{if(event.key==='Escape')box.hidden=true});
+ input.addEventListener('blur',()=>setTimeout(()=>{if(box)box.hidden=true},120));
 }
 
+function rhOpenCarEditor(id=''){
+ const c=id?rhSpace().cars.find(x=>x.id===id):null;
+ document.getElementById('rhCarEditor')?.remove();
+ document.body.insertAdjacentHTML('beforeend',`<div id="rhCarEditor" class="rhOverlay"><div class="rhModal rhFormModal"><button class="rhModalX" onclick="$('rhCarEditor').remove()">×</button><h2>${c?(rhGarageNeedsDetails(c)?'Add Details':'Edit Car'):'Add Car'}</h2><p>${c?'Correct this Garage entry.':'Add a car to the current RaceHub Space.'}</p><label>Manufacturer</label><input id="rhCarMake" class="rhSearch" autocomplete="off" value="${esc(c?.make||'')}" placeholder="Manufacturer"><label>Vehicle Name</label><input id="rhCarModel" class="rhSearch" autocomplete="off" value="${esc(c?.model||'')}" placeholder="Vehicle name"><label>Year</label><input id="rhCarYear" class="rhSearch" autocomplete="off" inputmode="numeric" maxlength="4" value="${esc(c?.year||'')}" placeholder="UNKNOWN"><label>Class / Type</label><div class="rhSmartSuggestWrap"><div id="rhClassTypeSuggestions" class="rhSmartSuggestions rhSmartSuggestionsAbove" hidden></div><input id="rhCarClassType" class="rhSearch" autocomplete="off" autocapitalize="words" spellcheck="false" value="${esc(c?.classType||'')}" placeholder="UNKNOWN"></div><p class="small">Era is derived automatically from Year. Class/Type suggestions are learned only from values used in this RaceHub Space.</p><div class="rhModalActions"><button class="btn secondary" onclick="$('rhCarEditor').remove()">CANCEL</button><button class="btn" onclick="rhSaveCarFinal('${id}')">${c?'SAVE CHANGES':'ADD TO GARAGE'}</button></div>${c?`<button class="btn secondary rhCarNotesButtonV6012" onclick="rhOpenCarNotesV6012('${id}')">CAR NOTES${String(c?.notes||'').trim()?' •':''}</button><button class="btn dangerBtn rhDeleteCar" onclick="rhConfirmDeleteCar('${id}')">DELETE CAR</button>`:''}</div></div>`)
+ rhGarageBindClassTypeSuggestions();
+}
+
+function rhOpenCarNotesV6012(carId){
+ const c=rhSpace().cars.find(x=>String(x.id)===String(carId));if(!c)return;
+ $('rhCarEditor')?.remove();$('rhCarNotesOverlayV6012')?.remove();
+ document.body.insertAdjacentHTML('beforeend',`<div id="rhCarNotesOverlayV6012" class="rhOverlay"><div class="rhModal rhFormModal rhCarNotesModalV6012"><button class="rhModalX" onclick="rhCloseCarNotesV6012('${c.id}')">×</button><h2>Car Notes</h2><p>${esc(c.make||'')} ${esc(c.model||'')}${c.year?` • ${esc(String(c.year))}`:''}</p><label for="rhCarNotesTextV6012">Notes</label><textarea id="rhCarNotesTextV6012" class="rhCarNotesTextV6012" maxlength="12000" placeholder="Add notes about this car...">${esc(String(c.notes||''))}</textarea><p class="small">Private notes for this car in this RaceHub Space.</p><div class="rhModalActions"><button class="btn secondary" onclick="rhCloseCarNotesV6012('${c.id}')">CANCEL</button><button class="btn" onclick="rhSaveCarNotesV6012('${c.id}')">SAVE NOTES</button></div></div></div>`);
+ setTimeout(()=>$('rhCarNotesTextV6012')?.focus(),50);
+}
+function rhCloseCarNotesV6012(carId){
+ $('rhCarNotesOverlayV6012')?.remove();
+ rhOpenCarEditor(carId);
+}
+function rhSaveCarNotesV6012(carId){
+ const c=rhSpace().cars.find(x=>String(x.id)===String(carId));if(!c)return;
+ c.notes=String($('rhCarNotesTextV6012')?.value||'');
+ rhSave();
+ $('rhCarNotesOverlayV6012')?.remove();
+ rhOpenCarEditor(carId);
+ toast('Notes saved');
+}
 function rhChampDiscoveryKey(type,value){return `${type}:${String(value||'').trim().toLowerCase()}`}
 function rhEligibleChampionshipsForCars(cars){
  const counts=(arr,keyFn)=>arr.reduce((m,c)=>{const k=keyFn(c);if(k)m[k]=(m[k]||0)+1;return m},{});
- const makes=counts(cars,c=>c.make),eras=counts(cars,c=>{const y=Number(c.year);return Number.isFinite(y)&&y>=1900&&y<=2039?String(Math.floor(y/10)*10):''});
+ const makes=counts(cars,c=>c.make),eras=counts(cars,c=>{const y=Number(c.year);return Number.isFinite(y)&&y>=1900&&y<=2039?String(Math.floor(y/10)*10):''}),classTypes=counts(cars,c=>String(c.classType||'').trim());
+ const vintageCount=cars.filter(c=>{const y=Number(c.year);return Number.isFinite(y)&&y>0&&y<=1949}).length;
+ const classicCount=cars.filter(c=>{const y=Number(c.year);return Number.isFinite(y)&&y>=1950&&y<=1990}).length;
  const out=[];
  Object.entries(makes).forEach(([name,count])=>{if(count>=2)out.push({type:'make',value:name,name:`${name} Championship`,copy:`You now have ${count} eligible ${name} cars.`})});
  Object.entries(eras).forEach(([name,count])=>{if(count>=2)out.push({type:'era',value:name,name:`${name} Championship`,copy:`You now have ${count} eligible cars from the ${name}.`})});
+ Object.entries(classTypes).forEach(([name,count])=>{if(name&&count>=2)out.push({type:'classType',value:name,name:`${name} Championship`,copy:`You now have ${count} eligible cars with Class/Type ${name}.`})});
+ if(vintageCount>=2)out.push({type:'vintage',value:'vintage',name:'Vintage Championship',copy:`You now have ${vintageCount} eligible cars from 1949 or earlier.`});
+ if(classicCount>=2)out.push({type:'classic',value:'classic',name:'Classic Championship',copy:`You now have ${classicCount} eligible cars from 1950–1990.`});
  const fav=rhSpace().favouriteManufacturer;
  if(fav&&makes[fav]>=2)out.push({type:'favourite',value:fav,name:`${fav} Championship`,copy:`You now have ${makes[fav]} eligible ${fav} cars.`});
  return out
@@ -465,16 +621,15 @@ function rhViewDiscoveredChampionship(){
  document.getElementById('rhChampDiscoveryOverlay')?.remove();window.rhPendingChampDiscovery=null;show('festival')
 }
 function rhSaveCarFinal(id=''){
- const make=$('rhCarMake')?.value.trim(),model=$('rhCarModel')?.value.trim(),year=$('rhCarYear')?.value.trim()||'';
+ const make=$('rhCarMake')?.value.trim(),model=$('rhCarModel')?.value.trim(),year=$('rhCarYear')?.value.trim()||'',classType=$('rhCarClassType')?.value.trim()||'';
  if(!make||!model){toast('Manufacturer and Vehicle Name are required');return}
  if(year&&!/^\d{4}$/.test(year)){toast('Enter a four-digit year');return}
  const s=rhSpace(),before=rhCaptureChampEligibility();
- if(id){const c=s.cars.find(x=>x.id===id);if(!c)return;Object.assign(c,normaliseCar({...c,make,model,year}))}
- else s.cars.push(normaliseCar({id:rhId('car'),make,model,year}));
+ rhRememberClassType(classType);
+ if(id){const c=s.cars.find(x=>x.id===id);if(!c)return;Object.assign(c,normaliseCar({...c,make,model,year,classType}))}
+ else s.cars.push(normaliseCar({id:rhId('car'),make,model,year,classType}));
  rhGarageOpenMake=make;rhSync();rhSave();$('rhCarEditor')?.remove();rhRenderGarage();toast(id?'Car updated':'Car added');rhCheckChampionshipDiscoveries(before)
 }
-function rhConfirmDeleteCar(id){const c=rhSpace().cars.find(x=>x.id===id);if(!c)return;rhConfirm({title:'Delete Car?',copy:`${carName(c)} will be removed from this Garage. This cannot be undone.`,confirmLabel:'DELETE CAR',danger:true,onConfirm:`rhDeleteCarFinal('${id}')`})}
-function rhDeleteCarFinal(id){const s=rhSpace();s.cars=s.cars.filter(x=>x.id!==id);(s.runs||[]).forEach(r=>{if((r.type==='festival'||r.championshipType==='festival')&&(r.status==='active'||r.status==='prepared')){r.entries=(r.entries||[]).filter(carId=>carId!==id);r.results=(r.results||[]).filter(result=>result.carId!==id);r.updatedAt=new Date().toISOString()}});rhSync();rhSave();$('rhCarEditor')?.remove();rhRenderGarage();toast('Car deleted')}
 function rhAddCarFinal(){rhOpenCarEditor()}
 function rhRecordsHeader(hall){
  if(!hall)return `<section class="rhRecordsHeroV1"><div class="rhRecordsHeadV1"><button onclick="show('home')" aria-label="Back">‹</button><div><h1>RECORDS</h1><p>Your Racing History</p></div></div></section>`;
@@ -486,11 +641,14 @@ function rhRecordRoundRow(r,rd){
  return `<div class="rhRecordRowV1"><span><b>${esc(rd.name)}</b><small>${best&&car?esc(carName(car)):'No result recorded'}</small></span><strong>${best?rhFmtTime(best.time):'—'}</strong></div>`;
 }
 function rhRunTrophy(r){
- const t=String(r.trophy||r.type||'festival').toLowerCase();
- if(t==='make'||t==='manufacturer')return rhTrophy('manufacturer');
- if(t==='era')return rhTrophy('era');
- if(t==='favourite')return rhTrophy('favourite');
- return rhTrophy('festival');
+ const type=r?.type||r?.championshipType||r?.trophy||'festival';
+ return rhTrophy(type);
+}
+function rhRunTrophyPlaque(r){
+ const type=String(r?.type||r?.championshipType||'').toLowerCase();
+ if(type!=='classtype')return '';
+ const value=String(r?.value||'').trim();
+ return value?`<div class="rhDynamicTrophyPlaque rhHofDynamicPlaque">${esc(value.toUpperCase())}</div>`:'';
 }
 function rhRenderRecords(){
  const runs=rhCurrentRuns().filter(r=>r.status!=='prepared'),completed=runs.filter(r=>r.status==='complete'),hall=rhRecordsMode==='hall';
@@ -501,7 +659,7 @@ function rhRenderRecords(){
 }
 function rhHallOfFame(completed){
  return `<section class="rhHofSectionV1"><div class="rhHofIntroV1"><i>☆</i><p><b>YOUR HALL OF FAME</b>Completed Championships are honoured here with their trophy, winning car and final time.</p></div>
- ${completed.length?`<div class="rhHallGridV1">${completed.map(r=>{const rows=(r.entries||[]).map(id=>{const rr=(r.results||[]).filter(x=>x.carId===id);return rr.length===(r.rounds||[]).length?{id,total:rr.reduce((a,b)=>a+Number(b.time||0),0)}:null}).filter(Boolean).sort((a,b)=>a.total-b.total),w=rows[0],car=w?carById(w.id):null;return `<article class="rhHallCardV1"><img src="${rhRunTrophy(r)}" alt=""><b>${esc(r.name)}</b><span>${car?esc(carName(car)):'—'}</span><small>WINNING TIME</small><strong>${w?rhFmtTime(w.total):'—'}</strong></article>`}).join('')}</div>`:rhEmpty('HALL OF FAME IS EMPTY','Completed Championships will appear here with their trophy, winning car and final time.','View Championships',"rhRecordsMode='records';rhRenderRecords()")}
+ ${completed.length?`<div class="rhHallGridV1">${completed.map(r=>{const rows=(r.entries||[]).map(id=>{const rr=(r.results||[]).filter(x=>x.carId===id);return rr.length===(r.rounds||[]).length?{id,total:rr.reduce((a,b)=>a+Number(b.time||0),0)}:null}).filter(Boolean).sort((a,b)=>a.total-b.total),w=rows[0],car=w?carById(w.id):null;return `<article class="rhHallCardV1"><div class="rhHofTrophyV6"><img src="${rhRunTrophy(r)}" alt="">${rhRunTrophyPlaque(r)}</div><b>${esc(r.name)}</b><span>${car?esc(carName(car)):'—'}</span><small>WINNING TIME</small><strong>${w?rhFmtTime(w.total):'—'}</strong></article>`}).join('')}</div>`:rhEmpty('HALL OF FAME IS EMPTY','Completed Championships will appear here with their trophy, winning car and final time.','View Championships',"rhRecordsMode='records';rhRenderRecords()")}
  <div class="rhRecordsInfoV1"><i>i</i><p><b>ABOUT HALL OF FAME</b>Only fully completed Championships appear here. Each entry shows the trophy for that Championship, the winning car and the final time.</p></div></section>`;
 }
 function rhRenderStats(){const s=rhSpace(),runs=s.runs||[],completed=runs.filter(r=>r.status==='complete'),champResults=runs.flatMap(r=>r.results||[]),eventResults=(s.customEvents||[]).flatMap(e=>e.results||[]),results=[...champResults,...eventResults],time=results.reduce((a,b)=>a+Number(b.time||0),0);$('more').innerHTML=`<div class="rhStatsScene"><div class="rhPageHead"><button class="rhBack" onclick="show('home')">‹</button><div><h1>STATS</h1><p>Your RaceHub at a glance</p></div></div><div class="rhStatsCockpit"><div class="rhStatsGauge rhStatsGaugeLeft"><span>CHAMPIONSHIPS</span><small>CREATED</small><b>${runs.length}</b></div><div class="rhStatsGauge rhStatsGaugeMain"><span>TOTAL</span><small>RACES</small><b>${results.length}</b></div><div class="rhStatsGauge rhStatsGaugeRight"><span>CHAMPIONSHIPS</span><small>COMPLETED</small><b>${completed.length}</b></div><div class="rhStatsOdometer"><span>TIME DRIVEN</span><b>${rhDurationClock(time)}</b><small>HOURS&nbsp;&nbsp;&nbsp;MINUTES&nbsp;&nbsp;&nbsp;SECONDS</small></div></div></div><div class="rhContent rhStatsInfoWrap"><div class="rhStatsInfo">All statistics are for the current RaceHub Space only.</div></div>`}

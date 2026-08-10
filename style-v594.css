@@ -4140,7 +4140,8 @@ body.rhFS28Active #final-standings{display:block!important;position:fixed!import
   .rhPodiumAverageV5837 span{font-size:9px}
 }
 
-/* rh-guide v5.9.3 — onboarding Favourite Manufacturer touch scrolling fix. */
+
+/* RaceHub v5.9.3 — onboarding Favourite Manufacturer touch scrolling fix. */
 .rhOnMakeList{
   height:min(42vh,360px)!important;
   min-height:160px!important;
@@ -4168,7 +4169,7 @@ body.rhFS28Active #final-standings{display:block!important;position:fixed!import
 .rhUpdateActionsV593{display:grid;grid-template-columns:1fr 1.3fr;gap:10px}.rhUpdateActionsV593 button{padding:14px;border-radius:13px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:#fff;font-weight:900}.rhUpdateActionsV593 .rhUpdateNowV593{border-color:#55e6ff;background:#40d9f0;color:#001018}
 
 
-/* rh-guide v5.9.3 — final authoritative navigation repair. */
+/* RaceHub v5.9.3 — final authoritative navigation repair. */
 .rhRecordsHeadV1>button,
 .rhPageHead>.rhBack,
 .rhPostRaceBack,
@@ -4198,7 +4199,7 @@ button.rhBack{
 }
 .rhHallBannerV1,.rhHallBanner{pointer-events:auto!important;cursor:pointer!important;position:relative!important;z-index:2!important}
 
-/* rh-guide v5.9.3 — final optical back-arrow authority. */
+/* RaceHub v5.9.3 — final optical back-arrow authority. */
 .rhBackCenteredV593{
   display:flex!important;
   align-items:center!important;

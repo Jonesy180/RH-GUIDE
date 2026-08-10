@@ -4,7 +4,7 @@ const q=id=>document.getElementById(id);
 const safe=v=>typeof esc==='function'?esc(String(v??'')):String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const fmt=v=>typeof rhFmtTime==='function'?rhFmtTime(Number(v)||0):String(v??'—');
 const raceKey=name=>String(name||'').trim().toLocaleLowerCase();
-const sourceKey=(kind,name)=>`${kind}:${String(name||'').trim().toLocaleLowerCase()}`;
+const sourceKey=(kind,source)=>`${kind}:${String(source?.id||source?.name||source?.title||'').trim().toLocaleLowerCase()}`;
 
 function collectRecords(){
   const map=new Map();
@@ -17,9 +17,9 @@ function collectRecords(){
       const key=raceKey(raceName);
       if(!map.has(key))map.set(key,{name:raceName,all:[],sources:new Map()});
       const race=map.get(key);
-      const entry={time,carId:result.carId,date:result.date||'',sourceName,kind,sourceId:String(source?.id||'')};
+      const entry={time,carId:result.carId,date:result.date||'',sourceName,kind,sourceId:String(source?.id||''),sourceStatus:String(source?.status||''),sourceCompletedAt:String(source?.completedAt||'')};
       race.all.push(entry);
-      const sk=sourceKey(kind,sourceName);
+      const sk=sourceKey(kind,source);
       const previous=race.sources.get(sk);
       if(!previous||time<previous.time)race.sources.set(sk,entry);
     });
@@ -36,9 +36,19 @@ function carLabel(id){
 }
 
 function sourceTypeLabel(kind){return kind==='event'?'EVENT RECORD':'CHAMPIONSHIP RECORD';}
-
+function canOpenClassification(entry){return !!entry?.sourceId&&entry?.sourceStatus==='complete'}
+function openClassification(entry){
+  if(!canOpenClassification(entry))return;
+  if(entry.kind==='event'){
+    if(typeof window.rhShowRecordEventFinalStandingsV6034==='function')window.rhShowRecordEventFinalStandingsV6034(entry.sourceId);
+    return;
+  }
+  if(typeof window.rhShowRecordFinalStandingsV6034==='function')window.rhShowRecordFinalStandingsV6034(entry.sourceId);
+}
 function sourceRow(entry,isAllTime){
-  return `<article class="rhRaceRecordRowV5830 ${isAllTime?'allTime':''}">
+  const open=canOpenClassification(entry);
+  const action=open?` onclick="rhOpenRecordClassificationV6010('${safe(entry.kind)}','${safe(entry.sourceId)}')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}"`:'';
+  return `<article class="rhRaceRecordRowV5830 ${isAllTime?'allTime':''} ${open?'rhRaceRecordHistoryLinkV6010':''}"${action}>
     <span class="rhRaceRecordMedalV5830">${isAllTime?'★':'◆'}</span>
     <div class="rhRaceRecordTextV5830">
       <small>${isAllTime?'ALL-TIME RACEHUB RECORD':sourceTypeLabel(entry.kind)}</small>
@@ -46,8 +56,13 @@ function sourceRow(entry,isAllTime){
       <em>${safe(carLabel(entry.carId))}</em>
     </div>
     <strong>${fmt(entry.time)}</strong>
+    ${open?'<span class="rhRaceRecordOpenFinalV6010">FINAL ›</span>':''}
   </article>`;
 }
+window.rhOpenRecordClassificationV6010=function(kind,id){
+  const entry={kind,sourceId:String(id||''),sourceStatus:'complete'};
+  openClassification(entry);
+};
 
 function raceCard(race){
   const allTime=race.all.slice().sort((a,b)=>a.time-b.time)[0];
@@ -59,7 +74,7 @@ function raceCard(race){
     </summary>
     <div class="rhRaceRecordOpenV5830">
       ${sourceRow(allTime,true)}
-      <div class="rhRaceRecordHistoryHeadV5830"><span>CHAMPIONSHIP & EVENT HISTORY</span><small>Best time for each competition on ${safe(race.name)}</small></div>
+      <div class="rhRaceRecordHistoryHeadV5830"><span>CHAMPIONSHIP & EVENT HISTORY</span><small>Every competition on ${safe(race.name)}. Completed classifications can be reopened.</small></div>
       <div class="rhRaceRecordHistoryV5830">${sourceRows.map(e=>sourceRow(e,false)).join('')}</div>
     </div>
   </details>`;
