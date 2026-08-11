@@ -630,6 +630,26 @@ function rhSaveCarFinal(id=''){
  else s.cars.push(normaliseCar({id:rhId('car'),make,model,year,classType}));
  rhGarageOpenMake=make;rhSync();rhSave();$('rhCarEditor')?.remove();rhRenderGarage();toast(id?'Car updated':'Car added');rhCheckChampionshipDiscoveries(before)
 }
+function rhConfirmDeleteCar(id){
+ const c=rhSpace().cars.find(x=>x.id===id);
+ if(!c)return;
+ rhConfirm({
+  title:'Delete Car?',
+  copy:`${carName(c)} will be removed from this Garage. This cannot be undone.`,
+  confirmLabel:'DELETE CAR',
+  danger:true,
+  onConfirm:`rhDeleteCarFinal('${id}')`
+ })
+}
+function rhDeleteCarFinal(id){
+ const s=rhSpace();
+ s.cars=s.cars.filter(x=>x.id!==id);
+ rhSync();
+ rhSave();
+ $('rhCarEditor')?.remove();
+ rhRenderGarage();
+ toast('Car deleted')
+}
 function rhAddCarFinal(){rhOpenCarEditor()}
 function rhRecordsHeader(hall){
  if(!hall)return `<section class="rhRecordsHeroV1"><div class="rhRecordsHeadV1"><button onclick="show('home')" aria-label="Back">‹</button><div><h1>RECORDS</h1><p>Your Racing History</p></div></div></section>`;
