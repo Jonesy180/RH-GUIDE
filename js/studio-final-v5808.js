@@ -1,5 +1,5 @@
 // RaceHub v5.6.6 — Events guided run checkpoint
-const RH_FINAL_STORE='RHGuide_Studio_Final_v1';
+const RH_FINAL_STORE='RaceHub_Studio_Final_v5_6';
 const RH_BUILD_VERSION='5.8.07';
 let rhMoreMode='stats', rhRecordsMode='records', rhFestivalMode='browse', rhSetup=null, rhHelpKey=null, rhGarageOpenMake=null;
 const RH_HELP={
@@ -120,7 +120,30 @@ function rhChampCard(type,value,name,count){
  return `<button class="rhChampCard ${active?'rhChampActiveV1':prepared?'rhChampPreparedV1':''}" onclick="${action}"><div class="rhTrophyStageV6"><img src="${trophy}">${plaque}</div><span><b>${esc(name)}</b><small>${meta}</small></span><em>›</em></button>`
 }
 function rhContinueActiveRun(){const active=rhActiveRun();if(!active){toast('No active Championship');rhRenderFestival();return}try{rhOpenRun(active.id)}catch(err){console.error('RaceHub continue racing failed',err);toast('Could not open Championship')}}
+function rhReconcileFestivalGarageRefs(){
+ const s=rhSpace(),valid=new Set((s.cars||[]).map(c=>c.id));
+ let changed=false;
+ (s.runs||[]).forEach(r=>{
+  const type=String(r?.type||r?.championshipType||'').toLowerCase();
+  if(type!=='festival'||!['active','prepared'].includes(r?.status))return;
+  if(Array.isArray(r.entries)){
+   const next=r.entries.filter(cid=>valid.has(cid));
+   if(next.length!==r.entries.length){r.entries=next;changed=true}
+  }
+  if(Array.isArray(r.results)){
+   const next=r.results.filter(res=>valid.has(res?.carId));
+   if(next.length!==r.results.length){r.results=next;changed=true}
+  }
+ });
+ if(rhSetup&&String(rhSetup.type||'').toLowerCase()==='festival'&&Array.isArray(rhSetup.entries)){
+  const next=rhSetup.entries.filter(cid=>valid.has(cid));
+  if(next.length!==rhSetup.entries.length){rhSetup.entries=next;changed=true}
+ }
+ if(changed)rhSave();
+ return changed;
+}
 function rhRenderFestival(){
+ rhReconcileFestivalGarageRefs();
  const s=rhSpace(),active=rhActiveRun(),makes=rhMakeList(),eras=rhEraList(),classTypes=rhClassTypeList(),vintageCount=rhVintageCount(),classicCount=rhClassicCount(),fav=s.favouriteManufacturer;
  const progress=active?rhRunProgress(active):null;
  const activeCars=active?rhRunCarProgress(active):null;
@@ -643,6 +666,17 @@ function rhConfirmDeleteCar(id){
 }
 function rhDeleteCarFinal(id){
  const s=rhSpace();
+ // v5.9.15 behaviour restored: deleting a Garage car also removes that car
+ // from active/prepared Festival Championship entry lists and Festival results only.
+ (s.runs||[]).forEach(r=>{
+  const type=String(r?.type||r?.championshipType||'').toLowerCase();
+  if(type!=='festival'||!['active','prepared'].includes(r?.status))return;
+  if(Array.isArray(r.entries))r.entries=r.entries.filter(cid=>cid!==id);
+  if(Array.isArray(r.results))r.results=r.results.filter(res=>res?.carId!==id);
+ });
+ if(rhSetup&&String(rhSetup.type||'').toLowerCase()==='festival'&&Array.isArray(rhSetup.entries)){
+  rhSetup.entries=rhSetup.entries.filter(cid=>cid!==id);
+ }
  s.cars=s.cars.filter(x=>x.id!==id);
  rhSync();
  rhSave();

@@ -1,6 +1,6 @@
 /* RaceHub v6.0.0 — Stage 1: Garage foundation.
    Non-destructive schema migration only. Existing v5 Garage/Space data remains authoritative. */
-const RH_V6_BUILD_VERSION='6.0.43';
+const RH_V6_BUILD_VERSION='6.0.45';
 const RH_V6_SCHEMA=3;
 
 function rhV6NormaliseSpace(space,index=0){

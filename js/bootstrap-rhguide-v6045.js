@@ -1,0 +1,5 @@
+// rh-guide v6.0.45 — startup + authoritative independent service worker
+state=rhLoad();
+rhSync();
+if(state&&!state.onboarded){window.rhStartOnboardingIfNeeded?.();}else{show('home');}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker-rhguide-v6045.js',{updateViaCache:'none'}).catch(()=>{}));}
