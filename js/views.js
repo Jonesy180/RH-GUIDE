@@ -531,7 +531,7 @@ function renderHome(){
   <div class="rhDash rhDashV3">
    <section class="rhDashHero">
     <div class="rhDashWelcome"><small>WELCOME TO</small><strong>${esc(spaceName)}</strong></div>
-    <img class="rhDashLogo" src="assets/brand/otg-mark-painted-wall.svg" alt="OTG! — Drive, Record, Improve">
+    <img class="rhDashLogo" src="assets/brand/otg-approved-painted-mark-v6052.png" alt="OTG! — Drive, Record, Improve">
    </section>
    <section class="rhDashNav"><div class="rhDashGrid">
     ${tile('festival','show(\'festival\')','🏁','FESTIVAL','OTG! Championships')}

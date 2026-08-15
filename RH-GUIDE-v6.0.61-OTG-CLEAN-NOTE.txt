@@ -1,0 +1,1 @@
+CLEAN rh-guide OTG sync from guide v6.0.46. No main storage/core/seed/data files copied. Guide manifest/bootstrap/service-worker/storage logic preserved; OTG presentation assets and targeted visible UI fixes only.

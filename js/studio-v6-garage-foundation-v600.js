@@ -1,12 +1,12 @@
-/* OTG! v6.0.0 — Stage 1: Garage foundation.
+/* RaceHub v6.0.0 — Stage 1: Garage foundation.
    Non-destructive schema migration only. Existing v5 Garage/Space data remains authoritative. */
-const RH_V6_BUILD_VERSION='6.0.45';
+const RH_V6_BUILD_VERSION='6.0.46';
 const RH_V6_SCHEMA=3;
 
 function rhV6NormaliseSpace(space,index=0){
  const s=(space&&typeof space==='object')?space:{};
  if(!s.id)s.id=rhId('space');
- if(typeof s.name!=='string'||!s.name.trim())s.name=index===0?'My OTG!':`OTG! ${index+1}`;
+ if(typeof s.name!=='string'||!s.name.trim())s.name=index===0?'My RaceHub':`RaceHub ${index+1}`;
  s.cars=Array.isArray(s.cars)?s.cars.map(car=>{
    const original=(car&&typeof car==='object')?car:{};
    const normal=normaliseCar(original);
@@ -25,7 +25,7 @@ function rhV6NormaliseSpace(space,index=0){
 function rhV6MigrateState(raw){
  const next=(raw&&typeof raw==='object')?raw:{};
  next.spaces=Array.isArray(next.spaces)?next.spaces.map(rhV6NormaliseSpace):[];
- if(!next.spaces.length)next.spaces=[rhSpaceTemplate('My OTG!',[])];
+ if(!next.spaces.length)next.spaces=[rhSpaceTemplate('My RaceHub',[])];
  if(!next.spaces.some(s=>s.id===next.activeSpaceId))next.activeSpaceId=next.spaces[0].id;
  next.settings=Object.assign({sound:true,confetti:true,vibrate:true},next.settings||{});
  if(typeof next.driverName!=='string')next.driverName='';
@@ -53,7 +53,7 @@ rhLoad=function(){
      return migrated;
    }
  }catch(e){}
- const space=rhSpaceTemplate('My OTG!',[]);
+ const space=rhSpaceTemplate('My RaceHub',[]);
  const fresh=rhV6MigrateState({driverName:'',spaces:[space],activeSpaceId:space.id,settings:{sound:true,confetti:true,vibrate:true},onboarded:false});
  localStorage.setItem(RH_FINAL_STORE,JSON.stringify(fresh));
  return fresh;

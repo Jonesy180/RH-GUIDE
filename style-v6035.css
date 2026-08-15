@@ -1,4 +1,4 @@
-/* OTG! v6.0.35 — Grand Tour Fix #5: Celebration Settings label/description spacing only. */
+/* RaceHub v6.0.35 — Grand Tour Fix #5: Celebration Settings label/description spacing only. */
 .rhSettingPanel .rhToggle > span{
   display:flex;
   flex-direction:column;

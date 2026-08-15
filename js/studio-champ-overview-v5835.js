@@ -1,4 +1,4 @@
-/* OTG! v5.8.35 — Final polish */
+/* RaceHub v5.8.35 — Final polish */
 (function(){
   'use strict';
 
