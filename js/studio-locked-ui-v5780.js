@@ -80,7 +80,7 @@ window.rhResultSummary=function(r,res){
   <div class="rhSummaryCard"><small>CHAMPIONSHIP</small><b>${safe(r.name)}</b></div>
   <div class="rhSummaryCard"><small>CAR</small><b>${safe(carName(c))}</b></div>
   <div class="rhResultHero rhResultHeroFinal"><div><small>FINISHING POSITION</small><strong>${res.position?safe(res.position):'—'}</strong></div><div><small>TOTAL RACE TIME</small><strong>${rhFmtTime(res.time)}</strong></div></div>
-  ${rhAverageCompareHtml(hist)}${records?`<div class="rhRecordCelebration rhRecordCelebrationFinal"><div class="rhRosettes">${res.championshipRecord?'<b>✹ CHAMPIONSHIP RECORD</b>':''}${res.allTime?'<b class="gold">✹ ALL-TIME OTG! RECORD</b>':''}</div><img src="assets/final/hubs.png?v=6061" alt="Hubs"><p>Incredible driving,<br><b>well done!</b></p></div>`:''}
+  ${rhAverageCompareHtml(hist)}${records?`<div class="rhRecordCelebration rhRecordCelebrationFinal"><div class="rhRosettes">${res.championshipRecord?'<b>✹ CHAMPIONSHIP RECORD</b>':''}${res.allTime?'<b class="gold">✹ ALL-TIME OTG! RECORD</b>':''}</div><img src="assets/final/hubs.png" alt="Hubs"><p>Incredible driving,<br><b>well done!</b></p></div>`:''}
   <div class="rhProgressCard"><small>CHAMPIONSHIP PROGRESS</small><b>${carRoundDone} OF ${roundCount} ROUNDS COMPLETE</b><span>${carPct}%</span><div class="progress"><div class="bar" style="width:${carPct}%"></div></div></div>
   <button class="btn rhPrimaryWide rhResultContinueFinal" onclick="${action}"><b>${label}</b><small>${sub}</small></button>
  </section>`);
@@ -101,7 +101,7 @@ window.rhRunCarCompleteTransition=function(runId,carId){
 window.rhChampionshipCompleteTransition=function(runId){
  const r=rhCurrentRuns().find(x=>x.id===runId);if(!r)return;
  resultScreen(q('festival'),'CHAMPIONSHIP COMPLETE',r.name,`<section class="rhCompletionMilestone rhCompletionMilestoneFinal">
-  <img src="assets/final/hubs.png?v=6061" alt="Hubs">
+  <img src="assets/final/hubs.png" alt="Hubs">
   <div class="rhCompletionCopyFinal"><small>CHAMPIONSHIP COMPLETE</small><h2>${safe(r.name)}</h2><p>Every selected car has completed every Round.</p></div>
   <button class="btn rhPrimaryWide" onclick="rhOpenRun('${r.id}')">VIEW FINAL LEADERBOARD</button>
  </section>`);
@@ -145,7 +145,7 @@ window.rhEventResultSummary=function(e,res){
   <div class="rhSummaryCard"><small>EVENT</small><b>${safe(e.name)}</b></div>
   <div class="rhSummaryCard"><small>CAR</small><b>${safe(carName(car))}</b></div>
   <div class="rhResultHero rhResultHeroFinal"><div><small>FINISHING POSITION</small><strong>${res.position||'—'}</strong></div><div><small>TOTAL RACE TIME</small><strong>${rhFmtTime(res.time)}</strong></div></div>
-  ${rhAverageCompareHtml(hist)}${records?`<div class="rhRecordCelebration rhRecordCelebrationFinal"><div class="rhRosettes">${res.championshipRecord?'<b>✹ EVENT RECORD</b>':''}${res.allTime?'<b class="gold">✹ ALL-TIME OTG! RECORD</b>':''}</div><img src="assets/final/hubs.png?v=6061" alt="Hubs"><p>Incredible driving,<br><b>well done!</b></p></div>`:''}
+  ${rhAverageCompareHtml(hist)}${records?`<div class="rhRecordCelebration rhRecordCelebrationFinal"><div class="rhRosettes">${res.championshipRecord?'<b>✹ EVENT RECORD</b>':''}${res.allTime?'<b class="gold">✹ ALL-TIME OTG! RECORD</b>':''}</div><img src="assets/final/hubs.png" alt="Hubs"><p>Incredible driving,<br><b>well done!</b></p></div>`:''}
   <div class="rhProgressCard"><small>EVENT PROGRESS</small><b>${carRoundDone} OF ${roundCount} ROUNDS COMPLETE</b><span>${carPct}%</span><div class="progress"><div class="bar" style="width:${carPct}%"></div></div></div>
   <button class="btn rhPrimaryWide rhResultContinueFinal" onclick="${action}"><b>${label}</b><small>${sub}</small></button>
  </section>`);
@@ -166,7 +166,7 @@ window.rhEventCarCompleteTransition=function(eventId,carId){
 window.rhEventCompleteTransition=function(eventId){
  const e=rhSpace().customEvents.find(x=>x.id===eventId);if(!e)return;show('event');
  q('event').innerHTML=`<div class="rhEventFinalStandaloneV1"><section class="rhCompletionMilestone rhCompletionMilestoneFinal">
-  <img src="assets/final/hubs.png?v=6061" alt="Hubs">
+  <img src="assets/final/hubs.png" alt="Hubs">
   <div class="rhCompletionCopyFinal"><small>EVENT COMPLETE</small><h2>${safe(e.name)}</h2><p>All racers have completed the Event.</p></div>
   <button class="btn rhPrimaryWide" onclick="rhShowCompletedEventLeaderboard('${e.id}')">VIEW FINAL LEADERBOARD</button>
  </section></div>`;
@@ -203,7 +203,7 @@ window.rhDeleteBackupFinal=function(id){const s=rhSpace();s.backups=(s.backups||
 window.rhAbout=function(){
  const s=rhSpace();show('more');q('more').innerHTML=`<div class="rhScene rhAboutScene"><div class="rhPageHead"><button class="rhBack" onclick="rhRenderSettings()">‹</button><div><h1>ABOUT OUT THE GARAGE!</h1><p>DRIVE • RECORD • IMPROVE</p></div></div></div><div class="rhContent rhConformance">
  <section class="rhAboutIntro"><h1>ABOUT OUT THE GARAGE!</h1><h3>DRIVE • RECORD • IMPROVE</h3><p>Out The Garage! is your personal racing record book — built to organise your Garage, create Championships, record results and preserve your racing history your way.</p><p>Whether you race for fun, for competition, or just for the love of driving, Out The Garage! keeps your racing history safe.</p></section>
- <section class="rhSection"><h2>OTG! INFORMATION</h2><div class="rhInfoRow"><span>App Version</span><b>v${document.querySelector('meta[name="racehub-version"]')?.content||'6.0.61'}</b></div><div class="rhInfoRow"><span>Data / Backup Version</span><b>v1.0.0</b></div><div class="rhInfoRow"><span>Current OTG! Space</span><b>${safe(s.name)}</b></div><div class="rhInfoRow"><span>Driver Profile (Global)</span><b>${safe(state.driverName||'Driver')}</b></div></section>
+ <section class="rhSection"><h2>OTG! INFORMATION</h2><div class="rhInfoRow"><span>App Version</span><b>v5.8.35</b></div><div class="rhInfoRow"><span>Data / Backup Version</span><b>v1.0.0</b></div><div class="rhInfoRow"><span>Current OTG! Space</span><b>${safe(s.name)}</b></div><div class="rhInfoRow"><span>Driver Profile (Global)</span><b>${safe(state.driverName||'Driver')}</b></div></section>
  <section class="rhSection"><h2>CREATED BY</h2><p>Andy Jones & ChatGPT</p><p class="small">Designed together from the ground up to make racing data personal, useful and enjoyable.</p></section>
  <section class="rhSection"><h2>LEGAL</h2><p>© 2026 OTG!. All rights reserved.</p><p class="small">OTG! is an independent product and is not affiliated with or endorsed by any vehicle manufacturer.</p></section></div>`;
 };
@@ -248,13 +248,13 @@ window.rhRenderSettings=function(){const s=rhSpace(),makes=rhAllManufacturerList
 <section class="rhSection rhSettingPanel"><h2>OTG! SPACES</h2><button class="rhSettingRow" onclick="rhManageSpaces()"><b>Manage OTG! Spaces</b><span>Current Space: ${safe(s.name)} ›</span></button></section>
 <section class="rhSection rhSettingPanel"><h2>DATA</h2><button class="rhSettingRow" onclick="rhDataBackups()"><b>Backup / Restore</b><span>Manage saved backups ›</span></button></section>
 <section class="rhDangerFinal"><h2>⚠ DANGER ZONE</h2><p>These actions affect the current OTG! Space only.</p><div class="rhDangerAction"><div><b>RESET RACING DATA</b><span>Clear Championships, runs, results, Records, Hall of Fame and Stats.</span><em>Garage will be retained.</em></div><button class="btn dangerBtn" onclick="rhResetConfirm()">RESET RACING DATA</button></div><div class="rhDangerAction"><div><b>FULL RESET OTG!</b><span>Clear everything in this Space including Garage and Favourite Manufacturer.</span><em>The Space, its name and global Driver Profile are retained.</em></div><button class="btn dangerBtn" onclick="rhFullResetConfirm()">FULL RESET</button></div></section>
-<section class="rhSection rhSettingPanel"><button class="rhSettingRow" onclick="rhAbout()"><b>ABOUT OUT THE GARAGE!</b><span class="rhAboutTileMeta">OTG! v${document.querySelector('meta[name="racehub-version"]')?.content||'6.0.61'}<em>›</em></span></button></section></div>`};
+<section class="rhSection rhSettingPanel"><button class="rhSettingRow" onclick="rhAbout()"><b>ABOUT OUT THE GARAGE!</b><span>OTG! v5.7.80 • ›</span></button></section></div>`};
 
 
 
 /* ---- v5.7.9 rebuilt audited components previously spread across older controllers ---- */
 window.rhMilestone=function(title,name,copy,callback){
- q('rhMilestone')?.remove();document.body.insertAdjacentHTML('beforeend',`<div id="rhMilestone" class="rhMilestone"><div class="rhMilestoneGlass"><img src="assets/final/hubs.png?v=6061" alt="Hubs"><div><small>${safe(title)}</small><h2>${safe(name)}</h2><p>${safe(copy)}</p></div></div></div>`);
+ q('rhMilestone')?.remove();document.body.insertAdjacentHTML('beforeend',`<div id="rhMilestone" class="rhMilestone"><div class="rhMilestoneGlass"><img src="assets/final/hubs.png" alt="Hubs"><div><small>${safe(title)}</small><h2>${safe(name)}</h2><p>${safe(copy)}</p></div></div></div>`);
  setTimeout(()=>{q('rhMilestone')?.remove();if(typeof callback==='function')callback()},2200);
 };
 window.rhConfirmStart=function(){

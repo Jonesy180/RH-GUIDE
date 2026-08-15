@@ -1,0 +1,12 @@
+rh-guide v6.0.62 — OTG! blank fresh-storage build
+
+Corrected version increment from the prior v6.0.61 guide test build.
+Main OTG! remains at passed v6.0.61.
+
+Fresh guide-only storage remains:
+- RHGuide_OTG_Legacy_v2
+- RHGuide_OTG_Studio_Final_v2
+
+No migration from old RHGuide v1 keys.
+Main OTG! storage untouched.
+rh-guide manifest/bootstrap/service-worker identity remains separate.

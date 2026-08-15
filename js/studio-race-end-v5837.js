@@ -91,7 +91,7 @@
       <button class="rhHubs29Back" id="rhHubs29Back" aria-label="Back">‹</button>
       <header class="rhHubs29Header"><h1>HOLD ON...</h1><p>HUBS HAS SOME NEWS</p></header>
       <main class="rhHubs29Main">
-        <section class="rhHubs29Character"><img src="assets/final/hubs-pit-chief-v5829.png?v=6061" alt="Hubs, OTG! Pit Chief"></section>
+        <section class="rhHubs29Character"><img src="assets/final/hubs-pit-chief-v5829.png?v=5829" alt="Hubs, OTG! Pit Chief"></section>
         <section class="rhHubs29Details">
           ${recordCards(res,kind)}
           <div class="rhHubs29Times"><small>YOUR NEW BEST TIME</small><strong>${fmt(res.time)}</strong>${previous!=null?`<small>PREVIOUS BEST</small><b>${fmt(previous)}</b><small>IMPROVEMENT</small><em>−${fmt(improvement)}</em>`:''}</div>

@@ -1,11 +1,5 @@
-const CACHE_NAME='rh-guide-v6.0.61-festival-delete-sync-reconcile';
+const CACHE_NAME='rhguide-v6.0.62-otg-blank-fresh-storage';
 const ASSETS=[
-  './assets/final/hubs-pit-chief-v5829.png?v=6061',
-  './assets/final/hall-of-fame-background-otg-v6059.png',
-  './assets/final/festival-otg-neutral-v6057.png',
-  './assets/final/dashboard-otg-neutral-v6056.png',
-  './assets/brand/otg-approved-painted-mark-v6052.png',
-  './style-rhguide-otg-v6061.css?v=6061',
   './','./index.html','./style-v595.css?v=6020','./manifest.webmanifest?v=rhguide6040','./favicon.png',
   './js/seed-data.js?v=5799','./js/core.js?v=6020','./js/race-director.js?v=5799','./js/views.js?v=5799',
   './js/celebrations.js?v=5799','./js/garage.js?v=5799','./js/control-centre.js?v=5799',
