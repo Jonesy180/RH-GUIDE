@@ -1,4 +1,4 @@
-/* RaceHub v6.0.15 — Stage 8B corrected Advanced Timing implementation.
+/* OTG! v6.0.15 — Stage 8B corrected Advanced Timing implementation.
    Built only from protected v6.0.13. Locked presentation: compact digital lap rows,
    mandatory complete lap set, live fastest-lap highlight, and lap-total -> main timer.
    Existing result creation / record / Result Accepted flow remains owned by v5.8.03. */

@@ -1,4 +1,4 @@
-/* RaceHub v6.0.22 — Stage 9C League Results + Review/Confirmation — digital timing correction.
+/* OTG! v6.0.22 — Stage 9C League Results + Review/Confirmation — digital timing correction.
    Additive override built on passed v6.0.20. Confirmed event results become permanent history. */
 (function(){
   const q=id=>document.getElementById(id);

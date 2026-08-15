@@ -1,4 +1,4 @@
-/* RaceHub v5.7.84 — locked leaderboard presentation, animations and clean result screens */
+/* OTG! v5.7.84 — locked leaderboard presentation, animations and clean result screens */
 (()=>{
  const q=id=>document.getElementById(id);
  const safe=v=>esc(String(v??''));

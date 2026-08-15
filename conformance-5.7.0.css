@@ -1,5 +1,5 @@
 
-/* RaceHub v5.7.0 Studio Final Conformance */
+/* OTG! v5.7.0 Studio Final Conformance */
 .rhConformance,.rhContent{--cyan:#26d9ff;--glass:rgba(5,16,25,.78);--line:rgba(73,218,255,.32)}
 .rhConformance .rhSection,.rhSettingPanel,.rhGlassUpgrade,.rhGlassHero,.rhResultsSummary>*:not(.rhAcceptedMini),.rhQueue>*:not(h2),.rhBackupCard,.rhRestoreCard,.rhSpaceManage{background:linear-gradient(145deg,rgba(15,31,43,.91),rgba(4,12,20,.82));border:1px solid var(--line);box-shadow:inset 0 1px rgba(255,255,255,.05),0 12px 32px rgba(0,0,0,.22);backdrop-filter:blur(14px)}
 .rhConformance h2,.rhSectionTitle{letter-spacing:.06em}.rhEyebrow,.rhSummaryCard small,.rhResultHero small,.rhProgressCard small,.rhQueueNext small{color:var(--cyan);font-weight:800;letter-spacing:.12em}

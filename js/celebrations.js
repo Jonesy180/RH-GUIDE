@@ -1,4 +1,4 @@
-// RaceHub v5.1.2 — Championship and Festival Record Celebrations
+// OTG! v5.1.2 — Championship and Festival Record Celebrations
 function playRecordSound(scope='championship'){
   if(!state.settings || !state.settings.sound) return;
   try{
@@ -265,7 +265,7 @@ function renderRecordCelebration(data){
       <div class="small">${esc(data.eventName)}</div>
       <div class="recordCar">${esc(data.carName)}</div>
       <div class="recordTime">${esc(data.value)}</div>
-      ${isFestival?'<div class="festivalHistoryLine">Fastest result ever recorded in RaceHub · Entered the Hall of Fame</div>':''}
+      ${isFestival?'<div class="festivalHistoryLine">Fastest result ever recorded in OTG! · Entered the Hall of Fame</div>':''}
       ${data.improvement?`<div class="legacyCard">⚡ ${esc(data.improvement)}</div>`:''}
       ${data.heldText?`<div class="legacyCard">⏳ ${esc(data.heldText)}</div>`:''}
       ${previous}

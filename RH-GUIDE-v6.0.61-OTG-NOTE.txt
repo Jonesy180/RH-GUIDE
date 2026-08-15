@@ -1,0 +1,7 @@
+rh-guide v6.0.61 OTG! sync.
+Source: protected rh-guide v6.0.46. Reference: passed main OTG! v6.0.61.
+Guide manifest preserved byte-for-byte.
+Guide bootstrap remains js/bootstrap-rhguide-v6046.js.
+Guide bootstrap still registers service-worker-rhguide-v6046.js.
+Guide-specific worker/cache identity retained; main bootstrap/worker not active.
+Passed OTG! visual/runtime files synced. Separate rh-guide repository/storage/update role preserved.

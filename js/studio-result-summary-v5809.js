@@ -1,4 +1,4 @@
-/* RaceHub v5.8.09 — self-contained podium Result Summary */
+/* OTG! v5.8.09 — self-contained podium Result Summary */
 (()=>{
   const q=id=>document.getElementById(id);
   const esc=v=>typeof safe==='function'?safe(v):String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));

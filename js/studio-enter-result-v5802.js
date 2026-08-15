@@ -1,4 +1,4 @@
-/* RaceHub v5.8.01 — clean Enter Result rebuild only. */
+/* OTG! v5.8.01 — clean Enter Result rebuild only. */
 (()=>{
  const q=id=>document.getElementById(id);
  const safe=v=>typeof window.esc==='function'?window.esc(String(v??'')):String(v??'');

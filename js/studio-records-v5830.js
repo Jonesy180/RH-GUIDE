@@ -51,7 +51,7 @@ function sourceRow(entry,isAllTime){
   return `<article class="rhRaceRecordRowV5830 ${isAllTime?'allTime':''} ${open?'rhRaceRecordHistoryLinkV6010':''}"${action}>
     <span class="rhRaceRecordMedalV5830">${isAllTime?'★':'◆'}</span>
     <div class="rhRaceRecordTextV5830">
-      <small>${isAllTime?'ALL-TIME RACEHUB RECORD':sourceTypeLabel(entry.kind)}</small>
+      <small>${isAllTime?'ALL-TIME OTG! RECORD':sourceTypeLabel(entry.kind)}</small>
       <b>${safe(entry.sourceName)}</b>
       <em>${safe(carLabel(entry.carId))}</em>
     </div>
@@ -95,7 +95,7 @@ window.rhRenderRecords=function(){
       <button class="rhHallBannerV1" onclick="rhRecordsMode='hall';rhRenderRecords()"><span>★</span><div><b>HALL OF FAME</b><small>Completed Championships, their winning cars and final times.</small></div><em>VIEW HALL OF FAME ›</em></button>
       <section class="rhRecordsSectionV1 rhRaceBookV5830">
         <div class="rhRaceBookTitleV5830"><div><small>YOUR PERSONAL RECORD BOOK</small><h2>RACE & EVENT RECORDS</h2></div><span>${races.length}</span></div>
-        ${races.length?races.map(raceCard).join(''):rhEmpty('NO RECORDS YET','Complete your first race and RaceHub will begin building your personal record book.','View Championships',"show('festival')")}
+        ${races.length?races.map(raceCard).join(''):rhEmpty('NO RECORDS YET','Complete your first race and OTG! will begin building your personal record book.','View Championships',"show('festival')")}
       </section>
       <div class="rhRecordsInfoV1"><i>i</i><p><b>ABOUT RECORDS</b>Records are organised by race or event. Each section shows the fastest time ever recorded there, followed by the best time from every Championship or Event that has raced there.</p></div>
     </main>

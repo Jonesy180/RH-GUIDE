@@ -1,5 +1,5 @@
-// RaceHub v5.3.1 — Navigation Identity
-const STORE='RHGuide_Legacy_v1';
+// OTG! v5.3.1 — Navigation Identity
+const STORE='RaceHub_v4_1_director_edition';
 let state=null;
 let currentScreen='home';
 let currentEventId='drag';
@@ -316,7 +316,7 @@ const PAGE_HEADERS={
  events:{icon:'🗓️',eyebrow:'EVENT CENTRE',title:'Events',subtitle:'Open an event, enter results and review its standings.',accent:'events'},
  garage:{icon:'🚗',eyebrow:'CAR MANAGEMENT',title:'Garage',subtitle:'Browse the collection, manage queues and track progress.',accent:'garage'},
  hall:{icon:'🏆',eyebrow:'WHOLE COLLECTION',title:'Leaderboard',subtitle:'Overall standings, championship honours and the Hall of Fame.',accent:'hall'},
- more:{icon:'📈',eyebrow:'PERFORMANCE CENTRE',title:'Statistics',subtitle:'Explore records, averages and performance across RaceHub.',accent:'more'}
+ more:{icon:'📈',eyebrow:'PERFORMANCE CENTRE',title:'Statistics',subtitle:'Explore records, averages and performance across OTG!.',accent:'more'}
 };
 function ensurePageHeader(screen){
  if(screen==='festival'||screen==='events')return;

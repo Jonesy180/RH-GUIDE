@@ -1,4 +1,4 @@
-// RaceHub v5.2.5 — Dashboard Facelift Views
+// OTG! v5.2.5 — Dashboard Facelift Views
 
 function progressBarStyle(percent,type='event'){
   const pct=Math.max(0,Math.min(100,Number(percent)||0));
@@ -101,8 +101,8 @@ function renderFestival(){
  $('festival').innerHTML=`
   <div class="festivalPage">
    <section class="festivalScene">
-    <button class="festivalHome" onclick="show('home')" aria-label="Back to RaceHub Home"><span>⌂</span><b>HOME</b></button>
-    <div class="festivalTitle"><span>RACEHUB CHAMPIONSHIPS</span><h1>FESTIVAL</h1><p>RaceHub-created racing from the cars in your Garage.</p></div>
+    <button class="festivalHome" onclick="show('home')" aria-label="Back to OTG! Home"><span>⌂</span><b>HOME</b></button>
+    <div class="festivalTitle"><span>OTG! CHAMPIONSHIPS</span><h1>FESTIVAL</h1><p>OTG!-created racing from the cars in your Garage.</p></div>
    </section>
 
    <div class="festivalContent">
@@ -317,7 +317,7 @@ function renderEvents(){
  const cs=current?eventStats(current.id):null;
  $('events').innerHTML=`<div class="eventsPage">
   <section class="eventsScene">
-   <button class="festivalHome" onclick="show('home')" aria-label="Back to RaceHub Home"><span>⌂</span><b>HOME</b></button>
+   <button class="festivalHome" onclick="show('home')" aria-label="Back to OTG! Home"><span>⌂</span><b>HOME</b></button>
    <div class="eventsTitle"><h1>EVENTS</h1><p>Your Racing</p></div>
    <button class="eventsCreate" onclick="createRaceHubEvent()"><span>＋</span> CREATE EVENT</button>
   </section>
@@ -476,7 +476,7 @@ function renderOverallLeaderboard(){
   </div>`).join('');
  const closest=data.progress.filter(r=>!r.qualified&&r.completed>0).slice(0,5).map(r=>`<div class="overallProgressRow"><span>${esc(carName(r.car))}</span><b>${r.completed}/${state.events.length}</b></div>`).join('');
  return `<div class="card overallHero">
-   <div class="overallHeroIcon">🏆</div><div><div class="directorKicker">RaceHub collection standings</div><h2>Overall Leaderboard</h2><p class="small">Every completed car ranked by the combined total of all timed events. Long Jump breaks an exact tie.</p></div>
+   <div class="overallHeroIcon">🏆</div><div><div class="directorKicker">OTG! collection standings</div><h2>Overall Leaderboard</h2><p class="small">Every completed car ranked by the combined total of all timed events. Long Jump breaks an exact tie.</p></div>
   </div>
   <div class="card overallProgress"><div><b>${complete} of ${total} cars qualified</b><span>${pct}% of the collection</span></div><div class="progress" style="${progressTrackStyle()}"><div class="bar" style="${progressBarStyle(pct,'festival')}"></div></div></div>
   ${leader?`<div class="card overallLeaderCard"><div class="overallLeaderCrown">👑</div><div class="directorKicker">Current Overall Leader</div><h2>${esc(carName(leader.car))}</h2><div class="overallLeaderTime">${esc(formatChampionshipTime(leader.totalTime))}</div><div class="overallLeaderStats"><span>🏆 ${wins.get(leader.carId)||0} wins</span><span>⚡ ${records.get(leader.carId)||0} records</span><span>🚀 ${esc(fmt((state.events.find(e=>e.type==='distance')||{}).id,leader.longJump))}</span></div></div>`:`<div class="card"><div class="empty">Complete all six events with a car to place it on the Overall Leaderboard.</div></div>`}
@@ -499,11 +499,11 @@ function renderHallOfFame(){
    <div class="card hallFestivalSection"><h2>👑 Festival Records</h2><p class="small">The absolute best result ever recorded in every event.</p><div class="hallGrid">${festivalCards||'<div class="empty">No events available.</div>'}</div></div>
    ${hallChampionshipBrowserSection('Era Championships','era','🗓️',eras,activeId)}
    ${hallChampionshipBrowserSection('Manufacturer Championships','make','🏭',makes,activeId)}`;
- }catch(error){console.error('Overall Leaderboard render failed',error);$('hall').innerHTML=`<div class="card"><h2>🏆 Overall Leaderboard</h2><div class="empty">The leaderboard could not load. Close RaceHub and reopen it to finish the update.</div></div>`;}
+ }catch(error){console.error('Overall Leaderboard render failed',error);$('hall').innerHTML=`<div class="card"><h2>🏆 Overall Leaderboard</h2><div class="empty">The leaderboard could not load. Close OTG! and reopen it to finish the update.</div></div>`;}
 }
 
 
-// RaceHub v5.5.0 — RaceHub HQ Dashboard
+// OTG! v5.5.0 — OTG! HQ Dashboard
 function dashboardHasProgress(champ){
  const cars=championshipCars(champ);
  if(!cars.length)return false;
@@ -520,7 +520,7 @@ function openSettingsFromHome(){
 
 function renderHome(){
  const space=(typeof rhSpace==='function' && rhSpace()) ? rhSpace() : null;
- const spaceName=(space && space.name) ? space.name : 'My RaceHub';
+ const spaceName=(space && space.name) ? space.name : 'My OTG!';
  const tile=(cls,onclick,icon,title,sub)=>`
   <button class="rhDashTile ${cls}" onclick="${onclick}">
    <span class="rhDashIcon" aria-hidden="true">${icon}</span>
@@ -531,10 +531,10 @@ function renderHome(){
   <div class="rhDash rhDashV3">
    <section class="rhDashHero">
     <div class="rhDashWelcome"><small>WELCOME TO</small><strong>${esc(spaceName)}</strong></div>
-    <img class="rhDashLogo" src="assets/final/racehub-logo.png" alt="RaceHub — Drive, Record, Improve">
+    <img class="rhDashLogo" src="assets/brand/otg-mark-painted-wall.svg" alt="OTG! — Drive, Record, Improve">
    </section>
    <section class="rhDashNav"><div class="rhDashGrid">
-    ${tile('festival','show(\'festival\')','🏁','FESTIVAL','RaceHub Championships')}
+    ${tile('festival','show(\'festival\')','🏁','FESTIVAL','OTG! Championships')}
     ${tile('events','show(\'events\')','<svg viewBox="0 0 64 64"><rect x="13" y="15" width="38" height="38" rx="5"/><path d="M22 10v10M42 10v10M21 29h8v8h-8zM35 29h8v8h-8zM21 41h8v8h-8zM35 41h8v8h-8z"/></svg>','EVENTS','Your Racing')}
     ${tile('garage','show(\'garage\')','<svg viewBox="0 0 64 64"><path d="M10 29 32 13l22 16v24H10z"/><path d="M18 51V32h28v19"/><path d="M23 43c0-5 4-9 9-9s9 4 9 9v5H23z"/></svg>','GARAGE','Your Cars')}
     ${tile('records','show(\'hall\')','🏆','RECORDS','Results & Hall of Fame')}

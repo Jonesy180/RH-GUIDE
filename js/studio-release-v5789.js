@@ -1,4 +1,4 @@
-/* RaceHub v5.7.89 — authoritative in-app version display and update check */
+/* OTG! v5.7.89 — authoritative in-app version display and update check */
 (()=>{
  const CURRENT_VERSION='5.7.90';
  const safeText=v=>String(v??'');
@@ -37,7 +37,7 @@
  window.rhCheckForUpdate=async function(){
   const button=document.getElementById('rhCheckUpdateButton');
   if(button)button.disabled=true;
-  updateStatus('Checking RaceHub…','checking');
+  updateStatus('Checking OTG!…','checking');
   try{
    const registration=await navigator.serviceWorker?.getRegistration();
    if(registration)await registration.update();
@@ -52,7 +52,7 @@
     setTimeout(()=>window.location.reload(),500);
     return;
    }
-   updateStatus(`RaceHub ${CURRENT_VERSION} is up to date.`,'current');
+   updateStatus(`OTG! ${CURRENT_VERSION} is up to date.`,'current');
   }catch(error){
    updateStatus('Could not check right now. Check your connection and try again.','error');
   }finally{
@@ -67,11 +67,11 @@
    const content=document.querySelector('#more .rhContent');
    if(!content)return out;
    content.querySelectorAll('.rhSettingRow span').forEach(span=>{
-    if(/RaceHub v/i.test(span.textContent||''))span.textContent=`RaceHub v${CURRENT_VERSION} • ›`;
+    if(/OTG! v/i.test(span.textContent||''))span.textContent=`OTG! v${CURRENT_VERSION} • ›`;
    });
    const danger=content.querySelector('.rhDangerFinal');
    if(danger&&!document.getElementById('rhUpdatePanel')){
-    danger.insertAdjacentHTML('beforebegin',`<section id="rhUpdatePanel" class="rhSection rhSettingPanel rhUpdatePanelV5783"><h2>APP UPDATE</h2><p>Check for the latest RaceHub build without closing the app.</p><button id="rhCheckUpdateButton" class="rhSettingRow" onclick="rhCheckForUpdate()"><b>CHECK FOR LATEST UPDATE</b><span>RaceHub v${CURRENT_VERSION} • CHECK NOW ›</span></button><div id="rhUpdateStatus" class="rhUpdateStatusV5783" aria-live="polite">Installed version: ${CURRENT_VERSION}</div></section>`);
+    danger.insertAdjacentHTML('beforebegin',`<section id="rhUpdatePanel" class="rhSection rhSettingPanel rhUpdatePanelV5783"><h2>APP UPDATE</h2><p>Check for the latest OTG! build without closing the app.</p><button id="rhCheckUpdateButton" class="rhSettingRow" onclick="rhCheckForUpdate()"><b>CHECK FOR LATEST UPDATE</b><span>OTG! v${CURRENT_VERSION} • CHECK NOW ›</span></button><div id="rhUpdateStatus" class="rhUpdateStatusV5783" aria-live="polite">Installed version: ${CURRENT_VERSION}</div></section>`);
    }
    return out;
   };

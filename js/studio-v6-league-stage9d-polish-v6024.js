@@ -1,4 +1,4 @@
-/* RaceHub v6.0.24 — Stage 9D polish: Delete League + result-entry spacing only. */
+/* OTG! v6.0.24 — Stage 9D polish: Delete League + result-entry spacing only. */
 (function(){
   const previousOpen=window.rhOpenLeagueV6018;
   const leagues=()=>{const s=rhSpace();if(!Array.isArray(s.leagues))s.leagues=[];return s.leagues};
@@ -11,9 +11,9 @@
     if(typeof rhConfirm==='function'){
       rhConfirm({
         title:'DELETE THIS LEAGUE?',
-        copy:'This permanently removes this League, its Events, confirmed classifications and standings from the current RaceHub Space.',
+        copy:'This permanently removes this League, its Events, confirmed classifications and standings from the current OTG! Space.',
         detail:`${l.name} • ${l.events?.length||0} Events • ${confirmed} confirmed`,
-        safeguard:'This cannot be undone. Your other Leagues and RaceHub data are not affected.',
+        safeguard:'This cannot be undone. Your other Leagues and OTG! data are not affected.',
         confirmLabel:'DELETE LEAGUE',danger:true,onConfirm:`rhDeleteLeagueFinalV6024('${id}')`
       });
     }else if(confirm(`Delete ${l.name}? This permanently removes its League history and cannot be undone.`)) rhDeleteLeagueFinalV6024(id);
@@ -29,6 +29,6 @@
     previousOpen(id);
     const l=league(id),body=document.querySelector('#events .rhLeagueBodyV6018');
     if(!l||!body||body.querySelector('.rhLeagueDeleteV6024'))return;
-    body.insertAdjacentHTML('beforeend',`<section class="rhLeagueDangerV6024"><small>DANGER ZONE</small><button class="rhLeagueDeleteV6024" onclick="rhDeleteLeagueConfirmV6024('${id}')">DELETE LEAGUE</button><p>Permanently removes this League and its saved Event history from this RaceHub Space.</p></section>`);
+    body.insertAdjacentHTML('beforeend',`<section class="rhLeagueDangerV6024"><small>DANGER ZONE</small><button class="rhLeagueDeleteV6024" onclick="rhDeleteLeagueConfirmV6024('${id}')">DELETE LEAGUE</button><p>Permanently removes this League and its saved Event history from this OTG! Space.</p></section>`);
   };
 })();

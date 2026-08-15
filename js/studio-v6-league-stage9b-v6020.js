@@ -1,4 +1,4 @@
-/* RaceHub v6.0.19 — Stage 9B League Events + driver management. Additive over passed v6.0.18. */
+/* OTG! v6.0.19 — Stage 9B League Events + driver management. Additive over passed v6.0.18. */
 (function(){
 const safe=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const uid=p=>`${p}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,7)}`;

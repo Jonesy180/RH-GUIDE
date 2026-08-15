@@ -1,4 +1,4 @@
-/* RaceHub v6.0.18 — Stage 9A League Organiser foundation/setup only. */
+/* OTG! v6.0.18 — Stage 9A League Organiser foundation/setup only. */
 (function(){
 const safe=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const uid=p=>`${p}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,7)}`;

@@ -1,22 +1,22 @@
-// RaceHub v5.6.6 — Events guided run checkpoint
+// OTG! v5.6.6 — Events guided run checkpoint
 const RH_FINAL_STORE='RaceHub_Studio_Final_v5_6';
 const RH_BUILD_VERSION='5.7.79';
 let rhMoreMode='stats', rhRecordsMode='records', rhFestivalMode='browse', rhSetup=null, rhHelpKey=null, rhGarageOpenMake=null;
 const RH_HELP={
- home:['RaceHub HQ','This is your RaceHub home. Festival creates Championships from cars in this RaceHub; Events holds racing you create; Garage, Records and Stats all belong to the selected RaceHub Space.'],
- festival:['Festival','RaceHub Championships are generated from the cars in this Space. Choose a Championship, set its Rounds and entries, then start. Entries and Rounds are frozen for that run.'],
- events:['Events','Create your own racing programme here. Events are separate from Festival Championships and stay inside the selected RaceHub Space.'],
- garage:['Garage','Your Garage belongs to this RaceHub Space. Add or correct cars here. Existing Garage data is preserved when upgrading RaceHub.'],
- records:['Records','Records are grouped by the run that created them. A Championship Record belongs to that frozen run; All-Time RaceHub Records compare results across this Space.'],
- stats:['Stats','Stats are calculated only from the currently selected RaceHub Space. Other Spaces keep their own racing history separate.'],
- settings:['Settings','Manage celebrations, Favourite Manufacturer, RaceHub Spaces and backups here. Reset Racing Data affects this Space only and keeps its Garage.']
+ home:['OTG! HQ','This is your OTG! home. Festival creates Championships from cars in this OTG!; Events holds racing you create; Garage, Records and Stats all belong to the selected OTG! Space.'],
+ festival:['Festival','OTG! Championships are generated from the cars in this Space. Choose a Championship, set its Rounds and entries, then start. Entries and Rounds are frozen for that run.'],
+ events:['Events','Create your own racing programme here. Events are separate from Festival Championships and stay inside the selected OTG! Space.'],
+ garage:['Garage','Your Garage belongs to this OTG! Space. Add or correct cars here. Existing Garage data is preserved when upgrading OTG!.'],
+ records:['Records','Records are grouped by the run that created them. A Championship Record belongs to that frozen run; All-Time OTG! Records compare results across this Space.'],
+ stats:['Stats','Stats are calculated only from the currently selected OTG! Space. Other Spaces keep their own racing history separate.'],
+ settings:['Settings','Manage celebrations, Favourite Manufacturer, OTG! Spaces and backups here. Reset Racing Data affects this Space only and keeps its Garage.']
 };
 function rhId(prefix='id'){return prefix+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7)}
 function rhClone(v){return JSON.parse(JSON.stringify(v))}
-function rhSpaceTemplate(name='My RaceHub',cars=[]){return {id:rhId('space'),name,cars:cars.map(normaliseCar),favouriteManufacturer:'',runs:[],customEvents:[],backups:[],createdAt:new Date().toISOString()}}
+function rhSpaceTemplate(name='My OTG!',cars=[]){return {id:rhId('space'),name,cars:cars.map(normaliseCar),favouriteManufacturer:'',runs:[],customEvents:[],backups:[],createdAt:new Date().toISOString()}}
 function rhMigrateLegacy(raw){
  const cars=Array.isArray(raw?.cars)?raw.cars.map(normaliseCar):[];
- const space=rhSpaceTemplate('My RaceHub',cars);
+ const space=rhSpaceTemplate('My OTG!',cars);
  // Preserve old results as legacy history; new frozen-run model starts clean by design.
  space.legacyResults=Array.isArray(raw?.results)?rhClone(raw.results):[];
  return {schema:2,version:RH_BUILD_VERSION,driverName:'Driver',spaces:[space],activeSpaceId:space.id,settings:Object.assign({sound:true,confetti:true,vibrate:true},raw?.settings||{}),onboarded:true};
@@ -24,7 +24,7 @@ function rhMigrateLegacy(raw){
 function rhLoad(){
  try{const x=JSON.parse(localStorage.getItem(RH_FINAL_STORE)||'null');if(x?.schema===2&&Array.isArray(x.spaces)&&x.spaces.length)return x;}catch(e){}
  try{const old=JSON.parse(localStorage.getItem(STORE)||'null');if(old?.cars){const x=rhMigrateLegacy(old);localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;}}catch(e){}
- const space=rhSpaceTemplate('My RaceHub',[]);const x={schema:2,version:RH_BUILD_VERSION,driverName:'',spaces:[space],activeSpaceId:space.id,settings:{sound:true,confetti:true,vibrate:true},onboarded:false};localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;
+ const space=rhSpaceTemplate('My OTG!',[]);const x={schema:2,version:RH_BUILD_VERSION,driverName:'',spaces:[space],activeSpaceId:space.id,settings:{sound:true,confetti:true,vibrate:true},onboarded:false};localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;
 }
 function rhSave(){localStorage.setItem(RH_FINAL_STORE,JSON.stringify(state))}
 function rhSpace(){return state.spaces.find(s=>s.id===state.activeSpaceId)||state.spaces[0]}
@@ -48,7 +48,7 @@ window.addEventListener('popstate',()=>{
  try{if(back)back.click();else rhShow('home')}finally{rhAndroidBackHandling=false}
 });
 function rhHeader(title,sub,key,back='home'){return `<div class="rhPageHead"><button class="rhBack" onclick="show('${back}')">‹</button><div><h1>${esc(title)}</h1>${sub?`<p>${esc(sub)}</p>`:''}</div><button class="rhHelp" onclick="rhOpenHelp('${key}')">?</button></div>`}
-function rhOpenHelp(key){rhHelpKey=key;const h=RH_HELP[key]||['RaceHub Help','Contextual help for this screen.'];document.body.insertAdjacentHTML('beforeend',`<div id="rhHelpOverlay" class="rhOverlay" onclick="if(event.target===this)rhCloseHelp()"><div class="rhModal"><button class="rhModalX" onclick="rhCloseHelp()">×</button><div class="rhQuestion">?</div><h2>${esc(h[0])}</h2><p>${esc(h[1])}</p><button class="btn" onclick="rhCloseHelp()">Got it</button></div></div>`)}
+function rhOpenHelp(key){rhHelpKey=key;const h=RH_HELP[key]||['OTG! Help','Contextual help for this screen.'];document.body.insertAdjacentHTML('beforeend',`<div id="rhHelpOverlay" class="rhOverlay" onclick="if(event.target===this)rhCloseHelp()"><div class="rhModal"><button class="rhModalX" onclick="rhCloseHelp()">×</button><div class="rhQuestion">?</div><h2>${esc(h[0])}</h2><p>${esc(h[1])}</p><button class="btn" onclick="rhCloseHelp()">Got it</button></div></div>`)}
 function rhCloseHelp(){document.getElementById('rhHelpOverlay')?.remove()}
 
 function rhConfirm({title,copy,confirmLabel='CONFIRM',cancelLabel='CANCEL',danger=false,onConfirm=''}){document.getElementById('rhConfirmOverlay')?.remove();document.body.insertAdjacentHTML('beforeend',`<div id="rhConfirmOverlay" class="rhOverlay"><div class="rhModal rhConfirmModal ${danger?'danger':''}"><button class="rhModalX" onclick="$('rhConfirmOverlay').remove()">×</button><h2>${esc(title)}</h2><p>${esc(copy)}</p><div class="rhModalActions"><button class="btn secondary" onclick="$('rhConfirmOverlay').remove()">${esc(cancelLabel)}</button><button class="btn ${danger?'dangerBtn':''}" onclick="$('rhConfirmOverlay').remove();${onConfirm}">${esc(confirmLabel)}</button></div></div></div>`)}
@@ -74,11 +74,11 @@ function rhRenderHome(){
  $('home').innerHTML=`<div class="rhHome rhHomeLocked rhHomeV4">
    <section class="rhHomeHero rhHomeHeroV4">
      <div class="rhHomeWelcome rhHomeWelcomeV4"><small>WELCOME TO</small><b>${esc(s.name)}</b></div>
-     <img class="rhHomeLogo rhHomeLogoV4" src="assets/final/racehub-logo.png" alt="RaceHub — Drive, Record, Improve">
+     <img class="rhHomeLogo rhHomeLogoV4" src="assets/brand/otg-mark-painted-wall.svg" alt="OTG! — Drive, Record, Improve">
    </section>
    <main class="rhHomeBody rhHomeBodyV4">
      <div class="rhDashV4List">
-       ${row('festival',"show('festival')",'🏁','FESTIVAL','RaceHub Championships')}
+       ${row('festival',"show('festival')",'🏁','FESTIVAL','OTG! Championships')}
        ${row('events',"show('events')",'<svg viewBox="0 0 64 64"><rect x="13" y="15" width="38" height="38" rx="5"/><path d="M22 10v10M42 10v10M21 29h8v8h-8zM35 29h8v8h-8zM21 41h8v8h-8zM35 41h8v8h-8z"/></svg>','EVENTS','Your Racing')}
        ${row('garage',"show('garage')",'<svg viewBox="0 0 64 64"><path d="M10 29 32 13l22 16v24H10z"/><path d="M18 51V32h28v19"/><path d="M23 43c0-5 4-9 9-9s9 4 9 9v5H23z"/></svg>','GARAGE','Your Cars')}
        ${row('records',"rhRecordsMode='records';show('hall')",'🏆','RECORDS','Results & Hall of Fame')}
@@ -90,7 +90,7 @@ function rhRenderHome(){
 }
 function rhMatchingRun(type,value,status){return rhCurrentRuns().find(r=>r.status===status&&(r.type||r.championshipType)===type&&String(r.value??'')===String(value??''))||null}
 function rhChampCard(type,value,name,count){const trophy=type==='make'?rhTrophy('manufacturer'):type==='era'?rhTrophy('era'):type==='favourite'?rhTrophy('favourite'):rhTrophy('festival'),active=rhMatchingRun(type,value,'active'),prepared=rhMatchingRun(type,value,'prepared');let action=`rhBeginSetup('${type}','${esc(String(value)).replace(/'/g,'&#39;')}','${esc(name).replace(/'/g,'&#39;')}')`,meta=`${count} eligible car${count===1?'':'s'}`;if(active){const cp=rhRunCarProgress(active);action=`rhOpenRun('${active.id}')`;meta=`IN PROGRESS • ${cp.complete} / ${cp.total} cars complete`}else if(prepared){action=`rhOpenPreparedRun('${prepared.id}')`;meta=`SAVED • ${(prepared.entries||[]).length} cars • ${(prepared.rounds||[]).length} rounds`}return `<button class="rhChampCard ${active?'rhChampActiveV1':prepared?'rhChampPreparedV1':''}" onclick="${action}"><img src="${trophy}"><span><b>${esc(name)}</b><small>${meta}</small></span><em>›</em></button>`}
-function rhContinueActiveRun(){const active=rhActiveRun();if(!active){toast('No active Championship');rhRenderFestival();return}try{rhOpenRun(active.id)}catch(err){console.error('RaceHub continue racing failed',err);toast('Could not open Championship')}}
+function rhContinueActiveRun(){const active=rhActiveRun();if(!active){toast('No active Championship');rhRenderFestival();return}try{rhOpenRun(active.id)}catch(err){console.error('OTG! continue racing failed',err);toast('Could not open Championship')}}
 function rhRenderFestival(){
  const s=rhSpace(),active=rhActiveRun(),makes=rhMakeList(),eras=rhEraList(),fav=s.favouriteManufacturer;
  const progress=active?rhRunProgress(active):null;
@@ -99,7 +99,7 @@ function rhRenderFestival(){
    <section class="rhFestivalHeroV1">
      <div class="rhFestivalHeadV1">
        <button class="rhFestivalBackV1" onclick="show('home')" aria-label="Back">‹</button>
-       <div><h1>FESTIVAL</h1><p>RaceHub Championships</p></div>
+       <div><h1>FESTIVAL</h1><p>OTG! Championships</p></div>
      </div>
    </section>
    <main class="rhFestivalBodyV1">
@@ -110,7 +110,7 @@ function rhRenderFestival(){
      </button>`:''}
 
      <section class="rhFestivalSectionV1">
-       <h2>RACEHUB CHAMPIONSHIPS</h2>
+       <h2>OTG! CHAMPIONSHIPS</h2>
        ${rhChampCard('festival','all','Festival Championship',s.cars.length)}
      </section>
 
@@ -350,7 +350,7 @@ function rhEventCompleteHtml(e){const p=rhEventProgress(e),board=rhEventLeaderbo
    <div class="rhFinalTitleV1"><div><small>OFFICIAL CLASSIFICATION</small><h2>FINAL LEADERBOARD</h2></div><span>${board.length} RACERS</span></div>
    <div class="rhFinalRowsV1">${board.map((x,i)=>`<div class="rhFinalRowV1 ${i===0?'winner':''}"><b>${i+1}</b><span>${esc(carName(x.car))}</span><strong>${rhFmtTime(x.total)}</strong></div>`).join('')}</div>
   </section>
-  <section class="rhFinalCompleteNoteV1"><b>EVENT COMPLETE</b><span>${cp.complete} of ${cp.total} cars complete • Final classification saved to RaceHub.</span></section>
+  <section class="rhFinalCompleteNoteV1"><b>EVENT COMPLETE</b><span>${cp.complete} of ${cp.total} cars complete • Final classification saved to OTG!.</span></section>
   <button class="btn rhPrimaryWide rhFinalReturnV1" onclick="rhRenderEvents();show('events')">RETURN TO EVENTS</button>
  </main>
 </div>`}
@@ -360,7 +360,7 @@ function rhEventRacerOptionsHtml(query=''){const d=window.rhEventRacerDraft;if(!
 function rhFilterEventRacers(q){const box=$('rhEventRacerOptions');if(box)box.innerHTML=rhEventRacerOptionsHtml(q)}
 function rhToggleEventRacer(carId,checked){const d=window.rhEventRacerDraft;if(!d)return;if(checked){if(d.selected.size>=d.target){toast(`Choose ${d.target} racer${d.target===1?'':'s'} only`);rhFilterEventRacers($('rhEventRacerSearch')?.value||'');return}d.selected.add(carId)}else d.selected.delete(carId);const count=$('rhEventRacerCount');if(count)count.textContent=d.selected.size;rhFilterEventRacers($('rhEventRacerSearch')?.value||'')}
 function rhSaveEventRacers(){const d=window.rhEventRacerDraft,e=rhSpace().customEvents.find(x=>x.id===d?.id);if(!d||!e)return;if(d.selected.size!==d.target)return toast(`Select exactly ${d.target} racer${d.target===1?'':'s'}`);e.carIds=[...d.selected];rhSave();$('rhEventRacerOverlay')?.remove();rhOpenEvent(e.id)}
-function rhConfirmRemoveEvent(id){const e=rhSpace().customEvents.find(x=>x.id===id);if(!e)return;rhConfirm({title:'Remove Event?',copy:`${e.name} and all of its saved results will be removed from this RaceHub Space. This cannot be undone.`,confirmLabel:'REMOVE EVENT',danger:true,onConfirm:`rhRemoveEventFinal('${id}')`})}
+function rhConfirmRemoveEvent(id){const e=rhSpace().customEvents.find(x=>x.id===id);if(!e)return;rhConfirm({title:'Remove Event?',copy:`${e.name} and all of its saved results will be removed from this OTG! Space. This cannot be undone.`,confirmLabel:'REMOVE EVENT',danger:true,onConfirm:`rhRemoveEventFinal('${id}')`})}
 function rhRemoveEventFinal(id){const s=rhSpace();s.customEvents=s.customEvents.filter(e=>e.id!==id);rhSave();toast('Event removed');rhRenderEvents()}
 function rhRenameEventRound(eid,rid,v){const e=rhSpace().customEvents.find(x=>x.id===eid),r=e?.rounds.find(x=>x.id===rid);if(r&&!rhEventIsStarted(e)){r.name=v.trim()||'Untitled Round';rhSave()}}
 function rhAddEventRound(id){const e=rhSpace().customEvents.find(x=>x.id===id);if(e&&!rhEventIsStarted(e)){e.rounds.push({id:rhId('round'),name:`Round ${e.rounds.length+1}`});rhSave();rhOpenEvent(id)}}
@@ -426,7 +426,7 @@ function rhToggleGarageMake(make){
 
 function rhOpenCarEditor(id=''){
  const c=id?rhSpace().cars.find(x=>x.id===id):null;
- document.body.insertAdjacentHTML('beforeend',`<div id="rhCarEditor" class="rhOverlay"><div class="rhModal rhFormModal"><button class="rhModalX" onclick="$('rhCarEditor').remove()">×</button><h2>${c?'Edit Car':'Add Car'}</h2><p>${c?'Correct this Garage entry.':'Add a car to the current RaceHub Space.'}</p><label>Manufacturer</label><input id="rhCarMake" class="rhSearch" value="${esc(c?.make||'')}" placeholder="Manufacturer"><label>Vehicle Name</label><input id="rhCarModel" class="rhSearch" value="${esc(c?.model||'')}" placeholder="Vehicle name"><label>Year</label><input id="rhCarYear" class="rhSearch" inputmode="numeric" value="${esc(c?.year||'')}" placeholder="Year"><p class="small">Era is derived automatically from Year.</p><div class="rhModalActions"><button class="btn secondary" onclick="$('rhCarEditor').remove()">CANCEL</button><button class="btn" onclick="rhSaveCarFinal('${id}')">${c?'SAVE CHANGES':'ADD TO GARAGE'}</button></div>${c?`<button class="btn dangerBtn rhDeleteCar" onclick="rhConfirmDeleteCar('${id}')">DELETE CAR</button>`:''}</div></div>`)
+ document.body.insertAdjacentHTML('beforeend',`<div id="rhCarEditor" class="rhOverlay"><div class="rhModal rhFormModal"><button class="rhModalX" onclick="$('rhCarEditor').remove()">×</button><h2>${c?'Edit Car':'Add Car'}</h2><p>${c?'Correct this Garage entry.':'Add a car to the current OTG! Space.'}</p><label>Manufacturer</label><input id="rhCarMake" class="rhSearch" value="${esc(c?.make||'')}" placeholder="Manufacturer"><label>Vehicle Name</label><input id="rhCarModel" class="rhSearch" value="${esc(c?.model||'')}" placeholder="Vehicle name"><label>Year</label><input id="rhCarYear" class="rhSearch" inputmode="numeric" value="${esc(c?.year||'')}" placeholder="Year"><p class="small">Era is derived automatically from Year.</p><div class="rhModalActions"><button class="btn secondary" onclick="$('rhCarEditor').remove()">CANCEL</button><button class="btn" onclick="rhSaveCarFinal('${id}')">${c?'SAVE CHANGES':'ADD TO GARAGE'}</button></div>${c?`<button class="btn dangerBtn rhDeleteCar" onclick="rhConfirmDeleteCar('${id}')">DELETE CAR</button>`:''}</div></div>`)
 }
 
 function rhChampDiscoveryKey(type,value){return `${type}:${String(value||'').trim().toLowerCase()}`}
@@ -504,9 +504,9 @@ function rhHallOfFame(completed){
  ${completed.length?`<div class="rhHallGridV1">${completed.map(r=>{const rows=(r.entries||[]).map(id=>{const rr=(r.results||[]).filter(x=>x.carId===id);return rr.length===(r.rounds||[]).length?{id,total:rr.reduce((a,b)=>a+Number(b.time||0),0)}:null}).filter(Boolean).sort((a,b)=>a.total-b.total),w=rows[0],car=w?carById(w.id):null;return `<article class="rhHallCardV1"><img src="${rhRunTrophy(r)}" alt=""><b>${esc(r.name)}</b><span>${car?esc(carName(car)):'—'}</span><small>WINNING TIME</small><strong>${w?rhFmtTime(w.total):'—'}</strong></article>`}).join('')}</div>`:rhEmpty('HALL OF FAME IS EMPTY','Completed Championships will appear here with their trophy, winning car and final time.','View Championships',"rhRecordsMode='records';rhRenderRecords()")}
  <div class="rhRecordsInfoV1"><i>i</i><p><b>ABOUT HALL OF FAME</b>Only fully completed Championships appear here. Each entry shows the trophy for that Championship, the winning car and the final time.</p></div></section>`;
 }
-function rhRenderStats(){const s=rhSpace(),runs=s.runs||[],completed=runs.filter(r=>r.status==='complete'),champResults=runs.flatMap(r=>r.results||[]),eventResults=(s.customEvents||[]).flatMap(e=>e.results||[]),results=[...champResults,...eventResults],time=results.reduce((a,b)=>a+Number(b.time||0),0);$('more').innerHTML=`<div class="rhStatsScene"><div class="rhPageHead"><button class="rhBack" onclick="show('home')">‹</button><div><h1>STATS</h1><p>Your RaceHub at a glance</p></div></div><div class="rhStatsCockpit"><div class="rhStatsGauge rhStatsGaugeLeft"><span>CHAMPIONSHIPS</span><small>CREATED</small><b>${runs.length}</b></div><div class="rhStatsGauge rhStatsGaugeMain"><span>TOTAL</span><small>RACES</small><b>${results.length}</b></div><div class="rhStatsGauge rhStatsGaugeRight"><span>CHAMPIONSHIPS</span><small>COMPLETED</small><b>${completed.length}</b></div><div class="rhStatsOdometer"><span>TIME DRIVEN</span><b>${rhDurationClock(time)}</b><small>HOURS&nbsp;&nbsp;&nbsp;MINUTES&nbsp;&nbsp;&nbsp;SECONDS</small></div></div></div><div class="rhContent rhStatsInfoWrap"><div class="rhStatsInfo">All statistics are for the current RaceHub Space only.</div></div>`}
+function rhRenderStats(){const s=rhSpace(),runs=s.runs||[],completed=runs.filter(r=>r.status==='complete'),champResults=runs.flatMap(r=>r.results||[]),eventResults=(s.customEvents||[]).flatMap(e=>e.results||[]),results=[...champResults,...eventResults],time=results.reduce((a,b)=>a+Number(b.time||0),0);$('more').innerHTML=`<div class="rhStatsScene"><div class="rhPageHead"><button class="rhBack" onclick="show('home')">‹</button><div><h1>STATS</h1><p>Your OTG! at a glance</p></div></div><div class="rhStatsCockpit"><div class="rhStatsGauge rhStatsGaugeLeft"><span>CHAMPIONSHIPS</span><small>CREATED</small><b>${runs.length}</b></div><div class="rhStatsGauge rhStatsGaugeMain"><span>TOTAL</span><small>RACES</small><b>${results.length}</b></div><div class="rhStatsGauge rhStatsGaugeRight"><span>CHAMPIONSHIPS</span><small>COMPLETED</small><b>${completed.length}</b></div><div class="rhStatsOdometer"><span>TIME DRIVEN</span><b>${rhDurationClock(time)}</b><small>HOURS&nbsp;&nbsp;&nbsp;MINUTES&nbsp;&nbsp;&nbsp;SECONDS</small></div></div></div><div class="rhContent rhStatsInfoWrap"><div class="rhStatsInfo">All statistics are for the current OTG! Space only.</div></div>`}
 function rhDurationClock(v){const h=Math.floor(v/3600),m=Math.floor(v%3600/60),s=Math.floor(v%60);return [h,m,s].map(n=>String(n).padStart(2,'0')).join(':')}
-function rhRenderSettings(){const s=rhSpace(),makes=rhMakeList();$('more').innerHTML=`<div class="rhScene rhSettingsScene"><div class="rhPageHead"><button class="rhBack" onclick="show('home')">‹</button><div><h1>SETTINGS</h1><p>RaceHub Control Centre</p></div></div></div><div class="rhContent"><section class="rhSection"><h2>Celebrations</h2>${['sound','confetti','vibrate'].map(k=>`<label class="rhToggle"><span>${k==='sound'?'Sounds':k==='confetti'?'Confetti':'Vibration'}</span><input type="checkbox" ${state.settings[k]?'checked':''} onchange="state.settings.${k}=this.checked;rhSave()"></label>`).join('')}</section><section class="rhSection"><h2>Garage / Profile</h2><label>Favourite Manufacturer</label><select onchange="rhChangeFavourite(this.value)"><option value="">Not set</option>${makes.map(m=>`<option ${m===s.favouriteManufacturer?'selected':''}>${esc(m)}</option>`).join('')}</select><p class="small">Changing Favourite Manufacturer removes the old Favourite Championship and any progress in its active run.</p><button class="btn secondary" onclick="rhRenameManufacturerPrompt()">RENAME MANUFACTURER</button><p class="small">Correct a Manufacturer name everywhere in the current RaceHub Space.</p></section><section class="rhSection"><h2>RaceHub Spaces</h2>${state.spaces.map(x=>`<button class="rhSpaceRow ${x.id===s.id?'active':''}" onclick="rhSwitchSpace('${x.id}')"><span><b>${esc(x.name)}</b><small>${x.cars.length} cars • ${(x.runs||[]).length} Championships</small></span><em>${x.id===s.id?'CURRENT':'›'}</em></button>`).join('')}<button class="btn secondary" onclick="rhCreateSpace()">CREATE NEW SPACE</button><p class="small">Play more than one racing game? Create a separate RaceHub for each one. Each RaceHub keeps its own Garage, Championships, Records, Hall of Fame and Stats separate.</p></section><section class="rhSection"><h2>Data</h2><button class="rhSettingRow" onclick="rhBackup()"><b>Backup</b><span>Create a RaceHub-managed backup ›</span></button><button class="rhSettingRow" onclick="rhRestoreList()"><b>Restore</b><span>Restore this Space from a saved backup ›</span></button></section><section class="rhSection danger"><h2>DANGER ZONE</h2><button class="btn dangerBtn" onclick="rhResetConfirm()">RESET RACING DATA</button><p class="small">Clears racing data for this Space while retaining its Garage, name, global Driver Profile and other Spaces.</p></section><section class="rhSection"><h2>About RaceHub</h2><h3>DRIVE • RECORD • IMPROVE</h3><p>RaceHub is your personal racing record book. Build your Garage, run Championships, record results and keep your racing history safe.</p><p class="small">Version ${RH_BUILD_VERSION} • Studio Final Build</p></section><button class="btn secondary" onclick="rhMoreMode='stats';rhRenderMore()">BACK TO STATS</button></div>`}
+function rhRenderSettings(){const s=rhSpace(),makes=rhMakeList();$('more').innerHTML=`<div class="rhScene rhSettingsScene"><div class="rhPageHead"><button class="rhBack" onclick="show('home')">‹</button><div><h1>SETTINGS</h1><p>OTG! Control Centre</p></div></div></div><div class="rhContent"><section class="rhSection"><h2>Celebrations</h2>${['sound','confetti','vibrate'].map(k=>`<label class="rhToggle"><span>${k==='sound'?'Sounds':k==='confetti'?'Confetti':'Vibration'}</span><input type="checkbox" ${state.settings[k]?'checked':''} onchange="state.settings.${k}=this.checked;rhSave()"></label>`).join('')}</section><section class="rhSection"><h2>Garage / Profile</h2><label>Favourite Manufacturer</label><select onchange="rhChangeFavourite(this.value)"><option value="">Not set</option>${makes.map(m=>`<option ${m===s.favouriteManufacturer?'selected':''}>${esc(m)}</option>`).join('')}</select><p class="small">Changing Favourite Manufacturer removes the old Favourite Championship and any progress in its active run.</p><button class="btn secondary" onclick="rhRenameManufacturerPrompt()">RENAME MANUFACTURER</button><p class="small">Correct a Manufacturer name everywhere in the current OTG! Space.</p></section><section class="rhSection"><h2>OTG! Spaces</h2>${state.spaces.map(x=>`<button class="rhSpaceRow ${x.id===s.id?'active':''}" onclick="rhSwitchSpace('${x.id}')"><span><b>${esc(x.name)}</b><small>${x.cars.length} cars • ${(x.runs||[]).length} Championships</small></span><em>${x.id===s.id?'CURRENT':'›'}</em></button>`).join('')}<button class="btn secondary" onclick="rhCreateSpace()">CREATE NEW SPACE</button><p class="small">Play more than one racing game? Create a separate OTG! for each one. Each OTG! keeps its own Garage, Championships, Records, Hall of Fame and Stats separate.</p></section><section class="rhSection"><h2>Data</h2><button class="rhSettingRow" onclick="rhBackup()"><b>Backup</b><span>Create a OTG!-managed backup ›</span></button><button class="rhSettingRow" onclick="rhRestoreList()"><b>Restore</b><span>Restore this Space from a saved backup ›</span></button></section><section class="rhSection danger"><h2>DANGER ZONE</h2><button class="btn dangerBtn" onclick="rhResetConfirm()">RESET RACING DATA</button><p class="small">Clears racing data for this Space while retaining its Garage, name, global Driver Profile and other Spaces.</p></section><section class="rhSection"><h2>About Out The Garage!</h2><h3>DRIVE • RECORD • IMPROVE</h3><p>Out The Garage! is your personal racing record book. Build your Garage, run Championships, record results and keep your racing history safe.</p><p class="small">Version ${RH_BUILD_VERSION} • Studio Final Build</p></section><button class="btn secondary" onclick="rhMoreMode='stats';rhRenderMore()">BACK TO STATS</button></div>`}
 let rhRenameMakePending=null;
 function rhRenameManufacturerPrompt(){
  const s=rhSpace(),makes=[...new Set((s.cars||[]).map(c=>c.make).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
@@ -519,21 +519,21 @@ function rhOpenManufacturerRenameModal(oldName='',returnToGarage=false){
  if(!makes.length)return toast('No Manufacturers to rename');
  const chosen=makes.includes(oldName)?oldName:makes[0];rhRenameMakePending={oldName:chosen,newName:chosen,returnToGarage};
  document.getElementById('rhRenameManufacturerOverlay')?.remove();
- document.body.insertAdjacentHTML('beforeend',`<div id="rhRenameManufacturerOverlay" class="rhOverlay"><div class="rhModal rhFormModal"><button class="rhModalX" onclick="$('rhRenameManufacturerOverlay').remove()">×</button><h2>RENAME MANUFACTURER</h2><p>Correct a Manufacturer name everywhere in the current RaceHub Space.</p>${oldName?`<label>CURRENT MANUFACTURER</label><div class="rhRenameMakeCurrentV1">${esc(chosen)}</div>`:`<label for="rhRenameMakeOld">MANUFACTURER</label><select id="rhRenameMakeOld" onchange="rhRenameMakeSelect(this.value)">${makes.map(m=>`<option value="${esc(m)}" ${m===chosen?'selected':''}>${esc(m)}</option>`).join('')}</select>`}<label for="rhRenameMakeNew">NEW MANUFACTURER NAME</label><input id="rhRenameMakeNew" value="${esc(chosen)}" autocomplete="off" autocapitalize="words"><p class="small">This updates matching Garage cars, Favourite Manufacturer and matching Championship names in this Space.</p><div class="rhModalActions"><button class="btn secondary" onclick="$('rhRenameManufacturerOverlay').remove()">CANCEL</button><button class="btn" onclick="rhRenameManufacturerReview()">REVIEW RENAME</button></div></div></div>`);
+ document.body.insertAdjacentHTML('beforeend',`<div id="rhRenameManufacturerOverlay" class="rhOverlay"><div class="rhModal rhFormModal"><button class="rhModalX" onclick="$('rhRenameManufacturerOverlay').remove()">×</button><h2>RENAME MANUFACTURER</h2><p>Correct a Manufacturer name everywhere in the current OTG! Space.</p>${oldName?`<label>CURRENT MANUFACTURER</label><div class="rhRenameMakeCurrentV1">${esc(chosen)}</div>`:`<label for="rhRenameMakeOld">MANUFACTURER</label><select id="rhRenameMakeOld" onchange="rhRenameMakeSelect(this.value)">${makes.map(m=>`<option value="${esc(m)}" ${m===chosen?'selected':''}>${esc(m)}</option>`).join('')}</select>`}<label for="rhRenameMakeNew">NEW MANUFACTURER NAME</label><input id="rhRenameMakeNew" value="${esc(chosen)}" autocomplete="off" autocapitalize="words"><p class="small">This updates matching Garage cars, Favourite Manufacturer and matching Championship names in this Space.</p><div class="rhModalActions"><button class="btn secondary" onclick="$('rhRenameManufacturerOverlay').remove()">CANCEL</button><button class="btn" onclick="rhRenameManufacturerReview()">REVIEW RENAME</button></div></div></div>`);
  setTimeout(()=>document.getElementById('rhRenameMakeNew')?.select(),0)
 }
 function rhRenameMakeSelect(v){if(!rhRenameMakePending)return;rhRenameMakePending.oldName=v;rhRenameMakePending.newName=v;const input=document.getElementById('rhRenameMakeNew');if(input){input.value=v;input.select()}}
 function rhRenameManufacturerReview(){
  if(!rhRenameMakePending)return;const oldName=rhRenameMakePending.oldName,newName=(document.getElementById('rhRenameMakeNew')?.value||'').trim();
  if(!newName)return toast('Enter a Manufacturer name');if(newName===oldName)return toast('Enter a different Manufacturer name');rhRenameMakePending.newName=newName;document.getElementById('rhRenameManufacturerOverlay')?.remove();
- rhConfirm({title:'RENAME MANUFACTURER',copy:`Rename ${oldName} to ${newName} everywhere in this RaceHub Space?`,confirmLabel:'RENAME',onConfirm:'rhRenameManufacturerApply()'})
+ rhConfirm({title:'RENAME MANUFACTURER',copy:`Rename ${oldName} to ${newName} everywhere in this OTG! Space?`,confirmLabel:'RENAME',onConfirm:'rhRenameManufacturerApply()'})
 }
 function rhRenameManufacturerApply(){
  const p=rhRenameMakePending;if(!p)return;rhRenameManufacturer(p.oldName,p.newName);rhRenameMakePending=null;if(p.returnToGarage){rhGarageOpenMake=p.newName;show('garage')}else rhRenderSettings()
 }
 function rhRenameManufacturer(oldName,newName){const s=rhSpace();(s.cars||[]).forEach(c=>{if(c.make===oldName){c.make=newName;c.name=[newName,c.model,c.year].filter(Boolean).join(' ')}});if(s.favouriteManufacturer===oldName)s.favouriteManufacturer=newName;(s.runs||[]).forEach(r=>{if((r.type==='make'||r.type==='favourite')&&r.value===oldName){r.value=newName;r.name=`${newName} Championship`}});rhSave();toast(`${oldName} renamed to ${newName}`)}
 function rhChangeFavourite(v){const s=rhSpace(),old=s.favouriteManufacturer;if(old&&old!==v&&!confirm(`Change Favourite Manufacturer from ${old} to ${v||'Not set'}? Progress in the old Favourite Championship will be deleted.`)){rhRenderSettings();return}s.runs=s.runs.filter(r=>!(r.type==='favourite'&&r.value===old));s.favouriteManufacturer=v;rhSave();rhRenderSettings()}
-function rhCreateSpace(){const name=prompt('RaceHub Name','');if(!name?.trim())return;const s=rhSpaceTemplate(name.trim(),[]);state.spaces.push(s);state.activeSpaceId=s.id;rhSync();rhSave();rhRenderSettings()}
+function rhCreateSpace(){const name=prompt('OTG! Name','');if(!name?.trim())return;const s=rhSpaceTemplate(name.trim(),[]);state.spaces.push(s);state.activeSpaceId=s.id;rhSync();rhSave();rhRenderSettings()}
 function rhSwitchSpace(id){state.activeSpaceId=id;rhSync();rhSave();rhRenderSettings()}
 function rhBackup(){const s=rhSpace(),b={id:rhId('backup'),spaceName:s.name,date:new Date().toISOString(),counts:{cars:s.cars.length,championships:s.runs.length,results:s.runs.flatMap(r=>r.results||[]).length},data:rhClone({cars:s.cars,favouriteManufacturer:s.favouriteManufacturer,runs:s.runs,customEvents:s.customEvents})};s.backups=s.backups||[];s.backups.push(b);rhSave();toast('Backup created');rhRenderSettings()}
 function rhRestoreList(){const s=rhSpace(),bs=s.backups||[];document.body.insertAdjacentHTML('beforeend',`<div id="rhRestore" class="rhOverlay"><div class="rhModal"><button class="rhModalX" onclick="$('rhRestore').remove()">×</button><h2>Restore Backup</h2>${bs.length?bs.slice().reverse().map(b=>`<button class="rhSpaceRow" onclick="rhRestore('${b.id}')"><span><b>${esc(b.spaceName)}</b><small>${new Date(b.date).toLocaleString('en-GB')} • ${b.counts.cars} cars • ${b.counts.championships} Championships</small></span><em>›</em></button>`).join(''):rhEmpty('NO SAVED BACKUPS','Create a backup before making major changes.','Create Backup',"$('rhRestore').remove();rhBackup()")}</div></div>`)}
@@ -549,10 +549,10 @@ saveCarEdit=function(id){rhLegacySaveCarEdit(id);rhSpace().cars=state.cars;rhSav
 load=rhLoad;render=rhRender;
 
 
-/* RaceHub v5.7.20 — fullscreen foundation.
+/* OTG! v5.7.20 — fullscreen foundation.
    Installed PWA manifest is the primary fullscreen mechanism.
    This user-gesture fallback requests browser fullscreen only when supported.
-   It never blocks navigation or changes RaceHub data. */
+   It never blocks navigation or changes OTG! data. */
 (function rhFullscreenFoundation(){
   let attempted=false;
   async function request(){

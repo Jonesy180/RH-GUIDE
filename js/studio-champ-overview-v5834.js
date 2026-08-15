@@ -1,4 +1,4 @@
-/* RaceHub v5.8.34 — Championship in Progress full rebuild */
+/* OTG! v5.8.34 — Championship in Progress full rebuild */
 (function(){
   'use strict';
 

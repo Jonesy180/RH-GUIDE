@@ -1,4 +1,4 @@
-/* RaceHub v6.0.23 — Stage 9D League Standings + permanent Event history.
+/* OTG! v6.0.23 — Stage 9D League Standings + permanent Event history.
    Additive over passed v6.0.22. Confirmed Event results remain the only scoring source. */
 (function(){
   const safe=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));

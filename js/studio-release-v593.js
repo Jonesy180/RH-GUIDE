@@ -1,4 +1,4 @@
-/* RaceHub v5.9.3 — update/version authority only. */
+/* OTG! v5.9.3 — update/version authority only. */
 (()=>{
  'use strict';
  const CURRENT_VERSION=document.querySelector('meta[name="racehub-version"]')?.content||'5.9.3';
@@ -31,7 +31,7 @@
    const out=settings(),content=document.querySelector('#more .rhContent');
    if(!content)return out;
    const danger=content.querySelector('.rhDangerFinal');
-   if(danger&&!document.getElementById('rhUpdatePanel'))danger.insertAdjacentHTML('beforebegin',`<section id="rhUpdatePanel" class="rhSection rhSettingPanel rhUpdatePanelV5783"><h2>APP UPDATE</h2><p>Check for the latest RaceHub build without closing the app.</p><button id="rhCheckUpdateButton" class="rhSettingRow" onclick="rhCheckForUpdate()"><b>CHECK FOR LATEST UPDATE</b><span>RaceHub v${CURRENT_VERSION} • CHECK NOW ›</span></button><div id="rhUpdateStatus" class="rhUpdateStatusV5783" aria-live="polite">Installed version: ${CURRENT_VERSION}</div></section>`);
+   if(danger&&!document.getElementById('rhUpdatePanel'))danger.insertAdjacentHTML('beforebegin',`<section id="rhUpdatePanel" class="rhSection rhSettingPanel rhUpdatePanelV5783"><h2>APP UPDATE</h2><p>Check for the latest OTG! build without closing the app.</p><button id="rhCheckUpdateButton" class="rhSettingRow" onclick="rhCheckForUpdate()"><b>CHECK FOR LATEST UPDATE</b><span>OTG! v${CURRENT_VERSION} • CHECK NOW ›</span></button><div id="rhUpdateStatus" class="rhUpdateStatusV5783" aria-live="polite">Installed version: ${CURRENT_VERSION}</div></section>`);
    return out;
  };
 })();
