@@ -1,4 +1,4 @@
-const CACHE_NAME='rhguide-v6.0.62-otg-blank-fresh-storage';
+const CACHE_NAME='rhguide-v6.0.63-otg-final';
 const ASSETS=[
   './','./index.html','./style-v595.css?v=6020','./manifest.webmanifest?v=rhguide6040','./favicon.png',
   './js/seed-data.js?v=5799','./js/core.js?v=6020','./js/race-director.js?v=5799','./js/views.js?v=5799',
