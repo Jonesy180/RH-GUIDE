@@ -1,7 +1,7 @@
 {
   "id": "./rh-guide",
-  "name": "rh-guide",
-  "short_name": "rh-guide",
+  "name": "OTG! Guide",
+  "short_name": "OTG! Guide",
   "description": "An independent OTG! testing and guide installation.",
   "start_url": "./index.html",
   "scope": "./",

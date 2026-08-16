@@ -1,4 +1,4 @@
-rh-guide v6.0.68
+rh-guide v6.0.69
 Final PWA icon rebrand fix.
 
 - Launcher/PWA icons rebuilt from the existing approved wall-paint OTG! asset: assets/brand/otg-approved-painted-mark-v6052.png
