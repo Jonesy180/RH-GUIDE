@@ -1,5 +1,8 @@
-const CACHE_NAME='rhguide-v6.0.63-otg-final';
+const CACHE_NAME='rhguide-v6.0.64-gt7-catalogue';
 const ASSETS=[
+  './style-otg-catalogue-v6064.css?v=6064',
+  './js/otg-catalogue-v6064.js?v=6064',
+  './catalogues/gt7-v1.json',
   './','./index.html','./style-v595.css?v=6020','./manifest.webmanifest?v=rhguide6040','./favicon.png',
   './js/seed-data.js?v=5799','./js/core.js?v=6020','./js/race-director.js?v=5799','./js/views.js?v=5799',
   './js/celebrations.js?v=5799','./js/garage.js?v=5799','./js/control-centre.js?v=5799',

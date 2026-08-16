@@ -1,0 +1,4 @@
+rh-guide v6.0.64 GT7 catalogue prototype
+Source: passed rh-guide v6.0.63. Main untouched.
+Catalogue: 575 cars. Manufacturer, Car, Year, Class only.
+Grey=unowned; tick=materialise into Garage. Guide v2 storage separation retained.
