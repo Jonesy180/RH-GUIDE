@@ -1,0 +1,5 @@
+rh-guide v6.0.70
+- Ports the passed OTG! v6.0.78 locked Reset Racing Data presentation into rh-guide.
+- Locked artwork reused; no redraw or image generation.
+- rh-guide identity/storage/update path retained.
+- Personal/dev data artifacts excluded from this distribution.
