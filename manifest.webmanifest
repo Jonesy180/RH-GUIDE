@@ -2,7 +2,7 @@
   "id": "./rh-guide",
   "name": "rh-guide",
   "short_name": "rh-guide",
-  "description": "An independent RaceHub testing and guide installation.",
+  "description": "An independent OTG! testing and guide installation.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "fullscreen",
@@ -11,25 +11,25 @@
   "theme_color": "#02070c",
   "icons": [
     {
-      "src": "icons/icon-v5765-192.png",
+      "src": "icons/icon-v6068-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-v5765-512.png",
+      "src": "icons/icon-v6068-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-maskable-v5765-192.png",
+      "src": "icons/icon-maskable-v6068-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "icons/icon-maskable-v5765-512.png",
+      "src": "icons/icon-maskable-v6068-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

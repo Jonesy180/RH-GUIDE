@@ -1,0 +1,10 @@
+rh-guide v6.0.68
+Final PWA icon rebrand fix.
+
+- Launcher/PWA icons rebuilt from the existing approved wall-paint OTG! asset: assets/brand/otg-approved-painted-mark-v6052.png
+- No generated artwork used.
+- Manifest icon references versioned to v6068.
+- Favicon and generic icon sizes refreshed from the same approved asset.
+- New rh-guide service-worker cache version ensures the icon assets can update.
+- rh-guide app id, scope, storage identity and update channel are unchanged.
+- Functional v6.0.67 GT7 catalogue/Festival behaviour is unchanged.
