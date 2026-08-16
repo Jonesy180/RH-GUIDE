@@ -1,0 +1,4 @@
+rh-guide v6.0.66 — GT7 catalogue Festival creation feedback checkpoint.
+
+Built from passed v6.0.65. Dedicated Gran Turismo 7 Space and catalogue ownership behaviour preserved.
+When ticking an unowned GT7 catalogue car newly unlocks one or more Festival Championships, OTG! now announces the newly created Championship name(s). Festival eligibility/generation rules are unchanged.
