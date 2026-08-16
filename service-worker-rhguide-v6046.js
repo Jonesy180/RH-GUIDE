@@ -1,9 +1,6 @@
-const CACHE_NAME='rhguide-v6.0.64-gt7-catalogue';
+const CACHE_NAME='rhguide-v6.0.65-gt7-catalogue';
 const ASSETS=[
-  './style-otg-catalogue-v6064.css?v=6064',
-  './js/otg-catalogue-v6064.js?v=6064',
-  './catalogues/gt7-v1.json',
-  './','./index.html','./style-v595.css?v=6020','./manifest.webmanifest?v=rhguide6040','./favicon.png',
+  './','./index.html','./style-gt7-v6065.css?v=6065','./js/gt7-catalogue-v6065.js?v=6065','./style-v595.css?v=6020','./manifest.webmanifest?v=rhguide6040','./favicon.png',
   './js/seed-data.js?v=5799','./js/core.js?v=6020','./js/race-director.js?v=5799','./js/views.js?v=5799',
   './js/celebrations.js?v=5799','./js/garage.js?v=5799','./js/control-centre.js?v=5799',
   './js/studio-final-v5808.js?v=6046','./js/studio-locked-ui-v5780.js?v=5799','./js/studio-grand-tour-v6043.js?v=6043','./js/studio-polish-v5782.js?v=5799',

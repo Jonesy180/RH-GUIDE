@@ -1,0 +1,4 @@
+rh-guide v6.0.65 — GT7 dedicated catalogue Space prototype.
+575 cars from supplied workbook: Manufacturer / Car / Year / Class only.
+Dedicated Gran Turismo 7 Space; unowned catalogue cars grey until ticked; owned cars become Garage cars in that Space only.
+Main OTG! data/storage remains untouched.
