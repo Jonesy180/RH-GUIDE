@@ -1,0 +1,6 @@
+rh-guide v6.0.71
+- Exact passed OTG! v6.0.78 locked Reset Racing Data / Full Reset OTG! artwork integrated.
+- Reset override scripts load last so old modal code cannot win.
+- Catalogue-aware Full Reset retained; OTG! backups survive Full Reset.
+- rh-guide repository/storage/update identity preserved.
+- Accidental root data/development ZIPs removed from distribution.
