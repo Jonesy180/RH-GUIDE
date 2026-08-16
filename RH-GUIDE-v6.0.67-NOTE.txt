@@ -1,0 +1,6 @@
+rh-guide v6.0.67
+Final deferred visual/rebrand fixes from passed v6.0.66:
+- Result Summary/podium legacy RaceHub wall mark concealed and replaced with OTG! live overlay.
+- Full Reset Hubs tablet copy replaced with clean live warning panel.
+- Full Reset Hubs malformed cap mark concealed with clean OTG! badge.
+- Existing GT7 catalogue and Festival creation feedback unchanged.

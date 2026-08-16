@@ -1,0 +1,12 @@
+/* rh-guide v6.0.67 — final deferred rebrand/visual fixes only. */
+/* Result Summary: conceal legacy baked RaceHub wall mark and present OTG! as live UI text. */
+.rhPodiumHeroV5804::after{content:"OTG!";position:absolute;z-index:1;left:52.8%;top:10.8%;width:31%;height:20%;display:flex;align-items:center;justify-content:center;box-sizing:border-box;background:linear-gradient(180deg,#11171b,#080d10);border:1px solid rgba(34,220,239,.28);box-shadow:0 0 24px rgba(0,0,0,.55),inset 0 0 24px rgba(0,0,0,.45);color:#e9f7fa;font-size:clamp(25px,7vw,48px);font-weight:1000;font-style:italic;letter-spacing:.04em;text-shadow:3px 0 #27ddec;border-radius:3px;pointer-events:none}
+.rhPodiumHeaderV5804{z-index:2}
+/* Full Reset: cover the baked tablet copy with the same clean live warning panel used by Reset Racing Data. */
+.rhReset6040.full6040 .rhTabletMask6040{top:39.2%;height:28.2%;padding:3.4% 3.2% 3.1%}
+.rhReset6040.full6040 .rhTabletMask6040 h2{margin-bottom:8px}
+.rhReset6040.full6040 .rhTabletMask6040 p{font-size:clamp(11px,3.05vw,17px);line-height:1.25}
+.rhResetDetail6067{margin-top:9px;color:#ff5a5a;font-size:clamp(12px,3.25vw,18px);font-weight:900}
+.rhReset6040.full6040 .rhKeep6040{margin-top:8px;padding-top:8px;font-size:clamp(10px,2.75vw,16px);line-height:1.22}
+/* Cover the malformed baked cap lettering with a clean cap badge. */
+.rhReset6040.full6040::after{content:"OTG!";position:absolute;z-index:6;left:42.2%;top:10.1%;width:15.6%;height:3.2%;display:flex;align-items:center;justify-content:center;background:#080d11;border-radius:50%;color:#f1f8fa;font-size:clamp(13px,3.7vw,22px);font-weight:1000;font-style:italic;letter-spacing:.03em;text-shadow:2px 0 #25dceb;transform:rotate(-1deg);pointer-events:none}
