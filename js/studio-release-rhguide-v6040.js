@@ -1,4 +1,4 @@
-/* rh-guide v6.0.40 — independent update/version authority. */
+/* rh-guide v6.0.112 — independent update/version authority. */
 (()=>{
  'use strict';
  const CURRENT_VERSION=document.querySelector('meta[name="racehub-version"]')?.content||'6.0.40';
@@ -10,7 +10,7 @@
    try{
      const registration=await navigator.serviceWorker?.getRegistration();
      if(registration)await registration.update();
-     const response=await fetch(`./index.html?update-check=${Date.now()}`,{cache:'no-store',headers:{'Cache-Control':'no-cache'}});
+     const response=await fetch(`./index.html?rhguide-update=6112-${Date.now()}`,{cache:'no-store',headers:{'Cache-Control':'no-cache'}});
      if(!response.ok)throw new Error();
      const html=await response.text();
      const match=html.match(/name=["']racehub-version["']\s+content=["']([^"']+)/i);

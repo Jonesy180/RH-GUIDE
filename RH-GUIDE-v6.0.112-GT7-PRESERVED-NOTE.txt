@@ -1,0 +1,6 @@
+rh-guide v6.0.112
+- Built from rh-guide v6.0.71 baseline.
+- Preserves the existing Gran Turismo 7 catalogue feature and user-owned GT7 state.
+- Does not add the Forza Horizon 5 dedicated catalogue space.
+- Does not include any main OTG! user data, ownership, racing results, backups, profile, spaces, or diagnostics.
+- Keeps rh-guide storage/service-worker/update identity isolated from main OTG!.
