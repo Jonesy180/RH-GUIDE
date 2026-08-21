@@ -402,3 +402,10 @@ A presentation-only refinement pass covering spacing, typography, progress indic
 - Nudges the compact League digital race-time display upward for balanced vertical spacing.
 - Reduces the League Position entry box while preserving a comfortable phone touch target.
 - No standings, result-calculation, Advanced Timing or existing RaceHub flow changes.
+
+## v6.0.129 — Main OTG! v6.0.128 parity
+- Ported completed Race Off flow and locked Race Off trophy treatment.
+- Ported final no-Hubs Record celebration and lower-panel phone fit.
+- Preserved rh-guide independent storage, PWA identity, cache and update channel.
+- Preserved GT7 catalogue in rh-guide.
+- Did not import FH5 catalogue or any main OTG! user/space/racing data.
