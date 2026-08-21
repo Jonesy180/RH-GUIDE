@@ -1,0 +1,4 @@
+/* rh-guide v6.0.130 — onboarding manufacturer smart-search fit only */
+.rhOnMakeList button[hidden]{display:none!important}
+.rhOnMakeList{max-height:12rem!important;min-height:0!important;height:auto!important;overflow-y:auto!important;align-content:start!important}
+.rhOnMakeList:empty{display:none!important}

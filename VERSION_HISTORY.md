@@ -1,3 +1,9 @@
+## v6.0.130 — rh-guide upgrade-state/update/search fixes
+- Preserve established guide onboarding state on upgrade.
+- Settings update now activates and reloads immediately.
+- Favourite Manufacturer onboarding results collapse to compact smart-search list.
+- GT7 catalogue retained; no main-app user data imported.
+
 ## v6.0.26 — Stage 9D final League result alignment
 - Alignment-only correction from protected v6.0.24.
 - Position and Race Time boxes are level; segmented time digits are vertically centred.
