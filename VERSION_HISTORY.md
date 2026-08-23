@@ -1,3 +1,12 @@
+## v6.0.132 — GT7 SPECIALS + scroll parity with main v6.0.142
+- GT7 official catalogue updated to the locked 574-car master used by main OTG! v6.0.142.
+- GT7 manual/non-catalogue cars live under SPECIALS in Garage.
+- SPECIALS remain outside the 574 official catalogue/count and Manufacturer/Favourite Manufacturer Championships.
+- SPECIALS remain eligible for Festival, Era, Class, Race Off and Custom Racing.
+- SPECIALS persistence/reconciliation fixes from main v6.0.139 included.
+- Passing viewport-shell scroll architecture from main v6.0.142 included.
+- rh-guide onboarding/state/update channel preserved; no unrelated main-app changes imported.
+
 ## v6.0.130 — rh-guide upgrade-state/update/search fixes
 - Preserve established guide onboarding state on upgrade.
 - Settings update now activates and reloads immediately.
