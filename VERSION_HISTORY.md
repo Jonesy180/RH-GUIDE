@@ -1,3 +1,8 @@
+## v6.0.133 — Enter Result Track Targets
+- Adds the same read-only TRACK RECORD / YOUR PB strip proven in main OTG! v6.0.143.
+- Exact track/layout, cross-mode, Advanced Timing excluded.
+- No other rh-guide changes.
+
 ## v6.0.132 — GT7 SPECIALS + scroll parity with main v6.0.142
 - GT7 official catalogue updated to the locked 574-car master used by main OTG! v6.0.142.
 - GT7 manual/non-catalogue cars live under SPECIALS in Garage.
