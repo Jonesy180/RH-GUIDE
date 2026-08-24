@@ -1,3 +1,11 @@
+## v6.0.134 — Default Space + GT7 startup stability
+- Ports the passing OTG! v6.0.148 Space behaviour to rh-guide.
+- Adds user-selectable Default Space and launches into it.
+- Switching Space during a session does not change the Default.
+- GT7 background setup can no longer silently activate GT7.
+- GT7 SPECIALS startup integration no longer renders/activates GT7 in the background.
+- Guide onboarding/update behaviour otherwise unchanged.
+
 ## v6.0.133 — Enter Result Track Targets
 - Adds the same read-only TRACK RECORD / YOUR PB strip proven in main OTG! v6.0.143.
 - Exact track/layout, cross-mode, Advanced Timing excluded.

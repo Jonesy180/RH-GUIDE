@@ -209,21 +209,16 @@ window.rhAbout=function(){
 };
 
 window.rhManageSpaces=function(){
- const s=rhSpace();show('more');q('more').innerHTML=`<div class="rhScene rhSpaceScene">${rhHeader('OTG! SPACES','Manage your racing spaces','settings','more')}</div><div class="rhContent rhConformance rhSpacesFinal">
+ const s=rhSpace(),defaultId=(state.spaces.some(x=>x.id===state.defaultSpaceId)?state.defaultSpaceId:(state.defaultSpaceId=s.id));show('more');q('more').innerHTML=`<div class="rhScene rhSpaceScene">${rhHeader('OTG! SPACES','Manage your racing spaces','settings','more')}</div><div class="rhContent rhConformance rhSpacesFinal">
  ${state.spaces.map(x=>`<section class="rhSpaceManage ${x.id===s.id?'active':''}">
-  <div class="rhSpaceMetaFinal">
-   <div><b>${safe(x.name)}</b><small>${x.cars.length} cars • ${(x.runs||[]).length} Championships</small></div>
-   ${x.id===s.id?'<em>CURRENT</em>':''}
-  </div>
-  <div class="rhSpaceActions rhSpaceActionsFinal">
-   ${x.id!==s.id?`<button class="btn rhSwitchSpaceBtn" onclick="rhSwitchSpace('${x.id}')">SWITCH TO THIS SPACE</button>`:''}
-   <div class="rhSpaceMinorActionsFinal"><button class="btn secondary" onclick="rhRenameSpacePrompt('${x.id}')">RENAME</button>${state.spaces.length>1?`<button class="btn dangerBtn" onclick="rhDeleteSpaceConfirm('${x.id}')">DELETE</button>`:''}</div>
-  </div>
+  <div class="rhSpaceMetaFinal"><div><b>${safe(x.name)}</b><small>${x.cars.length} cars • ${(x.runs||[]).length} Championships</small></div><div class="rhSpaceBadgesFinal">${x.id===s.id?'<em>CURRENT</em>':''}${x.id===defaultId?'<em class="rhDefaultBadge">DEFAULT</em>':''}</div></div>
+  <div class="rhSpaceActions rhSpaceActionsFinal">${x.id!==s.id?`<button class="btn rhSwitchSpaceBtn" onclick="rhSwitchSpace('${x.id}')">SWITCH TO THIS SPACE</button>`:''}${x.id!==defaultId?`<button class="btn secondary rhDefaultSpaceBtn" onclick="rhSetDefaultSpace('${x.id}')">SET AS DEFAULT</button>`:''}<div class="rhSpaceMinorActionsFinal"><button class="btn secondary" onclick="rhRenameSpacePrompt('${x.id}')">RENAME</button>${state.spaces.length>1?`<button class="btn dangerBtn" onclick="rhDeleteSpaceConfirm('${x.id}')">DELETE</button>`:''}</div></div>
  </section>`).join('')}
  <button class="btn rhPrimaryWide rhCreateSpaceFinalBtn" onclick="rhCreateSpaceFinal()">CREATE NEW SPACE</button>
- <p class="small rhSpacesHelpFinal">Play more than one racing game? Create a separate OTG! for each one. Each OTG! keeps its own Garage, Championships, Records, Hall of Fame and Stats separate.</p></div>`;
+ <p class="small rhSpacesHelpFinal">The Default Space opens automatically when OTG! starts. Switching Space during a session does not change the Default.</p></div>`;
 };
 window.rhSwitchSpace=function(id){if(!state.spaces.some(x=>x.id===id))return;state.activeSpaceId=id;rhSync();rhSave();toast('OTG! Space switched');rhManageSpaces()};
+window.rhSetDefaultSpace=function(id){if(!state.spaces.some(x=>x.id===id))return;state.defaultSpaceId=id;rhSave();toast('Default OTG! Space set');rhManageSpaces()};
 
 window.rhCreateSpace=function(){rhCreateSpaceFinal()};
 window.rhCreateSpaceFinal=function(){q('rhSpaceCreate')?.remove();document.body.insertAdjacentHTML('beforeend',`<div id="rhSpaceCreate" class="rhOverlay"><div class="rhModal rhFormModal"><button class="rhModalX" onclick="$('rhSpaceCreate').remove()">×</button><h2>CREATE OTG! SPACE</h2><label>OTG! Name</label><input id="rhNewSpaceName" placeholder="Enter game name"><div class="rhModalActions"><button class="btn secondary" onclick="$('rhSpaceCreate').remove()">CANCEL</button><button class="btn" onclick="rhCreateSpaceSave()">CREATE SPACE</button></div></div></div>`)};
@@ -231,7 +226,7 @@ window.rhCreateSpaceSave=function(){const name=q('rhNewSpaceName')?.value.trim()
 window.rhRenameSpacePrompt=function(id){const x=state.spaces.find(s=>s.id===id);if(!x)return;q('rhSpaceRename')?.remove();document.body.insertAdjacentHTML('beforeend',`<div id="rhSpaceRename" class="rhOverlay"><div class="rhModal rhFormModal"><h2>RENAME OTG! SPACE</h2><input id="rhRenameSpaceName" value="${safe(x.name)}"><div class="rhModalActions"><button class="btn secondary" onclick="$('rhSpaceRename').remove()">CANCEL</button><button class="btn" onclick="rhRenameSpaceSave('${id}')">SAVE</button></div></div></div>`)};
 window.rhRenameSpaceSave=function(id){const x=state.spaces.find(s=>s.id===id),name=q('rhRenameSpaceName')?.value.trim();if(!x||!name)return;x.name=name;rhSave();q('rhSpaceRename')?.remove();rhManageSpaces()};
 window.rhDeleteSpaceConfirm=function(id){const x=state.spaces.find(s=>s.id===id);if(!x||state.spaces.length<=1)return toast('At least one OTG! Space must remain');rhConfirm({title:'DELETE THIS OTG! SPACE?',copy:'This permanently deletes this Space and all of its racing data.',detail:x.name,safeguard:'Your global Driver Profile and other OTG! Spaces will not be affected.',confirmLabel:'DELETE SPACE',danger:true,onConfirm:`rhDeleteSpaceFinal('${id}')`})};
-window.rhDeleteSpaceFinal=function(id){if(state.spaces.length<=1)return;state.spaces=state.spaces.filter(x=>x.id!==id);if(state.activeSpaceId===id)state.activeSpaceId=state.spaces[0].id;rhSync();rhSave();rhManageSpaces()};
+window.rhDeleteSpaceFinal=function(id){if(state.spaces.length<=1)return;state.spaces=state.spaces.filter(x=>x.id!==id);if(state.activeSpaceId===id)state.activeSpaceId=state.spaces[0].id;if(!state.spaces.some(x=>x.id===state.defaultSpaceId))state.defaultSpaceId=state.spaces.some(x=>x.id===state.activeSpaceId)?state.activeSpaceId:state.spaces[0].id;rhSync();rhSave();rhManageSpaces()};
 
 window.rhChangeFavourite=function(value){const s=rhSpace(),old=s.favouriteManufacturer;if(value===old)return;const encoded=encodeURIComponent(value||'');if(!old&&value){rhConfirm({title:'SET FAVOURITE MANUFACTURER?',copy:'Set your Favourite Manufacturer for this OTG! Space.',detail:`Not set → ${value}`,safeguard:'Your Garage and other Championships will not be affected.',confirmLabel:'SET FAVOURITE',severity:'purple',onConfirm:`rhChangeFavouriteFinal(decodeURIComponent('${encoded}'))`});}else{rhConfirm({title:'CHANGE FAVOURITE MANUFACTURER?',copy:'Changing your Favourite Manufacturer will delete the current Favourite Manufacturer Championship and its progress.',detail:`${old||'Not set'} → ${value||'Not set'}`,safeguard:'Your other Championships and Garage will not be affected.',confirmLabel:'CHANGE FAVOURITE',severity:'purple',onConfirm:`rhChangeFavouriteFinal(decodeURIComponent('${encoded}'))`});}rhRenderSettings()};
 window.rhChangeFavouriteFinal=function(value){const s=rhSpace();s.runs=(s.runs||[]).filter(r=>r.type!=='favourite');s.favouriteManufacturer=value;rhSave();rhRenderSettings()};

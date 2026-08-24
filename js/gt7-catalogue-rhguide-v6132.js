@@ -235,13 +235,4 @@ if(otgMainManageSpaces6066)window.rhManageSpaces=function(){
   return r
 };
 
-window.addEventListener('load',()=>{
-  setTimeout(()=>{
-    const existing=gt7FindExistingSpace();
-    if(existing){
-      gt7EnsureSpace(false); // upgrade/reconcile in place, do not force-switch the user's current Space
-    }else{
-      gt7EnsureSpace(true);  // first GT7 install: create and activate the dedicated Space
-    }
-  },0)
-});
+window.addEventListener('load',()=>{setTimeout(()=>{gt7EnsureSpace(false)},0)});

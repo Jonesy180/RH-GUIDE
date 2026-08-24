@@ -88,7 +88,7 @@
   try{rhSaveCarFinal=window.rhSaveCarFinal}catch(_){}
 
   // Run after startup scripts have loaded and again just before GT7 catalogue rendering.
-  window.addEventListener('load',()=>setTimeout(()=>{integrate();try{gt7RenderCatalogue()}catch(_){}},0));
+  window.addEventListener('load',()=>setTimeout(()=>{integrate()},0));
   const oldRender=window.gt7RenderCatalogue;
   if(typeof oldRender==='function'){
     window.gt7RenderCatalogue=function(){integrate();return oldRender.apply(this,arguments)};

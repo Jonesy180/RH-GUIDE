@@ -19,12 +19,12 @@ function rhMigrateLegacy(raw){
  const space=rhSpaceTemplate('My OTG!',cars);
  // Preserve old results as legacy history; new frozen-run model starts clean by design.
  space.legacyResults=Array.isArray(raw?.results)?rhClone(raw.results):[];
- return {schema:2,version:RH_BUILD_VERSION,driverName:'Driver',spaces:[space],activeSpaceId:space.id,settings:Object.assign({sound:true,confetti:true,vibrate:true},raw?.settings||{}),onboarded:true};
+ return {schema:2,version:RH_BUILD_VERSION,driverName:'Driver',spaces:[space],activeSpaceId:space.id,defaultSpaceId:space.id,settings:Object.assign({sound:true,confetti:true,vibrate:true},raw?.settings||{}),onboarded:true};
 }
 function rhLoad(){
- try{const x=JSON.parse(localStorage.getItem(RH_FINAL_STORE)||'null');if(x?.schema===2&&Array.isArray(x.spaces)&&x.spaces.length)return x;}catch(e){}
+ try{const x=JSON.parse(localStorage.getItem(RH_FINAL_STORE)||'null');if(x?.schema===2&&Array.isArray(x.spaces)&&x.spaces.length){const valid=id=>x.spaces.some(s=>s.id===id);if(!valid(x.defaultSpaceId))x.defaultSpaceId=valid(x.activeSpaceId)?x.activeSpaceId:x.spaces[0].id;x.activeSpaceId=x.defaultSpaceId;localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;}}catch(e){}
  try{const old=JSON.parse(localStorage.getItem(STORE)||'null');if(old?.cars){const x=rhMigrateLegacy(old);localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;}}catch(e){}
- const space=rhSpaceTemplate('My OTG!',[]);const x={schema:2,version:RH_BUILD_VERSION,driverName:'',spaces:[space],activeSpaceId:space.id,settings:{sound:true,confetti:true,vibrate:true},onboarded:false};localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;
+ const space=rhSpaceTemplate('My OTG!',[]);const x={schema:2,version:RH_BUILD_VERSION,driverName:'',spaces:[space],activeSpaceId:space.id,defaultSpaceId:space.id,settings:{sound:true,confetti:true,vibrate:true},onboarded:false};localStorage.setItem(RH_FINAL_STORE,JSON.stringify(x));return x;
 }
 function rhSave(){localStorage.setItem(RH_FINAL_STORE,JSON.stringify(state))}
 function rhSpace(){return state.spaces.find(s=>s.id===state.activeSpaceId)||state.spaces[0]}
