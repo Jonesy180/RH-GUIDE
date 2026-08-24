@@ -1,3 +1,8 @@
+## v6.0.135 — Default Space cache delivery fix
+- No Space logic changes from v6.0.134.
+- Cache-busts all Guide scripts modified by the Default Space / GT7 stability port.
+- Ensures the PWA actually loads the new Spaces UI, Default loader and GT7 startup fixes instead of older cached copies.
+
 ## v6.0.134 — Default Space + GT7 startup stability
 - Ports the passing OTG! v6.0.148 Space behaviour to rh-guide.
 - Adds user-selectable Default Space and launches into it.
