@@ -27,6 +27,16 @@ function collectRecords(){
   (typeof rhCurrentRuns==='function'?rhCurrentRuns():[]).forEach(run=>addSource(run,'championship'));
   const space=typeof rhSpace==='function'?rhSpace():null;
   (space?.customEvents||[]).forEach(event=>addSource(event,'event'));
+  (space?.raceOffs||[]).forEach(ro=>{
+    const results=[];
+    (ro?.rounds||[]).forEach(rd=>(rd?.matches||[]).forEach(match=>{
+      [match?.resultA,match?.resultB].forEach(result=>{
+        if(!result||result.advancedTiming)return;
+        results.push({...result,roundName:String(result.track||rd?.name||'').trim()});
+      });
+    }));
+    addSource({...ro,results},'raceoff');
+  });
   return [...map.values()].filter(r=>r.all.length).sort((a,b)=>a.name.localeCompare(b.name,undefined,{sensitivity:'base'}));
 }
 
@@ -35,8 +45,8 @@ function carLabel(id){
   return car&&typeof carName==='function'?carName(car):'Unknown car';
 }
 
-function sourceTypeLabel(kind){return kind==='event'?'EVENT RECORD':'CHAMPIONSHIP RECORD';}
-function canOpenClassification(entry){return !!entry?.sourceId&&entry?.sourceStatus==='complete'}
+function sourceTypeLabel(kind){return kind==='event'?'EVENT RECORD':kind==='raceoff'?'RACE OFF RECORD':'CHAMPIONSHIP RECORD';}
+function canOpenClassification(entry){return entry?.kind!=='raceoff'&&!!entry?.sourceId&&entry?.sourceStatus==='complete'}
 function openClassification(entry){
   if(!canOpenClassification(entry))return;
   if(entry.kind==='event'){
@@ -52,7 +62,7 @@ function sourceRow(entry,isAllTime){
     <span class="rhRaceRecordMedalV5830">${isAllTime?'★':'◆'}</span>
     <div class="rhRaceRecordTextV5830">
       <small>${isAllTime?'ALL-TIME RACEHUB RECORD':sourceTypeLabel(entry.kind)}</small>
-      <b>${safe(entry.sourceName)}</b>
+      <b>${safe(entry.sourceName)}${entry.sourceStatus==='abandoned'?'<span class="rhAbandonedTagV6150">ABANDONED</span>':''}</b>
       <em>${safe(carLabel(entry.carId))}</em>
     </div>
     <strong>${fmt(entry.time)}</strong>
@@ -74,7 +84,7 @@ function raceCard(race){
     </summary>
     <div class="rhRaceRecordOpenV5830">
       ${sourceRow(allTime,true)}
-      <div class="rhRaceRecordHistoryHeadV5830"><span>CHAMPIONSHIP & EVENT HISTORY</span><small>Every competition on ${safe(race.name)}. Completed classifications can be reopened.</small></div>
+      <div class="rhRaceRecordHistoryHeadV5830"><span>COMPETITION HISTORY</span><small>Every Championship, Event and Race Off on ${safe(race.name)}. Completed classifications can be reopened where available.</small></div>
       <div class="rhRaceRecordHistoryV5830">${sourceRows.map(e=>sourceRow(e,false)).join('')}</div>
     </div>
   </details>`;

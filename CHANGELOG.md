@@ -1,3 +1,13 @@
+
+## v6.0.138 — Abandon Active Racing + Race Off Records
+- Adds the passed Main abandon action to active Festival Championships, Custom Racing Events and Race Off tournaments.
+- Abandon closes the active competition without rolling back valid completed race results, PBs or records.
+- Records and PB targets identify an abandoned originating competition with an ABANDONED tag.
+- Adds eligible single-run Race Off results to the Records book and Race Off/Track/PB record celebration flow.
+- Advanced Timing/lap-based Race Off results remain excluded from records.
+- Race Off record celebration remains Hubs-free.
+- Main-only DELETE RECORD maintenance tooling is intentionally NOT included in rh-guide.
+
 ## v6.0.130 — rh-guide upgrade-state/update/search fixes
 - Preserve established guide onboarding state on upgrade.
 - Settings update now activates and reloads immediately.
