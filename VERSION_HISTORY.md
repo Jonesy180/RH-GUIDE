@@ -1,3 +1,9 @@
+## v6.0.136 — five-fix maintenance
+- Downloaded Catalogue action cards aligned with Main.
+- Reset Racing Data repaired.
+- Full Reset OTG! repaired.
+- No v7 changes.
+
 ## v6.0.135 — Default Space cache delivery fix
 - No Space logic changes from v6.0.134.
 - Cache-busts all Guide scripts modified by the Default Space / GT7 stability port.

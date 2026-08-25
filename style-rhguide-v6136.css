@@ -1,0 +1,5 @@
+/* rh-guide v6.0.136 — Downloaded Catalogue action-card parity with Main. */
+#rhCatalogueLibrary6079 .rhSettingRow{width:100%!important;box-sizing:border-box!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;column-gap:18px!important;text-align:left!important;margin:8px 0!important;padding:15px!important}
+#rhCatalogueLibrary6079 .rhSettingRow b{min-width:0!important;line-height:1.08!important}
+#rhCatalogueLibrary6079 .rhSettingRow span{text-align:right!important;white-space:normal!important;max-width:46%!important;line-height:1.2!important}
+@media(max-width:420px){#rhCatalogueLibrary6079 .rhSettingRow{column-gap:10px!important}#rhCatalogueLibrary6079 .rhSettingRow span{font-size:10px!important}}
