@@ -1,3 +1,8 @@
+## v6.0.137 — Downloaded Catalogue action-card mobile layout
+- Fixes the two Downloaded Catalogue action cards on phone by using Main OTG!'s proven stacked action-card layout.
+- Leaves the v6.0.136 Reset Racing Data and Full Reset OTG! functional repairs unchanged.
+- No v7 changes.
+
 ## v6.0.136 — five-fix maintenance
 - Downloaded Catalogue action cards aligned with Main.
 - Reset Racing Data repaired.
