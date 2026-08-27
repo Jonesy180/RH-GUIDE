@@ -4,7 +4,7 @@
    Also makes saved Race Notes visible from Records history. */
 (()=>{
 'use strict';
-const STORE='RaceHub_Studio_Final_v5_6';
+const STORE='RaceHub_GUIDE_Final_v7';
 const RECOVERY='OTG_Event_Final_Checkpoint_v6092';
 const byId=id=>document.getElementById(id);
 const safe=v=>typeof esc==='function'?esc(String(v??'')):String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));

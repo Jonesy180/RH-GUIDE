@@ -1,5 +1,5 @@
 // OTG! v5.6.6 — Events guided run checkpoint
-const RH_FINAL_STORE='RaceHub_Studio_Final_v5_6';
+const RH_FINAL_STORE='RaceHub_GUIDE_Final_v7';
 const RH_BUILD_VERSION='5.7.32';
 let rhMoreMode='stats', rhRecordsMode='records', rhFestivalMode='browse', rhSetup=null, rhHelpKey=null, rhGarageOpenMake=null;
 const RH_HELP={

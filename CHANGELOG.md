@@ -1,3 +1,8 @@
+## v7.0.31 GUIDE — Storage isolation fix
+- Guide now uses a completely separate persistent data namespace from Main OTG!.
+- Guide no longer reads or migrates Main OTG! local storage.
+- Main data is untouched.
+
 ## Guide v7.0.30 FINAL
 - Built from passed Main v7.0.30.
 - Includes all user-facing v7 features and QA fixes.
