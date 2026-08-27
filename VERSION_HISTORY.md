@@ -1,3 +1,10 @@
+## v6.0.139 — Race Off Approved Record Celebration
+
+- Ports the passed Main Race Off record celebration correction to Guide.
+- Race Off now uses the approved Festival record celebration framework with Race Off wording/actions.
+- Record calculation, abandon behaviour and racing flow are unchanged.
+- Main-only Delete Record maintenance tool is not included.
+
 
 ## v6.0.138 — Abandon Active Racing + Race Off Records
 - Adds the passed Main abandon action to active Festival Championships, Custom Racing Events and Race Off tournaments.
