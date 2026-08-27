@@ -1,4 +1,4 @@
-/* RaceHub v5.7.76 — Stopwatch + Timing Board polish layer.
+/* OTG! v5.7.76 — Stopwatch + Timing Board polish layer.
    Visual-only overrides over the v5.7.73 tested functional baseline. */
 (()=>{
 const q=id=>document.getElementById(id);
@@ -73,7 +73,7 @@ window.rhResultSummary=function(r,res){
  show('festival');q('festival').innerHTML=`<div class="rhScene rhChampScene rhResultSceneFinal">${rhHeader('RESULT ACCEPTED',res.roundName,'festival','festival')}</div><div class="rhContent rhConformance rhResultContentFinal"><section class="rhResultsSummary rhResultsSummaryFinal">
   <div class="rhSummaryAcceptedFinal"><span>✓</span><div><small>RESULT ACCEPTED</small><b>${safe(carName(c))} • ${fmt(res.time)}</b></div></div>
   ${timingBoard('CURRENT STANDINGS',r.name,rows,res.carId,true)}
-  ${rhAverageCompareHtml(hist)}${records?`<div class="rhRecordCelebration rhRecordCelebrationFinal"><div class="rhRosettes">${res.championshipRecord?'<b>✹ CHAMPIONSHIP RECORD</b>':''}${res.allTime?'<b class="gold">✹ ALL-TIME RACEHUB RECORD</b>':''}</div><img src="assets/final/hubs.png" alt="Hubs"><p>Incredible driving,<br><b>well done!</b></p></div>`:''}
+  ${rhAverageCompareHtml(hist)}${records?`<div class="rhRecordCelebration rhRecordCelebrationFinal"><div class="rhRosettes">${res.championshipRecord?'<b>✹ CHAMPIONSHIP RECORD</b>':''}${res.allTime?'<b class="gold">✹ ALL-TIME OTG! RECORD</b>':''}</div><img src="assets/final/hubs.png" alt="Hubs"><p>Incredible driving,<br><b>well done!</b></p></div>`:''}
   <div class="rhProgressCard"><small>CHAMPIONSHIP PROGRESS</small><b>${carRoundDone} OF ${roundCount} ROUNDS COMPLETE</b><span>${carPct}%</span><div class="progress"><div class="bar" style="width:${carPct}%"></div></div></div>
   <button class="btn rhPrimaryWide rhResultContinueFinal" onclick="${action}"><b>${label}</b><small>${sub}</small></button>
  </section></div>`;
@@ -116,7 +116,7 @@ const originalEventCarComplete=window.rhEventCarCompleteTransition;
 if(originalEventCarComplete)window.rhEventCarCompleteTransition=function(...args){const out=originalEventCarComplete(...args);decorateBoards(q('event'));return out};
 
 const originalRenderOnboarding=window.rhRenderOnboarding;
-if(originalRenderOnboarding)window.rhRenderOnboarding=function(step){const out=originalRenderOnboarding(step);if(step===3){const panel=document.querySelector('.rhOnboardingCard,.rhOnboardingPanel,.rhOnboarding');if(panel){panel.querySelectorAll('p').forEach((p,i)=>{if(i===0)p.textContent='Build your Garage, create Championships or Events, record each race result and watch your racing history grow.';if(i===1)p.textContent='Each RaceHub Space keeps its own Garage, Championships, Records, Hall of Fame and Stats separate, so every racing game stays organised.'})}}return out};
+if(originalRenderOnboarding)window.rhRenderOnboarding=function(step){const out=originalRenderOnboarding(step);if(step===3){const panel=document.querySelector('.rhOnboardingCard,.rhOnboardingPanel,.rhOnboarding');if(panel){panel.querySelectorAll('p').forEach((p,i)=>{if(i===0)p.textContent='Build your Garage, create Championships or Events, record each race result and watch your racing history grow.';if(i===1)p.textContent='Each OTG! Space keeps its own Garage, Championships, Records, Hall of Fame and Stats separate, so every racing game stays organised.'})}}return out};
 
 document.addEventListener('DOMContentLoaded',()=>decorateBoards(document));
 })();

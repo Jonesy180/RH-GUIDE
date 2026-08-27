@@ -7,7 +7,7 @@ const ASSETS=[
   './js/studio-release-v5809.js?v=5829','./js/studio-enter-result-v5803.js?v=5803','./js/studio-result-summary-v5809.js?v=5829',
   './js/studio-race-flow-v5809.js?v=5829','./js/bootstrap-v5809.js?v=5829','./js/studio-race-end-v5829.js?v=5829',
   './js/studio-final-standings-v5828.js?v=5829','./js/studio-records-v5830.js?v=5830','./assets/final/final-standings-face-on-ui-ready-v5828.png?v=5828',
-  './assets/final/racehub-logo.png','./assets/final/hubs-pit-chief-v5829.png?v=5829','./assets/final/enter-result-side-finish-v5803.png','./assets/final/result-summary-podium-v5804.png',
+  './assets/brand/otg-mark-painted-wall.svg','./assets/final/hubs-pit-chief-v5829.png?v=5829','./assets/final/enter-result-side-finish-v5803.png','./assets/final/result-summary-podium-v5804.png',
   './assets/final/trophy-festival.png','./assets/final/trophy-manufacturer.png','./assets/final/trophy-era.png','./assets/final/trophy-favourite.png',
   './icons/icon-v5765-192.png','./icons/icon-v5765-512.png'
 ];

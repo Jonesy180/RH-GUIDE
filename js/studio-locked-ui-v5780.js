@@ -10,7 +10,7 @@ window.rhConfirm=function({title,copy,detail='',safeguard='',confirmLabel='CONFI
   q('rhConfirmOverlay')?.remove();
   const sev=severity||(danger?'destructive':'cyan');
   document.body.insertAdjacentHTML('beforeend',`<div id="rhConfirmOverlay" class="rhOverlay"><div class="rhModal rhConfirmModal rhConfirmFinal ${sev}">
-    <button class="rhModalX" onclick="$('rhConfirmOverlay').remove()">×</button><div class="rhConfirmIcon">${sev==='destructive'?'':sev==='purple'?'★':sev==='caution'?'!':'↻'}</div>
+    <button class="rhModalX" onclick="$('rhConfirmOverlay').remove()">×</button><div class="rhConfirmIcon">${sev==='destructive'?'!':sev==='purple'?'★':sev==='caution'?'!':'↻'}</div>
     <h2>${safe(title)}</h2><p>${safe(copy)}</p>${detail?`<div class="rhConfirmDetail">${safe(detail)}</div>`:''}${safeguard?`<div class="rhSafeguard">◇ ${safe(safeguard)}</div>`:''}
     <div class="rhModalActions"><button class="btn secondary" onclick="$('rhConfirmOverlay').remove()">${safe(cancelLabel)}</button><button class="btn ${danger?'dangerBtn':''}" onclick="$('rhConfirmOverlay').remove();${onConfirm}">${safe(confirmLabel)}</button></div>
   </div></div>`);
@@ -203,16 +203,24 @@ window.rhDeleteBackupFinal=function(id){const s=rhSpace();s.backups=(s.backups||
 window.rhAbout=function(){
  const s=rhSpace();show('more');q('more').innerHTML=`<div class="rhScene rhAboutScene"><div class="rhPageHead"><button class="rhBack" onclick="rhRenderSettings()">‹</button><div><h1>ABOUT OUT THE GARAGE!</h1><p>DRIVE • RECORD • IMPROVE</p></div></div></div><div class="rhContent rhConformance">
  <section class="rhAboutIntro"><h1>ABOUT OUT THE GARAGE!</h1><h3>DRIVE • RECORD • IMPROVE</h3><p>Out The Garage! is your personal racing record book — built to organise your Garage, create Championships, record results and preserve your racing history your way.</p><p>Whether you race for fun, for competition, or just for the love of driving, Out The Garage! keeps your racing history safe.</p></section>
- <section class="rhSection"><h2>OTG! INFORMATION</h2><div class="rhInfoRow"><span>App Version</span><b>v5.8.35</b></div><div class="rhInfoRow"><span>Data / Backup Version</span><b>v1.0.0</b></div><div class="rhInfoRow"><span>Current OTG! Space</span><b>${safe(s.name)}</b></div><div class="rhInfoRow"><span>Driver Profile (Global)</span><b>${safe(state.driverName||'Driver')}</b></div></section>
+ <section class="rhSection"><h2>OTG! INFORMATION</h2><div class="rhInfoRow"><span>App Version</span><b>v${document.querySelector('meta[name="racehub-version"]')?.content||'6.0.59'}</b></div><div class="rhInfoRow"><span>Data / Backup Version</span><b>v1.0.0</b></div><div class="rhInfoRow"><span>Current OTG! Space</span><b>${safe(s.name)}</b></div><div class="rhInfoRow"><span>Driver Profile (Global)</span><b>${safe(state.driverName||'Driver')}</b></div></section>
  <section class="rhSection"><h2>CREATED BY</h2><p>Andy Jones & ChatGPT</p><p class="small">Designed together from the ground up to make racing data personal, useful and enjoyable.</p></section>
  <section class="rhSection"><h2>LEGAL</h2><p>© 2026 OTG!. All rights reserved.</p><p class="small">OTG! is an independent product and is not affiliated with or endorsed by any vehicle manufacturer.</p></section></div>`;
 };
 
 window.rhManageSpaces=function(){
- const s=rhSpace(),defaultId=(state.spaces.some(x=>x.id===state.defaultSpaceId)?state.defaultSpaceId:(state.defaultSpaceId=s.id));show('more');q('more').innerHTML=`<div class="rhScene rhSpaceScene">${rhHeader('OTG! SPACES','Manage your racing spaces','settings','more')}</div><div class="rhContent rhConformance rhSpacesFinal">
+ const s=rhSpace(),defaultId=(state.spaces.some(x=>x.id===state.defaultSpaceId)?state.defaultSpaceId:(state.defaultSpaceId=s.id));
+ show('more');q('more').innerHTML=`<div class="rhScene rhSpaceScene">${rhHeader('OTG! SPACES','Manage your racing spaces','settings','more')}</div><div class="rhContent rhConformance rhSpacesFinal">
  ${state.spaces.map(x=>`<section class="rhSpaceManage ${x.id===s.id?'active':''}">
-  <div class="rhSpaceMetaFinal"><div><b>${safe(x.name)}</b><small>${x.cars.length} cars • ${(x.runs||[]).length} Championships</small></div><div class="rhSpaceBadgesFinal">${x.id===s.id?'<em>CURRENT</em>':''}${x.id===defaultId?'<em class="rhDefaultBadge">DEFAULT</em>':''}</div></div>
-  <div class="rhSpaceActions rhSpaceActionsFinal">${x.id!==s.id?`<button class="btn rhSwitchSpaceBtn" onclick="rhSwitchSpace('${x.id}')">SWITCH TO THIS SPACE</button>`:''}${x.id!==defaultId?`<button class="btn secondary rhDefaultSpaceBtn" onclick="rhSetDefaultSpace('${x.id}')">SET AS DEFAULT</button>`:''}<div class="rhSpaceMinorActionsFinal"><button class="btn secondary" onclick="rhRenameSpacePrompt('${x.id}')">RENAME</button>${state.spaces.length>1?`<button class="btn dangerBtn" onclick="rhDeleteSpaceConfirm('${x.id}')">DELETE</button>`:''}</div></div>
+  <div class="rhSpaceMetaFinal">
+   <div><b>${safe(x.name)}</b><small>${x.cars.length} cars • ${(x.runs||[]).length} Championships</small></div>
+   <div class="rhSpaceBadgesFinal">${x.id===s.id?'<em>CURRENT</em>':''}${x.id===defaultId?'<em class="rhDefaultBadge">DEFAULT</em>':''}</div>
+  </div>
+  <div class="rhSpaceActions rhSpaceActionsFinal">
+   ${x.id!==s.id?`<button class="btn rhSwitchSpaceBtn" onclick="rhSwitchSpace('${x.id}')">SWITCH TO THIS SPACE</button>`:''}
+   ${x.id!==defaultId?`<button class="btn secondary rhDefaultSpaceBtn" onclick="rhSetDefaultSpace('${x.id}')">SET AS DEFAULT</button>`:''}
+   <div class="rhSpaceMinorActionsFinal"><button class="btn secondary" onclick="rhRenameSpacePrompt('${x.id}')">RENAME</button>${state.spaces.length>1?`<button class="btn dangerBtn" onclick="rhDeleteSpaceConfirm('${x.id}')">DELETE</button>`:''}</div>
+  </div>
  </section>`).join('')}
  <button class="btn rhPrimaryWide rhCreateSpaceFinalBtn" onclick="rhCreateSpaceFinal()">CREATE NEW SPACE</button>
  <p class="small rhSpacesHelpFinal">The Default Space opens automatically when OTG! starts. Switching Space during a session does not change the Default.</p></div>`;
@@ -234,8 +242,8 @@ window.rhSettingsFavouriteSubmit=function(){const sel=q('rhSettingsFavouriteSele
 
 window.rhResetConfirm=function(){rhConfirm({title:'RESET RACING DATA?',copy:'Clear Championships, active/completed runs, results, Records, Hall of Fame and Stats for the current Space.',safeguard:'Your Garage, Space name, global Driver Profile and other Spaces will be retained.',confirmLabel:'RESET RACING DATA',danger:true,onConfirm:'rhResetRacingFinal()'})};
 window.rhResetRacingFinal=function(){const s=rhSpace();s.runs=[];s.customEvents=[];rhSave();toast('Racing data reset');rhRenderSettings()};
-window.rhFullResetConfirm=function(){const s=rhSpace();rhConfirm({title:'FULL RESET OTG!?',copy:'Clear everything in this OTG! Space including Garage, Championships, results, Records, Hall of Fame, Stats and Favourite Manufacturer.',detail:s.name,safeguard:'The Space itself, its name, your global Driver Profile and other Spaces will be retained.',confirmLabel:'FULL RESET',danger:true,onConfirm:'rhFullResetFinal()'})};
-window.rhFullResetFinal=function(){const s=rhSpace();s.cars=[];s.favouriteManufacturer='';s.runs=[];s.customEvents=[];s.backups=[];state.onboarded=false;rhSave();toast('OTG! Space reset');q('rhConfirm')?.remove();rhOnboardingStep(1)};
+window.rhFullResetConfirm=function(){const s=rhSpace();const isCatalogue=s&&(s.catalogueKey==='gt7-catalogue-v1'||s.catalogueKey==='fh5-catalogue-v1');rhConfirm({title:'FULL RESET OTG!?',copy:isCatalogue?'Clear everything owned or recorded in this OTG! Space. The dedicated car catalogue will remain installed, but every catalogue car will return to grey / unowned.':'Clear everything in this OTG! Space including Garage, Championships, results, Records, Hall of Fame, Stats and Favourite Manufacturer.',detail:s.name,safeguard:isCatalogue?'The Space itself, its name, the dedicated catalogue, OTG! backups, your global Driver Profile and other Spaces will be retained.':'The Space itself, its name, OTG! backups, your global Driver Profile and other Spaces will be retained.',confirmLabel:'FULL RESET',danger:true,onConfirm:'rhFullResetFinal()'})};
+window.rhFullResetFinal=function(){const s=rhSpace();const isCatalogue=s&&(s.catalogueKey==='gt7-catalogue-v1'||s.catalogueKey==='fh5-catalogue-v1');s.cars=[];s.favouriteManufacturer='';s.runs=[];s.customEvents=[];if(isCatalogue){s.catalogueOwned={};delete s.catalogueReconcileSignature;try{if(typeof fh5OwnedSet!=='undefined')fh5OwnedSet=null}catch(e){}}state.onboarded=false;rhSave();toast(isCatalogue?'OTG! Space reset — catalogue retained, 0 cars owned; backups retained':'OTG! Space reset — backups retained');q('rhConfirm')?.remove();rhOnboardingStep(1)};
 
 window.rhRenderSettings=function(){const s=rhSpace(),makes=rhAllManufacturerList();q('more').innerHTML=`<div class="rhScene rhSettingsScene">${rhHeader('SETTINGS','OTG! Control Centre','settings')}</div><div class="rhContent rhConformance">
 <section class="rhSection rhSettingPanel"><h2>CELEBRATIONS</h2>${['sound','confetti','vibrate'].map(k=>`<label class="rhToggle"><span><b>${k==='sound'?'Sounds':k==='confetti'?'Confetti':'Vibration'}</b><small>${k==='sound'?'Play sounds for celebrations':k==='confetti'?'Show confetti on new records and milestones':'Vibrate when you get a new record'}</small></span><input type="checkbox" ${state.settings[k]?'checked':''} onchange="state.settings.${k}=this.checked;rhSave()"></label>`).join('')}</section>
@@ -243,7 +251,7 @@ window.rhRenderSettings=function(){const s=rhSpace(),makes=rhAllManufacturerList
 <section class="rhSection rhSettingPanel"><h2>OTG! SPACES</h2><button class="rhSettingRow" onclick="rhManageSpaces()"><b>Manage OTG! Spaces</b><span>Current Space: ${safe(s.name)} ›</span></button></section>
 <section class="rhSection rhSettingPanel"><h2>DATA</h2><button class="rhSettingRow" onclick="rhDataBackups()"><b>Backup / Restore</b><span>Manage saved backups ›</span></button></section>
 <section class="rhDangerFinal"><h2>⚠ DANGER ZONE</h2><p>These actions affect the current OTG! Space only.</p><div class="rhDangerAction"><div><b>RESET RACING DATA</b><span>Clear Championships, runs, results, Records, Hall of Fame and Stats.</span><em>Garage will be retained.</em></div><button class="btn dangerBtn" onclick="rhResetConfirm()">RESET RACING DATA</button></div><div class="rhDangerAction"><div><b>FULL RESET OTG!</b><span>Clear everything in this Space including Garage and Favourite Manufacturer.</span><em>The Space, its name and global Driver Profile are retained.</em></div><button class="btn dangerBtn" onclick="rhFullResetConfirm()">FULL RESET</button></div></section>
-<section class="rhSection rhSettingPanel"><button class="rhSettingRow" onclick="rhAbout()"><b>ABOUT OUT THE GARAGE!</b><span>OTG! v5.7.80 • ›</span></button></section></div>`};
+<section class="rhSection rhSettingPanel"><button class="rhSettingRow" onclick="rhAbout()"><b>ABOUT OUT THE GARAGE!</b><span class="rhAboutTileMeta">OTG! v${document.querySelector('meta[name="racehub-version"]')?.content||'6.0.59'}<em>›</em></span></button></section></div>`};
 
 
 

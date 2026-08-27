@@ -1,4 +1,4 @@
-/* RaceHub v5.7.96 — Final Standings page removed completely. */
+/* OTG! v5.7.96 — Final Standings page removed completely. */
 (()=>{
  const VERSION='5.7.96';
  const runs=()=>typeof rhCurrentRuns==='function'?(rhCurrentRuns()||[]):[];
@@ -74,7 +74,7 @@
  window.rhCheckForUpdate=async function(){
    const button=document.getElementById('rhCheckUpdateButton');
    if(button)button.disabled=true;
-   updateStatus('Checking RaceHub…','checking');
+   updateStatus('Checking OTG!…','checking');
    try{
      const registration=await navigator.serviceWorker?.getRegistration();
      if(registration)await registration.update();
@@ -87,7 +87,7 @@
        updateStatus(`Update ${remote} found — applying…`,'found');
        if(registration?.waiting)registration.waiting.postMessage({type:'SKIP_WAITING'});
        setTimeout(()=>window.location.reload(),500);
-     }else updateStatus(`RaceHub ${VERSION} is up to date.`,'current');
+     }else updateStatus(`OTG! ${VERSION} is up to date.`,'current');
    }catch(_){updateStatus('Could not check right now. Check your connection and try again.','error');}
    finally{if(button)button.disabled=false;}
  };
@@ -97,11 +97,11 @@
    const content=document.querySelector('#more .rhContent');
    if(!content)return out;
    content.querySelectorAll('.rhSettingRow span').forEach(span=>{
-     if(/RaceHub v/i.test(span.textContent||''))span.textContent=`RaceHub v${VERSION} • CHECK NOW ›`;
+     if(/OTG! v/i.test(span.textContent||''))span.textContent=`OTG! v${VERSION} • CHECK NOW ›`;
    });
    const danger=content.querySelector('.rhDangerFinal');
    if(danger&&!document.getElementById('rhUpdatePanel')){
-     danger.insertAdjacentHTML('beforebegin',`<section id="rhUpdatePanel" class="rhSection rhSettingPanel rhUpdatePanelV5783"><h2>APP UPDATE</h2><p>Check for the latest RaceHub build without closing the app.</p><button id="rhCheckUpdateButton" class="rhSettingRow" onclick="rhCheckForUpdate()"><b>CHECK FOR LATEST UPDATE</b><span>RaceHub v${VERSION} • CHECK NOW ›</span></button><div id="rhUpdateStatus" class="rhUpdateStatusV5783" aria-live="polite">Installed version: ${VERSION}</div></section>`);
+     danger.insertAdjacentHTML('beforebegin',`<section id="rhUpdatePanel" class="rhSection rhSettingPanel rhUpdatePanelV5783"><h2>APP UPDATE</h2><p>Check for the latest OTG! build without closing the app.</p><button id="rhCheckUpdateButton" class="rhSettingRow" onclick="rhCheckForUpdate()"><b>CHECK FOR LATEST UPDATE</b><span>OTG! v${VERSION} • CHECK NOW ›</span></button><div id="rhUpdateStatus" class="rhUpdateStatusV5783" aria-live="polite">Installed version: ${VERSION}</div></section>`);
    }
    const status=document.getElementById('rhUpdateStatus');
    if(status&&!/Checking|Update .*found|Could not/i.test(status.textContent||''))status.textContent=`Installed version: ${VERSION}`;

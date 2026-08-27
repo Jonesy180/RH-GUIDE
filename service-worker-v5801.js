@@ -22,7 +22,7 @@ const ASSETS=[
   './js/studio-release-v5791.js?v=5801',
   './js/studio-release-v5801.js?v=5801',
   './js/bootstrap-v5801.js?v=5801',
-  './assets/final/racehub-logo.png',
+  './assets/brand/otg-mark-painted-wall.svg',
   './assets/final/post-race-finish-background-v5780.png',
   './assets/final/enter-result-finish-line-hero-v5781.png','./assets/final/enter-result-side-finish-v5801.png',
   './assets/final/trophy-festival.png',

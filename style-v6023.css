@@ -1,4 +1,4 @@
-/* RaceHub v6.0.23 — Stage 9D Standings/history + approved Stage 9C timer alignment polish. */
+/* OTG! v6.0.23 — Stage 9D Standings/history + approved Stage 9C timer alignment polish. */
 .rhLeagueRaceTimeLabelV6022 .rhLeagueDigitalTimeV6022{position:relative;top:-4px}
 .rhLeagueHubActionsV6023{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px}.rhLeagueHubActionsV6023 button{border:1px solid rgba(69,205,235,.36);border-radius:16px;background:rgba(5,19,26,.92);color:#fff;padding:14px;text-align:left;display:grid;gap:3px}.rhLeagueHubActionsV6023 b{color:#62ddf5}.rhLeagueHubActionsV6023 small{color:#8c99a2;line-height:1.35}
 .rhLeagueEventCompleteV6023{border-color:rgba(82,215,143,.3)}.rhLeagueEventCompleteV6023 em{color:#63df99!important}

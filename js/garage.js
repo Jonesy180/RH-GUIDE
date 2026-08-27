@@ -1,11 +1,11 @@
-// RaceHub v5.2.3 — Wordmarks & Manufacturer Accents
+// OTG! v5.2.3 — Wordmarks & Manufacturer Accents
 function manufacturerLogoSlug(make){
  return String(make||'').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 }
 function manufacturerLogoPath(make){return `assets/logos/${manufacturerLogoSlug(make)}.svg`;}
 
 // Curated brand accents for the most recognisable manufacturers.
-// Every other manufacturer receives a stable colour from RaceHub's premium palette.
+// Every other manufacturer receives a stable colour from OTG!'s premium palette.
 const MANUFACTURER_ACCENTS={
  'Abarth':'#d91f2b','Alfa Romeo':'#b71c2c','Aston Martin':'#0b7a5a','Audi':'#c7ccd3',
  'BMW':'#2f8fd8','Bugatti':'#4f79a7','Chevrolet':'#f2c230','Dodge':'#d72638',
@@ -33,7 +33,7 @@ function renderGarage(){
  const groups={};list.forEach(c=>(groups[c.make]??=[]).push(c));
  $('garage').innerHTML=`<div class="garagePage">
   <section class="card garageHero">
-   <div class="garageHeroTop"><div><div class="garageEyebrow">Your collection</div><h2>Garage</h2><p class="small">Browse, add or correct the cars in your RaceHub collection.</p></div><div class="garageCompletion"><strong>${completionPercent}%</strong><span>complete</span></div></div>
+   <div class="garageHeroTop"><div><div class="garageEyebrow">Your collection</div><h2>Garage</h2><p class="small">Browse, add or correct the cars in your OTG! collection.</p></div><div class="garageCompletion"><strong>${completionPercent}%</strong><span>complete</span></div></div>
    <div class="garageSummary"><div><strong>${state.cars.length}</strong><span>Total cars</span></div><div><strong>${completedCount}</strong><span>Completed</span></div><div><strong>${startedCount}</strong><span>In progress</span></div><div><strong>${makes.length-1}</strong><span>Manufacturers</span></div></div>
   </section>
   <div class="garageTools">

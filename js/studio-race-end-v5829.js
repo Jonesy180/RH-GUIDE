@@ -1,4 +1,4 @@
-/* RaceHub v5.8.29 — authoritative race-end flow with standalone Hubs celebration. */
+/* OTG! v5.8.29 — authoritative race-end flow with standalone Hubs celebration. */
 (()=>{
   'use strict';
   const VERSION='5.8.31';
@@ -58,12 +58,12 @@
   }
   function hubsCopy(res){
     if(res.allTime&&res.championshipRecord)return 'That was a seriously quick drive. You have reset both benchmarks.';
-    if(res.allTime)return 'That was a seriously quick drive. You have set the standard for the whole RaceHub.';
+    if(res.allTime)return 'That was a seriously quick drive. You have set the standard for the whole OTG!.';
     return 'Excellent work. That is the quickest time in this Championship.';
   }
   function recordCards(res,kind){
     const localLabel=kind==='event'?'EVENT RECORD':'CHAMPIONSHIP RECORD';
-    return `${res.championshipRecord?`<article class="rhHubs29Record"><span class="rhHubs29Rosette silver">★</span><div><small>NEW ${localLabel}!</small><b>${localLabel}</b><em>NEW BEST TIME</em></div></article>`:''}${res.allTime?`<article class="rhHubs29Record"><span class="rhHubs29Rosette gold">★</span><div><small>NEW ALL-TIME RECORD!</small><b>ALL-TIME RACEHUB RECORD</b><em>NEW BEST TIME</em></div></article>`:''}`;
+    return `${res.championshipRecord?`<article class="rhHubs29Record"><span class="rhHubs29Rosette silver">★</span><div><small>NEW ${localLabel}!</small><b>${localLabel}</b><em>NEW BEST TIME</em></div></article>`:''}${res.allTime?`<article class="rhHubs29Record"><span class="rhHubs29Rosette gold">★</span><div><small>NEW ALL-TIME RECORD!</small><b>ALL-TIME OTG! RECORD</b><em>NEW BEST TIME</em></div></article>`:''}`;
   }
   function showHubs(kind,owner,res,viewStandings,continueAction){
     const hostId=kind==='event'?'event':'festival';
@@ -77,7 +77,7 @@
       <button class="rhHubs29Back" id="rhHubs29Back" aria-label="Back">‹</button>
       <header class="rhHubs29Header"><h1>HOLD ON...</h1><p>HUBS HAS SOME NEWS</p></header>
       <main class="rhHubs29Main">
-        <section class="rhHubs29Character"><img src="assets/final/hubs-pit-chief-v5829.png?v=5829" alt="Hubs, RaceHub Pit Chief"></section>
+        <section class="rhHubs29Character"><img src="assets/final/hubs-pit-chief-v5829.png?v=5829" alt="Hubs, OTG! Pit Chief"></section>
         <section class="rhHubs29Details">
           ${recordCards(res,kind)}
           <div class="rhHubs29Times"><small>YOUR NEW BEST TIME</small><strong>${fmt(res.time)}</strong>${previous!=null?`<small>PREVIOUS BEST</small><b>${fmt(previous)}</b><small>IMPROVEMENT</small><em>−${fmt(improvement)}</em>`:''}</div>
@@ -114,7 +114,7 @@
     const host=byId(hostId); if(!host)return;
     const text=owner.status==='complete'?(kind==='events'?'EVENT COMPLETE':'CHAMPIONSHIP COMPLETE'):'RESULT RECORDED';
     host.innerHTML=`<div class="rhAccepted ${kind==='events'?'rhAcceptedEvents':'rhAcceptedChamp'} rhAcceptedFinal"><div class="rhAcceptedShadeFinal"></div><div class="rhAcceptedGlass rhAcceptedGlassFinal"><div class="rhAcceptedTick">✓</div><h1>RESULT SAVED</h1><p>${text}</p><small>${esc(res.roundName)} complete</small></div></div>`;
-    setTimeout(()=>{try{kind==='events'?eventSummary(owner,res):runSummary(owner,res)}catch(err){console.error('RaceHub result summary failed',err);kind==='events'?rhOpenEvent(owner.id):rhOpenRun(owner.id)}},750);
+    setTimeout(()=>{try{kind==='events'?eventSummary(owner,res):runSummary(owner,res)}catch(err){console.error('OTG! result summary failed',err);kind==='events'?rhOpenEvent(owner.id):rhOpenRun(owner.id)}},750);
   }
 
   window.rhResultAccepted=accepted;

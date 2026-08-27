@@ -1,4 +1,4 @@
-/* RaceHub v5.8.09 — rebuilt result/completion flow authority. */
+/* OTG! v5.8.09 — rebuilt result/completion flow authority. */
 (()=>{
   const q=id=>document.getElementById(id);
   const esc=v=>typeof safe==='function'?safe(v):String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));

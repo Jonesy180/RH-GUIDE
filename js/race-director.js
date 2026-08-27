@@ -1,4 +1,4 @@
-// RaceHub v5.2.15 — Queue Draw Experience
+// OTG! v5.2.15 — Queue Draw Experience
 let queueRevealTimer=null;
 let queueRevealToken=0;
 const directorLines=[
@@ -7,7 +7,7 @@ const directorLines=[
   'A new challenger approaches...',
   'This should be interesting...',
   'Let’s see what this one can do...',
-  'RaceHub is taking control...'
+  'OTG! is taking control...'
 ];
 function directorSpeak(text){
   const el=$('directorLine');
@@ -138,7 +138,7 @@ function beginDirectorShow(forceNew=false){
   directorOverlay(`<button class="skipBtn" onclick="skipDirectorToRun('${ev.id}','${car.id}')">Skip</button><div class="directorCard">
     <div class="directorDice">🎲</div>
     <div class="directorKicker">RANDOM PICKER</div>
-    <div class="directorTitle">RACEHUB</div>
+    <div class="directorTitle">OTG!</div>
     <div class="directorLine" id="directorLine">Race Director Initialising...</div>
     <div class="checkList">
       ✓ Garage Connected<br>

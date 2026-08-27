@@ -39,7 +39,11 @@ function repairSpaceExact(s){
     if(cid && rows.has(cid) && !existing.has(cid)) existing.set(cid,car);
   });
 
-  const next=[], nextOwned={};
+  // v6.0.138: SPECIALS are deliberately outside catalogueOwned but remain real Garage cars.
+  // Preserve them through exact catalogue repair so Festival / Era / Class / Race Off / Custom Racing
+  // continue to see them. Official catalogue counts remain catalogueOwned-only.
+  const specials=(s.cars||[]).filter(car=>car?.manualSpecial===true);
+  const next=[...specials], nextOwned={};
   Object.keys(owned).forEach(cid=>{
     const row=rows.get(cid); if(!row)return;
     let car=existing.get(cid);

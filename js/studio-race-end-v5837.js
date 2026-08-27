@@ -79,6 +79,9 @@
     const localLabel=kind==='event'?'EVENT RECORD':'CHAMPIONSHIP RECORD';
     return `${res.championshipRecord?`<article class="rhHubs29Record"><span class="rhHubs29Rosette silver">★</span><div><small>NEW ${localLabel}!</small><b>${localLabel}</b><em>NEW BEST TIME</em></div></article>`:''}${res.allTime?`<article class="rhHubs29Record"><span class="rhHubs29Rosette gold">★</span><div><small>NEW ALL-TIME RECORD!</small><b>ALL-TIME OTG! RECORD</b><em>NEW BEST TIME</em></div></article>`:''}`;
   }
+  const REC_SEG={0:'abcdef',1:'bc',2:'abdeg',3:'abcdg',4:'bcfg',5:'acdfg',6:'acdefg',7:'abc',8:'abcdefg',9:'abcdfg'};
+  function recSegDigit(ch){const on=REC_SEG[ch]||'';return `<i class="rhSegDigit" aria-hidden="true">${'abcdefg'.split('').map(x=>`<span class="s${x} ${on.includes(x)?'on':''}"></span>`).join('')}</i>`}
+  function recSegTime(value){const t=fmt(value),m=t.slice(0,2),sec=t.slice(3,5),ms=t.slice(6);const group=(v)=>v.split('').map(recSegDigit).join('');return `<span class="rhSegTime rhRecordGoldSeg" aria-label="${t}">${group(m)}<em>:</em>${group(sec)}<em>.</em>${group(ms)}</span>`}
   function showHubs(kind,owner,res,viewStandings,continueAction){
     const hostId=kind==='event'?'event':'festival';
     if(typeof show==='function')show(hostId);
@@ -87,18 +90,13 @@
     const allPrev=previousBest(owner,res,kind,'all');
     const previous=res.allTime?allPrev:localPrev;
     const improvement=previous!=null?Math.max(0,previous-Number(res.time||0)):null;
-    host.innerHTML=`<div class="rhHubs29Page">
-      <button class="rhHubs29Back" id="rhHubs29Back" aria-label="Back">‹</button>
-      <header class="rhHubs29Header"><h1>HOLD ON...</h1><p>HUBS HAS SOME NEWS</p></header>
-      <main class="rhHubs29Main">
-        <section class="rhHubs29Character"><img src="assets/final/hubs-pit-chief-v5829.png?v=5829" alt="Hubs, OTG! Pit Chief"></section>
-        <section class="rhHubs29Details">
-          ${recordCards(res,kind)}
-          <div class="rhHubs29Times"><small>YOUR NEW BEST TIME</small><strong>${fmt(res.time)}</strong>${previous!=null?`<small>PREVIOUS BEST</small><b>${fmt(previous)}</b><small>IMPROVEMENT</small><em>−${fmt(improvement)}</em>`:''}</div>
-        </section>
-        <blockquote class="rhHubs29Quote">“${esc(hubsCopy(res))}”<cite>— HUBS<br><small>PIT CHIEF</small></cite></blockquote>
+    host.innerHTML=`<div class="rhRecord127Page">
+      <div class="rhRecord127Hero"><img src="assets/final/record-celebration-hero-v6127.png?v=6127" alt="OTG! record celebration"><button class="rhRecord127Back" id="rhHubs29Back" aria-label="Back"></button>${!res.allTime?'<span class="rhRecord127HideGold"></span>':''}</div>
+      <main class="rhRecord127Main">
+        <section class="rhRecord127Best"><b>YOUR NEW BEST TIME</b><div>${recSegTime(res.time)}</div></section>
+        ${previous!=null?`<section class="rhRecord127Stat previous"><span class="rhRecord127Icon">◷</span><div><small>PREVIOUS BEST</small><b>${fmt(previous)}</b></div></section><section class="rhRecord127Stat improvement"><span class="rhRecord127Icon">↗</span><div><small>IMPROVEMENT</small><b>−${fmt(improvement)}</b></div></section>`:''}
       </main>
-      <footer class="rhHubs29Actions"><button id="rhHubs29Standings"><span>🏆</span><b>VIEW CURRENT STANDINGS</b></button><button id="rhHubs29Continue"><span>🏁</span><b>${owner.status==='complete'?'FINAL STANDINGS':kind==='event'?'CONTINUE EVENT':'CONTINUE CHAMPIONSHIP'}</b></button></footer>
+      <footer class="rhRecord127Actions"><button id="rhHubs29Standings"><span>🏆</span><b>VIEW CURRENT<br>STANDINGS</b></button><button id="rhHubs29Continue"><span>🏁</span><b>${owner.status==='complete'?'FINAL STANDINGS':kind==='event'?'CONTINUE EVENT':'CONTINUE CHAMPIONSHIP'}</b></button></footer>
     </div>`;
     byId('rhHubs29Back')?.addEventListener('click',viewStandings);
     byId('rhHubs29Standings')?.addEventListener('click',viewStandings);

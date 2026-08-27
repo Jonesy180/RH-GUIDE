@@ -1,4 +1,4 @@
-/* RaceHub v5.7.2 — Locked Screen Rebuild */
+/* OTG! v5.7.2 — Locked Screen Rebuild */
 .rhConformance,.rhContent{--cyan:#39d9ff;--glass:rgba(5,16,25,.82);--line:rgba(73,218,255,.31)}
 .rhConformance .rhSection,.rhSettingPanel,.rhGlassHero,.rhResultsSummary>*,
 .rhQueueNext,.rhQueueRow,.rhBackupCard,.rhRestoreCard,.rhSpaceManage,.rhRecordRun,.rhHallBanner{background:linear-gradient(145deg,rgba(12,30,42,.91),rgba(3,11,18,.84));border:1px solid var(--line);box-shadow:inset 0 1px rgba(255,255,255,.055),0 12px 30px rgba(0,0,0,.26);backdrop-filter:blur(14px)}

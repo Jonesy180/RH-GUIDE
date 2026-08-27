@@ -1,4 +1,4 @@
-/* RaceHub v6.0.26 — Stage 9D final League result-entry alignment.
+/* OTG! v6.0.26 — Stage 9D final League result-entry alignment.
    Locked correction only: Position and Race Time boxes share the same top/bottom line,
    while the segmented time digits are vertically centred inside the timer box. */
 .rhLeagueResultInputsV6021{
@@ -46,7 +46,7 @@
   .rhLeagueDigitalTimeV6022 .rhLeagueSegDisplayV6022{height:27px}
 }
 
-/* RaceHub v6.0.27 — LOCKED one-fix correction.
+/* OTG! v6.0.27 — LOCKED one-fix correction.
    No redraw. Lower ONLY the existing Race Time box 4px.
    Position box stays fixed; segmented digits retain v6.0.26 vertical centring. */
 .rhLeagueRaceTimeLabelV6022 .rhLeagueDigitalTimeV6022 {

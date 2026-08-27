@@ -38,8 +38,9 @@
   };
   function addFestivalCarAction(id){
     const run=(typeof rhCurrentRuns==='function'?rhCurrentRuns():[]).find(x=>x.id===id);
+    if(!run||run.pickMyDrive||run.value==='pick-my-drive')return;
     const additions=festivalNewCars(run);
-    if(!run||!additions.length)return;
+    if(!additions.length)return;
     const screen=document.getElementById('festival');
     if(!screen||screen.querySelector('.rhAddFestivalCarsV593'))return;
     const tools=screen.querySelector('.rhChamp33Tools');

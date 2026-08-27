@@ -1,8 +1,7 @@
 {
-  "id": "./rh-guide",
-  "name": "OTG! Guide",
-  "short_name": "OTG! Guide",
-  "description": "An independent OTG! testing and guide installation.",
+  "name": "Out The Garage!",
+  "short_name": "OTG!",
+  "description": "Drive, record and improve with OTG!.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "fullscreen",
@@ -11,25 +10,25 @@
   "theme_color": "#02070c",
   "icons": [
     {
-      "src": "icons/icon-v6068-192.png",
+      "src": "icons/icon-v6069-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-v6068-512.png",
+      "src": "icons/icon-v6069-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-maskable-v6068-192.png",
+      "src": "icons/icon-maskable-v6069-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "icons/icon-maskable-v6068-512.png",
+      "src": "icons/icon-maskable-v6069-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

@@ -5,7 +5,7 @@ const FH5_KEY='fh5-catalogue-v1', GT7_KEY='gt7-catalogue-v1', REPAIR_VERSION='6.
 function pad(n){return String(n+1).padStart(4,'0')}
 function legacyFh5(c){return 'fh5-'+fh5Slug(c.full+'-'+c.year)}
 function legacyGt7(c){return 'gt7-'+gt7Slug(c.make+'-'+c.model+'-'+c.year)}
-function installIds(list,prefix){(list||[]).forEach((c,i)=>{const id=`${prefix}-v1-${pad(i)}`;try{Object.defineProperty(c,'catalogueId',{value:id,enumerable:true,writable:false,configurable:false})}catch(_){c.catalogueId=id}})}
+function installIds(list,prefix){(list||[]).forEach((c,i)=>{const id=c.catalogueId||`${prefix}-v1-${pad(i)}`;try{Object.defineProperty(c,'catalogueId',{value:id,enumerable:true,writable:false,configurable:false})}catch(_){c.catalogueId=id}})}
 installIds(typeof FH5_CATALOGUE!=='undefined'?FH5_CATALOGUE:[], 'fh5');
 installIds(typeof GT7_CATALOGUE!=='undefined'?GT7_CATALOGUE:[], 'gt7');
 function exactNorm(v){return String(v||'').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
@@ -18,6 +18,8 @@ function def(s){
 function rowFromAnyId(d,id){id=String(id||'');return d.list.find(c=>d.newId(c)===id||d.oldId(c)===id)||null}
 function exactRow(d,car){
  if(!car)return null;
+ // v6.0.133: manually-added catalogue-space specials must never be absorbed into an official catalogue identity.
+ if(car.manualSpecial===true)return null;
  let hit=rowFromAnyId(d,car.catalogueId)||rowFromAnyId(d,car.id);if(hit)return hit;
  const make=exactNorm(car.make||car.manufacturer), model=exactNorm(car.model), name=exactNorm(car.name), year=String(car.year||'').trim();
  const matches=d.list.filter(c=>exactNorm(c.make)===make&&String(c.year||'').trim()===year&&(exactNorm(c.model)===model||exactNorm(c.full)===name));
@@ -34,6 +36,20 @@ function freshCar(d,row){const cid=d.newId(row),f=normaliseCar({id:cid,...master
 function repairSpace(s){
  const d=def(s);if(!d)return null;
  const refs=referencedIds(s), oldOwned=s.catalogueOwned&&typeof s.catalogueOwned==='object'?s.catalogueOwned:{}, ownedRows=new Map();
+ // v6.0.139: in GT7, any Garage row that is not backed by catalogueOwned is a SPECIAL.
+ // This protects manual cars even if an earlier build accidentally left a catalogueId on them.
+ if(d.key===GT7_KEY){
+   (s.cars||[]).forEach(car=>{
+     if(!car)return;
+     const cid=String(car.catalogueId||'');
+     const backed=cid&&Object.prototype.hasOwnProperty.call(oldOwned,cid);
+     if(car.manualSpecial===true||!backed){
+       car.manualSpecial=true;
+       if(car.catalogueId)delete car.catalogueId;
+       if(car.catalogueKey)delete car.catalogueKey;
+     }
+   });
+ }
  Object.keys(oldOwned).forEach(k=>{const row=rowFromAnyId(d,k);if(row)ownedRows.set(d.newId(row),row)});
  // Exact identity on an already-linked Garage record is authoritative; never infer ownership from fuzzy text.
  (s.cars||[]).forEach(car=>{const row=rowFromAnyId(d,car.catalogueId);if(row&&Object.prototype.hasOwnProperty.call(oldOwned,car.catalogueId))ownedRows.set(d.newId(row),row)});

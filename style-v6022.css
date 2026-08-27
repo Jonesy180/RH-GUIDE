@@ -1,4 +1,4 @@
-/* RaceHub v6.0.22 — Stage 9C mini digital League race-time correction. */
+/* OTG! v6.0.22 — Stage 9C mini digital League race-time correction. */
 .rhLeagueResultInputsV6021{grid-template-columns:92px minmax(0,1fr);align-items:end}
 .rhLeagueRaceTimeLabelV6022{min-width:0}
 .rhLeagueDigitalTimeV6022{display:flex;align-items:center;justify-content:center;gap:3px;min-width:0;height:48px;padding:0 8px;border:1px solid rgba(43,224,250,.34);border-radius:11px;background:linear-gradient(180deg,rgba(3,16,21,.95),rgba(1,8,12,.98));box-shadow:inset 0 0 0 3px rgba(255,255,255,.025),inset 0 0 16px rgba(43,224,250,.035)}

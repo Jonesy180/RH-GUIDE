@@ -1,4 +1,4 @@
-/* RaceHub v5.8.28 — Final Standings single-authority face-on rebuild. */
+/* OTG! v5.8.28 — Final Standings single-authority face-on rebuild. */
 (()=>{
 'use strict';
 const q=id=>document.getElementById(id);

@@ -1,25 +1,168 @@
-## v6.0.139 — Race Off Approved Record Celebration
+## Guide v7.0.30 FINAL
+- Built from passed Main v7.0.30.
+- Includes all user-facing v7 features and QA fixes.
+- Main-only Delete Record developer control removed.
 
-- Ports the passed Main Race Off record celebration correction to Guide.
-- Race Off now uses the approved Festival record celebration framework with Race Off wording/actions.
-- Record calculation, abandon behaviour and racing flow are unchanged.
-- Main-only Delete Record maintenance tool is not included.
+## v7.0.30 — Pick My Drive dashboard exit
+- Added a visible Back to Dashboard control to the Pick My Drive selection screen at the owning source renderer.
+- No other Pick My Drive behaviour changed.
+
+# v7.0.29 — QA source fixes
+
+- Race Off History cards rebuilt for readable full-width champion/entrant information.
+- Completed Race Off detail now has a red Delete Race Off action with in-app destructive confirmation.
+- Race Setup delete now uses OTG!'s in-app destructive confirmation instead of the browser confirm dialog.
+- Abandoning Pick My Drive now returns to Pick My Drive instead of Festival.
+- No artwork changes. No post-render/CSS hiding patches; behaviour changes are in the owning source handlers.
+
+## v7.0.28 — Global Smart Text Input
+- Enabled phone predictive text/autocorrect/spellcheck on free-text inputs and textareas.
+- Numeric, time, result, year, lap and position fields remain excluded.
+- Applies automatically to dynamically-created modals and editors.
+
+## v7.0.24 — Pick My Drive final navigation source fix
+- Fixed Pick My Drive completion “VIEW FINAL LEADERBOARD” to open the live Final Standings authority directly.
+- Fixed Final Standings Back controls for Pick My Drive to return to Pick My Drive instead of Festival.
+- Final Standings now uses the approved Pick My Drive trophy and champion label.
+
+## v7.0.22 — Pick My Drive source routing fix
+- Pick My Drive is excluded at the source from the legacy Festival add-new-cars action.
+- Live-run footer returns to Pick My Drive instead of Festival.
+- Uses persistent pick-my-drive identity as well as the runtime flag.
+
+## v7.0.20 — Canonical version + Pick My Drive live-run repair
+- Resets the active Main build version to one canonical 7.0.20 identity across index/bootstrap/service worker.
+- Cache-busts the live Championship renderer so Pick My Drive wording and locked entrant controls cannot fall back to an older cached renderer.
+- Preserves the approved Pick My Drive trophy/completion work from v7.0.18.
+- v7.0.19 is superseded and should not be installed.
+
+## v7.0.18 — Pick My Drive completion pass
+- Pick My Drive race screens now use Pick My Drive wording instead of Festival wording.
+- OTG!-picked entrants stay locked: no add-Garage-cars, Random Pick or Shuffle Queue controls.
+- Added approved Pick My Drive trophy for completion and Hall of Fame.
+- Pick My Drive records retain the PICK MY DRIVE source tag; Journey gains a first Pick My Drive champion milestone.
 
 
-## v6.0.138 — Abandon Active Racing + Race Off Records
-- Adds the passed Main abandon action to active Festival Championships, Custom Racing Events and Race Off tournaments.
-- Abandon closes the active competition without rolling back valid completed race results, PBs or records.
-- Records and PB targets identify an abandoned originating competition with an ABANDONED tag.
-- Adds eligible single-run Race Off results to the Records book and Race Off/Track/PB record celebration flow.
-- Advanced Timing/lap-based Race Off results remain excluded from records.
-- Race Off record celebration remains Hubs-free.
-- Main-only DELETE RECORD maintenance tooling is intentionally NOT included in rh-guide.
+## v7.0.17 — Pick My Drive foundation
+- Activated the locked Pick My Drive dashboard tile.
+- Added OTG!-generated Garage categories using owned manufacturer, era, class/type, Vintage/Classic and Garage Mix groups.
+- Added Choose Again and locked-car selection screens.
+- Added Pick My Drive setup with editable rounds/layouts and Race Setup loading.
+- Starts through the proven Championship race engine with entrants locked by OTG!.
+- Track Records now tag Pick My Drive results as PICK MY DRIVE.
 
-## v6.0.130 — rh-guide upgrade-state/update/search fixes
-- Preserve established guide onboarding state on upgrade.
-- Settings update now activates and reloads immediately.
-- Favourite Manufacturer onboarding results collapse to compact smart-search list.
-- GT7 catalogue retained; no main-app user data imported.
+## v7.0.11 — Balanced dashboard sizing
+- Increased Festival and paired dashboard tile height, icon scale, text size and spacing from v7.0.10.
+- Keeps the approved compact hero/logo and the passed standard Journey BACK button unchanged.
+- Targets the midpoint between v7.0.9 (too large) and v7.0.10 (too small), while retaining a single-screen phone layout.
+- Updated bootstrap/service-worker registration to the current v7.0.11 cache so the update is seen reliably.
+## v7.0.7 — V7 Dashboard + Race Setups Integration
+- Switched Main to the locked two-column v7 dashboard layout.
+- Added the permanent Race Setups dashboard tile and wired it to Saved Configs.
+- Added the Pick My Drive tile in its permanent position; functionality follows in Stage 4.
+- Preserved all Stage 1/2 Records, Journey, Stats and Main-only Delete Record work.
+
+## v7.0.5 — Journey visible Back button
+- Fixed My OTG! Journey header/back control being hidden by the app-wide `header{display:none!important}` rule.
+- Journey now uses its own visible header wrapper and explicitly resets scroll position on open.
+- No other v7 Stage 2 behaviour changed.
+
+## v7.0.4
+- Journey Back button kept visible in the phone safe area.
+- Records landing page now labels the track section TRACK RECORDS.
+- Single-record track chevron now sits beside the record time instead of on a separate row.
+
+## v7.0.2 — Restore Main Delete Record
+- Restored the Main-only DELETE RECORD maintenance control inside the new v7 Track Records competition rows.
+- v7 Track Records now honours the existing non-destructive record-book exclusions, so deleted test/bogus competition records stay deleted while original race data remains intact.
+- No changes to Track Record calculation, Car History, racing results, stats, progress, or source competition data.
+
+## v7.0.1 — Records Foundation
+- Stage 1 of OTG! v7.
+- Added Track Records and Car History foundation.
+
+# v6.0.154
+- Fixed Main-only DELETE RECORD so repeated/duplicate results from the same competition cannot make a deleted Record Book row reappear.
+
+## v6.0.153
+- Main-only DELETE RECORD maintenance control added to Records > Competition History.
+- Record cleanup uses non-destructive exclusions; source racing data remains intact.
+
+# v6.0.150 — Abandon Active Racing
+
+- Added bottom Danger Zone abandon action to active Festival Championships, Custom Racing Events and Race Off tournaments.
+- Abandon closes only the active competition; completed race results and achievements remain valid.
+- Records/PBs sourced from an abandoned competition are labelled ABANDONED where provenance is shown.
+- No record rollback or recalculation.
+
+## v6.0.122 — Race Off Stage 7 round advancement
+- Completed preliminary rounds now form the exact next-round field from straight-through cars plus winners.
+- Next round opens fresh Track/Race + optional Layout setup before a new irreversible random draw.
+- Advancement is persisted immediately and remains Space-specific.
+
+## v6.0.121 — Race Off Stage 6 digital entry + racer transition fix
+- Race Off now uses the established OTG! seven-segment digital result-entry UI.
+- Fixed START NEXT RACER so Car 2 opens immediately without an app restart.
+- No draw, pairing, persistence, or winner/elimination logic changed.
+
+## v6.0.120 — Race Off Stage 6 start button wiring fix
+- Fixed START PRELIMINARY ROUND so the saved draw opens strict match racing.
+- No draw, entrant, catalogue or racing-data changes.
+
+## v6.0.119 — Race Off Stage 6 Preliminary Match Racing
+- Strict locked draw order: first drawn car races first, then second car.
+- Saves each car result immediately and persists match progress.
+- Completes head-to-head matches by fastest time and marks winner green / eliminated car red in the draw view.
+- Resume survives app close/reopen mid-match or mid-round.
+- Round advancement intentionally remains Stage 7.
+
+
+## v6.0.118 — Race Off Stage 5 Preliminary Draw Engine
+- Replaced bye-padding presentation with a Preliminary Round when the entrant field is not a power of two.
+- One persisted random shuffle selects Preliminary racers, Straight Through cars, and pairing order.
+- Draw is irreversibly saved before presentation; no redraw control exists.
+- Added locked Draw Room background and compact internally scrolling MATCHES / STRAIGHT THROUGH lists.
+- Strict match racing remains intentionally disabled until Stage 6.
+## v6.0.115 — Race Off Stage 3 launch wiring
+- Fixed Race Off catalogue cards so every category reliably opens entrant selection.
+- No trophy/artwork changes in this checkpoint.
+
+## v6.0.109 — Update discovery wiring repair
+- Result Summary spray-logo polish unchanged from v6.0.108.
+- Registers a real v6.0.109 service worker instead of the missing v6.0.101 path.
+- Update checker now fetches the published index with a true cache-busting network request.
+
+## v6.0.106 — Catalogue ownership persistence
+- Removed obsolete FH5 fixed-676 reconciliation cap. User catalogue ticks are now authoritative and survive Garage/Festival navigation.
+- No hard-coded Toyota ownership; exact immutable catalogue IDs remain the source of truth.
+
+## v6.0.103
+- Manufacturer rename now captures the exact Space, catalogue key and linked catalogue/car IDs when the manufacturer pencil is tapped.
+- SAVE no longer rediscoveres catalogue identity from globals; it applies only to the captured Space and linked cars.
+- Preserves Favourite Manufacturer and Manufacturer/Favourite Championship progress while preventing cross-space switching.
+
+# OTG! v6.0.102 — Manufacturer rename modal completion repair
+
+- Closes the blocking rename modal before applying a successful rename.
+- Success feedback and catalogue refresh now occur after the page is unblocked.
+- Preserves v6.0.101 current-Space isolation and Championship/Favourite rename propagation.
+
+# OTG! v6.0.102 — Space-isolated manufacturer rename
+
+- Manufacturer rename is pinned to the current Space ID and cannot switch or mutate another catalogue Space.
+- Manufacturer and Favourite Championship runs follow the rename without losing progress.
+- Renaming back to the master manufacturer removes the alias cleanly.
+- Settings-stable v6.0.100 baseline preserved.
+
+# OTG! v6.0.100 — Settings-stable catalogue polish
+
+- Rebuilt from the proven v6.0.97 Settings-stable baseline after v6.0.98/v6.0.99 regressions.
+- Keeps compact inline car edit/note controls.
+- Moves catalogue manufacturer rename to the manufacturer heading using an OTG!-native modal.
+- Locks Manufacturer inside individual catalogue-car Edit so catalogue grouping is changed only at manufacturer level.
+- Preserves linked Garage cars, catalogue IDs, ownership and Favourite Manufacturer progress when renaming a catalogue manufacturer.
+- Fits the full catalogue search placeholder: “Search manufacturer and car”.
+- No changes to passed racing, records, reset, backup or catalogue ownership systems.
 
 ## v6.0.26 — Stage 9D final League result alignment
 - Built from protected v6.0.24, not failed v6.0.25.
@@ -296,3 +439,81 @@
 - Nudges the compact League digital race-time display upward for balanced vertical spacing.
 - Reduces the League Position entry box while preserving a comfortable phone touch target.
 - No standings, result-calculation, Advanced Timing or existing RaceHub flow changes.
+
+## v6.0.114 — Race Off Stage 3
+- Entrant selection for every Race Off category.
+- Category field preselected; manufacturer group selection and individual untick supported.
+- Locking creates a Space-specific frozen Race Off record with immutable entrant snapshots.
+- Persistent Continue Race Off card proves save/reload behavior before draw engine work.
+
+## v6.0.116 — Race Off Stage 4
+- Race Off Round Setup using existing Event-style UI.
+- Required Track / Race, optional Layout and Round Notes.
+- Review Draw saves setup but does not lock/start the draw.
+- Optional Layout added to existing Festival Championship and Custom Racing round setup.
+
+- v6.0.117 — Race Off Continue card layout corrected; Stage 4 functionality unchanged.
+
+## v6.0.123 — Race Off Stage 8: Final / Champion + draw usability
+- Final completion now terminates the tournament instead of creating a bogus Round of 1.
+- Added Champion confirmation, completed Race Off state, Champion screen and Race Off history access.
+- Approved Race Off Champion environment is used for the Champion screen.
+- In-progress draw list now automatically positions the current/next match at the top.
+- Tightened Draw screen vertical spacing so the page itself needs less scrolling.
+
+- v6.0.151: Race Off single-run record creation/celebration bridge added; existing advanced-timing exclusion preserved.
+
+## v7.0.3 — Journey & Stats (Stage 2)
+- Adds the v7 Records landing layout with Hall of Fame, My OTG! Journey and Race & Event Records.
+- Adds My OTG! Journey major-first/milestone timeline derived from current Space racing history.
+- Adds Biggest PB Improvement to Stats beside Time Driven.
+- Keeps the v7.0.2 Main-only Delete Record tool in Race & Event Records.
+- Guide intentionally not built during v7 development; final Guide follows Main sign-off.
+
+## v7.0.6 — Race Setups
+- Added per-space saved Race Setups.
+- Added create/edit/delete setup screen and dashboard entry.
+- Added Save/Load Race Setup controls to Championship setup.
+- Matched Journey Back button more closely to standard size.
+
+## v7.0.8
+- Replaced the actual live dashboard renderer with the locked v7 dashboard.
+- Race Setups is now reachable from its permanent dashboard tile.
+- Pick My Drive tile is present as the Stage 4 placeholder.
+
+
+## v7.0.9
+- Fixed v7 dashboard startup timing: the legacy Home was rendered by bootstrap before the v7 dashboard override loaded.
+- The v7 dashboard now immediately repaints Home after its renderer is installed, so the locked two-column dashboard appears on first load.
+- No Race Setups, Records, Journey, Garage, Festival, Race Off, Custom Racing, Stats or Settings logic changed.
+
+
+## v7.0.10 — Compact approved dashboard + Journey back polish
+- Reworked live v7 dashboard to the approved compact single-screen composition.
+- Removed space-name welcome overlay from dashboard hero and moved approved OTG! mark to upper-left.
+- Tightened small dashboard tiles while retaining Festival prominence.
+- Resized My OTG! Journey BACK control to match the standard compact back-button scale.
+
+## v7.0.12 — Race Setup Load + Dashboard / Back Polish
+- Added permanent SAVE RACE SETUP and LOAD RACE SETUP controls directly to the live Festival Championship Rounds renderer.
+- Loading a saved setup replaces the current Championship round list while leaving entrants untouched.
+- Increased the compact v7 dashboard body sizing by roughly 5–7% without changing the approved hero.
+- Standardised v7 Race Setups BACK buttons to the compact Back size.
+
+## v7.0.13 — Race Setup loader scope fix
+- Fixed Festival Save/Load Race Setup controls resolving the active Championship setup through `window.rhSetup`; the live app keeps `rhSetup` in the shared global lexical scope.
+- Festival LOAD RACE SETUP now reads the same per-space `raceSetups` collection used by the Race Setups screen, so previously saved setups appear and can populate Championship rounds.
+- No dashboard, Journey, Records, or other visual changes.
+
+## v7.0.15
+- Rebuilt from known-good v7.0.13 after v7.0.14 startup failure.
+- Replaced native numbered Race Setup load prompt with in-app chooser.
+- Fixed Custom Racing dashboard title/chevron spacing.
+- Preserved v7.0.13 startup/bootstrap behaviour.
+
+## v7.0.24
+- Stage 5 Journey/Stats finalisation: PB badge, Biggest PB Improvement, catalogue milestones, retained high-level Journey firsts.
+
+## v7.0.27 — Stats locked one-screen composition
+- Stats layout only: shortened cockpit scene, restored artwork visibility, compacted PB/Time cards and footer to fit the locked phone composition.
+- No artwork replacement and no feature changes.

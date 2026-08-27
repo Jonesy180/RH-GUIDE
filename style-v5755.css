@@ -141,7 +141,7 @@ label{display:block;color:var(--muted);font-weight:800;margin-top:8px}
 @media(max-width:420px){.performanceValues{grid-template-columns:1fr}.performanceDifference{font-size:30px}}
 
 
-/* RaceHub 5.1 — Championship and Festival record hierarchy */
+/* OTG! 5.1 — Championship and Festival record hierarchy */
 .championshipRecordBox{background:linear-gradient(135deg,#0a6d48,#29ff8a);color:#03170f;border:1px solid rgba(138,255,193,.85);box-shadow:0 0 24px rgba(41,255,138,.25)}
 .festivalRecordBox{background:linear-gradient(135deg,#fff3a6,#ffd84d 48%,#ff8a00);color:#180f00;border:1px solid rgba(255,255,255,.75);box-shadow:0 0 30px rgba(255,216,77,.38)}
 .darkText{color:rgba(24,15,0,.78)!important}
@@ -161,7 +161,7 @@ label{display:block;color:var(--muted);font-weight:800;margin-top:8px}
 .recordBannerMini.festival{background:linear-gradient(135deg,#fff3a6,#ffd84d,#ff8a00);color:#180f00}
 
 
-/* RaceHub 5.1.2 — Hall of Fame */
+/* OTG! 5.1.2 — Hall of Fame */
 .hallHero{text-align:center;border-color:rgba(255,216,77,.42);box-shadow:0 0 34px rgba(255,216,77,.14)}
 .hallTrophy{font-size:64px;line-height:1;margin-bottom:8px}
 .hallGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
@@ -172,7 +172,7 @@ label{display:block;color:var(--muted);font-weight:800;margin-top:8px}
 .hallValue{font-size:30px;font-weight:1000;color:#fff1a8;margin:9px 0;text-shadow:0 0 18px rgba(255,216,77,.45)}
 @media(max-width:560px){.hallGrid{grid-template-columns:1fr}.nav button{font-size:12px}.ico{font-size:24px}}
 
-/* RaceHub 5.1.4 — Hall of Fame Browser */
+/* OTG! 5.1.4 — Hall of Fame Browser */
 .hallFestivalSection{border-color:rgba(255,216,77,.28)}
 .hallBrowserGroup{padding:0;overflow:hidden}
 .hallGroupHeader{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;border:0;background:transparent;color:inherit;text-align:left;cursor:pointer}
@@ -200,7 +200,7 @@ label{display:block;color:var(--muted);font-weight:800;margin-top:8px}
 }
 
 
-/* RaceHub 5.2.2 — Garage wordmarks & manufacturer accents */
+/* OTG! 5.2.2 — Garage wordmarks & manufacturer accents */
 .garageMakeGroup{position:relative;overflow:hidden;isolation:isolate;min-height:104px;border-color:color-mix(in srgb,var(--manufacturer-accent) 36%,rgba(255,255,255,.11));box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
 .garageMakeGroup::before{content:"";position:absolute;z-index:4;left:0;right:0;top:0;height:4px;background:var(--manufacturer-accent);box-shadow:0 0 16px color-mix(in srgb,var(--manufacturer-accent) 55%,transparent);pointer-events:none}
 .garageMakeGroup::after{content:"";position:absolute;z-index:0;left:0;top:0;width:42%;height:100%;background:linear-gradient(90deg,color-mix(in srgb,var(--manufacturer-accent) 9%,transparent),transparent);pointer-events:none}
@@ -224,7 +224,7 @@ label{display:block;color:var(--muted);font-weight:800;margin-top:8px}
 @media(prefers-reduced-transparency:reduce){.manufacturerWatermark{opacity:.045}}
 
 
-/* RaceHub 5.2.3 — Hall of Fame section accents */
+/* OTG! 5.2.3 — Hall of Fame section accents */
 .hallFestivalSection,.hallBrowserGroup{position:relative;isolation:isolate}
 .hallFestivalSection::before,.hallBrowserGroup::before{content:"";position:absolute;z-index:4;left:0;right:0;top:0;height:4px;pointer-events:none}
 .hallFestivalSection::before{background:#ffd84d;box-shadow:0 0 18px rgba(255,216,77,.48)}
@@ -329,7 +329,7 @@ label{display:block;color:var(--muted);font-weight:800;margin-top:8px}
   .dashboardNextCar{margin:10px 0!important;padding:10px 11px!important}
 }
 
-/* RaceHub v5.2.6 — Statistics Facelift */
+/* OTG! v5.2.6 — Statistics Facelift */
 .statsPage{display:grid;gap:12px;margin:14px 0}.statsHero,.statsPanel{position:relative;overflow:hidden;border:1px solid rgba(52,215,255,.19);border-radius:24px;padding:17px;background:linear-gradient(180deg,rgba(11,50,67,.44),rgba(255,255,255,.035));box-shadow:0 14px 42px rgba(0,0,0,.25)}
 .statsHero:before,.statsPanel:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#19d8f5,#63e8ff,#0aa9c4)}
 .statsHeading,.statsSectionTitle{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.statsHeading h2{margin:3px 0 5px}.statsHeading p,.statsPanel p{margin:0;color:var(--muted);font-size:13px}.statsEyebrow{font-size:11px;font-weight:900;letter-spacing:1.6px;color:#63e8ff}.statsHeadlineGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:16px}.statsHeadline{position:relative;overflow:hidden;min-height:112px;padding:12px;border-radius:18px;border:1px solid rgba(255,255,255,.11);background:rgba(0,0,0,.18)}.statsHeadline:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--stats-accent)}.statsHeadline span{display:block;color:var(--muted);font-size:12px}.statsHeadline b{display:block;font-size:29px;line-height:1;margin:9px 0 6px;color:var(--stats-accent)}.statsHeadline small{display:block;color:rgba(255,255,255,.68);font-size:11px}.statsHeadline.cyan{--stats-accent:#34d7ff}.statsHeadline.green{--stats-accent:#29ff8a}.statsHeadline.brand{--stats-accent:#19d8f5}.statsHeadline.gold{--stats-accent:#ffd84d}
@@ -341,7 +341,7 @@ label{display:block;color:var(--muted);font-weight:800;margin-top:8px}
 @media(max-width:380px){.statsHeadline{min-height:96px}.statsHeadline b{font-size:25px}.statsActivityGrid{grid-template-columns:1fr}.statsHeading .chip{padding:8px 10px}}
 
 
-/* RaceHub v5.2.7 — Official Brand Identity */
+/* OTG! v5.2.7 — Official Brand Identity */
 :root{--brand-cyan:#19d8f5;--brand-dark:#071018;--brand-slate:#172431}
 header{padding:18px 16px 8px}
 .hero{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:18px 20px;background:radial-gradient(circle at 84% 0%,rgba(25,216,245,.18),transparent 42%),linear-gradient(145deg,#0d1822,#070d13 74%);border:1px solid rgba(25,216,245,.28);box-shadow:0 18px 50px rgba(0,0,0,.4),inset 0 1px rgba(255,255,255,.04)}
@@ -355,7 +355,7 @@ header{padding:18px 16px 8px}
 @media(max-width:520px){header{padding:12px 12px 6px}.hero{border-radius:22px;padding:14px 15px 12px}.headerBrand{width:min(360px,94%)}.hero .version{font-size:10px}.splashInner{width:92vw}}
 
 
-/* RaceHub v5.2.10 — Random Picker Sprint 1 */
+/* OTG! v5.2.10 — Random Picker Sprint 1 */
 :root{--brand-cyan:#19d8f5;--brand-cyan-bright:#63e8ff;--brand-cyan-deep:#0aa9c4;--brand-dark:#071018;--brand-slate:#172431}
 ::selection{background:rgba(25,216,245,.35);color:#fff}
 .btn,button{background:linear-gradient(135deg,var(--brand-cyan),var(--brand-cyan-deep));box-shadow:0 8px 22px rgba(25,216,245,.12)}
@@ -405,13 +405,13 @@ button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible
 @media(max-width:520px){.randomPickerPanel{grid-template-columns:48px 1fr;padding:15px}.randomPickerIcon{width:48px;height:48px;font-size:26px}.randomPickerCopy h3{font-size:21px}.directorEventName{font-size:23px}.directorManufacturerLogo{max-width:150px;max-height:52px}}
 @media(prefers-reduced-motion:reduce){.directorDice,.directorSpinnerDots i,.slotText{animation:none}}
 
-/* RaceHub v5.2.9 — Record History Facelift */
+/* OTG! v5.2.9 — Record History Facelift */
 .historyPage{display:grid;gap:12px;margin:14px 0}.historyHero{position:relative;overflow:hidden;padding:18px;border-radius:24px;border:1px solid rgba(148,170,188,.2);background:radial-gradient(circle at 90% 0%,rgba(25,216,245,.12),transparent 42%),linear-gradient(180deg,rgba(22,35,47,.96),rgba(7,15,22,.96));box-shadow:0 16px 44px rgba(0,0,0,.3)}.historyHero:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#667b8d,#19d8f5,#a8bbc9)}.historyHeroTop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.historyKicker,.historyEyebrow{font-size:11px;font-weight:1000;letter-spacing:1.45px}.historyKicker{color:#63e8ff}.historyHero h2{margin:4px 0 5px;font-size:29px}.historyHero p{margin:0;color:var(--muted);font-size:13px}.historySummary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:16px}.historySummary>div{padding:11px 12px;border-radius:16px;border:1px solid rgba(255,255,255,.09);background:rgba(0,0,0,.2)}.historySummary span{display:block;color:var(--muted);font-size:10px}.historySummary b{display:block;margin-top:4px;font-size:23px;color:#fff}.historyFilters{display:flex;gap:7px;overflow-x:auto;padding:1px 1px 4px;scrollbar-width:none}.historyFilters::-webkit-scrollbar{display:none}.historyFilter{flex:0 0 auto;min-height:38px;padding:8px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(17,29,40,.9);box-shadow:none;color:var(--muted);font-size:12px;font-weight:900}.historyFilter.on{color:#041016;background:linear-gradient(135deg,#63e8ff,#19d8f5);border-color:transparent;box-shadow:0 0 18px rgba(25,216,245,.2)}.historyTimeline{position:relative;display:grid;gap:0}.historyStoryItem{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr)}.historyStoryItem.hidden{display:none}.historyRail{position:relative;display:flex;justify-content:center;padding-top:18px}.historyRail:before{content:"";position:absolute;top:0;bottom:0;width:2px;background:linear-gradient(var(--history-accent),rgba(255,255,255,.08))}.historyStoryItem:first-child .historyRail:before{top:22px}.historyStoryItem:last-of-type .historyRail:before{bottom:calc(100% - 23px)}.historyRail span{position:relative;z-index:1;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid color-mix(in srgb,var(--history-accent) 65%,white 10%);background:#0b151e;box-shadow:0 0 18px color-mix(in srgb,var(--history-accent) 35%,transparent);font-size:17px}.historyStoryCard{margin:7px 0;padding:14px;border-radius:20px;border:1px solid color-mix(in srgb,var(--history-accent) 28%,rgba(255,255,255,.08));background:linear-gradient(145deg,color-mix(in srgb,var(--history-accent) 7%,#101b25),#091119 75%);box-shadow:0 10px 28px rgba(0,0,0,.22)}.historyStoryCard:before{content:"";display:block;width:42px;height:3px;margin:-14px 0 11px;border-radius:0 0 999px 999px;background:var(--history-accent);box-shadow:0 0 12px color-mix(in srgb,var(--history-accent) 58%,transparent)}.historyCardTop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.historyEyebrow{color:var(--history-accent)}.historyCardTop h3{margin:3px 0 0;font-size:18px}.historyCardTop time{flex:0 0 auto;color:#8da2b1;font-size:10px}.historyCardBody{display:flex;align-items:center;gap:12px;margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.07)}.historyMakeLogo{flex:0 0 68px;min-height:40px;display:flex;align-items:center;justify-content:center;color:var(--history-accent);font-size:11px;font-weight:1000;text-align:center}.historyMakeLogo img{display:block;width:100%;max-height:36px;object-fit:contain;filter:brightness(0) invert(1);opacity:.86}.historyCardMain{min-width:0}.historyValue{font-size:24px;line-height:1;font-weight:1000;color:var(--history-accent)}.historyCarName{margin-top:5px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.historyDetail{margin-top:6px;color:#c7d3dc;font-size:12px}.historyMeta{margin-top:3px;color:#78909f;font-size:10px}.historyEmpty{padding:34px 18px;text-align:center;border-radius:22px;border:1px dashed rgba(99,232,255,.24);background:rgba(8,20,29,.7)}.historyEmpty>div{font-size:34px}.historyEmpty h3{margin:9px 0 4px}.historyEmpty p{margin:0;color:var(--muted);font-size:12px}.historyEmpty.hidden{display:none}
 @media(max-width:640px){.historyPage{gap:10px}.historyHero{padding:15px;border-radius:21px}.historyHero h2{font-size:25px}.historySummary{margin-top:13px}.historySummary>div{padding:10px}.historySummary b{font-size:21px}.historyStoryItem{grid-template-columns:39px minmax(0,1fr)}.historyRail span{width:31px;height:31px;font-size:15px}.historyStoryCard{padding:12px;border-radius:18px}.historyStoryCard:before{margin:-12px 0 10px}.historyCardTop h3{font-size:16px}.historyMakeLogo{flex-basis:55px}.historyValue{font-size:21px}.historyCardBody{gap:10px}.historyHeroTop .chip{padding:8px 10px}}
 @media(max-width:390px){.historySummary span{font-size:9px}.historySummary b{font-size:19px}.historyCardTop{display:block}.historyCardTop time{display:block;margin-top:4px}.historyMakeLogo{flex-basis:48px}.historyValue{font-size:20px}}
 
 
-/* RaceHub v5.2.12 — Record History Sprint 2 */
+/* OTG! v5.2.12 — Record History Sprint 2 */
 .historySprint2{gap:14px}.historySprint2 .historyHero{padding:20px;background:radial-gradient(circle at 92% 5%,rgba(44,255,146,.12),transparent 34%),radial-gradient(circle at 4% 100%,rgba(180,108,255,.13),transparent 38%),linear-gradient(180deg,#122433,#071019)}
 .historyDashboard{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:18px}.historyStat{position:relative;overflow:hidden;padding:14px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(0,0,0,.23)}.historyStat:before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--stat-accent)}.historyStat span,.historyPerformanceGrid span,.historyPerformanceSummary span{display:block;color:#9fb0bd;font-size:10px;font-weight:900;letter-spacing:.35px}.historyStat b{display:block;margin:5px 0 2px;color:#fff;font-size:28px;line-height:1}.historyStat small,.historyPerformanceGrid small{color:#718797;font-size:9px}.historyStat.cyan{--stat-accent:#36dfff}.historyStat.gold{--stat-accent:#ffcb45}.historyStat.green{--stat-accent:#2cff92}.historyStat.purple{--stat-accent:#b46cff}
 .historyPerformanceGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:10px}.historyPerformanceGrid>div{padding:12px;border-radius:16px;background:rgba(4,11,17,.56);border:1px solid rgba(255,255,255,.08)}.historyPerformanceGrid b{display:block;margin:5px 0 3px;font-size:17px;color:#fff}
@@ -422,7 +422,7 @@ button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible
 @media(max-width:520px){.historySprint2 .historyHero{padding:15px}.historyPerformanceGrid{grid-template-columns:1fr}.historyPerformanceGrid>div{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center}.historyPerformanceGrid b{grid-row:1/3;grid-column:2;margin:0}.historyPerformanceGrid small{grid-column:1}.historyCardTop{padding-right:68px}.historyBadge{font-size:7px;padding:5px 7px}.history-records .historyValue{font-size:25px}}
 @media(max-width:370px){.historyDashboard{gap:6px}.historyStat{padding:11px}.historyStat b{font-size:23px}.historyPerformanceSummary{grid-template-columns:1fr}.historyPodium{grid-template-columns:1fr}.historyPodium>div{display:grid;grid-template-columns:30px 1fr auto;align-items:center;text-align:left}.historyPodium span{grid-row:1/3}.historyPodium b{margin:0}.historyPodium small{grid-column:2/4}}
 
-/* RaceHub v5.2.14 — Persistent Championship Queues */
+/* OTG! v5.2.14 — Persistent Championship Queues */
 .randomPickerSprint2{grid-template-columns:auto 1fr}.randomPickerSprint2 .randomPickerModes,.randomPickerSprint2 .randomPickerActions{grid-column:1/-1}
 .randomPickerModes{position:relative;display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:2px}
 .randomPickerModes button{display:grid;gap:3px;place-items:center;min-width:0;padding:12px 8px;border-radius:15px;border:1px solid rgba(255,255,255,.11);background:rgba(0,0,0,.22);color:white;cursor:pointer;transition:.18s ease}
@@ -435,13 +435,13 @@ button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible
 .pickerPair{grid-template-columns:34px 1fr 1fr}.pickerPair b,.pickerPair em{min-width:0}.pickerPair em{font-style:normal;color:#ffb13b;font-weight:800}.pickerPair em:before{content:'vs ';color:var(--muted);font-weight:600}
 @media(max-width:520px){.randomPickerModes{grid-template-columns:1fr}.randomPickerModes button{grid-template-columns:30px 1fr;justify-items:start;text-align:left}.randomPickerModes button small{grid-column:2;text-align:left}.randomPickerActions{grid-template-columns:1fr}.randomPickerReset{min-height:42px}.pickerOrderRow{grid-template-columns:30px 1fr}.pickerOrderRow small{grid-column:2}.pickerPair{grid-template-columns:30px 1fr}.pickerPair em{grid-column:2}.pickerLineup{width:90vw}}
 
-/* RaceHub v5.2.14 — Persistent Championship Queues */
+/* OTG! v5.2.14 — Persistent Championship Queues */
 .queuePreview{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.4fr;gap:10px;padding:12px;border:1px solid rgba(255,159,47,.3);border-radius:14px;background:rgba(0,0,0,.24)}
 .queuePreview div{display:grid;gap:3px}.queuePreview span{font-size:10px;font-weight:900;letter-spacing:.12em;color:#ffb75b}.queuePreview b{font-size:13px;line-height:1.35}.pickerOrderRow.queueCurrent{border-color:#ff9f2f;background:linear-gradient(90deg,rgba(255,159,47,.24),rgba(255,159,47,.06));box-shadow:0 0 0 1px rgba(255,159,47,.12)}
 @media(max-width:520px){.queuePreview{grid-template-columns:1fr}}
 
 
-/* RaceHub v5.2.15 — Queue Draw Experience */
+/* OTG! v5.2.15 — Queue Draw Experience */
 .queueDrawCard{max-height:min(92vh,900px)}
 .queueRevealList{max-height:52vh;overflow:auto;scrollbar-width:thin;padding-right:3px}
 .queueRevealList:empty{min-height:92px;display:grid;place-items:center}
@@ -453,18 +453,18 @@ button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible
 @media(prefers-reduced-motion:reduce){.pickerOrderRow.queueRevealing,.queueRevealList:empty::after{animation:none}}
 
 
-/* RaceHub v5.3.0 — Overall Leaderboard */
+/* OTG! v5.3.0 — Overall Leaderboard */
 .overallHero{display:flex;align-items:center;gap:18px;border-color:rgba(255,216,77,.45);background:linear-gradient(135deg,rgba(255,216,77,.12),rgba(52,215,255,.06))}.overallHeroIcon{font-size:58px;filter:drop-shadow(0 0 18px rgba(255,216,77,.5))}.overallHero h2{margin:2px 0 4px}.overallProgress>div:first-child{display:flex;justify-content:space-between;gap:12px}.overallProgress span{color:var(--muted)}.overallLeaderCard{text-align:center;border-color:rgba(255,216,77,.55);box-shadow:0 0 28px rgba(255,216,77,.12);background:radial-gradient(circle at 50% 0,rgba(255,216,77,.16),transparent 52%),var(--card)}.overallLeaderCrown{font-size:54px}.overallLeaderCard h2{margin:5px 0}.overallLeaderTime{font-size:clamp(34px,8vw,58px);font-weight:900;color:#ffd84d;letter-spacing:-1px}.overallLeaderStats{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:12px}.overallLeaderStats span{padding:7px 11px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(0,0,0,.2)}.overallPodium{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}.overallPodiumCard{text-align:center;padding:16px 10px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(255,255,255,.045)}.overallPodium-1{border-color:rgba(255,216,77,.6);box-shadow:0 0 20px rgba(255,216,77,.12)}.overallPodium-2{border-color:rgba(210,220,235,.45)}.overallPodium-3{border-color:rgba(205,127,50,.5)}.overallMedal{font-size:32px}.overallPodiumName{font-weight:800;margin:6px 0;min-height:40px}.overallPodiumTime{font-size:20px;font-weight:900;color:#34d7ff}.overallTable{display:grid;gap:8px}.overallRow{display:grid;grid-template-columns:46px 1fr auto;gap:10px;align-items:center;padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.035)}.overallTopRow{background:linear-gradient(90deg,rgba(255,216,77,.08),rgba(52,215,255,.04))}.overallPos{text-align:center;font-size:22px;font-weight:900}.overallCar,.overallTime{display:flex;flex-direction:column}.overallCar small,.overallTime small{color:var(--muted);font-size:12px;margin-top:3px}.overallTime{text-align:right}.overallProgressList{display:grid;gap:8px}.overallProgressRow{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.04)}.hallOfFameDivider{margin-top:22px}@media(max-width:620px){.overallPodium{grid-template-columns:1fr}.overallPodiumName{min-height:0}.overallHero{align-items:flex-start}.overallHeroIcon{font-size:42px}.overallRow{grid-template-columns:38px 1fr}.overallTime{grid-column:2;text-align:left;flex-direction:row;gap:10px;align-items:baseline}.overallProgress>div:first-child{flex-direction:column;gap:2px}}
 
 
-/* RaceHub v5.3.1 — Navigation Identity */
+/* OTG! v5.3.1 — Navigation Identity */
 .nav button[data-screen="hall"].active{background:linear-gradient(180deg,rgba(255,216,77,.22),rgba(255,159,47,.08));box-shadow:inset 0 2px 0 rgba(255,216,77,.9);color:#fff7c2}
 .nav button[data-screen="hall"].active .ico{filter:drop-shadow(0 0 9px rgba(255,216,77,.8))}
 .nav button[data-screen="more"].active{background:linear-gradient(180deg,rgba(25,216,245,.2),rgba(25,216,245,.07));box-shadow:inset 0 2px 0 rgba(99,232,255,.82);color:#e7fbff}
 .nav button[data-screen="more"].active .ico{filter:drop-shadow(0 0 8px rgba(25,216,245,.72))}
 
 
-/* RaceHub v5.3.2 — UI Consistency Sprint 1: Navigation & Identity */
+/* OTG! v5.3.2 — UI Consistency Sprint 1: Navigation & Identity */
 .nav button{position:relative;isolation:isolate;transition:background .2s ease,color .2s ease,transform .2s ease}
 .nav button::after{content:"";position:absolute;left:22%;right:22%;bottom:5px;height:3px;border-radius:999px;background:var(--nav-accent,#8ea5b4);opacity:.28;transform:scaleX(.55);transition:opacity .2s ease,transform .2s ease,box-shadow .2s ease}
 .nav button .ico{transition:filter .2s ease,transform .2s ease}
@@ -480,7 +480,7 @@ button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible
 .nav button[data-screen="hall"].active .ico,.nav button[data-screen="more"].active .ico{filter:drop-shadow(0 0 8px color-mix(in srgb,var(--nav-accent) 75%,transparent))}
 @media(hover:hover){.nav button:not(.active):hover{color:#d9e7ef;background:color-mix(in srgb,var(--nav-accent) 8%,transparent)}.nav button:not(.active):hover::after{opacity:.65;transform:scaleX(.8)}}
 @media(prefers-reduced-motion:reduce){.nav button,.nav button::after,.nav button .ico{transition:none}}
-\n\n/* RaceHub v5.3.3 — UI Consistency Sprint 2: Page Headers */
+\n\n/* OTG! v5.3.3 — UI Consistency Sprint 2: Page Headers */
 .pageIdentityHeader{--page-accent:#8ea5b4;position:relative;overflow:hidden;display:flex;align-items:center;gap:16px;margin:0 0 14px;padding:17px 18px;border:1px solid color-mix(in srgb,var(--page-accent) 34%,rgba(255,255,255,.08));border-radius:22px;background:radial-gradient(circle at 92% 0%,color-mix(in srgb,var(--page-accent) 16%,transparent),transparent 46%),linear-gradient(145deg,color-mix(in srgb,var(--page-accent) 8%,#111d27),#091119 76%);box-shadow:0 14px 36px rgba(0,0,0,.25),inset 0 1px rgba(255,255,255,.045)}
 .pageIdentityHeader::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--page-accent),color-mix(in srgb,var(--page-accent) 52%,white),transparent);box-shadow:0 0 15px color-mix(in srgb,var(--page-accent) 48%,transparent)}
 .pageIdentityIcon{position:relative;flex:0 0 54px;display:grid;place-items:center;width:54px;height:54px;border:1px solid color-mix(in srgb,var(--page-accent) 46%,white 8%);border-radius:17px;background:color-mix(in srgb,var(--page-accent) 15%,rgba(0,0,0,.38));box-shadow:inset 0 1px rgba(255,255,255,.08),0 0 22px color-mix(in srgb,var(--page-accent) 19%,transparent);font-size:28px}
@@ -489,7 +489,7 @@ button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible
 @media(max-width:520px){.pageIdentityHeader{gap:12px;padding:15px 14px;border-radius:19px}.pageIdentityIcon{flex-basis:46px;width:46px;height:46px;border-radius:14px;font-size:24px}.pageIdentityHeader h1{font-size:24px}.pageIdentityHeader p{font-size:12px}}
 
 
-/* RaceHub v5.3.4 — UI Consistency Sprint 3: Card System */
+/* OTG! v5.3.4 — UI Consistency Sprint 3: Card System */
 :root{
   --rh-card-radius:22px;
   --rh-card-radius-compact:17px;
@@ -555,7 +555,7 @@ button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible
 }
 
 
-/* RaceHub v5.3.5 — UI Consistency Sprint 4: Button System */
+/* OTG! v5.3.5 — UI Consistency Sprint 4: Button System */
 :root{
   --rh-button-height:50px;
   --rh-button-radius:16px;
@@ -602,7 +602,7 @@ button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible
 }
 @media(prefers-reduced-motion:reduce){.btn{transition:none}}
 
-/* RaceHub v5.3.6 — UI Consistency Sprint 5: Micro Polish */
+/* OTG! v5.3.6 — UI Consistency Sprint 5: Micro Polish */
 :root{
   --rh-text-primary:#f4fbff;
   --rh-text-secondary:#c6d5de;
@@ -701,7 +701,7 @@ label{line-height:1.35}
 }
 
 
-/* RaceHub v5.3.7 — Race Director Card Polish (Stage 1)
+/* OTG! v5.3.7 — Race Director Card Polish (Stage 1)
    Additive only: this pass is intentionally isolated to the Race Director overlay. */
 .directorCard{
   width:min(92vw,560px);
@@ -729,7 +729,7 @@ label{line-height:1.35}
 }
 
 
-/* RaceHub v5.3.8 — Dashboard Card Polish
+/* OTG! v5.3.8 — Dashboard Card Polish
    Additive only: presentation changes are isolated to the Festival dashboard. */
 .dashboardPage{
   --dashboard-card-border:rgba(99,232,255,.23);
@@ -813,7 +813,7 @@ label{line-height:1.35}
 @media(prefers-reduced-motion:reduce){.dashboardStat{transition:none}.dashboardStat:hover{transform:none}}
 
 
-/* RaceHub v5.3.9 — Garage Card Polish
+/* OTG! v5.3.9 — Garage Card Polish
    Additive only: presentation changes are isolated to the Garage screen. */
 .garagePage{display:grid;gap:var(--rh-section-gap,16px)}
 .garagePage>*{margin:0}
@@ -865,7 +865,7 @@ label{line-height:1.35}
 }
 @media(prefers-reduced-motion:reduce){.garageMakeGroup{transition:none}.garageMakeGroup:hover{transform:none}}
 
-/* v5.3.9 hotfix — keep Garage content inside the RaceHub viewport. */
+/* v5.3.9 hotfix — keep Garage content inside the OTG! viewport. */
 .garagePage,.garagePage>*{min-width:0;max-width:100%}
 .garageTools{min-width:0;width:100%}
 .garageToolCard,.garageCollection,.garageGroups,.garageMakeGroup,.garageMakeContent{min-width:0;max-width:100%}
@@ -873,7 +873,7 @@ label{line-height:1.35}
 .garageFilters .chip{flex:0 0 auto;max-width:none;overflow:visible;text-overflow:clip}
 .garageCarRow{min-width:0;max-width:100%}
 
-/* RaceHub v5.4.0 — Leaderboards Card Polish */
+/* OTG! v5.4.0 — Leaderboards Card Polish */
 .overallHero{position:relative;overflow:hidden}
 .overallHero::after{content:"";position:absolute;right:-55px;bottom:-70px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(255,216,77,.15),transparent 68%);pointer-events:none}
 .overallLeaderCard{position:relative;overflow:hidden;padding-top:24px}
@@ -929,7 +929,7 @@ label{line-height:1.35}
 }
 
 
-/* RaceHub v5.4.1 — Hall of Fame Card Polish */
+/* OTG! v5.4.1 — Hall of Fame Card Polish */
 .hallOfFameDivider{position:relative;overflow:hidden;padding:28px 22px;background:radial-gradient(circle at 50% 0,rgba(255,216,77,.16),transparent 58%),linear-gradient(150deg,rgba(51,36,10,.88),rgba(20,13,34,.96))}
 .hallOfFameDivider::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,transparent,#ffd84d,transparent);box-shadow:0 0 22px rgba(255,216,77,.58)}
 .hallOfFameDivider h2{font-size:30px;margin:8px 0 6px;color:#fff2ad;letter-spacing:.01em}
@@ -1028,7 +1028,7 @@ label{line-height:1.35}
   .statsRecordsPanel .statsHighlight small{font-size:9px}
 }
 
-/* RaceHub v5.4.5 — Dashboard & Statistics Grid Consistency */
+/* OTG! v5.4.5 — Dashboard & Statistics Grid Consistency */
 @media (max-width:640px){
   .dashboardPage{
     grid-template-columns:repeat(2,minmax(0,1fr));
@@ -1081,7 +1081,7 @@ label{line-height:1.35}
 }
 
 
-/* RaceHub v5.4.6 — Events Screen Layout & Grid */
+/* OTG! v5.4.6 — Events Screen Layout & Grid */
 .eventsCentre{overflow:hidden}
 .eventsCentreHeading{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:14px}
 .eventsCentreHeading h2{margin-bottom:4px}
@@ -1125,7 +1125,7 @@ label{line-height:1.35}
   .eventCentreTitle b{font-size:12px}
 }
 
-/* RaceHub v5.4.7 — Garage & Hall of Fame Grid Consistency */
+/* OTG! v5.4.7 — Garage & Hall of Fame Grid Consistency */
 @media (min-width:760px){
   .garageGroups{
     grid-template-columns:repeat(2,minmax(0,1fr));
@@ -1179,7 +1179,7 @@ label{line-height:1.35}
 }
 
 
-/* RaceHub v5.4.8 — Mobile Garage Watermark Fix */
+/* OTG! v5.4.8 — Mobile Garage Watermark Fix */
 @media(max-width:560px){
   .garageMakeGroup{overflow:hidden}
   .manufacturerWatermark{
@@ -1189,7 +1189,7 @@ label{line-height:1.35}
 }
 
 
-/* RaceHub v5.4.10 — Final Responsive Consistency Pass
+/* OTG! v5.4.10 — Final Responsive Consistency Pass
    Shared overflow protection and compact-screen alignment only. */
 html,body{max-width:100%;overflow-x:hidden}
 main,.screen,.screen>*,.card,.resultBox,.raceDirector,.raceNightPanel,
@@ -1230,14 +1230,14 @@ input,select,textarea,button,.btn{max-width:100%}
 }
 
 
-/* RaceHub v5.4.11 — Garage Manufacturer Filter Fix */
+/* OTG! v5.4.11 — Garage Manufacturer Filter Fix */
 @media(max-width:560px){
   .garageFilters{display:flex;flex-wrap:nowrap;gap:8px;scrollbar-width:none;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch}
   .garageFilters::-webkit-scrollbar{display:none}
   .garageFilters .chip{flex:0 0 auto;width:auto;min-width:max-content;white-space:nowrap;overflow:visible;text-overflow:clip}
 }
 
-/* RaceHub v5.5.0 — RaceHub HQ Dashboard */
+/* OTG! v5.5.0 — OTG! HQ Dashboard */
 body.home-active{padding-bottom:0;background:#020508}
 body.home-active>header,body.home-active>.nav{display:none!important}
 body.home-active main{padding:0!important;max-width:none!important}
@@ -1261,7 +1261,7 @@ body.home-active main{padding:0!important;max-width:none!important}
 .homeStat{position:relative;padding:15px;display:grid;align-content:center;gap:4px;overflow:hidden}.homeStat span{font-size:10px;letter-spacing:.1em;color:#34d7ff;font-weight:900}.homeStat strong{font-size:29px}.homeStat small{font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.06em}.homeStat i{position:absolute;right:14px;bottom:20px;font-style:normal;font-size:24px;letter-spacing:-2px;color:rgba(52,215,255,.72)}
 @media(max-width:380px){.homeScene{min-height:55svh}.homeLogo{top:76px;left:5%;width:90%}.homeInterface{padding-left:12px;padding-right:12px}.homeTile,.homeStat{min-height:104px}.homeTile{padding:11px;gap:7px}.homeTileIcon{font-size:25px;min-width:30px}.homeTile strong{font-size:14px}.homeTile small{font-size:10px}.homeChampPct{width:58px;height:58px}}
 
-/* RaceHub v5.5.2 — Festival */
+/* OTG! v5.5.2 — Festival */
 body.festival-active{padding-bottom:0;background:#020508}
 body.festival-active>header,body.festival-active>.nav{display:none!important}
 body.festival-active main{padding:0!important;max-width:none!important}
@@ -1286,7 +1286,7 @@ body.festival-active main{padding:0!important;max-width:none!important}
 .festivalMakeTools{padding:0 12px 8px}.festivalSearch{display:flex;align-items:center;gap:8px;padding:0 11px;height:42px;border-radius:13px;border:1px solid rgba(255,191,68,.22);background:rgba(255,255,255,.035)}.festivalSearch span{font-size:19px;color:#ffbf44}.festivalSearch input{width:100%;min-width:0;border:0!important;background:transparent!important;padding:0!important;color:#fff!important;font-size:13px;outline:none;box-shadow:none!important}.festivalSearch input::placeholder{color:#82909a}.festivalEmpty{padding:15px 8px;color:#81909a;font-size:11px;line-height:1.4}
 @media(max-width:380px){.festivalScene{height:400px}.festivalTitle{top:78px;left:14px;max-width:82%}.festivalTitle h1{font-size:32px}.festivalContent{margin-top:-92px;padding-left:11px;padding-right:11px}.festivalContinue{padding:13px 11px}.festivalContinueCopy strong{font-size:15px}.festivalRing{width:56px;height:56px}.festivalGroupHead{padding:12px 10px}.festivalGroupHead small{display:none}.festivalList{padding-left:7px;padding-right:7px}.festivalListRow{padding:9px 3px;gap:6px}.festivalRowCopy strong{font-size:12px}}
 
-/* RaceHub v5.5.4 — Events Legacy Header Removal */
+/* OTG! v5.5.4 — Events Legacy Header Removal */
 
 body.events-active>header,body.events-active>.nav{display:none!important}
 .eventsPage{min-height:100vh;background:#02070a;color:#fff;padding-bottom:36px}
@@ -1299,7 +1299,7 @@ body.events-active>header,body.events-active>.nav{display:none!important}
 .eventsLibraryTop{display:flex;align-items:center;justify-content:space-between;gap:10px}.eventsSearch{display:flex;align-items:center;gap:6px;width:min(48%,210px);height:38px;padding:0 10px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:#03080b}.eventsSearch span{color:#aab8c0}.eventsSearch input{min-width:0;width:100%;border:0!important;padding:0!important;background:transparent!important;color:#fff!important;font-size:12px;box-shadow:none!important}.eventsSubhead{margin:15px 0 8px;padding-bottom:6px;border-bottom:1px solid rgba(52,215,255,.35);font-size:11px;font-weight:900;color:#34d7ff;letter-spacing:.04em}
 .eventsList{display:flex;flex-direction:column;gap:7px}.eventsListRow{width:100%;display:grid;grid-template-columns:38px minmax(0,1fr) auto 12px;align-items:center;gap:10px;padding:10px;border:1px solid rgba(255,255,255,.10);border-radius:12px;background:linear-gradient(135deg,#0b151b,#071015);color:#fff;text-align:left}.eventsRowIcon{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(52,215,255,.35);border-radius:9px;color:#34d7ff;background:#07171d}.eventsRowCopy{min-width:0;display:flex;flex-direction:column;gap:2px}.eventsRowCopy strong{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.eventsRowCopy small{font-size:10px;color:#aebbc2}.eventsStatus{padding:5px 7px;border-radius:7px;font-size:8px;font-weight:950;white-space:nowrap}.eventsStatus.waiting{color:#d7dde0;background:#172027}.eventsStatus.active{color:#34d7ff;background:#05212a}.eventsStatus.complete{color:#7ee889;background:#0a2514}.eventsListRow>b{font-size:22px;color:#9db0b9}.eventsCompletedHead{width:100%;display:grid;grid-template-columns:auto auto 1fr auto;align-items:center;gap:7px;margin-top:14px;padding:9px 4px 3px;border:0;background:transparent;color:#fff;text-align:left}.eventsCompletedHead span{color:#34d7ff}.eventsCompletedHead small{color:#84949c}.eventsCompletedHead b{text-align:right;color:#34d7ff}.eventsEmpty{padding:18px;text-align:center;color:#8798a1;font-size:12px}
 @media(max-width:430px){.eventsScene{min-height:500px}.eventsTitle{top:max(70px,calc(env(safe-area-inset-top) + 54px))}.eventsTitle h1{font-size:28px}.eventsCreate{top:max(18px,env(safe-area-inset-top));right:12px;font-size:10px;padding:7px 9px}.eventsContent{margin-top:-22px}.eventsProgressCard{grid-template-columns:62px minmax(0,1fr);gap:9px}.eventsProgressRing{width:56px;height:56px}.eventsContinue{grid-column:1/-1;text-align:center}.eventsLibraryTop{align-items:flex-start;flex-direction:column}.eventsSearch{width:100%;max-width:none}.eventsListRow{grid-template-columns:36px minmax(0,1fr) auto 10px;gap:8px}.eventsStatus{font-size:7px;padding:4px 5px}}
-/* RaceHub v5.7.4 — LOCKED STUDIO VISUAL SYSTEM
+/* OTG! v5.7.4 — LOCKED STUDIO VISUAL SYSTEM
    Rebuilt shared primitives used by the live screens. This replaces the
    old v5.6 Studio visual layer in-place; it is not a second override skin. */
 :root{
@@ -1482,7 +1482,7 @@ body{background:radial-gradient(circle at 50% -15%,rgba(30,124,151,.12),transpar
  .rhPageHead h1{font-size:22px}.rhBack,.rhHelp,.rhHomeTop button,.rhHomeHelp{width:46px!important;height:46px!important}
 }
 
-/* RaceHub v5.6.2 — Phone Test Batch 1 corrections */
+/* OTG! v5.6.2 — Phone Test Batch 1 corrections */
 .splashBrandNew{display:block;margin-left:auto;margin-right:auto}
 .rhHomeHero>img{width:min(44vw,230px);top:29%}
 .rhFavouriteUnset{padding:2px 0 4px}.rhFavouriteUnset .btn{width:100%;margin-top:6px}
@@ -1534,7 +1534,7 @@ body{background:radial-gradient(circle at 50% -15%,rgba(30,124,151,.12),transpar
 /* v5.6.7 Events polish */
 .rhEventMakeCars .rhPickerRow{display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;column-gap:14px;padding-left:14px;padding-right:14px}.rhEventMakeCars .rhPickerRow input{margin:0;justify-self:center}.rhEventMakeCars .rhPickerRow>span{min-width:0;line-height:1.3}.rhReturnEvents{margin:18px 0 34px}
 
-/* RaceHub v5.6.8 — Dashboard Hero + Global Header Controls */
+/* OTG! v5.6.8 — Dashboard Hero + Global Header Controls */
 /* Shared circular header controls: true geometric + optical centring on phone. */
 .rhBack,.rhHelp,.rhHomeTop button,.rhHomeHelp{
   display:grid;
@@ -1554,7 +1554,7 @@ body{background:radial-gradient(circle at 50% -15%,rgba(30,124,151,.12),transpar
 .rhHomeTop>button{font-size:0!important}
 .rhHomeTop>button::before{content:'⚙';font-size:25px;line-height:1;transform:translateY(6px)}
 
-/* Dashboard hero: keep the approved car visible and give the RaceHub mark more presence. */
+/* Dashboard hero: keep the approved car visible and give the OTG! mark more presence. */
 .rhHomeHero>img{
   left:72%;
   top:27%;
@@ -1565,15 +1565,15 @@ body{background:radial-gradient(circle at 50% -15%,rgba(30,124,151,.12),transpar
   .rhHomeHero>img{left:72%;top:29%;width:min(54vw,230px)}
 }
 
-/* RaceHub v5.6.9 — Header Control Optical Alignment
+/* OTG! v5.6.9 — Header Control Optical Alignment
    Phone correction: glyphs sit slightly lower within the existing circles.
    Circle position, size and horizontal alignment are unchanged. */
 
-/* RaceHub v5.6.10 — Cog & Help Final Alignment
+/* OTG! v5.6.10 — Cog & Help Final Alignment
    Phone correction: help and settings glyphs moved 4px lower from v5.6.9.
    Back arrow remains locked at v5.6.9 alignment. */
 
-/* RaceHub v5.6.11 — Records + Hall of Fame Navigation/Presentation */
+/* OTG! v5.6.11 — Records + Hall of Fame Navigation/Presentation */
 .rhHallBanner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:14px;padding:16px 18px}
 .rhHallBannerIcon{font-size:27px;line-height:1}
 .rhHallBannerCopy{min-width:0;display:block}
@@ -1602,7 +1602,7 @@ body{background:radial-gradient(circle at 50% -15%,rgba(30,124,151,.12),transpar
  .rhRecordRow>strong{font-size:15px}
 }
 
-/* RaceHub v5.6.12 — locked Stats cockpit treatment */
+/* OTG! v5.6.12 — locked Stats cockpit treatment */
 .rhStatsScene{position:relative;min-height:760px;background:#02070b url('assets/final/stats-background.png') center top/cover no-repeat;overflow:hidden}
 .rhStatsScene:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,5,9,.16) 0%,rgba(0,5,9,.06) 28%,rgba(0,5,9,.14) 72%,rgba(0,5,9,.72) 100%);pointer-events:none}
 .rhStatsScene .rhPageHead{position:relative;z-index:4;background:linear-gradient(180deg,rgba(0,5,9,.78),rgba(0,5,9,.12))}
@@ -1616,7 +1616,7 @@ body{background:radial-gradient(circle at 50% -15%,rgba(30,124,151,.12),transpar
 .rhStatsInfoWrap{margin-top:-36px}.rhStatsInfo{border:1px solid rgba(85,233,255,.32);border-radius:13px;background:rgba(3,16,24,.86);backdrop-filter:blur(10px);padding:12px 14px;text-align:center;color:#b7d1da;font-size:12px}
 @media(max-width:520px){.rhStatsScene{min-height:700px;background-position:50% top}.rhStatsCockpit{min-height:565px;padding:230px 10px 22px;gap:8px}.rhStatsGauge{padding:7px}.rhStatsGauge span{font-size:7.5px;letter-spacing:.07em}.rhStatsGauge small{font-size:8px}.rhStatsGauge b{font-size:27px}.rhStatsGaugeMain b{font-size:43px}.rhStatsGaugeMain span{font-size:9px}.rhStatsGaugeMain small{font-size:10px}.rhStatsOdometer{width:94%;padding:11px 10px}.rhStatsInfoWrap{margin-top:-30px}}
 
-/* RaceHub v5.7.5 — RH-UI-017 Dashboard/Home exact locked phone rebuild */
+/* OTG! v5.7.5 — RH-UI-017 Dashboard/Home exact locked phone rebuild */
 .rhHomeLocked{
   min-height:100dvh;
   background:#02080d;
@@ -1835,7 +1835,7 @@ body{background:radial-gradient(circle at 50% -15%,rgba(30,124,151,.12),transpar
   .rhTilesLocked .rhStatsTile{min-height:98px!important}
 }
 
-/* RaceHub v5.7.7 — RH-UI-017 Dashboard phone-verified visual correction */
+/* OTG! v5.7.7 — RH-UI-017 Dashboard phone-verified visual correction */
 .rhHomeV576{min-height:100svh;overflow-x:hidden;background:#020508;color:#fff}
 .rhHomeV576 .rhHomeHeroLocked{
   height:47svh;min-height:350px;max-height:510px;
@@ -1882,7 +1882,7 @@ body{background:radial-gradient(circle at 50% -15%,rgba(30,124,151,.12),transpar
 }
 
 
-/* RaceHub v5.7.7 — RH-UI-017 Dashboard v2 phone-test corrections */
+/* OTG! v5.7.7 — RH-UI-017 Dashboard v2 phone-test corrections */
 .rhHomeV576 .rhHomeTopLocked .rhHomeSettings{
  display:grid!important;place-items:center!important;padding:0!important;line-height:1!important;
  font-family:Arial,sans-serif!important;font-size:0!important;
@@ -1948,7 +1948,7 @@ body{background:radial-gradient(circle at 50% -15%,rgba(30,124,151,.12),transpar
 
 
 /* =========================================================
-   RaceHub v5.7.8 — DASHBOARD CLEAN REBUILD
+   OTG! v5.7.8 — DASHBOARD CLEAN REBUILD
    Real-phone geometry authority. Dashboard only.
    ========================================================= */
 body.home-active{background:#020508!important;padding-bottom:0!important;overflow-x:hidden!important}
@@ -2186,7 +2186,7 @@ body.home-active main{padding:0!important;max-width:none!important}
  .rhDashTile.stats{height:72px}
 }
 
-/* RaceHub v5.7.9 — RH-UI-017 LOCKED v3 */
+/* OTG! v5.7.9 — RH-UI-017 LOCKED v3 */
 .rhDashV3 .rhDashHero{height:292px!important;background:linear-gradient(180deg,rgba(0,4,8,.05),rgba(0,4,8,.12) 50%,rgba(2,5,8,.58) 84%,#020508),url('assets/artwork/dashboard-background.png') center 34%/cover no-repeat!important}
 .rhDashV3 .rhDashWelcome{position:absolute!important;z-index:3!important;top:max(17px,env(safe-area-inset-top))!important;left:20px!important;display:grid!important;gap:2px!important;text-shadow:0 3px 18px #000!important}
 .rhDashV3 .rhDashWelcome small{font-size:12px!important;line-height:1!important;letter-spacing:.16em!important;font-weight:900!important;color:#42def8!important}
@@ -2209,7 +2209,7 @@ body.home-active main{padding:0!important;max-width:none!important}
 
 
 /* =========================================================
-   RaceHub v5.7.10 — LIVE RH-UI-017 DASHBOARD v3
+   OTG! v5.7.10 — LIVE RH-UI-017 DASHBOARD v3
    Targets studio-final.js rhRenderHome()
    ========================================================= */
 .rhHomeV5710{
@@ -2373,7 +2373,7 @@ body.home-active main{padding:0!important;max-width:none!important}
 
 
 /* =========================================================
-   RaceHub v5.7.11 — RH-UI-017 DASHBOARD LOCKED v4
+   OTG! v5.7.11 — RH-UI-017 DASHBOARD LOCKED v4
    1x6 compact horizontal navigation list.
    ========================================================= */
 .rhHomeV4{min-height:100svh!important;width:100%!important;max-width:100%!important;overflow-x:hidden!important;background:#020508!important}
@@ -2399,7 +2399,7 @@ body.home-active main{padding:0!important;max-width:none!important}
 
 
 /* =========================================================
-   RaceHub v5.7.13 — RH-UI-017 DASHBOARD LOCKED v5
+   OTG! v5.7.13 — RH-UI-017 DASHBOARD LOCKED v5
    Visual-only pass over proven v4 navigation.
    ========================================================= */
 .rhHomeV4{
@@ -2453,7 +2453,7 @@ body.home-active main{padding:0!important;max-width:none!important}
  .rhDashV4Row{height:56px!important}
 }
 
-/* RaceHub v5.7.15 — Dashboard v6: exact approved scene source. */
+/* OTG! v5.7.15 — Dashboard v6: exact approved scene source. */
 .rhHomeHeroV4{
  height:395px!important;
  filter:none!important;
@@ -2471,7 +2471,7 @@ body.home-active main{padding:0!important;max-width:none!important}
 @media(max-height:780px){.rhHomeHeroV4{height:318px!important}}
 
 
-/* RaceHub v5.7.16 — Dashboard v7 clean approved scene.
+/* OTG! v5.7.16 — Dashboard v7 clean approved scene.
    ONLY change from v5.7.15: remove baked duplicate logo from hero background. */
 .rhHomeHeroV4{
   background:
@@ -2481,7 +2481,7 @@ body.home-active main{padding:0!important;max-width:none!important}
 
 
 /* =========================================================
-   RaceHub v5.7.17 — RH-UI-018 FESTIVAL LOCKED v1
+   OTG! v5.7.17 — RH-UI-018 FESTIVAL LOCKED v1
    Festival visual rebuild only. Dashboard untouched.
    ========================================================= */
 .rhFestivalV1{
@@ -2739,7 +2739,7 @@ body.home-active main{padding:0!important;max-width:none!important}
 
 
 /* =========================================================
-   RaceHub v5.7.18 — Festival clean-hero correction ONLY.
+   OTG! v5.7.18 — Festival clean-hero correction ONLY.
    No redraw. No renderer changes. No functionality changes.
    ========================================================= */
 .rhFestivalHeroV1{
@@ -2761,7 +2761,7 @@ body.home-active main{padding:0!important;max-width:none!important}
 
 
 /* =========================================================
-   RaceHub v5.7.19 — Festival hero-height correction ONLY.
+   OTG! v5.7.19 — Festival hero-height correction ONLY.
    Same image. Same crop. Same Festival UI. No redraw.
    ========================================================= */
 .rhFestivalHeroV1{
@@ -2777,7 +2777,7 @@ body.home-active main{padding:0!important;max-width:none!important}
 
 
 /* =========================================================
-   RaceHub v5.7.20 — FULLSCREEN FOUNDATION ONLY
+   OTG! v5.7.20 — FULLSCREEN FOUNDATION ONLY
    No page redesign.
    ========================================================= */
 html,body{
@@ -2810,7 +2810,7 @@ body{
 
 
 /* =========================================================
-   RaceHub v5.7.21 — RH-UI-019 EVENTS LOCKED v1
+   OTG! v5.7.21 — RH-UI-019 EVENTS LOCKED v1
    Landing-page visual rebuild only.
    ========================================================= */
 .rhEventsV1{min-height:100svh;width:100%;max-width:100%;overflow-x:hidden;background:#02070c;color:#fff}
@@ -2889,7 +2889,7 @@ body{
  .rhEventsProgressInnerV1>button{padding:7px 9px!important;font-size:11px!important}
 }
 
-/* RaceHub v5.7.22 — GARAGE PRODUCTION LOCKED v1 */
+/* OTG! v5.7.22 — GARAGE PRODUCTION LOCKED v1 */
 .rhGarageV1{min-height:100svh;background:#02070c;color:#fff;overflow-x:hidden}
 .rhGarageHeroV1{height:270px;position:relative;background:linear-gradient(180deg,rgba(0,5,8,.03),rgba(2,7,12,.12) 72%,#02070c 100%),url('assets/final/garage-approved-scene-v5722.png') center center/cover no-repeat}
 .rhGarageHeadV1{position:absolute;top:max(18px,env(safe-area-inset-top));left:18px;display:flex;gap:14px;align-items:flex-start;text-shadow:0 3px 14px #000}
@@ -2910,7 +2910,7 @@ body{
 .rhGarageInfoV1{margin-top:10px;padding:11px 13px;display:grid;grid-template-columns:40px minmax(0,1fr);gap:11px;align-items:center;border:1px solid rgba(38,220,249,.58);border-radius:13px;background:rgba(3,17,24,.90)}.rhGarageInfoV1>i{width:37px;height:37px;border:2px solid #27ddfa;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#27ddfa;font-style:normal;font-size:23px;font-weight:900}.rhGarageInfoV1 p{margin:0!important;color:#d7e0e3!important;font-size:10px!important;line-height:1.4!important}.rhGarageInfoV1 p>b{display:block;color:#27ddfa;font-size:12px;margin-bottom:2px}
 @media(max-width:390px){.rhGarageHeroV1{height:245px}.rhGarageBodyV1{padding-left:9px;padding-right:9px}.rhGarageToolsV1{grid-template-columns:minmax(0,1fr) 132px}.rhGarageToolsV1>button{font-size:11px!important}.rhGarageSummaryV1>span small{font-size:9px}}
 
-/* RaceHub v5.7.23 — Garage phone-test correction ONLY.
+/* OTG! v5.7.23 — Garage phone-test correction ONLY.
    Hide baked authority-header pixels; retain live header and all Garage UI/functionality. */
 .rhGarageHeroV1{
   height:235px!important;
@@ -2921,7 +2921,7 @@ body{
   .rhGarageHeroV1{height:215px!important;background-position:center 38%!important}
 }
 
-/* RaceHub v5.7.24 — Garage CLEAN BACKGROUND correction.
+/* OTG! v5.7.24 — Garage CLEAN BACKGROUND correction.
    Uses cropped scenery from already-approved/generated image. NO redraw.
    Contains no baked phone chrome, GARAGE title, subtitle or back control. */
 .rhGarageHeroV1{
@@ -2933,7 +2933,7 @@ body{
 @media(max-width:390px){.rhGarageHeroV1{height:215px!important}}
 
 
-/* RaceHub v5.7.25 — Garage rebuild correction.
+/* OTG! v5.7.25 — Garage rebuild correction.
    Uses genuinely cleaned asset; no crop/zoom fake fix.
    Search filters in-place so mobile keyboard stays open. */
 .rhGarageHeroV1{
@@ -2946,7 +2946,7 @@ body{
 .rhGarageMakeV1[hidden]{display:none!important}
 .rhGarageCarV1[hidden]{display:none!important}
 
-/* RaceHub v5.7.26 — Records + Hall of Fame LOCKED v1.
+/* OTG! v5.7.26 — Records + Hall of Fame LOCKED v1.
    NO zooming/cropping. Live responsive UI. */
 .rhRecordsV1,.rhHofV1{min-height:100svh;background:#02070c;color:#fff}
 .rhRecordsHeroV1,.rhHofHeroV1{height:260px;position:relative;background:linear-gradient(180deg,#0a1820,#071018 72%,#02070c)}
@@ -2988,7 +2988,7 @@ body:has(.rhSettingsScene) .rhHelpBtn,
 body:has(.rhSettingsScene) [aria-label="Help"],
 body:has(.rhSettingsScene) [title="Help"]{display:none!important}
 
-/* RaceHub v5.7.32 — Championship Setup Production Conformance v1.
+/* OTG! v5.7.32 — Championship Setup Production Conformance v1.
    Existing Championship run/data behaviour preserved. No generated/redrawn/cropped artwork. */
 .rhSetupV1{min-height:100svh;background:#02080c;color:#fff;overflow-x:hidden}
 .rhSetupHeroV1{position:relative;padding:calc(18px + env(safe-area-inset-top)) 14px 16px;background:linear-gradient(180deg,rgba(1,8,12,.92),rgba(2,8,12,.98));border-bottom:1px solid rgba(41,222,250,.38)}
@@ -3009,9 +3009,9 @@ body:has(.rhSettingsScene) [title="Help"]{display:none!important}
 @media(min-width:700px){.rhSetupBodyV1{display:grid;grid-template-columns:1fr 1fr;gap:12px}.rhSetupFreezeV1,.rhSetupActionsV1,.rhSetupRuleV1{grid-column:1/-1}.rhSetupHeroV1{padding-left:max(24px,calc((100vw - 920px)/2));padding-right:max(24px,calc((100vw - 920px)/2))}}
 
 
-/* RaceHub v5.7.34 — Championship Setup phone-approved production lock. Black presentation intentionally retained. */
+/* OTG! v5.7.34 — Championship Setup phone-approved production lock. Black presentation intentionally retained. */
 
-/* RaceHub v5.7.35 — Championship Overview / Continue Racing production conformance.
+/* OTG! v5.7.35 — Championship Overview / Continue Racing production conformance.
    Visual-only active-run rebuild. Existing run/result persistence remains unchanged. */
 .rhOverviewV1{min-height:100svh;background:#02080c;color:#fff}
 .rhOverviewHeroV1{padding:calc(16px + env(safe-area-inset-top)) 12px 14px;border-bottom:1px solid rgba(43,222,250,.34);background:linear-gradient(180deg,#061219,#02080c)}
@@ -3033,7 +3033,7 @@ body:has(.rhSettingsScene) [title="Help"]{display:none!important}
 .rhFrozenGridV1{display:grid;grid-template-columns:1fr 1fr;gap:7px}.rhFrozenGridV1>div{padding:9px;border:1px solid rgba(255,255,255,.07);border-radius:9px;background:rgba(0,0,0,.18)}.rhFrozenGridV1>div>b{display:block;margin-bottom:6px;color:#2be0fa;font-size:8px;letter-spacing:.08em}.rhFrozenGridV1 p{display:grid;grid-template-columns:19px minmax(0,1fr);gap:5px;margin:5px 0!important;color:#c9d4d7!important;font-size:8px!important}.rhFrozenGridV1 p span{color:#71868d;font-weight:900}.rhFrozenNoteV1{margin:9px 0 0!important;padding-top:8px;border-top:1px solid rgba(43,222,250,.13);color:#81959b!important;font-size:8px!important;text-align:center}
 @media(min-width:700px){.rhOverviewHeroV1,.rhOverviewBodyV1{padding-left:max(24px,calc((100vw - 920px)/2));padding-right:max(24px,calc((100vw - 920px)/2))}.rhOverviewBodyV1{display:grid;grid-template-columns:1fr 1fr;gap:12px}.rhOverviewProgressV1{grid-column:1/-1}.rhOverviewBodyV1>*{margin-bottom:0}.rhFrozenV1{grid-column:1/-1}}
 
-/* RaceHub v5.7.38 — Universal Results locked-controller correction.
+/* OTG! v5.7.38 — Universal Results locked-controller correction.
    Shared Festival/Event result UI. Uses existing approved Championship/Events artwork only. */
 .rhResultSceneFinal{background-size:100% auto!important;background-repeat:no-repeat!important;background-position:center top!important}
 .rhResultContentFinal{padding-top:0!important}
@@ -3067,7 +3067,7 @@ body:has(.rhSettingsScene) [title="Help"]{display:none!important}
 .rhResultContinueFinal{margin-top:11px!important}
 @media(max-width:360px){.rhPositionGridFinal{gap:5px!important}.rhPositionGridFinal button{font-size:14px!important}.rhTimeEntryLarge input{font-size:23px!important}}
 
-/* RaceHub v5.7.39 — Car Complete spacing + compact one-page completion presentation. */
+/* OTG! v5.7.39 — Car Complete spacing + compact one-page completion presentation. */
 .rhCarCompleteFinal{padding:14px!important;border:1px solid rgba(43,222,250,.36)!important;border-radius:14px!important;background:linear-gradient(150deg,rgba(5,23,30,.95),rgba(2,9,13,.98))!important}
 .rhCarCompleteFinal .rhCompleteMark{margin-bottom:4px!important}
 .rhCarCompleteFinal>small{display:block!important;color:#2be0fa!important;font-size:8px!important;font-weight:900!important;letter-spacing:.11em!important}
@@ -3101,7 +3101,7 @@ body:has(.rhSettingsScene) [title="Help"]{display:none!important}
  .rhCompletionCopyFinal h2{font-size:21px!important}
 }
 
-/* RaceHub v5.7.40 — Final Leaderboard / Completed Run conformance.
+/* OTG! v5.7.40 — Final Leaderboard / Completed Run conformance.
    Presentation only. Existing final cumulative-time calculations remain authoritative. */
 .rhFinalBoardV1{min-height:100svh;background:#02080c;color:#fff}
 .rhFinalBoardHeroV1{min-height:205px;padding:calc(17px + env(safe-area-inset-top)) 12px 18px;display:grid;grid-template-columns:46px minmax(0,1fr);gap:12px;align-content:end;background-image:linear-gradient(180deg,rgba(1,7,11,.18),#02080c),url('assets/final/championship-background.png');background-size:100% auto;background-position:center top;background-repeat:no-repeat}
@@ -3117,7 +3117,7 @@ body:has(.rhSettingsScene) [title="Help"]{display:none!important}
 .rhFinalEventWinnerV1{grid-template-columns:62px minmax(0,1fr)!important}.rhFinalEventFlagV1{width:54px;height:54px;display:flex;align-items:center;justify-content:center;border:2px solid #2be0fa;border-radius:50%;color:#2be0fa;font-size:28px;font-weight:900}
 @media(max-width:360px){.rhFinalWinnerV1{grid-template-columns:76px minmax(0,1fr)}.rhFinalWinnerV1 img{width:72px;height:84px}.rhFinalWinnerV1 h2{font-size:18px!important}.rhFinalWinnerV1 strong{font-size:19px}}
 
-/* RaceHub v5.7.41 — Settings Danger Zone visual polish only.
+/* OTG! v5.7.41 — Settings Danger Zone visual polish only.
    Two existing destructive actions and their confirmed behaviour are unchanged. */
 .rhDangerFinal{
   margin:14px 0!important;
@@ -3194,7 +3194,7 @@ body:has(.rhSettingsScene) [title="Help"]{display:none!important}
   background:rgba(151,28,37,.56)!important;
 }
 
-/* RaceHub v5.7.42 — About RaceHub compact one-phone-page presentation.
+/* OTG! v5.7.42 — About OTG! compact one-phone-page presentation.
    Content, wording, artwork and navigation are unchanged. */
 .rhAboutScene{
   min-height:145px!important;
@@ -3270,7 +3270,7 @@ body:has(.rhSettingsScene) [title="Help"]{display:none!important}
 }
 
 /* =========================================================
-   RaceHub v5.7.43 — Final visual correction batch.
+   OTG! v5.7.43 — Final visual correction batch.
    Functional behaviour is protected. No race logic changes.
    ========================================================= */
 
@@ -3324,7 +3324,7 @@ body:has(.rhSettingsScene) [title="Help"]{display:none!important}
  background-position:center!important;
 }
 
-/* RACEHUB SPACES — compact hierarchy, same actions. */
+/* OTG! SPACES — compact hierarchy, same actions. */
 .rhSpacesFinal{padding-bottom:calc(16px + env(safe-area-inset-bottom))!important}
 .rhSpaceManage{padding:12px!important;margin:9px 0!important}
 .rhSpaceMetaFinal{display:flex!important;justify-content:space-between!important;align-items:flex-start!important;gap:10px!important}
@@ -3354,14 +3354,14 @@ body:has(.rhSettingsScene) [title="Help"]{display:none!important}
 .rhBackupCountsFinal small{display:block!important;margin-top:2px!important;color:#7f949b!important;font-size:7px!important;letter-spacing:.04em!important}
 .rhBackupRestoreFinal{width:100%!important;min-height:43px!important;margin:0!important}
 
-/* RaceHub v5.7.44 — final artwork integration: Records, Hall of Fame, Settings. */
+/* OTG! v5.7.44 — final artwork integration: Records, Hall of Fame, Settings. */
 .rhRecordsHeroV1{background:#071018 url('assets/final/records-background-v5744.png') center center/100% 100% no-repeat!important;}
 .rhHofHeroV1{background:#0c1012 url('assets/final/hall-of-fame-background-v5744.png') center center/100% 100% no-repeat!important;}
 .rhSettingsScene,.rhSpaceScene,.rhBackupScene,.rhAboutScene{background-image:linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.38)),url('assets/final/settings-background-v5744.png')!important;background-size:cover!important;background-position:center top!important;}
 
 .rhSetupEntryFootV1 .rhSetupBulkV1{display:flex;gap:8px;align-items:center;min-width:0}.rhSetupEntryFootV1 .rhSetupBulkV1 button{width:auto;min-width:0}
 
-/* RaceHub v5.7.47 — Festival Queue Picker repair / large-field containment.
+/* OTG! v5.7.47 — Festival Queue Picker repair / large-field containment.
    Membership remains frozen; only remaining-car running order is mutable. */
 .rhQueueActionsV1{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 9px}
 .rhQueueActionV1{min-width:0!important;min-height:72px!important;padding:9px!important;display:grid!important;grid-template-columns:34px minmax(0,1fr)!important;gap:8px!important;align-items:center!important;text-align:left!important;border:1px solid rgba(43,222,250,.34)!important;border-radius:10px!important;background:linear-gradient(145deg,rgba(7,31,40,.94),rgba(2,12,17,.97))!important;color:#fff!important;box-shadow:none!important}
@@ -3375,7 +3375,7 @@ body:has(.rhSettingsScene) [title="Help"]{display:none!important}
 .rhFrozenEntriesScrollV1,.rhFrozenRoundsScrollV1{max-height:230px;overflow-y:auto;overscroll-behavior:contain;padding-right:3px;scrollbar-width:thin;scrollbar-color:#2be0fa #0a171d}
 @media(max-width:390px){.rhQueueWindowV1{max-height:282px}.rhQueueActionsV1{gap:6px}.rhQueueActionV1{min-height:68px!important;padding:7px!important;grid-template-columns:30px minmax(0,1fr)!important}.rhQueueActionV1>i{width:28px;height:28px}}
 
-/* RaceHub v5.7.48 — locked Queue Picker experience. Animation only; queue rules unchanged. */
+/* OTG! v5.7.48 — locked Queue Picker experience. Animation only; queue rules unchanged. */
 .rhQueuePickerOverlayV2{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;padding:22px;overflow:hidden}.rhQueuePickerBackdropV2{position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,rgba(17,92,111,.28),rgba(0,5,9,.93) 54%,#010407 100%);backdrop-filter:blur(12px)}
 .rhQueuePickerCardV2{position:relative;width:min(100%,520px);min-height:430px;padding:28px 22px 24px;border:1px solid rgba(43,224,250,.42);border-radius:26px;background:linear-gradient(155deg,rgba(7,25,33,.98),rgba(1,8,13,.99));box-shadow:0 28px 80px #000,0 0 46px rgba(43,224,250,.10),inset 0 1px rgba(255,255,255,.06);text-align:center;color:#fff}
 .rhQueuePickerKickerV2{color:#51cce8;font-size:11px;font-weight:900;letter-spacing:.18em}.rhQueuePickerCardV2 h2{margin:9px 0 5px;font-size:31px;letter-spacing:.04em}.rhQueuePickerCardV2>p{margin:0 auto 22px;max-width:360px;color:#82969d;font-size:13px;line-height:1.4}.rhQueuePickerStageV2{display:flex;min-height:285px;flex-direction:column;align-items:center;justify-content:center;gap:15px}.rhQueuePickerStageV2>small{color:#6f858c;font-size:10px;font-weight:900;letter-spacing:.12em}

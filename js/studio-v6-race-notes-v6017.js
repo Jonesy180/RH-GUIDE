@@ -1,4 +1,4 @@
-/* RaceHub v6.0.17 — Stage 8C result-specific Race Notes.
+/* OTG! v6.0.17 — Stage 8C result-specific Race Notes.
    Additive layer only. Advanced Timing v6.0.16 remains protected and unchanged.
    Race Notes are available only when Advanced Timing is enabled, are optional,
    and are stored on the individual successfully-saved result. */

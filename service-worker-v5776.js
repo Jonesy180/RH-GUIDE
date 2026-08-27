@@ -16,7 +16,7 @@ const ASSETS=[
   './js/studio-locked-ui-v5766.js?v=5776',
   './js/studio-polish-v5776.js?v=5776',
   './js/bootstrap-v5776.js?v=5776',
-  './assets/final/racehub-logo.png',
+  './assets/brand/otg-mark-painted-wall.svg',
   './assets/final/dashboard-background.png',
   './assets/final/festival-background.png',
   './assets/final/events-background.png',

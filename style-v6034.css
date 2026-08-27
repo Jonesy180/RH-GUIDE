@@ -1,4 +1,4 @@
-/* RaceHub v6.0.34 — Grand Tour Fix #4: Records historical Final Standings overlay only. */
+/* OTG! v6.0.34 — Grand Tour Fix #4: Records historical Final Standings overlay only. */
 body.rhFS34RecordsOverlayActive{overflow:hidden!important}
 .rhFS34RecordsOverlay{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;padding:max(10px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))}
 .rhFS34RecordsBackdrop{position:absolute;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}

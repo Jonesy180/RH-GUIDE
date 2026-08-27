@@ -1,4 +1,4 @@
-// RaceHub v5.7.86 — startup recovery + v5.7.84 post-race experience
+// OTG! v5.7.86 — startup recovery + v5.7.84 post-race experience
 state=rhLoad();
 rhSync();
 if(state&&!state.onboarded){window.rhStartOnboardingIfNeeded?.();}else{show('home');}

@@ -1,10 +1,10 @@
-// RaceHub v5.7.77 — Production conformance bootstrap
+// OTG! v5.7.77 — Production conformance bootstrap
 
 state=rhLoad();rhSync();if(state&&!state.onboarded){window.rhStartOnboardingIfNeeded?.();}else{show('home');}
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker-v5783.js',{updateViaCache:'none'}).catch(()=>{}));}
 
 
-// RaceHub v5.7.82 — native touch-scroll containment.
+// OTG! v5.7.82 — native touch-scroll containment.
 // Android/PWA can ignore CSS overscroll-behavior during a fast fling. These
 // internal list surfaces therefore own the gesture from touchstart to touchend,
 // including inertia, so the document cannot inherit the swipe at a boundary.

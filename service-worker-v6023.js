@@ -8,7 +8,7 @@ const ASSETS=[
   './js/studio-race-flow-v5809.js?v=5829','./js/bootstrap-v600.js?v=6023','./js/studio-race-end-v5837.js?v=5837',
   './js/studio-final-standings-v5828.js?v=5829','./js/studio-records-v5830.js?v=5831','./js/studio-car-complete-v5832.js?v=5832',
   './js/studio-champ-overview-v5835.js?v=5835','./js/studio-beta-feedback-v595.js?v=5918','./js/studio-v6-advanced-timing-v6015.js?v=6020','./js/studio-v6-race-notes-v6017.js?v=6020','./assets/final/championship-in-progress-aerial-v5834.png?v=5834',
-  './assets/final/final-standings-face-on-ui-ready-v5828.png?v=5828','./assets/final/racehub-logo.png',
+  './assets/final/final-standings-face-on-ui-ready-v5828.png?v=5828','./assets/brand/otg-mark-painted-wall.svg',
   './assets/final/hubs-pit-chief-v5829.png?v=5829','./assets/final/enter-result-side-finish-v5803.png','./assets/final/result-summary-podium-v5804.png',
   './assets/final/trophy-festival.png','./assets/final/trophy-manufacturer.png','./assets/final/trophy-era.png','./assets/final/trophy-favourite.png',
   './style-v6020.css?v=6020','./style-v6021.css?v=6021','./style-v6022.css?v=6022','./style-v6023.css?v=6023','./js/studio-v6-league-foundation-v6018.js?v=6020','./js/studio-v6-league-stage9b-v6020.js?v=6020','./js/studio-v6-league-stage9c-v6022.js?v=6022','./js/studio-v6-league-stage9d-v6023.js?v=6023','./assets/final/league-organiser-control-room-v6018.png','./icons/icon-v5765-192.png','./icons/icon-v5765-512.png'

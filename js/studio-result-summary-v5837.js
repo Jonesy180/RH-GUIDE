@@ -1,4 +1,4 @@
-/* RaceHub v5.8.37 — podium Result Summary with locked average comparison */
+/* OTG! v5.8.37 — podium Result Summary with locked average comparison */
 (()=>{
   const q=id=>document.getElementById(id);
   const esc=v=>typeof safe==='function'?safe(v):String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));

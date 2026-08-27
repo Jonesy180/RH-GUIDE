@@ -6,7 +6,7 @@ const labelCar=c=>{try{return carName(c)}catch(_){return [c?.make,c?.model,c?.ye
 function store(){const s=rhSpace();if(!Array.isArray(s.raceOffs))s.raceOffs=[];return s.raceOffs;}
 function categoryCars(type,value){return (rhEligible(type,value)||[]).slice();}
 function snapshot(c){return {sourceCarId:c.id,make:String(c.make||''),model:String(c.model||''),year:String(c.year||''),classType:String(c.classType||''),name:labelCar(c)};}
-function activeRaceOff(){return store().filter(x=>x&&x.status!=='complete').sort((a,b)=>String(b.updatedAt||b.createdAt||'').localeCompare(String(a.updatedAt||a.createdAt||'')))[0]||null;}
+function activeRaceOff(){return store().filter(x=>x&&!['complete','abandoned'].includes(x.status)).sort((a,b)=>String(b.updatedAt||b.createdAt||'').localeCompare(String(a.updatedAt||a.createdAt||'')))[0]||null;}
 function redrawLanding(){show('raceoff');}
 
 window.rhRaceOffCataloguePick=function(type,value,name,count){

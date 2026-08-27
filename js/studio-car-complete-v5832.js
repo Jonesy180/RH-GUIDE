@@ -1,4 +1,4 @@
-/* RaceHub v5.8.32 — authoritative Car Complete / Final Classification rebuild. */
+/* OTG! v5.8.32 — authoritative Car Complete / Final Classification rebuild. */
 (()=>{
   'use strict';
   const VERSION='5.8.32';
