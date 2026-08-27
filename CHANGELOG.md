@@ -1,3 +1,9 @@
+## v7.0.32 — Universal Smart Bars
+- All OTG! smart suggestion bars now show one best-fit suggestion only.
+- Smart suggestion bars are positioned above their text inputs for phone-keyboard safety.
+- Favourite Manufacturer onboarding now uses the same compact shared smart-bar behaviour instead of a multi-result tile list.
+- Numeric/time inputs remain excluded.
+
 ## v7.0.31 GUIDE — Storage isolation fix
 - Guide now uses a completely separate persistent data namespace from Main OTG!.
 - Guide no longer reads or migrates Main OTG! local storage.

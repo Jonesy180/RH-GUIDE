@@ -4428,3 +4428,10 @@ button.rhBack.rhUniversalBackV594,
 .rhResultRaceNotesV6017 small{color:#2be0fa;font-size:8px;font-weight:900;letter-spacing:.13em}
 .rhResultRaceNotesV6017 p{margin:7px 0 0;color:#d9e8ec;font-size:11px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
 @media(max-width:430px){.rh5801Head{left:108px!important}.rhRaceNotesV6017 textarea{min-height:84px}}
+
+
+/* OTG! v7 smart-bar universal placement — one compact best match above every smart input. */
+.rhSmartSuggestions{top:auto!important;bottom:calc(100% + 5px)!important;max-height:none!important;overflow:visible!important;padding:4px!important}
+.rhSmartSuggestions button:not(:first-child){display:none!important}
+.rhOnboardingMakeSmart{margin-top:58px}
+.rhOnboardingMakeSmart .rhSmartSuggestions{z-index:80}
