@@ -1,3 +1,6 @@
+## v8.0.10 — Guide Total Time Groups
+Updated from the isolated v7.0.32 Guide base with the passed V8 Groups engine while retaining Guide-only storage/cache identity and excluding Main-only developer controls.
+
 ## v7.0.32 — Universal Smart Bars
 - All OTG! smart suggestion bars now show one best-fit suggestion only.
 - Smart suggestion bars are positioned above their text inputs for phone-keyboard safety.

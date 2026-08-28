@@ -1,3 +1,11 @@
+## v8.0.10 GUIDE — Total Time Groups
+
+- Added the fully tested V8 Total Time Groups Festival format to Guide.
+- Rolling Stage 1 groups, target 8 cars, Top 2 advance, run-by-car flow and live track leaderboards.
+- Hidden cumulative group standings until completion, fresh track setup for later stages / Final, record notifications and correct Groups champion honours.
+- Includes the Festival entry-list scroll-jump fix.
+- Preserves Guide-only storage and cache isolation. No Main data and no Main-only Delete Record tool.
+
 ## v7.0.32 — Universal Smart Bars
 - All OTG! smart suggestion bars now show one best-fit suggestion only.
 - Smart suggestion bars are positioned above their text inputs for phone-keyboard safety.
