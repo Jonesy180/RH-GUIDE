@@ -1,3 +1,8 @@
+## v8.0.13 — Guide backup/update ownership fix
+- Self-contained protected Safety Backup bridge for older Guide shells.
+- Three-slot backup UI is owned by the active Guide renderer after update.
+- Legacy automatic update popup removed from the v8.0.13 shell.
+
 ## v8.0.10 — Guide Total Time Groups
 Updated from the isolated v7.0.32 Guide base with the passed V8 Groups engine while retaining Guide-only storage/cache identity and excluding Main-only developer controls.
 
