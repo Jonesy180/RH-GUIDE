@@ -1,3 +1,8 @@
+## v8.0.14 — Guide bridge release
+- Forces the Friends/Guide update target beyond the stale v8.0.12 bridge.
+- Retains self-contained protected Safety Backup transaction and three-slot backup ownership.
+- No catalogue or racing changes.
+
 ## v8.0.13 — Guide backup/update ownership fix
 - Self-contained protected Safety Backup bridge for older Guide shells.
 - Three-slot backup UI is owned by the active Guide renderer after update.
