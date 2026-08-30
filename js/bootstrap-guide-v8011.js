@@ -1,0 +1,10 @@
+// OTG! Guide v8.0.11 — Friends/GT7 line; version-pinned worker + manifest updates
+state=rhLoad();
+rhSync();
+if(state&&!state.onboarded){window.rhStartOnboardingIfNeeded?.();}else{show('home');}
+if('serviceWorker' in navigator){window.addEventListener('load',async()=>{
+  try{
+    await navigator.serviceWorker.register('./otg-guide-service-worker-v8011.js',{scope:'./',updateViaCache:'none'});
+    setTimeout(()=>window.rhAutoCheckForUpdateV8021?.(),250);
+  }catch(_){ window.rhAutoCheckForUpdateV8021?.(); }
+});}
